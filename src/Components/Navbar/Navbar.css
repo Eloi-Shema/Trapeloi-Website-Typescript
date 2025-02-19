@@ -1,0 +1,86 @@
+h4, button{
+  font-family: 'Kanit'
+}
+
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+.header-content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 125rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+  height: 60px;
+  color: rgb(215, 215, 215);
+}
+
+.animation-shake{
+  animation: shake 0.3s ease-in-out;
+}
+@keyframes
+  shake{
+    0%, 100% {
+      transform: translateX(0);
+    }
+    25%{
+      transform: translateX(-5px);
+    }
+    50%{
+      transform: translateX(5px);
+    }
+    75%{
+      transform: translateX(-5px);
+    }
+  }
+
+.menu-links{
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .menu-links h4, .menu-links .login-btn{
+    display: none;
+  }
+}
+
+.menu-links h4{
+  font-weight: 500;
+  margin-right: 1.88rem;
+  cursor: pointer;
+}
+.menu-links .login-btn{
+  background: transparent;
+  font-weight: 500;
+  border: 2px solid rgb(239, 239, 239);
+  padding: 4px 20px;
+  border-radius: 6px;
+}
+
+.cart{
+  position: relative;
+  margin-right: 1.88rem;
+}
+
+.cart img{
+ width: 20px;
+ filter: invert(1);
+ opacity: 0.85;
+}
+.cart p{
+  position: absolute;
+  top: -4px;
+  right: -7px;
+  font-size: 0.75rem;
+  background-color: rgb(216, 184, 0);
+  color: rgb(9, 16, 15);;
+  padding: 0 5px;
+  font-weight: 600;
+  border-radius: 20px;
+}

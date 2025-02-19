@@ -1,0 +1,25 @@
+.stats {
+  animation: textColorChange 10s linear infinite;
+}
+@keyframes textColorChange {
+  0%,
+  100% {
+    color: white;
+  }
+  50% {
+    color: rgb(71, 255, 246);
+  }
+}
+
+.royalty {
+  animation: glow 3s infinite;
+}
+@keyframes glow {
+  0%,
+  100% {
+    text-shadow: 0 0 5px rgb(0, 255, 242);
+  }
+  50% {
+    text-shadow: 0 2px 20px rgb(0, 255, 242);
+  }
+}

@@ -1,0 +1,55 @@
+.small-rating {
+  height: 17.5rem;
+  animation: smallHorizontalScroll 80s ease-in-out infinite,
+    bgGlow 5s ease-in-out infinite;
+}
+@keyframes smallHorizontalScroll {
+  0%,
+  100% {
+    transform: translateX(-1210%);
+  }
+  50% {
+    transform: translateX(10%);
+  }
+}
+
+.big-rating {
+  height: 17.5rem;
+  animation: bigHorizontalScroll 60s ease-in-out infinite,
+    bgGlow 5s ease-in-out infinite;
+}
+@keyframes bigHorizontalScroll {
+  0%,
+  100% {
+    transform: translateX(-880%);
+  }
+  50% {
+    transform: translateX(10%);
+  }
+}
+
+@keyframes bgGlow {
+  0%,
+  100% {
+    background-color: rgb(9, 16, 15);
+  }
+  50% {
+    background-color: rgb(35, 35, 35);
+  }
+}
+
+.small-rating .comment {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.big-rating .comment {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,54 @@
+h2,
+h4,
+p {
+  font-family: "Montserrat";
+}
+
+.cart-header {
+  background: linear-gradient(to right, rgb(38, 57, 55), rgb(9, 16, 15));
+}
+
+.added-cart::-webkit-scrollbar {
+  width: 6px;
+}
+
+.added-cart::-webkit-scrollbar-track {
+  background-color: rgb(14, 16, 9);
+}
+
+.added-cart::-webkit-scrollbar-thumb {
+  background-color: rgb(46, 49, 51);
+  border-radius: 10px;
+}
+
+.beat-bg {
+  background-color: rgb(29, 29, 29);
+}
+
+.check-box span {
+  display: flex;
+  width: 16px;
+  height: 16px;
+  background-color: rgb(9, 16, 15);
+  border: 1px solid rgb(115, 137, 135);
+  border-radius: 4px;
+  margin-right: 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+.check-box input:checked + span {
+  background-color: rgb(0, 157, 255);
+}
+
+.check-box input:checked + span:after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 0;
+  width: 4px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}

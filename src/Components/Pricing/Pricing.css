@@ -1,0 +1,29 @@
+* {
+  font-family: "Montserrat";
+}
+
+.track {
+  text-align: center;
+}
+
+.recommended-plan {
+  animation: borderChange 3s ease-in-out infinite, glowy 5s ease-in-out infinite;
+}
+@keyframes borderChange {
+  0%,
+  100% {
+    border: 2px solid rgba(211, 211, 211, 0.4);
+  }
+  50% {
+    border: 2px solid rgba(216, 184, 0, 0.8);
+  }
+}
+@keyframes glowy {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(216, 184, 0, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 5px rgba(255, 221, 32, 0.8);
+  }
+}
