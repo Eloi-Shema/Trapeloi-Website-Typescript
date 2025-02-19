@@ -1,8 +1,16 @@
-import React from "react";
+import React, { RefObject } from "react";
 import "./IntroSection.css";
 import drum from "../../assets/drum.mp4";
 
-const IntroSection = ({ scrollToStore, homeRef }) => {
+interface IntroSectionProps {
+  scrollToStore: () => void;
+  homeRef: RefObject<HTMLDivElement>;
+}
+
+const IntroSection: React.FC<IntroSectionProps> = ({
+  scrollToStore,
+  homeRef,
+}) => {
   return (
     <div
       ref={homeRef}

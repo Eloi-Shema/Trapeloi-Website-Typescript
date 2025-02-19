@@ -5,7 +5,16 @@ import cart_icon from "../../assets/icons/cart-icon.png";
 import close_icon from "../../assets/icons/close-icon.png";
 import { Link } from "react-router-dom";
 
-const Navbar = ({
+interface NavbarProps {
+  toggleCart: () => void;
+  cartCount: number;
+  warning?: string | null;
+  animate?: string | null;
+  scrollToStore: () => void;
+  scrollToPricing: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({
   toggleCart,
   cartCount,
   warning,
@@ -13,8 +22,8 @@ const Navbar = ({
   scrollToStore,
   scrollToPricing,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,7 +35,7 @@ const Navbar = ({
     };
     window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return (): void => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const toggleMenu = () => {

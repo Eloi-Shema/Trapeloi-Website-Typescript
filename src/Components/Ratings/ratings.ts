@@ -9,7 +9,7 @@ import simon from "../../assets/simon.png";
 import megan from "../../assets/megan.png";
 import tom from "../../assets/tom.png";
 
-interface ratingTypes {
+interface RatingTypes {
   stars: string;
   comment: string;
   profile: string;
@@ -17,7 +17,7 @@ interface ratingTypes {
   artist: string;
 }
 
-export const ratings: ratingTypes[] = [
+export const ratings: RatingTypes[] = [
   {
     stars: five_stars,
     comment: "The quality of beats is unmatched and so inspiring!",

@@ -4,7 +4,12 @@ import logo from "../../assets/logo blue.png";
 import youtube from "../../assets/icons/youtube-icon.png";
 import instagram from "../../assets/icons/instagram-white-icon.png";
 
-const Footer = ({ scrollToHome, scrollToStore }) => {
+interface FooterProps {
+  scrollToHome: () => void;
+  scrollToStore: () => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ scrollToHome, scrollToStore }) => {
   return (
     <div className="footer p-10 mt-5 xs:rounded-tr-[60px] md:rounded-tr-full">
       <img className="logo w-32 -ml-6" src={logo} alt="" />
