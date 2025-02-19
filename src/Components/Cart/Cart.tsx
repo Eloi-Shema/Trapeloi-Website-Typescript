@@ -6,7 +6,24 @@ import debit_card from "../../assets/icons/debit-card-icon.png";
 import paypal_icon from "../../assets/icons/paypal-icon.png";
 import cart_icon from "../../assets/icons/cart-icon.png";
 
-const Cart = ({
+interface CartItem {
+  id: string | number;
+  name: string;
+  price: number;
+  image: string;
+}
+
+interface CartProps {
+  isVisible: boolean;
+  toggleCart: () => void;
+  cartItems: CartItem[];
+  removeFromCart: (id: string | number) => void;
+  clearCart: () => void;
+  cartCount: number;
+  totalPrice: number;
+}
+
+const Cart: React.FC<CartProps> = ({
   isVisible,
   toggleCart,
   cartItems,
@@ -15,8 +32,8 @@ const Cart = ({
   cartCount,
   totalPrice,
 }) => {
-  const [isRendered, setIsRendered] = useState(isVisible);
-  const [firstRender, setFirstRendered] = useState(isVisible);
+  const [isRendered, setIsRendered] = useState<boolean>(isVisible);
+  const [firstRender, setFirstRendered] = useState<boolean>(isVisible);
 
   useEffect(() => {
     if (isVisible) {
@@ -29,10 +46,9 @@ const Cart = ({
     } else {
       setFirstRendered(false);
     }
-  }),
-    [isVisible];
+  }, [isVisible]);
 
-  const handleAnimationEnd = () => {
+  const handleAnimationEnd = (): void => {
     setIsRendered(false);
   };
 
@@ -93,6 +109,7 @@ const Cart = ({
                             className="invert w-3 cursor-pointer opacity-60"
                             src={close_icon}
                             onClick={() => removeFromCart(item.id)}
+                            alt="remove item"
                           />
                           <p className="text-xs">${item.price / 100}</p>
                         </div>
@@ -110,6 +127,7 @@ const Cart = ({
                   <img
                     className="w-[1rem] invert opacity-60 -mt-[2px] mr-2"
                     src={cart_icon}
+                    alt="cart icon"
                   />
                   <h4>Your cart is empty</h4>
                 </div>
@@ -141,12 +159,12 @@ const Cart = ({
 
             <div className="flex flex-col items-center justify-between">
               <div className="flex items-center justify-center w-[350px] mb-4 py-2 bg-dimGreen text-black rounded-lg cursor-pointer">
-                <img className="w-4 mr-3" src={debit_card} alt="" />
+                <img className="w-4 mr-3" src={debit_card} alt="debit card" />
                 Credit/Debit Card
               </div>
 
               <button className="flex items-center justify-center w-[350px] bg-dimGold rounded-lg py-3">
-                <img className="w-[70px]" src={paypal_icon} alt="" />
+                <img className="w-[70px]" src={paypal_icon} alt="paypal" />
               </button>
             </div>
           </div>
