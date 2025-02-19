@@ -1,14 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Ratings.css";
-import "./ratings";
-import { ratings } from "./ratings.js";
+import { ratings } from "./ratings.ts";
 
-const Ratings = () => {
-  const [width, setWidth] = useState("smallScreen");
-  const [isExpanded, setIsExpanded] = useState(false);
+const Ratings: React.FC = () => {
+  const [width, setWidth] = useState<string>("smallScreen");
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   useEffect(() => {
-    const handleResize = () => {
+    const handleResize = (): void => {
       const widthCheck = window.innerWidth;
       setWidth(widthCheck < 768 ? "smallScreen" : "bigScreen");
     };
@@ -16,7 +15,7 @@ const Ratings = () => {
     handleResize();
     window.addEventListener("resize", handleResize);
 
-    return () => window.removeEventListener("resize", handleResize);
+    return (): void => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (

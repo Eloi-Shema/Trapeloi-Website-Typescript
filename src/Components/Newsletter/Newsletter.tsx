@@ -2,7 +2,7 @@ import React from "react";
 import "./Newsletter.css";
 import { motion } from "framer-motion";
 
-const Newsletter = () => {
+const Newsletter: React.FC = () => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 100 }}
