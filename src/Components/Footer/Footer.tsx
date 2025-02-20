@@ -10,6 +10,7 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ scrollToHome, scrollToStore }) => {
+  const currentYear = new Date().getFullYear();
   return (
     <div className="footer p-10 mt-5 xs:rounded-tr-[60px] md:rounded-tr-full">
       <img className="logo w-32 -ml-6" src={logo} alt="" />
@@ -46,7 +47,7 @@ const Footer: React.FC<FooterProps> = ({ scrollToHome, scrollToStore }) => {
       <hr />
       <div className="flex justify-between py-2">
         <p className="xs:text-[9px] md:text-xs text-white/80">
-          &copy; 2025 MontBitz. All rights reserved.
+          &copy; {currentYear} MontBitz. All rights reserved.
         </p>
         <div className="privacy flex">
           <p className="xs:text-[9px] md:text-xs">Privacy Policy</p>
