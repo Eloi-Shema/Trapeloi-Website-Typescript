@@ -1,9 +1,13 @@
-import React from "react";
+import React, { RefObject } from "react";
 import "./Pricing.css";
 import premium_icon from "../../assets/icons/premium.png";
 import { motion } from "framer-motion";
 
-const Pricing = ({ pricingRef }) => {
+interface PricingProps {
+  pricingRef: RefObject<HTMLDivElement | null>;
+}
+
+const Pricing: React.FC<PricingProps> = ({ pricingRef }) => {
   return (
     <div ref={pricingRef}>
       <motion.div

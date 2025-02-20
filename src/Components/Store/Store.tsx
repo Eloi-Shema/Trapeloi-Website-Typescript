@@ -1,6 +1,6 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef, RefObject, useState } from "react";
 import "./Store.css";
-import { beatList } from "../../data.js";
+import { beatList } from "../../data.ts";
 import cart_icon from "../../assets/icons/cart-icon.png";
 import play_icon from "../../assets/icons/play-icon.png";
 import search_icon from "../../assets/icons/search-icon.png";
@@ -9,8 +9,20 @@ import list_icon from "../../assets/icons/list-view.png";
 import grid_icon from "../../assets/icons/grid-view.png";
 import { motion } from "framer-motion";
 
-const Store = forwardRef(({ addToCart }, ref) => {
-  const [searchQuery, setSearchQuery] = useState("");
+interface BeatType {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+}
+
+interface StoreProps {
+  addToCart: (beat: BeatType) => void;
+  ref: RefObject<HTMLDivElement | null>;
+}
+
+const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   // SWITCH BETWEEN GRID AND LIST VIEW IN STORE AND SAVE THE STATE
 

@@ -4,7 +4,7 @@ import drum from "../../assets/drum.mp4";
 
 interface IntroSectionProps {
   scrollToStore: () => void;
-  homeRef: RefObject<HTMLDivElement>;
+  homeRef: RefObject<HTMLDivElement | null>;
 }
 
 const IntroSection: React.FC<IntroSectionProps> = ({

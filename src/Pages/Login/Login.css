@@ -1,0 +1,41 @@
+.bg-image {
+  background-size: cover;
+  background-position: center;
+  animation: bgChange 60s linear infinite;
+}
+@keyframes bgChange {
+  0%,
+  100% {
+    background-image: url("../../assets/studio.jpg");
+  }
+  25% {
+    background-image: url("../../assets/headphones.jpg");
+  }
+  50% {
+    background-image: url("../../assets/studio2.jpg");
+  }
+  75% {
+    background-image: url("../../assets/speaker2.jpg");
+  }
+}
+
+.input-field label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+.input-field input {
+  margin-bottom: 1.5rem;
+  padding: 10px 15px;
+  border-radius: 10px;
+  width: 17.5rem;
+  color: rgb(235, 235, 235);
+  background-color: transparent;
+  border-bottom: 2px solid rgba(211, 211, 211, 0.8);
+}
+.input-field input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.875rem;
+}
+.input-field input:focus {
+  outline: none;
+}

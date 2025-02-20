@@ -9,7 +9,7 @@ interface NavbarProps {
   toggleCart: () => void;
   cartCount: number;
   warning?: string | null;
-  animate?: string | null;
+  animate?: boolean | null;
   scrollToStore: () => void;
   scrollToPricing: () => void;
 }

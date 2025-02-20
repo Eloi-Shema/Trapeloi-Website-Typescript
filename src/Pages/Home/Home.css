@@ -1,0 +1,55 @@
+body {
+  font-family: "Kanit" "Montserrat";
+  background: rgb(9, 16, 15);
+  color: rgb(239, 239, 239);
+  margin: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background: rgb(9, 16, 15);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(54, 57, 58);
+  border-radius: 5px;
+}
+
+h1 {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.logo {
+  animation: filter 5s ease-in-out infinite;
+}
+@keyframes filter {
+  0%,
+  100% {
+    filter: none;
+  }
+  50% {
+    filter: grayscale();
+  }
+}
+
+.loading {
+  animation: load 3s ease infinite;
+}
+@keyframes load {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(510%);
+  }
+}
+
+.page-layout {
+  max-width: 125rem;
+  margin: 0 auto;
+}
