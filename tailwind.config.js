@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
@@ -15,6 +16,7 @@ export default {
         goldYellow: "rgb(216, 184, 0)",
         dimGold: "rgba(255, 200, 10, 0.833)",
         bgGreen: "rgba(8, 255, 193, 0.15)",
+        perfectBlue: "rgb(65, 105, 225)",
       },
       screens: {
         xs: "320px",

@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
-import logo from "../../assets/logo blue.png";
+import logo_dark from "../../assets/logo-blue electric.png";
+import logo_light from "../../assets/logo-blue.png";
 import cart_icon from "../../assets/icons/cart-icon.png";
 import close_icon from "../../assets/icons/close-icon.png";
 import { Link } from "react-router-dom";
+import ThemeToggle from "../theme/ThemeToggle";
+import { switchTheme } from "../../hooks/switchTheme";
 
 interface NavbarProps {
   toggleCart: () => void;
@@ -23,34 +26,44 @@ const Navbar: React.FC<NavbarProps> = ({
   scrollToPricing,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  // const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (window.scrollY > 50) {
+  //       setIsScrolled(true);
+  //     } else {
+  //       setIsScrolled(false);
+  //     }
+  //   };
+  //   window.addEventListener("scroll", handleScroll);
 
-    return (): void => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  //   return (): void => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   const toggleMenu = () => {
     setIsOpen((prevState) => !prevState);
   };
 
+  const { theme } = switchTheme();
+
   return (
-    <div className="header">
-      <div
-        className={`header-content relative ${
-          isScrolled ? "bg-black/90" : "bg-transparent"
-        } py-8 pr-4`}
-      >
+    <div className="header backdrop-blur-sm">
+      <div className="header-content relative bg-gray-300/90 dark:bg-bgBlack/10 py-8 pr-4">
         <Link to="/">
-          <img className="xs:w-40 md:w-48 xl:w-52" src={logo} alt="Logo" />
+          {theme === "dark" ? (
+            <img
+              className="xs:w-40 md:w-48 xl:w-52"
+              src={logo_dark}
+              alt="Logo"
+            />
+          ) : (
+            <img
+              className="xs:w-40 md:w-48 xl:w-52"
+              src={logo_light}
+              alt="Logo"
+            />
+          )}
         </Link>
         {warning && (
           <p
@@ -61,19 +74,27 @@ const Navbar: React.FC<NavbarProps> = ({
             {warning}
           </p>
         )}
-        <div className="menu-links">
+        <div className="menu-links dark:text-white text-black">
+          <ThemeToggle />
+
           <h4 onClick={scrollToStore}>Beat Store</h4>
           <h4 onClick={scrollToPricing}>Pricing</h4>
           <div className="cart cursor-pointer" onClick={toggleCart}>
-            <img src={cart_icon} alt="" />
-            <p className={`${cartCount === 0 ? "hidden" : "block"}`}>
+            <img src={cart_icon} alt="" className="dark:invert" />
+            <p
+              className={`${
+                cartCount === 0 ? "hidden" : "block"
+              } bg-red-700 text-white dark:bg-goldYellow dark:text-black`}
+            >
               {cartCount}
             </p>
           </div>
           <Link to="/login">
-            <button className="login-btn">Log In</button>
+            <button className="login-btn bg-perfectBlue text-white dark:bg-white dark:text-black">
+              Log In
+            </button>
           </Link>
-          <button className="invert md:hidden w-5" onClick={toggleMenu}>
+          <button className="dark:invert md:hidden w-5" onClick={toggleMenu}>
             <img
               className={`${
                 isOpen ? "rotate-0" : "rotate-45"
@@ -86,7 +107,7 @@ const Navbar: React.FC<NavbarProps> = ({
       </div>
 
       {isOpen && (
-        <div className="absolute right-0 bg-bgBlack/80 text-white text-sm px-6 py-3">
+        <div className="absolute right-0 bg-white/60 dark:bg-bgBlack/90 dark:text-white text-black text-sm px-6 py-3 rounded-b-md">
           <h4 onClick={scrollToStore} className="mb-5 cursor-pointer">
             Beat Store
           </h4>
@@ -94,7 +115,7 @@ const Navbar: React.FC<NavbarProps> = ({
             Pricing
           </h4>
           <Link to="/login">
-            <button className="px-5 py-1 mb-4 border-2 border-gray-300 rounded-md">
+            <button className="bg-black text-white dark:bg-white dark:text-black px-5 py-1 mb-4 rounded-md">
               Log In
             </button>
           </Link>
