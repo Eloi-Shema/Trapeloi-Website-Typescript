@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import logo_dark from "../../assets/logo-blue electric.png";
 import logo_light from "../../assets/logo-blue.png";
@@ -26,20 +26,20 @@ const Navbar: React.FC<NavbarProps> = ({
   scrollToPricing,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  // const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     if (window.scrollY > 50) {
-  //       setIsScrolled(true);
-  //     } else {
-  //       setIsScrolled(false);
-  //     }
-  //   };
-  //   window.addEventListener("scroll", handleScroll);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
 
-  //   return (): void => window.removeEventListener("scroll", handleScroll);
-  // }, []);
+    return (): void => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen((prevState) => !prevState);
@@ -48,8 +48,14 @@ const Navbar: React.FC<NavbarProps> = ({
   const { theme } = switchTheme();
 
   return (
-    <div className="header backdrop-blur-sm">
-      <div className="header-content relative bg-gray-300/90 dark:bg-bgBlack/10 py-8 pr-4">
+    <div className="header">
+      <div
+        className={`header-content relative py-8 pr-4 ${
+          isScrolled
+            ? "bg-gray-300/90 dark:bg-bgBlack/50 backdrop-blur-sm"
+            : "dark:bg-transparent bg-gray-300/90"
+        }`}
+      >
         <Link to="/">
           {theme === "dark" ? (
             <img
@@ -84,7 +90,7 @@ const Navbar: React.FC<NavbarProps> = ({
             <p
               className={`${
                 cartCount === 0 ? "hidden" : "block"
-              } bg-red-700 text-white dark:bg-goldYellow dark:text-black`}
+              } bg-red-700 dark:bg-red-500 text-white`}
             >
               {cartCount}
             </p>

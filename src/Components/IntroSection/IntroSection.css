@@ -22,7 +22,7 @@ h2 {
   margin-bottom: 1.875rem;
 }
 
-.dark .shop-button {
+.shop-button {
   position: absolute;
   bottom: 80px;
   background-color: rgb(0, 255, 191);
@@ -31,7 +31,7 @@ h2 {
   z-index: 1;
   cursor: pointer;
 }
-.dark .shop-button:hover {
+.shop-button:hover {
   bottom: 95px;
   background-color: rgb(0, 255, 241);
 }
@@ -45,18 +45,4 @@ h2 {
   100% {
     box-shadow: 0 0 5px rgb(0, 255, 241);
   }
-}
-
-.shop-button {
-  position: absolute;
-  bottom: 80px;
-  background-color: rgb(32, 51, 108);
-  animation: glow 3s infinite;
-  transition: background-color 0.3s, bottom 0.4s, padding 0.3s;
-  z-index: 1;
-  cursor: pointer;
-}
-.shop-button:hover {
-  bottom: 95px;
-  background-color: rgb(65, 105, 225);
 }
