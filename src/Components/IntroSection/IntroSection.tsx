@@ -1,6 +1,6 @@
 import React, { RefObject } from "react";
 import "./IntroSection.css";
-import logo from "../../assets/logo-white.png";
+import logo from "../../assets/logo-white - 1.png";
 import abstract from "../../assets/videos/abstract-bg.mp4";
 
 interface IntroSectionProps {
@@ -48,7 +48,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({
         </h3>
       </div>
 
-      <div className="shop-button relative  text-xl rounded-md text-black font-normal z-10">
+      <div className="shop-button relative text-xl rounded-md text-black font-normal z-10">
         <button
           onClick={scrollToStore}
           className="py-3 xs:px-28 sm:px-32 md:px-30 lg:px-12 whitespace-nowrap"

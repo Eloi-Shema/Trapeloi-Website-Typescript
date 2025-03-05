@@ -106,7 +106,7 @@ const Login: React.FC = () => {
             src={logo}
             alt=""
           />
-          <div className="xs:w-[160px] lg:w-[200px] h-[2px] dark:bg-bgBlack bg-platinum rounded overflow-hidden">
+          <div className="xs:w-[160px] lg:w-[300px] h-[2px] dark:bg-bgBlack bg-platinum rounded overflow-hidden">
             <div className="loading w-[20%] h-full dark:bg-white/90 bg-black"></div>
           </div>
         </motion.div>

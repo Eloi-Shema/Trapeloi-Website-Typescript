@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { switchTheme } from "../../hooks/switchTheme";
 import dark_icon from "../../assets/icons/dark-icon.png";
 import light_icon from "../../assets/icons/light-icon.png";
@@ -10,6 +10,21 @@ interface ThemeToggleProps {
 const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = "" }) => {
   const { theme, toggleTheme } = switchTheme();
 
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return (): void => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <button
       onClick={toggleTheme}
@@ -19,7 +34,11 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = "" }) => {
       {theme === "dark" ? (
         <img src={light_icon} alt="Light Mode Icon" className="invert" />
       ) : (
-        <img src={dark_icon} alt="Dark Mode Icon" />
+        <img
+          src={dark_icon}
+          alt="Dark Mode Icon"
+          className={`${isScrolled ? "" : "invert"}`}
+        />
       )}
     </button>
   );

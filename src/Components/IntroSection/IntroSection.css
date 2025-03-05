@@ -26,8 +26,8 @@ h2 {
   position: absolute;
   bottom: 80px;
   background-color: rgb(0, 255, 191);
-  animation: glow 3s infinite;
   transition: background-color 0.3s, bottom 0.4s, padding 0.3s;
+  animation: glowing 3s ease-in-out infinite;
   z-index: 1;
   cursor: pointer;
 }
@@ -35,14 +35,14 @@ h2 {
   bottom: 95px;
   background-color: rgb(0, 255, 241);
 }
-@keyframes glow {
+@keyframes glowing {
   0% {
-    box-shadow: 0 0 5px rgb(255, 36, 36);
+    box-shadow: 0 0 5px rgb(0, 255, 191);
   }
   50% {
-    box-shadow: 0 0 20px rgb(0, 255, 241);
+    box-shadow: 0 0 20px rgb(0, 255, 191);
   }
   100% {
-    box-shadow: 0 0 5px rgb(0, 255, 241);
+    box-shadow: 0 0 5px rgb(0, 255, 191);
   }
 }
