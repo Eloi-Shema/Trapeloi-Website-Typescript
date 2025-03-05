@@ -56,7 +56,7 @@ const Cart: React.FC<CartProps> = ({
     isRendered && (
       <div
         onAnimationEnd={handleAnimationEnd}
-        className={`cart-box fixed xs:top-0 sm:top-0 md:top-[67px] xs:w-[350px] sm:w-96 right-0 dark:bg-bgBlack bg-gray-200 rounded-tl-xl rounded-bl-xl z-20 transition-transform duration-500 ${
+        className={`cart-box fixed xs:top-0 sm:top-[65px] md:top-[67px] xs:w-[350px] sm:w-96 right-0 dark:bg-bgBlack bg-gray-200 rounded-tl-xl rounded-bl-xl z-20 transition-transform duration-500 ${
           firstRender && isVisible ? "translate-x-0" : "translate-x-full"
         }`}
         style={{ willChange: "transform" }}
@@ -144,8 +144,8 @@ const Cart: React.FC<CartProps> = ({
           </div>
           <hr className="my-2 dark:border-gray-100 border-gray-800 opacity-50" />
 
-          <div className="my-4">
-            <div className="flex items-center text-[13px] mb-4">
+          <div className="my-3">
+            <div className="flex items-center text-[13px] mb-3">
               <div>
                 <label className="check-box">
                   <input className="hidden" type="checkbox" />
@@ -161,7 +161,7 @@ const Cart: React.FC<CartProps> = ({
             </div>
 
             <div className="flex flex-col items-center justify-between">
-              <div className="flex items-center justify-center w-[350px] mb-4 py-2 bg-perfectBlue dark:bg-dimGreen dark:text-black text-white rounded-lg cursor-pointer">
+              <div className="flex items-center justify-center w-[350px] mb-3 py-3 bg-perfectBlue dark:bg-dimGreen dark:text-black text-white rounded-lg cursor-pointer">
                 <img
                   className="w-4 mr-3 dark:invert-0 invert"
                   src={debit_card}

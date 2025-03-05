@@ -1,7 +1,7 @@
 import React, { RefObject } from "react";
 import "./IntroSection.css";
 import logo from "../../assets/logo-white - 1.png";
-import abstract from "../../assets/videos/abstract-bg.mp4";
+import mix from "../../assets/videos/mix.mp4";
 
 interface IntroSectionProps {
   scrollToStore: () => void;
@@ -18,7 +18,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({
       className="hero relative h-screen-h flex flex-col items-center justify-center"
     >
       <div className="absolute inset-0">
-        <div className="overlay bg-black/50 absolute inset-0"></div>
+        <div className="overlay bg-black/65 absolute inset-0"></div>
         <div className="background-video h-full w-full">
           <video
             className="h-full w-full object-cover object-center"
@@ -27,7 +27,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({
             muted
             playsInline
           >
-            <source src={abstract} />
+            <source src={mix} />
           </video>
         </div>
       </div>

@@ -50,7 +50,7 @@ const Navbar: React.FC<NavbarProps> = ({
   return (
     <div className="header">
       {isScrolled ? (
-        <div className="header-content relative py-8 pr-4 bg-gray-300/90 dark:bg-bgBlack/50 backdrop-blur-sm">
+        <div className="header-content relative py-8 pr-4 bg-gray-300/90 dark:bg-bgBlack/70 backdrop-blur-sm">
           <Link to="/">
             {theme === "dark" ? (
               <img
