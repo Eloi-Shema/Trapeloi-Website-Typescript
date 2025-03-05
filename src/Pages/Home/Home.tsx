@@ -10,7 +10,7 @@ import Newsletter from "../../Components/Newsletter/Newsletter.tsx";
 import FAQ from "../../Components/FAQ/FAQ.tsx";
 import Footer from "../../Components/Footer/Footer.tsx";
 import Cart from "../../Components/Cart/Cart.tsx";
-import logo from "../../assets/logo black.png";
+import logo from "../../assets/logo-white.png";
 import { motion } from "framer-motion";
 
 interface BeatType {
@@ -156,15 +156,15 @@ const Home: React.FC = () => {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
-          className="bg-bgBlack flex flex-col items-center justify-center h-screen"
+          className="dark:bg-bgBlack bg-platinum flex flex-col items-center justify-center h-screen"
         >
           <img
-            className="invert xs:w-56 lg:w-72 mb-5 animate-pulse"
+            className="dark:invert-0 invert xs:w-36 lg:w-72 mb-5 animate-pulse"
             src={logo}
             alt=""
           />
-          <div className="xs:w-[160px] lg:w-[200px] h-[2px] bg-bgBlack rounded overflow-hidden">
-            <div className="loading w-[20%] h-full bg-white/90"></div>
+          <div className="xs:w-[160px] lg:w-[200px] h-[2px] dark:bg-bgBlack bg-platinum rounded overflow-hidden">
+            <div className="loading w-[20%] h-full dark:bg-white/90 bg-black"></div>
           </div>
         </motion.div>
       )}

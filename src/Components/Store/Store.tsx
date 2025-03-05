@@ -46,7 +46,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
 
   return (
     <div ref={ref} className="store-bg relative z-0">
-      <div className="absolute inset-0 bg-black/60 -z-10"></div>
+      <div className="absolute inset-0 bg-black/30 backdrop-blur-md -z-10"></div>
       <div className="store box-border px-4 mx-6">
         <div
           className={`${
@@ -55,14 +55,14 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
               : "store-header xs:w-full md:w-[48rem] lg:w-[64rem] relative flex flex-col items-center justify-self-center rounded-t-lg mt-1 xs:py-5 xl:py-7"
           }`}
         >
-          <h1 className="xs:text-xl md:text-2xl lg:text-4xl font-medium mb-4">
+          <h1 className="dark:text-platinum text-black xs:text-xl md:text-2xl lg:text-4xl font-medium mb-4">
             Beat Shop
           </h1>
 
           <div className="p-4"></div>
-          <div className="search-input absolute xs:-left-6 xs:scale-75 sm:scale-[0.80] sm:-left-2 md:left-4 md:scale-90 lg:left-8 bottom-2 lg:scale-100 flex items-center p-3  rounded-lg w-[15rem] z-[5]">
+          <div className="search-input absolute xs:-left-6 xs:scale-75 sm:scale-[0.80] sm:-left-2 md:left-4 md:scale-90 lg:left-8 bottom-2 lg:scale-100 flex items-center p-3 rounded-lg w-[15rem] z-[5]">
             <img
-              className="invert opacity-80 mr-3 w-[16px]"
+              className="dark:invert invert-0 opacity-80 mr-3 w-[16px]"
               src={search_icon}
               alt=""
             />
@@ -71,7 +71,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
               placeholder="Search A Beat Here..."
               value={searchQuery}
               onChange={(event) => setSearchQuery(event.target.value)}
-              className="bg-transparent text-gray-400 placeholder:opacity-90 placeholder:py-3 outline-none  placeholder:font-light w-full"
+              className="bg-transparent dark:text-gray-400 text-gray-900 placeholder:opacity-90 placeholder:py-3 dark:placeholder:text-white/60 placeholder:text-black outline-none  placeholder:font-light w-full"
             />
 
             <button
@@ -80,19 +80,23 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
               }`}
               onClick={clearSearch}
             >
-              <img className="w-[14px]" src={close_icon} alt="" />
+              <img
+                className="w-[14px] dark:invert-0 invert"
+                src={close_icon}
+                alt=""
+              />
             </button>
           </div>
           <button onClick={toggleView}>
             {isGridView ? (
               <img
-                className="xs:hidden md:block absolute md:left-64 lg:left-72 bottom-5 w-[18px] invert opacity-80 cursor-pointer"
+                className="xs:hidden md:block absolute md:left-64 lg:left-72 bottom-5 w-[18px] dark:invert invert-0 opacity-80 cursor-pointer"
                 src={list_icon}
                 alt=""
               />
             ) : (
               <img
-                className="xs:hidden md:block absolute md:left-64 lg:left-72 bottom-5 w-[18px] invert opacity-80 cursor-pointer"
+                className="xs:hidden md:block absolute md:left-64 lg:left-72 bottom-5 w-[18px] dark:invert invert-0 opacity-80 cursor-pointer"
                 src={grid_icon}
                 alt=""
               />
@@ -102,7 +106,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
 
         {/* {TOGGLE BETWEEN GRID AND LIST VIEW: BIG SCREEN SIZE} */}
         {isGridView ? (
-          <div className="store-grid bg-black/80 grid gap-6 box-border p-6 xs:hidden md:grid max-h-[64rem]">
+          <div className="store-grid dark:bg-black/80 bg-platinum/80 grid gap-6 box-border p-6 xs:hidden md:grid max-h-[64rem]">
             {filteredBeat.length > 0 ? (
               filteredBeat.map((beat, id) => {
                 return (
@@ -116,7 +120,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                   >
                     <div className="cover relative cursor-pointer">
                       <img
-                        className="rounded-lg mb-3 w-[11.875rem]"
+                        className="rounded-sm mb-3 w-[11.875rem] border border-gray-700/30"
                         src={beat.image}
                         alt="Beat cover"
                       />
@@ -129,7 +133,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                       </div>
                     </div>
 
-                    <h4 className="mb-6 text-gray-300 font-semibold">
+                    <h4 className="mb-6 dark:text-gray-300 text-black  font-semibold">
                       {beat.name}
                     </h4>
                     <div className="flex justify-between items-center mb-12 text-[10px]">
@@ -141,7 +145,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                       </p>
                     </div>
                     <button
-                      className="cart-btn w-32 hover:w-36 flex justify-center items-center border rounded-lg px-4 py-2"
+                      className="cart-btn w-32 hover:w-36 flex justify-center items-center bg-bgBlack rounded-lg px-4 py-2"
                       onClick={() => addToCart(beat)}
                     >
                       <p className="text-sm mr-3 font-medium">
@@ -157,13 +161,13 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                 );
               })
             ) : (
-              <p className="flex justify-center text-lg text-gray-300 font-light">
+              <p className="flex justify-center text-lg dark:text-gray-300 text-black font-medium">
                 No such beat found!
               </p>
             )}
           </div>
         ) : (
-          <div className="store-list2 bg-black/80 xs:hidden md:flex flex-col flex-1 justify-self-center box-border p-6 max-h-[64rem] md:w-[48rem] lg:w-[64rem] overflow-y-auto">
+          <div className="store-list2 dark:bg-black/80 bg-platinum/80 xs:hidden md:flex flex-col flex-1 justify-self-center box-border p-6 max-h-[64rem] md:w-[48rem] lg:w-[64rem] overflow-y-auto">
             {filteredBeat.length > 0 ? (
               filteredBeat.map((beat, id) => {
                 return (
@@ -177,16 +181,18 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                   >
                     <div className="flex items-center md:w-60">
                       <img
-                        className="invert w-4 mr-5 cursor-pointer"
+                        className="dark:invert invert-0 w-4 mr-5 cursor-pointer"
                         src={play_icon}
                         alt=""
                       />
                       <img
-                        className="rounded-md mr-3 w-[50px]"
+                        className="border-2 border-bgBlack/30 rounded-md mr-3 w-[50px]"
                         src={beat.image}
                         alt="Beat cover"
                       />
-                      <h4 className="text-white/80 font-medium">{beat.name}</h4>
+                      <h4 className="dark:text-white/80 text-black dark:font-medium font-semibold">
+                        {beat.name}
+                      </h4>
                     </div>
 
                     <div className="text-[10px] flex justify-between items-center">
@@ -196,10 +202,10 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                       <p className="border rounded-[6px] p-1">{beat.key}</p>
                     </div>
                     <button
-                      className="cart-btn w-32 flex justify-center items-center border rounded-lg px-4 py-2"
+                      className="cart-btn dark:bg-transparent bg-bgBlack w-32 flex justify-center items-center dark:border rounded-lg px-4 py-[10px]"
                       onClick={() => addToCart(beat)}
                     >
-                      <p className="text-sm mr-3 font-medium">
+                      <p className="text-white text-sm mr-3 font-medium">
                         {beat.price > 0 ? `$${beat.price / 100}` : "FREE"}
                       </p>
                       <img
@@ -212,7 +218,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                 );
               })
             ) : (
-              <p className="flex justify-center text-lg text-gray-300 font-light">
+              <p className="flex justify-center text-lg dark:text-gray-300 text-bgBlack font-medium">
                 No such beat found!
               </p>
             )}
@@ -220,7 +226,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
         )}
 
         {/* {FOR SMALL SIZE} */}
-        <div className="store-list bg-black/80 flex flex-col md:hidden max-h-[36rem] overflow-y-auto">
+        <div className="store-list dark:bg-black/80 bg-platinum/80 flex flex-col md:hidden max-h-[36rem] overflow-y-auto">
           {filteredBeat.length > 0 ? (
             filteredBeat.map((beat, id) => {
               return (
@@ -234,16 +240,16 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                 >
                   <div className="flex items-center w-40 break-words">
                     <img
-                      className="invert w-3 mr-2 cursor-pointer"
+                      className="dark:invert invert-0 w-3 mr-2 cursor-pointer"
                       src={play_icon}
                       alt=""
                     />
                     <img
-                      className="rounded-md mr-3 w-[35px]"
+                      className="border-2 border-bgBlack/30 rounded-md mr-3 w-[35px]"
                       src={beat.image}
                       alt="Beat cover"
                     />
-                    <h4 className="text-sm text-gray-300 font-semibold ">
+                    <h4 className="dark:text-white/80 text-black text-sm font-semibold ">
                       {beat.name}
                     </h4>
                   </div>
@@ -253,10 +259,10 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                     <p className="border rounded-[6px] p-1">{beat.key}</p>
                   </div>
                   <button
-                    className="cart-btn w-20 hover:w-24 flex justify-center items-center border rounded-md px-3 py-2"
+                    className="cart-btn dark:bg-transparent bg-bgBlack w-20 hover:w-24 flex justify-center items-center border rounded-md px-3 py-2"
                     onClick={() => addToCart(beat)}
                   >
-                    <p className="text-xs mr-2 text-gray-300">
+                    <p className="text-xs mr-2 text-white/90">
                       {beat.price > 0 ? `$${beat.price / 100}` : "FREE"}
                     </p>
                     <img
@@ -269,7 +275,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
               );
             })
           ) : (
-            <p className="flex justify-center text-lg text-gray-300 font-light">
+            <p className="flex justify-center text-sm dark:text-gray-300 text-black p-4 font-light">
               No such beat found!
             </p>
           )}

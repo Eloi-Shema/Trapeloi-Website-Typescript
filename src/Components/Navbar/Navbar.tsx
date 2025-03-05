@@ -113,7 +113,7 @@ const Navbar: React.FC<NavbarProps> = ({
       </div>
 
       {isOpen && (
-        <div className="absolute right-0 bg-white/60 dark:bg-bgBlack/90 dark:text-white text-black text-sm px-6 py-3 rounded-b-md">
+        <div className="absolute right-0 bg-white/60 dark:bg-bgBlack/40 dark:backdrop-blur-sm dark:text-white text-black text-sm px-6 py-3 rounded-b-md">
           <h4 onClick={scrollToStore} className="mb-5 cursor-pointer">
             Beat Store
           </h4>
