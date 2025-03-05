@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Login.css";
-import logo from "../../assets/logo black.png";
+import logo from "../../assets/logo-white.png";
 import google from "../../assets/icons/google-icon.png";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -19,14 +19,14 @@ const Login: React.FC = () => {
     <>
       {isLoading ? (
         <div className="bg-image relative flex items-center justify-center h-screen z-0">
-          <div className="absolute inset-0 bg-gray-500/30 -z-10"></div>
+          <div className="absolute inset-0 bg-black/20 dark:bg-platinum/15 backdrop-blur-md -z-10"></div>
           <div>
             <img src="" alt="" />
           </div>
-          <div className="flex flex-col items-center justify-between justify-self-center w-96 h-[640px] py-10 bg-bgBlack/90 rounded-md xs:scale-90 md:scale-100">
+          <div className="flex flex-col items-center justify-between justify-self-center w-96 h-[640px] py-10 dark:bg-bgBlack/70 bg-platinum/80 rounded-md xs:scale-90 md:scale-100">
             <Link to="/">
               <img
-                className="w-52 opacity-90 invert cursor-pointer"
+                className="w-32 opacity-90 invert dark:invert-0 cursor-pointer"
                 src={logo}
                 alt=""
               />
@@ -48,14 +48,14 @@ const Login: React.FC = () => {
               <input type="password" placeholder="Enter your Password" />
               {loginState === "Login" ? (
                 <button
-                  className="border-2 border-white/70 mt-2 mx-8 py-2 rounded-md hover:bg-white/10 transition-all duration-150"
+                  className="bg-perfectBlue text-white mt-2 mx-8 py-2 rounded-md hover:bg-perfectBlue/80 transition-all duration-150"
                   type="submit"
                 >
                   Log in
                 </button>
               ) : (
                 <button
-                  className="border-2 border-white/70 mt-2 mx-8 py-2 rounded-md hover:bg-white/10 transition-all duration-150"
+                  className="bg-perfectBlue text-white mt-2 mx-8 py-2 rounded-md hover:bg-perfectBlue/80 transition-all duration-150"
                   type="submit"
                 >
                   Sign up
@@ -64,20 +64,20 @@ const Login: React.FC = () => {
             </div>
 
             {loginState === "Login" ? (
-              <p className="text-xs -mt-4">
+              <p className="text-xs -mt-4 text-black dark:text-platinum">
                 New to MontBitz?&nbsp;
                 <span
-                  className="text-[13px] text-white/80 hover:text-white font-kanit cursor-pointer"
+                  className="text-[13px] text-black dark:text-white/80 hover:underline font-kanit cursor-pointer"
                   onClick={() => setLoginState("SignUp")}
                 >
                   Sign up here
                 </span>
               </p>
             ) : (
-              <p className="text-xs -mt-4">
+              <p className="text-xs dark:text-white/80 text-black -mt-4">
                 Already have an account?&nbsp;
                 <span
-                  className="text-[13px] text-white/80 hover:text-white font-kanit cursor-pointer"
+                  className="text-[13px] dark:text-white/80 text-black hover:underline font-kanit cursor-pointer"
                   onClick={() => setLoginState("Login")}
                 >
                   Login here
@@ -85,8 +85,10 @@ const Login: React.FC = () => {
               </p>
             )}
 
-            <p className="opacity-50">—————— or ——————</p>
-            <button className="flex items-center justify-center text-sm py-3 px-8 border border-white/70 rounded-md hover:bg-white/10 transition-all duration-150">
+            <p className="dark:text-white/80 text-black opacity-50">
+              —————— or ——————
+            </p>
+            <button className="flex items-center justify-center text-sm dark:bg-platinum bg-gray-900 text-white dark:text-black py-3 px-8 rounded-md dark:hover:bg-platinum/90 hover:bg-gray-900/90 transition-all duration-150">
               Continue with Google
               <img className="w-4 ml-2" src={google} alt="" />
             </button>
@@ -97,15 +99,15 @@ const Login: React.FC = () => {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
-          className="bg-bgBlack flex flex-col items-center justify-center h-screen"
+          className="dark:bg-bgBlack bg-platinum flex flex-col items-center justify-center h-screen"
         >
           <img
-            className="invert xs:w-56 lg:w-72 mb-5 animate-pulse"
+            className="dark:invert-0 invert xs:w-36 lg:w-72 mb-5 animate-pulse"
             src={logo}
             alt=""
           />
-          <div className="xs:w-[160px] lg:w-[200px] h-[2px] bg-bgBlack rounded overflow-hidden">
-            <div className="loading w-[20%] h-full bg-white/90"></div>
+          <div className="xs:w-[160px] lg:w-[200px] h-[2px] dark:bg-bgBlack bg-platinum rounded overflow-hidden">
+            <div className="loading w-[20%] h-full dark:bg-white/90 bg-black"></div>
           </div>
         </motion.div>
       )}
