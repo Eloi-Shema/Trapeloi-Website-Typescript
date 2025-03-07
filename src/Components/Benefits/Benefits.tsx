@@ -44,16 +44,16 @@ const Benefits: React.FC = () => {
           <div className="flex flex-col items-center justify-center justify-self-center max-w-[850px] dark:bg-black/70 bg-white/70 p-10 rounded-tl-[80px] rounded-tr-[80px]">
             <div>
               <p className="mb-20 px-5 xs:text-base md:text-xl text-center dark:text-platinum text-black">
-                when You Get{" "}
+                when You Get&nbsp;
                 <span className="font-extrabold dark:text-white text-black">
                   Trapeloi
-                </span>{" "}
-                beats, &nbsp;You have full control over it. You can use it
-                commercially with &nbsp;
+                </span>
+                &nbsp; beats, You have Full Control. You can use it commercially
+                with &nbsp;
                 <span className="royalty italic p-1">
                   Life-time Royalty free
-                </span>{" "}
-                streams and distribution.
+                </span>
+                &nbsp; streams and distribution.
               </p>
 
               <div className="flex justify-between p-5">

@@ -50,7 +50,7 @@ const Navbar: React.FC<NavbarProps> = ({
   return (
     <div className="header">
       {isScrolled ? (
-        <div className="header-content relative py-8 pr-4 bg-gray-300/90 dark:bg-bgBlack/70 backdrop-blur-sm">
+        <div className="header-content relative py-8 pr-4 bg-platinum/70 dark:bg-bgBlack/70 backdrop-blur-sm">
           <Link to="/">
             {theme === "dark" ? (
               <img
@@ -91,7 +91,7 @@ const Navbar: React.FC<NavbarProps> = ({
               </p>
             </div>
             <Link to="/login">
-              <button className="login-btn bg-perfectBlue text-white dark:bg-white dark:text-black">
+              <button className="login-btn bg-niceGreen text-white dark:bg-white dark:text-black">
                 Log In
               </button>
             </Link>
@@ -164,7 +164,7 @@ const Navbar: React.FC<NavbarProps> = ({
             Pricing
           </h4>
           <Link to="/login">
-            <button className="bg-black text-white dark:bg-white dark:text-black px-5 py-1 mb-4 rounded-md">
+            <button className="bg-niceGreen text-white dark:bg-white dark:text-black px-5 py-1 mb-4 rounded-md">
               Log In
             </button>
           </Link>

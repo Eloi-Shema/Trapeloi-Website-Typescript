@@ -33,11 +33,6 @@ const Ratings: React.FC = () => {
                 : "big-rating w-80 p-4"
             } relative flex flex-col flex-shrink-0 mr-10 mb-14 px-3 rounded-xl`}
           >
-            <img
-              className="py-4 invert w-28 opacity-80"
-              src={rating.stars}
-              alt=""
-            />
             <p
               className={`${
                 isExpanded ? "whitespace-normal" : "comment"

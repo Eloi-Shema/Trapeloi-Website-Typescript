@@ -159,11 +159,11 @@ const Home: React.FC = () => {
           className="dark:bg-bgBlack bg-platinum flex flex-col items-center justify-center h-screen"
         >
           <img
-            className="dark:invert-0 invert xs:w-36 lg:w-72 mb-5 animate-pulse"
+            className="dark:invert-0 invert w-36 mb-5 animate-pulse"
             src={logo}
             alt=""
           />
-          <div className="xs:w-[160px] lg:w-[300px] h-[2px] dark:bg-bgBlack bg-platinum rounded overflow-hidden">
+          <div className="w-[160px] h-[2px] dark:bg-bgBlack bg-platinum rounded overflow-hidden">
             <div className="loading w-[20%] h-full dark:bg-white/90 bg-black"></div>
           </div>
         </motion.div>

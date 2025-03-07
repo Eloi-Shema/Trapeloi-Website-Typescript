@@ -48,7 +48,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({
         </h3>
       </div>
 
-      <div className="shop-button relative text-xl rounded-md text-black font-normal z-10">
+      <div className="shop-button relative border-2 border-platinum/70 text-xl rounded-md text-white font-normal backdrop-blur-sm z-10">
         <button
           onClick={scrollToStore}
           className="py-3 xs:px-28 sm:px-32 md:px-30 lg:px-12 whitespace-nowrap"

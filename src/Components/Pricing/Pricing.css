@@ -1,6 +1,33 @@
 * {
   font-family: "Montserrat";
 }
+.dark span {
+  color: white;
+}
+
+.dark .gradient-bg {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, black, rgb(4, 34, 32), black);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}
+.gradient-bg {
+  background: linear-gradient(135deg, white, rgb(188, 187, 185), white);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
 .track {
   text-align: center;
@@ -9,21 +36,91 @@
 .recommended-plan {
   animation: borderChange 3s ease-in-out infinite, glowy 5s ease-in-out infinite;
 }
+.dark .recommended-plan {
+  animation: borderChange2 3s ease-in-out infinite,
+    glowy2 5s ease-in-out infinite;
+}
+
+.recommended-plan::before {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgb(0 171 102);
+  box-shadow: 0 0 8px rgb(0 171 102);
+  animation: moveAround 10s linear infinite;
+}
+
+.dark .recommended-plan::before {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgb(0, 255, 241);
+  box-shadow: 0 0 8px rgb(0, 255, 241);
+  animation: moveAround 10s linear infinite;
+}
+
+@keyframes moveAround {
+  0% {
+    top: -8px;
+    left: -8px;
+  }
+  25% {
+    top: -5px;
+    left: calc(100%);
+  }
+  50% {
+    top: calc(100% + 5px);
+    left: calc(100% + 2px);
+  }
+  75% {
+    top: calc(100% + 8px);
+    left: -8px;
+    transform: translateY(-100%);
+  }
+  100% {
+    top: -8px;
+    left: -8px;
+  }
+}
+
 @keyframes borderChange {
   0%,
   100% {
-    border: 2px solid rgba(211, 211, 211, 0.4);
+    border: 2px solid rgb(229, 228, 226);
   }
   50% {
-    border: 2px solid rgba(216, 184, 0, 0.8);
+    border: 2px solid rgb(0, 171, 102, 0.6);
   }
 }
 @keyframes glowy {
   0%,
   100% {
-    box-shadow: 0 0 5px rgba(216, 184, 0, 0.8);
+    box-shadow: 0 0 5px rgba(0, 171, 102, 0.8);
   }
   50% {
-    box-shadow: 0 0 5px rgba(255, 221, 32, 0.8);
+    box-shadow: 0 0 5px rgba(0, 171, 102, 0.8);
+  }
+}
+
+@keyframes borderChange2 {
+  0%,
+  100% {
+    border: 2px solid black;
+  }
+  50% {
+    border: 2px solid rgba(0, 255, 241, 0.8);
+  }
+}
+@keyframes glowy2 {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(4, 217, 206, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(0, 255, 241, 0.8);
   }
 }
