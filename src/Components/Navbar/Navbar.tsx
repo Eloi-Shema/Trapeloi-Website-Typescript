@@ -85,7 +85,7 @@ const Navbar: React.FC<NavbarProps> = ({
               <p
                 className={`${
                   cartCount === 0 ? "hidden" : "block"
-                } bg-red-700 dark:bg-red-500 text-white`}
+                } bg-red-700 text-white`}
               >
                 {cartCount}
               </p>

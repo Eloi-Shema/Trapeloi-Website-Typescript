@@ -1,5 +1,38 @@
-.stats {
+.dark .gradient-bg {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #000000, #0c1a2a, #1a3052, #000000);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}
+.gradient-bg {
+  background: linear-gradient(
+    135deg,
+    white,
+    rgb(213, 212, 210),
+    rgb(172, 172, 168),
+    white
+  );
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.dark .stats {
   animation: textColorChange 10s linear infinite;
+}
+.stats {
+  animation: textColorChange2 10s linear infinite;
 }
 @keyframes textColorChange {
   0%,
@@ -7,12 +40,24 @@
     color: white;
   }
   50% {
-    color: rgb(71, 255, 246);
+    color: rgb(0, 255, 191);
+  }
+}
+@keyframes textColorChange2 {
+  0%,
+  100% {
+    color: black;
+  }
+  50% {
+    color: rgb(65, 105, 225);
   }
 }
 
-.royalty {
+.dark .royalty {
   animation: glow 3s infinite;
+}
+.royalty {
+  animation: glow2 3s infinite;
 }
 @keyframes glow {
   0%,
@@ -21,5 +66,14 @@
   }
   50% {
     text-shadow: 0 2px 20px rgb(0, 255, 242);
+  }
+}
+@keyframes glow2 {
+  0%,
+  100% {
+    text-shadow: 0 0 3px black;
+  }
+  50% {
+    text-shadow: 0 2px 10px black;
   }
 }
