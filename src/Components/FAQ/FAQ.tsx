@@ -66,11 +66,13 @@ const FAQ: React.FC = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: "easeOut" }}
       viewport={{ once: true }}
-      className="flex flex-col items-center justify-self-center max-w-screen-md p-5"
+      className="flex flex-col items-center justify-self-center w-full pt-5 pb-10 dark:bg-black bg-platinum"
     >
       <div className="flex flex-col items-center mb-24">
-        <h1 className="text-4xl font-bold py-5">FAQs</h1>
-        <p className="text-sm text-white/80 text-center">
+        <h1 className="text-4xl font-bold py-5 dark:text-white text-black">
+          FAQs
+        </h1>
+        <p className="text-sm text-center dark:text-white/80 text-black">
           Find answers to your questions about purchasing beats, licensing, and
           how to use them.
         </p>
@@ -78,16 +80,18 @@ const FAQ: React.FC = () => {
 
       {fAQData.map((item) => (
         <div key={item.id} className="xs:w-full md:w-[47.95rem] mb-3">
-          <hr className="opacity-60" />
+          <hr className="opacity-60 dark:invert-0 invert" />
           <div
             className="flex items-center justify-between py-6 opacity-90 cursor-pointer"
             onClick={() => toggleCollapse(item.id)}
           >
-            <h2 className="font-semibold">{item.question}</h2>
+            <h2 className="font-semibold dark:text-white text-black">
+              {item.question}
+            </h2>
             <img
               className={`${
                 collapsedStates[item.id] ? "rotate-180" : "rotate-0"
-              } w-4 -mt-1 invert transition-all duration-500`}
+              } w-4 -mt-1 dark:invert transition-all duration-500`}
               src={arrow}
               alt="toggle arrow"
             />
@@ -97,7 +101,7 @@ const FAQ: React.FC = () => {
               collapsedStates[item.id]
                 ? "max-h-0 opacity-0"
                 : "max-h-32 opacity-100"
-            } text-sm text-white/70 transition-all duration-300`}
+            } text-sm dark:text-white text-black transition-all duration-300`}
           >
             {item.answer}
           </p>
@@ -105,10 +109,10 @@ const FAQ: React.FC = () => {
       ))}
 
       <div className="flex flex-col items-center">
-        <h1 className="font-montserrat text-3xl font-semibold mt-5 py-5">
+        <h1 className="font-montserrat text-3xl dark:text-white text-black font-semibold mt-5 py-5">
           Still have questions?
         </h1>
-        <button className="border border-white/60 py-2 px-5 font-montserrat text-sm rounded-sm hover:bg-white/10 transition-all duration-150">
+        <button className="border-2 dark:border-white/60 border-black dark:text-white text-black py-2 px-5 font-montserrat text-sm rounded-sm hover:bg-white/10 transition-all duration-150">
           Contact Me
         </button>
       </div>

@@ -31,14 +31,14 @@ export const ratings: RatingTypes[] = [
   },
 
   {
-    comment: "Working with MontBitz was a game changer for me!",
+    comment: "Working with Trapeloi was a game changer for me!",
     profile: brooke,
     name: "Brooke Bang",
     artist: "HipHop Artist",
   },
 
   {
-    comment: "I loved the lifetime access on a MontBitz beat🤍",
+    comment: "I loved the lifetime access on a Trapeloi beat🤍",
     profile: cameron,
     name: "Cam Keyz",
     artist: "Pop Artist",
@@ -53,14 +53,14 @@ export const ratings: RatingTypes[] = [
 
   {
     comment:
-      "I loved the groove and the buying services, MontBitz does not lease unlike other beat store. Once you buy The beat is yours",
+      "I loved the groove and the buying services, Trapeloi does not lease unlike other beat store. Once you buy The beat is yours",
     profile: megan,
     name: "Megan Not Stallion",
     artist: "HipHop Artist",
   },
 
   {
-    comment: "MontBitz Beats Hits! Yeaaah",
+    comment: "Trapeloi Beats Hits! Yeaaah",
     profile: simon,
     name: "Simon The rapper",
     artist: "HipHop Artist",
@@ -75,7 +75,7 @@ export const ratings: RatingTypes[] = [
 
   {
     comment:
-      "I bought a beat and used it in my break-up song on which you cry and move. MontBitz beats alone tell stories. Recomend!",
+      "I bought a beat and used it in my break-up song on which you cry and move. Trapeloi beats alone tell stories. Recomend!",
     profile: jack,
     name: "Simon The rapper",
     artist: "Pop Artist",

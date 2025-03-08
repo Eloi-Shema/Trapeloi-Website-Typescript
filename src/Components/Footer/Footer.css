@@ -1,46 +1,15 @@
-.footer {
-  animation: bgColorChange 10s infinite;
-}
-@keyframes bgColorChange {
-  0%,
-  100% {
-    background-color: rgba(0, 255, 242, 0.08);
-  }
-  50% {
-    background-color: rgba(0, 255, 242, 0.02);
-  }
-}
-
-.footer .logo {
-  animation: filter 10s ease-in-out infinite;
-}
-@keyframes filter {
-  0%,
-  100% {
-    filter: none;
-  }
-  50% {
-    filter: grayscale();
-  }
-}
-
 .foot-link li {
   font-size: 14px;
   line-height: 40px;
   padding-right: 12px;
   cursor: pointer;
 }
-.foot-link li:hover {
-  color: rgba(255, 255, 255, 0.7);
-}
 
 .privacy p {
-  color: rgba(255, 255, 255, 0.6);
   margin-left: 20px;
   transition: all 0.3s;
 }
 .privacy p:hover {
-  color: rgba(255, 255, 255, 0.9);
   text-decoration: underline;
   cursor: pointer;
 }

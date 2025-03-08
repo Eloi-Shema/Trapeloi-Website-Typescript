@@ -9,7 +9,7 @@ const Newsletter: React.FC = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: "easeOut" }}
       viewport={{ once: true }}
-      className="flex flex-col items-center justify-center p-5 dark:bg-black bg-platinum/90"
+      className="flex flex-col items-center justify-center p-5 dark:bg-black bg-platinum"
     >
       <div className="text-center">
         <h1 className="xs:text-3xl md:text-4xl font-bold dark:text-platinum text-black py-5">
