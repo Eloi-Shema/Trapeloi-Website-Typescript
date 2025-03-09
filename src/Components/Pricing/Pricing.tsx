@@ -8,7 +8,7 @@ interface PricingProps {
 
 const Pricing: React.FC<PricingProps> = ({ pricingRef }) => {
   return (
-    <div ref={pricingRef} className="gradient-bg">
+    <div ref={pricingRef}>
       <motion.div
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -51,7 +51,7 @@ const Pricing: React.FC<PricingProps> = ({ pricingRef }) => {
             </button>
           </div>
 
-          <div className="recommended-plan relative w-72 rounded-md p-6 mr-5 mb-10 dark:bg-bgBlack/20 bg-white/20">
+          <div className="recommended-plan relative w-72 rounded-md p-6 mr-5 mb-10 dark:bg-blueGreen/10 bg-niceGreen/5">
             <h3 className="font-semibold text-xl dark:text-platinum text-black text-center mb-4">
               Exclusive
             </h3>

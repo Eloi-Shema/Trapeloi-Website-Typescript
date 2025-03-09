@@ -7,6 +7,7 @@ import search_icon from "../../assets/icons/search-icon.png";
 import close_icon from "../../assets/icons/close-icon.png";
 import list_icon from "../../assets/icons/list-view.png";
 import grid_icon from "../../assets/icons/grid-view.png";
+import bgImage from "../../assets/speaker2.jpg";
 import { motion } from "framer-motion";
 
 interface BeatType {
@@ -45,9 +46,16 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
   };
 
   return (
-    <div ref={ref} className="store-bg relative z-0">
-      <div className="absolute inset-0 bg-black/30 backdrop-blur-md -z-10"></div>
-      <div className="store box-border px-4 mx-6">
+    <div ref={ref} className="relative z-0">
+      <div className="absolute w-full h-[150%] inset-0 -z-10">
+        <div className="dark:bg-black/60 bg-platinum/80 absolute inset-0 backdrop-blur-lg"></div>
+        <img
+          src={bgImage}
+          alt="Speaker"
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="store box-border px-4 py-12 mx-6">
         <div
           className={`${
             isGridView
@@ -106,7 +114,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
 
         {/* {TOGGLE BETWEEN GRID AND LIST VIEW: BIG SCREEN SIZE} */}
         {isGridView ? (
-          <div className="store-grid dark:bg-black/80 bg-platinum/80 grid gap-6 box-border p-6 xs:hidden md:grid max-h-[64rem]">
+          <div className="store-grid dark:bg-black bg-platinum/50 grid gap-6 box-border p-6 xs:hidden md:grid max-h-[64rem]">
             {filteredBeat.length > 0 ? (
               filteredBeat.map((beat, id) => {
                 return (
@@ -259,7 +267,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                     <p className="border rounded-[6px] p-1">{beat.key}</p>
                   </div>
                   <button
-                    className="cart-btn dark:bg-transparent bg-bgBlack w-20 hover:w-24 flex justify-center items-center border rounded-md px-3 py-2"
+                    className="cart-btn dark:bg-transparent bg-bgBlack w-20 flex justify-center items-center border rounded-md px-3 py-2"
                     onClick={() => addToCart(beat)}
                   >
                     <p className="text-xs mr-2 text-white/90">

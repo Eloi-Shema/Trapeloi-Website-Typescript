@@ -8,19 +8,10 @@ import {
   TidalIcon,
   SoundcloudIcon,
 } from "../icons/icons";
-import speaker from "../../assets/speaker2.jpg";
 
 const Benefits: React.FC = () => {
   return (
     <div className="relative w-full h-full">
-      <div className="absolute inset-0 -z-10">
-        <div className="dark:bg-black/60 bg-platinum/80 absolute inset-0 backdrop-blur-lg"></div>
-        <img
-          src={speaker}
-          alt="Speaker"
-          className="w-full h-full object-cover"
-        />
-      </div>
       <motion.div
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}

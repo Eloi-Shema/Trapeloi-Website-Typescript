@@ -2,43 +2,14 @@
   font-family: "Kanit";
 }
 
-.store-bg {
-  background-size: cover;
-  background-position: center;
-  animation: imageChange 40s infinite;
-}
-@keyframes imageChange {
-  0% {
-    background-image: url("../../assets/speaker.jpg");
-  }
-  25% {
-    background-image: url("../../assets/studio2.jpg");
-  }
-  50% {
-    background-image: url("../../assets/speaker2.jpg");
-  }
-  75% {
-    background-image: url("../../assets/gear.jpg");
-  }
-  100% {
-    background-image: url("../../assets/speaker.jpg");
-  }
-}
-
-.store-header {
-  background: linear-gradient(to bottom, white, rgba(229, 228, 226, 0.8));
-}
+.store-header,
 .store-footer {
-  background: linear-gradient(to bottom, rgba(229, 228, 226, 0.8), white);
+  background: rgba(229, 228, 226);
 }
 
 .dark .store-header,
 .dark .store-footer {
-  background: linear-gradient(
-    to bottom,
-    rgba(39, 54, 53, 0.8),
-    rgb(10, 16, 15)
-  );
+  background: rgba(9, 16, 15, 0.85);
 }
 
 .store-grid,
@@ -63,13 +34,13 @@
 .store-grid::-webkit-scrollbar-track,
 .store-list::-webkit-scrollbar-track,
 .store-list2::-webkit-scrollbar-track {
-  background-color: rgb(187, 187, 187);
+  background-color: rgba(229, 228, 226);
 }
 
 .store-grid::-webkit-scrollbar-thumb,
 .store-list::-webkit-scrollbar-thumb,
 .store-list2::-webkit-scrollbar-thumb {
-  background-color: rgb(150, 150, 150);
+  background-color: rgb(185, 185, 185);
   border-radius: 10px;
 }
 .dark .store-grid::-webkit-scrollbar-thumb,
@@ -132,11 +103,11 @@
 
 .dark .beat-grid .cart-btn {
   font-family: "Kanit";
-  border: 2px solid rgba(8, 255, 193, 0.55);
+  border: 2px solid rgba(0, 255, 241, 0.55);
   transition: width 0.3s;
 }
 .dark .beat-grid .cart-btn:hover {
-  background-color: rgba(8, 255, 193, 0.15);
+  background-color: rgba(0, 255, 241, 0.15);
 }
 
 .beat-grid .cart-btn {
@@ -144,16 +115,16 @@
   transition: width 0.3s, background-color 0.2s;
 }
 .beat-grid .cart-btn:hover {
-  background-color: rgb(65, 105, 225);
+  background-color: rgb(0, 171, 102);
 }
 
 .dark .store-list2 .cart-btn {
   font-family: "Kanit";
-  border: 2px solid rgba(8, 255, 193, 0.55);
+  border: 2px solid rgba(0, 255, 241, 0.55);
   transition: background-color 0.5s;
 }
 .dark .store-list2 .cart-btn:hover {
-  background-color: rgba(8, 255, 193, 0.15);
+  background-color: rgba(0, 255, 241, 0.15);
 }
 
 .store-list2 .cart-btn {
@@ -161,5 +132,5 @@
   transition: background-color 0.5s;
 }
 .store-list2 .cart-btn:hover {
-  background-color: rgb(65, 105, 225);
+  background-color: rgb(0, 171, 102);
 }

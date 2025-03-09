@@ -1,8 +1,9 @@
 import React from "react";
 import "./Footer.css";
-import logo from "../../assets/logo-white.png";
-import { YoutubePlayIcon } from "../icons/icons";
-import { InstagramIcon } from "../icons/icons";
+import logoGreen from "../../assets/logo-green.png";
+import logoWhite from "../../assets/logo-white.png";
+import { GmailIcon, YoutubePlayIcon, InstagramIcon } from "../icons/icons";
+import { switchTheme } from "../../hooks/switchTheme";
 
 interface FooterProps {
   scrollToHome: () => void;
@@ -11,52 +12,61 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ scrollToHome, scrollToStore }) => {
   const currentYear = new Date().getFullYear();
+
+  const { theme } = switchTheme();
   return (
-    <div className="footer p-10 dark:bg-black bg-platinum">
-      <img className="w-32 invert dark:invert-0 -ml-3" src={logo} alt="" />
-      <div className="flex items-center h-52">
-        <ul className="foot-link xs:mr-20 md:mr-60 whitespace-nowrap">
-          <li onClick={scrollToHome} className="dark:text-white text-black">
+    <div className="footer dark:bg-blueGreen/10 bg-niceGreen/5 rounded-3xl px-8 pb-5 mt-10">
+      <div className="flex xs:flex-col lg:flex-row items-center justify-evenly h-52">
+        {theme === "dark" ? (
+          <img className="xs:w-40 lg:w-52" src={logoWhite} alt="" />
+        ) : (
+          <img className="xs:w-40 lg:w-52" src={logoGreen} alt="" />
+        )}
+        <div className="lg:w-1/4 flex justify-between whitespace-nowrap">
+          <p
+            onClick={scrollToHome}
+            className="dark:text-white/80 dark:hover:text-white text-black/60 hover:text-black font-semibold mr-5 xs:text-sm md:text-base transition-all duration-300 cursor-pointer"
+          >
             Home
-          </li>
-          <li onClick={scrollToStore} className="dark:text-white text-black">
-            Shop Beats
-          </li>
-          <li className="dark:text-white text-black">Contact</li>
-          <li className="dark:text-white text-black">Help</li>
-        </ul>
-        <div>
-          <h4 className="font-semibold dark:text-white text-black">Address:</h4>
-          <p className="text-xs dark:text-white/70 text-black/70 mb-8">
-            Kigali, Rwanda
           </p>
-          <h4 className="font-semibold dark:text-white text-black">Contact:</h4>
-          <p className="text-xs dark:text-white/70 text-black/70 cursor-pointer hover:underline">
-            montbitz@gmail.com
+          <p
+            onClick={scrollToStore}
+            className="dark:text-white/80 dark:hover:text-white text-black/60 hover:text-black font-semibold mr-5 xs:text-sm md:text-base transition-all duration-300 cursor-pointer"
+          >
+            Shop Beats
+          </p>
+          <p className="dark:text-white/80 dark:hover:text-white text-black/60 hover:text-black font-semibold mr-5 xs:text-sm md:text-base transition-all duration-300 cursor-pointer">
+            About Me
           </p>
         </div>
+
+        <div className="relative flex items-center">
+          <a href="https://youtube.com/@montbitz?si=alkpyf7prIwloq9A">
+            <YoutubePlayIcon />
+          </a>
+          <a>
+            <InstagramIcon />
+          </a>
+
+          <a>
+            <GmailIcon />
+          </a>
+        </div>
       </div>
-      <div className="relative flex items-center mb-8">
-        <a href="https://youtube.com/@montbitz?si=alkpyf7prIwloq9A">
-          <YoutubePlayIcon />
-        </a>
-        <a>
-          <InstagramIcon />
-        </a>
-      </div>
-      <hr className="dark:invert-0 invert" />
+
+      <hr className="dark:invert-0 invert opacity-50" />
       <div className="flex justify-between py-2">
-        <p className="xs:text-[9px] md:text-xs dark:text-white/80 text-black/80">
+        <p className="xs:text-[9px] md:text-xs dark:text-white/60 text-black/80">
           &copy; {currentYear} Trapeloi. All rights reserved.
         </p>
         <div className="privacy flex">
-          <p className="xs:text-[9px] md:text-xs dark:text-white/80 text-black/80">
+          <p className="xs:text-[9px] md:text-xs dark:text-white/60 text-black/80">
             Privacy Policy
           </p>
-          <p className="xs:text-[9px] md:text-xs dark:text-white/80 text-black/80">
+          <p className="xs:text-[9px] md:text-xs dark:text-white/60 text-black/80">
             Terms of use
           </p>
-          <p className="xs:text-[9px] md:text-xs dark:text-white/80 text-black/80">
+          <p className="xs:text-[9px] md:text-xs dark:text-white/60 text-black/80">
             Cookie Policy
           </p>
         </div>
