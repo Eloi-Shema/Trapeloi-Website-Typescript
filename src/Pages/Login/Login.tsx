@@ -65,7 +65,7 @@ const Login: React.FC = () => {
 
             {loginState === "Login" ? (
               <p className="text-xs -mt-4 text-black dark:text-platinum">
-                New to MontBitz?&nbsp;
+                New to Trapeloi?&nbsp;
                 <span
                   className="text-[13px] text-black dark:text-white/80 hover:underline font-kanit cursor-pointer"
                   onClick={() => setLoginState("SignUp")}

@@ -65,11 +65,11 @@ const FAQ: React.FC = () => {
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: "easeOut" }}
-      viewport={{ once: true }}
+      viewport={{ once: true, amount: 0.2 }}
       className="flex flex-col items-center justify-self-center w-full pt-5 pb-10 dark:bg-black bg-platinum"
     >
       <div className="flex flex-col items-center mb-24">
-        <h1 className="text-4xl font-bold py-5 dark:text-white text-black">
+        <h1 className="text-4xl font-trap font-bold py-5 dark:text-white text-black">
           FAQs
         </h1>
         <p className="text-sm text-center dark:text-white/80 text-black">
@@ -107,15 +107,6 @@ const FAQ: React.FC = () => {
           </p>
         </div>
       ))}
-
-      <div className="flex flex-col items-center">
-        <h1 className="font-montserrat text-3xl dark:text-white text-black font-semibold mt-5 py-5">
-          Still have questions?
-        </h1>
-        <button className="border-2 dark:border-white/60 border-black dark:text-white text-black py-2 px-5 font-montserrat text-sm rounded-sm hover:bg-white/10 transition-all duration-150">
-          Contact Me
-        </button>
-      </div>
     </motion.div>
   );
 };

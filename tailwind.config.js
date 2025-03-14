@@ -5,8 +5,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        kanit: "Kanit",
         montserrat: "Montserrat",
+        kanit: "Kanit",
+        trap: "Trap",
       },
       colors: {
         bgBlack: "rgb(9, 16, 15)",

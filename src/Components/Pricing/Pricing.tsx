@@ -13,10 +13,10 @@ const Pricing: React.FC<PricingProps> = ({ pricingRef }) => {
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.5 }}
         className="py-8"
       >
-        <h1 className="text-center xs:text-3xl lg:text-4xl dark:text-white text-black font-bold mb-14">
+        <h1 className="text-center xs:text-3xl lg:text-4xl dark:text-white text-black font-trap font-bold mb-14">
           Pricing Plans
         </h1>
         <div className="flex xs:flex-col md:flex-row flex-wrap items-center justify-evenly md:px-32">

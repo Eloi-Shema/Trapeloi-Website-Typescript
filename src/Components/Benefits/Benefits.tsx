@@ -16,12 +16,12 @@ const Benefits: React.FC = () => {
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.2 }}
         className="flex flex-col items-center justify-center z-10"
       >
         <div>
           <div>
-            <h1 className="font-semibold text-center xs:text-3xl md:text-4xl dark:text-platinum text-black py-8">
+            <h1 className="font-trap font-semibold text-center xs:text-3xl md:text-4xl dark:text-platinum text-black py-8">
               Unlimited streams on
             </h1>
             <div className="flex flex-wrap xs:flex-col md:flex-row justify-evenly items-center justify-self-center w-full mx-28 mb-20 px-10">
@@ -32,7 +32,7 @@ const Benefits: React.FC = () => {
               <SoundcloudIcon />
             </div>
           </div>
-          <div className="flex flex-col items-center justify-center justify-self-center max-w-[850px] dark:bg-black/70 bg-white/70 p-10 rounded-tl-[80px] rounded-tr-[80px]">
+          <div className="flex flex-col items-center justify-center justify-self-center max-w-[850px] dark:bg-perfectBlue/10 bg-white/50 p-10 rounded-lg">
             <div>
               <p className="mb-20 px-5 xs:text-base md:text-xl text-center dark:text-platinum text-black">
                 when You Get&nbsp;
@@ -49,7 +49,7 @@ const Benefits: React.FC = () => {
 
               <div className="flex justify-between p-5">
                 <div className="text-center xs:w-40 md:w-72 ">
-                  <h3 className="stats font-montserrat font-bold sm:text-4xl md:text-5xl lg:text-6xl mb-2">
+                  <h3 className="stats font-trap font-bold sm:text-4xl md:text-5xl lg:text-6xl mb-2">
                     +30
                   </h3>
                   <p className="xs:text-xs md:text-base dark:text-white/70 text-black">
@@ -58,7 +58,7 @@ const Benefits: React.FC = () => {
                 </div>
                 <div className="text-center xs:w-40 md:w-72">
                   <h3 className="stats font-bold font-montserrat sm:text-4xl md:text-5xl lg:text-6xl mb-2">
-                    100%
+                    100 %
                   </h3>
                   <p className="xs:text-xs md:text-base dark:text-white/70 text-black">
                     Customer satisfaction rate

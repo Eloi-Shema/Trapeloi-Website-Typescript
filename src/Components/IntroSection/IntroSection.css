@@ -23,17 +23,12 @@ h2 {
 }
 
 .shop-button {
-  position: absolute;
-  bottom: 80px;
   animation: glowing 3s ease-in-out infinite;
   transition: background-color 0.3s, bottom 0.4s, padding 0.3s;
   z-index: 1;
   cursor: pointer;
 }
 
-.shop-button:hover {
-  bottom: 95px;
-}
 @keyframes glowing {
   0% {
     box-shadow: 0 0 5px rgb(229, 228, 226);

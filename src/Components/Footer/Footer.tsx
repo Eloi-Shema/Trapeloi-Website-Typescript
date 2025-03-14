@@ -15,7 +15,7 @@ const Footer: React.FC<FooterProps> = ({ scrollToHome, scrollToStore }) => {
 
   const { theme } = switchTheme();
   return (
-    <div className="footer dark:bg-blueGreen/10 bg-niceGreen/5 rounded-3xl px-8 pb-5 mt-10">
+    <div className="footer dark:bg-blueGreen/[7%] bg-niceGreen/5 rounded-3xl px-8 pb-5 mt-10">
       <div className="flex xs:flex-col lg:flex-row items-center justify-evenly h-52">
         {theme === "dark" ? (
           <img className="xs:w-40 lg:w-52" src={logoWhite} alt="" />

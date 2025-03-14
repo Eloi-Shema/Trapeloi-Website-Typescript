@@ -7,7 +7,7 @@ import search_icon from "../../assets/icons/search-icon.png";
 import close_icon from "../../assets/icons/close-icon.png";
 import list_icon from "../../assets/icons/list-view.png";
 import grid_icon from "../../assets/icons/grid-view.png";
-import bgImage from "../../assets/speaker2.jpg";
+import backgroundImage from "../../assets/ambient-studio.png";
 import { motion } from "framer-motion";
 
 interface BeatType {
@@ -47,11 +47,11 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
 
   return (
     <div ref={ref} className="relative z-0">
-      <div className="absolute w-full h-[150%] inset-0 -z-10">
-        <div className="dark:bg-black/60 bg-platinum/80 absolute inset-0 backdrop-blur-lg"></div>
+      <div className="absolute w-full h-full inset-0 opacity-50 -z-10">
+        <div className="dark:bg-black/60 bg-platinum/80 absolute inset-0 object-cover backdrop-blur-lg"></div>
         <img
-          src={bgImage}
-          alt="Speaker"
+          src={backgroundImage}
+          alt="Studio"
           className="w-full h-full object-cover"
         />
       </div>
@@ -63,7 +63,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
               : "store-header xs:w-full md:w-[48rem] lg:w-[64rem] relative flex flex-col items-center justify-self-center rounded-t-lg mt-1 xs:py-5 xl:py-7"
           }`}
         >
-          <h1 className="dark:text-platinum text-black xs:text-xl md:text-2xl lg:text-4xl font-medium mb-4">
+          <h1 className="dark:text-platinum text-black xs:text-xl md:text-2xl lg:text-4xl font-trap font-bold mb-4">
             Beat Shop
           </h1>
 
