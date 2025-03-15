@@ -1,4 +1,4 @@
-import React, { forwardRef, RefObject, useState } from "react";
+import React, { forwardRef, RefObject, useMemo, useState } from "react";
 import "./Store.css";
 import { beatList } from "../../data.ts";
 import cart_icon from "../../assets/icons/cart-icon.png";
@@ -7,6 +7,7 @@ import search_icon from "../../assets/icons/search-icon.png";
 import close_icon from "../../assets/icons/close-icon.png";
 import list_icon from "../../assets/icons/list-view.png";
 import grid_icon from "../../assets/icons/grid-view.png";
+import arrow from "../../assets/icons/up-icon.png";
 import backgroundImage from "../../assets/ambient-studio.png";
 import { motion } from "framer-motion";
 
@@ -23,8 +24,6 @@ interface StoreProps {
 }
 
 const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
-  const [searchQuery, setSearchQuery] = useState<string>("");
-
   // SWITCH BETWEEN GRID AND LIST VIEW IN STORE AND SAVE THE STATE
 
   const [isGridView, setIsGridView] = useState(() => {
@@ -37,13 +36,32 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
     localStorage.setItem("viewMode", listView ? "grid" : "list");
   };
 
-  const filteredBeat = beatList.filter((beat) =>
-    beat.name.toLowerCase().startsWith(searchQuery.toLowerCase())
-  );
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+  const filteredBeat = useMemo(() => {
+    return beatList.filter((beat) =>
+      beat.name.toLowerCase().startsWith(searchQuery.toLowerCase())
+    );
+  }, [searchQuery, beatList]);
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+    setCurrentPage(0);
+  };
 
   const clearSearch = () => {
     setSearchQuery("");
+    setCurrentPage(0);
   };
+
+  // HANDLING PAGINATION
+  const [currentPage, setCurrentPage] = useState(0);
+  const beatsPerPage = 10;
+  const totalPages = Math.ceil(filteredBeat.length / beatsPerPage);
+
+  const startIndex = currentPage * beatsPerPage;
+  const endIndex = startIndex + beatsPerPage;
+  const beatsOnPage = filteredBeat.slice(startIndex, endIndex);
 
   return (
     <div ref={ref} className="relative z-0">
@@ -78,8 +96,8 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
               type="text"
               placeholder="Search A Beat Here..."
               value={searchQuery}
-              onChange={(event) => setSearchQuery(event.target.value)}
-              className="bg-transparent dark:text-gray-400 text-gray-900 placeholder:opacity-90 placeholder:py-3 dark:placeholder:text-white/60 placeholder:text-black outline-none  placeholder:font-light w-full"
+              onChange={handleSearch}
+              className="bg-transparent dark:text-gray-400 text-gray-900 placeholder:opacity-90 placeholder:py-3 dark:placeholder:text-white/60 placeholder:text-black/40 outline-none  placeholder:font-light w-full"
             />
 
             <button
@@ -115,8 +133,8 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
         {/* {TOGGLE BETWEEN GRID AND LIST VIEW: BIG SCREEN SIZE} */}
         {isGridView ? (
           <div className="store-grid dark:bg-black bg-platinum/50 grid gap-6 box-border p-6 xs:hidden md:grid max-h-[64rem]">
-            {filteredBeat.length > 0 ? (
-              filteredBeat.map((beat, id) => {
+            {beatsOnPage.length > 0 ? (
+              beatsOnPage.map((beat, id) => {
                 return (
                   <motion.div
                     initial={{ opacity: 0, x: 50 }}
@@ -176,8 +194,8 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
           </div>
         ) : (
           <div className="store-list2 dark:bg-black/80 bg-platinum/80 xs:hidden md:flex flex-col flex-1 justify-self-center box-border p-6 max-h-[64rem] md:w-[48rem] lg:w-[64rem] overflow-y-auto">
-            {filteredBeat.length > 0 ? (
-              filteredBeat.map((beat, id) => {
+            {beatsOnPage.length > 0 ? (
+              beatsOnPage.map((beat, id) => {
                 return (
                   <motion.div
                     initial={{ opacity: 0, x: 50 }}
@@ -235,8 +253,8 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
 
         {/* {FOR SMALL SIZE} */}
         <div className="store-list dark:bg-black/80 bg-platinum/80 flex flex-col md:hidden max-h-[36rem] overflow-y-auto">
-          {filteredBeat.length > 0 ? (
-            filteredBeat.map((beat, id) => {
+          {beatsOnPage.length > 0 ? (
+            beatsOnPage.map((beat, id) => {
               return (
                 <motion.div
                   initial={{ opacity: 0, x: 50 }}
@@ -289,13 +307,64 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
           )}
         </div>
 
+        {/* {FOOTER} */}
         <div
           className={`${
             isGridView
               ? "store-footer xs:h-12 md:h-20 rounded-b-lg"
               : "store-footer justify-self-center xs:w-full md:w-[48rem] lg:w-[64rem] xs:h-12 md:h-20 rounded-b-lg"
           }`}
-        ></div>
+        >
+          <div className="flex items-center justify-between justify-self-center xs:w-28 md:w-40 xs:scale-[85%] md:scale-100 xs:py-[17px] md:py-[33px]">
+            <button
+              className={`${
+                currentPage === 0 ? "opacity-50" : "opacity-100 cursor-pointer"
+              }`}
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 0))}
+              disabled={currentPage === 0}
+            >
+              <img
+                className="w-[14px] dark:invert -rotate-90"
+                src={arrow}
+                alt=""
+              />
+            </button>
+
+            <div className="flex gap-2">
+              {Array.from({ length: totalPages }).map((_, i) => (
+                <motion.span
+                  key={i}
+                  animate={{ scale: i === currentPage ? 1.3 : 1 }}
+                  transition={{ type: "spring", stiffness: 500, damping: 5 }}
+                  className={`h-[6px] rounded-full cursor-pointer ${
+                    i === currentPage
+                      ? "bg-niceGreen/80 dark:bg-blueGreen/70 w-4"
+                      : "bg-gray-600 w-2"
+                  }`}
+                  onClick={() => setCurrentPage(i)}
+                />
+              ))}
+            </div>
+
+            <button
+              className={`${
+                currentPage === totalPages - 1
+                  ? "opacity-50"
+                  : "opacity-100 cursor-pointer"
+              }`}
+              onClick={() =>
+                setCurrentPage((prev) => Math.min(prev + 1, totalPages - 1))
+              }
+              disabled={currentPage === totalPages - 1}
+            >
+              <img
+                className="w-[14px] dark:invert rotate-90"
+                src={arrow}
+                alt=""
+              />
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -29,7 +29,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({
       </div>
 
       <div
-        className="heading relative text-center w-[md] flex flex-col items-center px-4 md:px-8 text-white/90 my-28
+        className="heading relative text-center w-[md] flex flex-col items-center justify-center px-4 md:px-8 text-white/90 my-28
       "
       >
         <div className="flex items-center gap-2 mb-10 backdrop-blur-sm">
@@ -38,7 +38,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({
           </div>
           <img className="xs:w-[72px] md:w-24" src={logo} alt="" />
         </div>
-        <h1 className="font-trap xs:text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white/90 backdrop-blur-sm">
+        <h1 className="font-trap xs:text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white/90">
           Find Your Sound.
           <br /> Own The Sound.
           <br /> Make Hits.

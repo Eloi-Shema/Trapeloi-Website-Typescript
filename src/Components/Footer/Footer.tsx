@@ -27,7 +27,7 @@ const Footer: React.FC<FooterProps> = ({ scrollToHome, scrollToStore }) => {
             onClick={scrollToHome}
             className="dark:text-white/80 dark:hover:text-white text-black/60 hover:text-black font-semibold mr-5 xs:text-sm md:text-base transition-all duration-300 cursor-pointer"
           >
-            Home
+            Back to Top &#8613;
           </p>
           <p
             onClick={scrollToStore}
