@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import logo_dark from "../../assets/logo-blue electric.png";
-import logo_light from "../../assets/logo-black (2).png";
+import logo_light from "../../assets/logo-purple.png";
+import logo from "../../assets/logo-white.png";
 import cart_icon from "../../assets/icons/cart-icon.png";
 import close_icon from "../../assets/icons/close-icon.png";
 import { Link } from "react-router-dom";
 import ThemeToggle from "../theme/ThemeToggle";
 import { switchTheme } from "../../hooks/switchTheme";
+import { motion } from "framer-motion";
 
 interface NavbarProps {
   toggleCart: () => void;
@@ -30,7 +32,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 150) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -48,22 +50,19 @@ const Navbar: React.FC<NavbarProps> = ({
   const { theme } = switchTheme();
 
   return (
-    <div className="header">
+    <div className="fixed xs:inset-x-0 md:inset-x-10 xs:inset-y-0 md:inset-y-5 h-[60px] backdrop-blur-sm  transition-all duration-300 z-50">
       {isScrolled ? (
-        <div className="header-content relative py-8 pr-4 bg-platinum/80 dark:bg-bgBlack/70 backdrop-blur-sm">
+        <motion.div
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: isScrolled ? 0 : -100, opacity: isScrolled ? 1 : 0 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="header-content relative py-8 px-5 bg-white/90 dark:bg-black/80 xs:rounded-none md:rounded-xl"
+        >
           <Link to="/">
             {theme === "dark" ? (
-              <img
-                className="xs:w-40 md:w-48 xl:w-52"
-                src={logo_dark}
-                alt="Logo"
-              />
+              <img className="xs:w-32 md:w-36" src={logo_dark} alt="Logo" />
             ) : (
-              <img
-                className="xs:w-40 md:w-48 xl:w-52"
-                src={logo_light}
-                alt="Logo"
-              />
+              <img className="xs:w-32 md:w-36" src={logo_light} alt="Logo" />
             )}
           </Link>
           {warning && (
@@ -91,7 +90,7 @@ const Navbar: React.FC<NavbarProps> = ({
               </p>
             </div>
             <Link to="/login">
-              <button className="login-btn bg-niceGreen text-white dark:bg-white dark:text-black">
+              <button className="login-btn bg-black text-white dark:bg-white dark:text-black">
                 Log In
               </button>
             </Link>
@@ -105,23 +104,11 @@ const Navbar: React.FC<NavbarProps> = ({
               />
             </button>
           </div>
-        </div>
+        </motion.div>
       ) : (
-        <div className="header-content relative py-8 pr-4 bg-transparent backdrop-blur-sm">
+        <div className="header-content relative py-8 px-5 bg-transparent backdrop-blur-sm">
           <Link to="/">
-            {theme === "dark" ? (
-              <img
-                className="xs:w-40 md:w-48 xl:w-52"
-                src={logo_dark}
-                alt="Logo"
-              />
-            ) : (
-              <img
-                className="xs:w-40 md:w-48 xl:w-52 invert"
-                src={logo_light}
-                alt="Logo"
-              />
-            )}
+            <img className="xs:w-32 md:w-36" src={logo} alt="Logo" />
           </Link>
 
           <div className="menu-links text-white">
@@ -164,7 +151,7 @@ const Navbar: React.FC<NavbarProps> = ({
             Pricing
           </h4>
           <Link to="/login">
-            <button className="bg-niceGreen text-white dark:bg-white dark:text-black px-5 py-1 mb-4 rounded-md">
+            <button className="bg-black text-white dark:bg-white dark:text-black px-5 py-1 mb-4 rounded-md">
               Log In
             </button>
           </Link>

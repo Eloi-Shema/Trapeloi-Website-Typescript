@@ -161,7 +161,7 @@ const Cart: React.FC<CartProps> = ({
             </div>
 
             <div className="flex flex-col items-center justify-between">
-              <div className="flex items-center justify-center w-[350px] mb-3 py-3 bg-niceGreen dark:bg-blueGreen dark:text-black text-white rounded-lg cursor-pointer">
+              <div className="flex items-center justify-center w-[350px] mb-3 py-3 bg-purple-950 dark:bg-blueGreen dark:text-black text-white font-trap rounded-lg cursor-pointer">
                 <img
                   className="w-4 mr-3 dark:invert-0 invert"
                   src={debit_card}
@@ -170,7 +170,7 @@ const Cart: React.FC<CartProps> = ({
                 Credit/Debit Card
               </div>
 
-              <button className="flex items-center justify-center w-[350px] dark:bg-platinum bg-gray-300 border border-black hover:bg-niceGreen/10 rounded-lg py-3">
+              <button className="flex items-center justify-center w-[350px] dark:bg-platinum bg-gray-300 border border-black hover:bg-nicePurple/10 rounded-lg py-3">
                 <img className="w-[70px]" src={paypal_icon} alt="paypal" />
               </button>
             </div>

@@ -22,7 +22,7 @@ const Ratings: React.FC = () => {
           {topRatings.concat(topRatings).map((rating, index) => (
             <div
               key={index}
-              className="rating relative flex flex-col flex-shrink-0 w-80 h-56 p-4 mr-10 mb-14 px-3 rounded-xl dark:bg-bgBlack bg-white/60"
+              className="rating relative flex flex-col flex-shrink-0 w-80 h-56 p-4 mr-10 mb-5 px-3 rounded-xl dark:bg-bgBlack bg-white/60"
             >
               <p
                 className={`${
@@ -59,7 +59,7 @@ const Ratings: React.FC = () => {
           {bottomRatings.concat(bottomRatings).map((rating, index) => (
             <div
               key={index}
-              className="rating relative flex flex-col flex-shrink-0 w-80 h-56 p-4 mr-10 mb-14 px-3 rounded-xl dark:bg-bgBlack bg-white/60"
+              className="rating relative flex flex-col flex-shrink-0 w-80 h-56 p-4 mr-10 mb-5 px-3 rounded-xl dark:bg-bgBlack bg-white/60"
             >
               <p
                 className={`${

@@ -11,7 +11,7 @@
 }
 
 .recommended-plan {
-  animation: borderChange 3s ease-in-out infinite, glowy 5s ease-in-out infinite;
+  animation: borderChange 3s ease-in-out infinite, glowy 6s ease infinite;
 }
 .dark .recommended-plan {
   animation: borderChange2 3s ease-in-out infinite,
@@ -24,8 +24,8 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgb(0 171 102);
-  box-shadow: 0 0 8px rgb(0 171 102);
+  background: rgb(168, 40, 248);
+  box-shadow: 0 0 8px rgb(168, 40, 248);
   animation: moveAround 10s linear infinite;
 }
 
@@ -67,19 +67,19 @@
 @keyframes borderChange {
   0%,
   100% {
-    border: 2px solid rgb(229, 228, 226);
+    border: 2px solid rgb(177, 177, 177);
   }
   50% {
-    border: 2px solid rgb(0, 171, 102, 0.6);
+    border: 2px solid rgba(92, 0, 150, 0.6);
   }
 }
 @keyframes glowy {
   0%,
   100% {
-    box-shadow: 0 0 5px rgba(0, 171, 102, 0.8);
+    box-shadow: 0 0 5px rgba(125, 0, 202, 0.8);
   }
   50% {
-    box-shadow: 0 0 5px rgba(0, 171, 102, 0.8);
+    box-shadow: 0 0 8px rgba(125, 0, 202, 0.8);
   }
 }
 

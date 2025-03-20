@@ -1,9 +1,7 @@
 import React from "react";
 import "./Footer.css";
-import logoGreen from "../../assets/logo-green.png";
-import logoWhite from "../../assets/logo-white.png";
+import logo from "../../assets/logo-white.png";
 import { GmailIcon, YoutubePlayIcon, InstagramIcon } from "../icons/icons";
-import { switchTheme } from "../../hooks/switchTheme";
 
 interface FooterProps {
   scrollToHome: () => void;
@@ -13,15 +11,14 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({ scrollToHome, scrollToStore }) => {
   const currentYear = new Date().getFullYear();
 
-  const { theme } = switchTheme();
   return (
-    <div className="footer dark:bg-blueGreen/[7%] bg-niceGreen/5 rounded-3xl px-8 pb-5 mt-10">
+    <div className="footer dark:bg-blueGreen/[7%] bg-white/50 px-8 py-4 mt-10">
       <div className="flex xs:flex-col lg:flex-row items-center justify-evenly h-52">
-        {theme === "dark" ? (
-          <img className="xs:w-40 lg:w-52" src={logoWhite} alt="" />
-        ) : (
-          <img className="xs:w-40 lg:w-52" src={logoGreen} alt="" />
-        )}
+        <img
+          className="xs:w-40 lg:w-52 invert dark:invert-0"
+          src={logo}
+          alt=""
+        />
         <div className="lg:w-1/4 flex justify-between whitespace-nowrap">
           <p
             onClick={scrollToHome}

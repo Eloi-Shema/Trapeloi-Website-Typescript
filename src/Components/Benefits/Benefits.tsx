@@ -21,10 +21,10 @@ const Benefits: React.FC = () => {
       >
         <div>
           <div>
-            <h1 className="font-trap font-semibold text-center xs:text-3xl md:text-4xl dark:text-platinum text-black py-8">
+            <h1 className="font-trap font-bold text-center xs:text-3xl md:text-4xl dark:text-platinum text-black py-8">
               Unlimited streams on
             </h1>
-            <div className="flex flex-wrap xs:flex-col md:flex-row justify-evenly items-center justify-self-center w-full mx-28 mb-20 px-10">
+            <div className="flex flex-wrap xs:flex-col md:flex-row justify-evenly items-center justify-self-center w-full mb-10 md:gap-10">
               <SpotifyIcon />
               <AppleMusicIcon />
               <YoutubeIcon />
@@ -41,15 +41,13 @@ const Benefits: React.FC = () => {
                 </span>
                 &nbsp; beats, You have Full Control. You can use it commercially
                 with &nbsp;
-                <span className="royalty italic p-1">
-                  Life-time Royalty free
-                </span>
+                <span className="royalty">Unlimited</span>
                 &nbsp; streams and distribution.
               </p>
 
               <div className="flex justify-between p-5">
                 <div className="text-center xs:w-40 md:w-72 ">
-                  <h3 className="stats font-trap font-bold sm:text-4xl md:text-5xl lg:text-6xl mb-2">
+                  <h3 className="stats font-trap font-bold xs:text-4xl md:text-5xl lg:text-6xl mb-2">
                     +30
                   </h3>
                   <p className="xs:text-xs md:text-base dark:text-white/70 text-black">
@@ -57,7 +55,7 @@ const Benefits: React.FC = () => {
                   </p>
                 </div>
                 <div className="text-center xs:w-40 md:w-72">
-                  <h3 className="stats font-bold font-montserrat sm:text-4xl md:text-5xl lg:text-6xl mb-2">
+                  <h3 className="stats font-bold font-montserrat xs:text-4xl md:text-5xl lg:text-6xl mb-2">
                     100 %
                   </h3>
                   <p className="xs:text-xs md:text-base dark:text-white/70 text-black">

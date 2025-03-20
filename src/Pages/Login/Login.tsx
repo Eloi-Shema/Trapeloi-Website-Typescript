@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Login.css";
 import logo from "../../assets/logo-white.png";
+import bgImage from "../../assets/ambient-studio.png";
 import google from "../../assets/icons/google-icon.png";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -18,12 +19,19 @@ const Login: React.FC = () => {
   return (
     <>
       {isLoading ? (
-        <div className="bg-image relative flex items-center justify-center h-screen z-0">
-          <div className="absolute inset-0 bg-black/20 dark:bg-platinum/15 backdrop-blur-md -z-10"></div>
-          <div>
-            <img src="" alt="" />
+        <div className="relative flex items-center justify-center h-screen">
+          <div className="absolute inset-0">
+            <div className="bg-black/50 absolute inset-0 z-10"></div>
+            <div className="h-full w-full">
+              <img
+                className="w-full h-full object-cover grayscale"
+                src={bgImage}
+                alt="Ambient studio"
+              />
+            </div>
           </div>
-          <div className="flex flex-col items-center justify-between justify-self-center w-96 h-[640px] py-10 dark:bg-bgBlack/70 bg-platinum/80 rounded-md xs:scale-90 md:scale-100">
+
+          <div className="flex flex-col items-center justify-between justify-self-center w-96 h-[640px] py-10 dark:bg-bgBlack bg-platinum rounded-md xs:scale-90 md:scale-100 z-20">
             <Link to="/">
               <img
                 className="w-32 opacity-90 invert dark:invert-0 cursor-pointer"

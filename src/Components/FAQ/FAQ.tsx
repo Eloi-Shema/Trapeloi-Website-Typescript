@@ -66,9 +66,9 @@ const FAQ: React.FC = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.2 }}
-      className="flex flex-col items-center justify-self-center w-full pt-5 pb-10 dark:bg-black bg-platinum"
+      className="flex flex-col items-center justify-self-center w-full px-5 dark:bg-black bg-platinum"
     >
-      <div className="flex flex-col items-center mb-24">
+      <div className="flex flex-col items-center mb-20">
         <h1 className="text-4xl font-trap font-bold py-5 dark:text-white text-black">
           FAQs
         </h1>

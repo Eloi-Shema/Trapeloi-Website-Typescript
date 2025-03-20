@@ -97,7 +97,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
               placeholder="Search A Beat Here..."
               value={searchQuery}
               onChange={handleSearch}
-              className="bg-transparent dark:text-gray-400 text-gray-900 placeholder:opacity-90 placeholder:py-3 dark:placeholder:text-white/60 placeholder:text-black/40 outline-none  placeholder:font-light w-full"
+              className="bg-transparent dark:text-gray-400 text-gray-900 dark:placeholder:text-white/60 placeholder:text-black/40 outline-none  placeholder:font-light mt-1 w-full"
             />
 
             <button
@@ -252,7 +252,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
         )}
 
         {/* {FOR SMALL SIZE} */}
-        <div className="store-list dark:bg-black/80 bg-platinum/80 flex flex-col md:hidden max-h-[36rem] overflow-y-auto">
+        <div className="store-list dark:bg-black/80 bg-platinum/80 flex flex-col md:hidden max-h-[36rem] px-1 overflow-y-auto">
           {beatsOnPage.length > 0 ? (
             beatsOnPage.map((beat, id) => {
               return (
@@ -338,8 +338,8 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                   transition={{ type: "spring", stiffness: 500, damping: 5 }}
                   className={`h-[6px] rounded-full cursor-pointer ${
                     i === currentPage
-                      ? "bg-niceGreen/80 dark:bg-blueGreen/70 w-4"
-                      : "bg-gray-600 w-2"
+                      ? "bg-black dark:bg-blueGreen/70 w-4"
+                      : "bg-gray-400 w-2"
                   }`}
                   onClick={() => setCurrentPage(i)}
                 />

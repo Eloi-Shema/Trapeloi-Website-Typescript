@@ -24,15 +24,15 @@ const Pricing: React.FC<PricingProps> = ({ pricingRef }) => {
             <h3 className="font-semibold text-xl dark:text-platinum text-black text-center mb-4">
               Non-Exclusive
             </h3>
-            <h3 className="font-semibold text-4xl dark:text-platinum text-black text-center mb-6">
+            <h3 className="font-bold text-4xl dark:text-platinum text-black text-center mb-6">
               Free
             </h3>
             <ul className="list py-5 mb-5 leading-10">
               <li className="dark:text-platinum text-black font-medium">
-                <span className="text-green-600">&#10004;</span> MP3
+                &#10004; MP3
               </li>
               <li className="dark:text-platinum text-black font-medium">
-                <span className="text-green-600">&#10004;</span> WAV Track
+                &#10004; WAV Track
               </li>
               <li className="dark:text-platinum text-black font-medium">
                 <span className="text-red-600">&#10006;</span> STEM Tracks
@@ -43,7 +43,7 @@ const Pricing: React.FC<PricingProps> = ({ pricingRef }) => {
                 rights
               </li>
               <li className="dark:text-platinum text-black font-medium">
-                <span className="text-green-600">&#10004;</span> Commercial Use
+                &#10004; Commercial Use
               </li>
             </ul>
             <button className="flex justify-self-center dark:bg-white/90 bg-bgBlack dark:text-black text-white py-2 px-[64px] rounded-md font-montserrat font-semibold whitespace-nowrap transition-all duration-300">
@@ -51,38 +51,37 @@ const Pricing: React.FC<PricingProps> = ({ pricingRef }) => {
             </button>
           </div>
 
-          <div className="recommended-plan relative w-72 rounded-md p-6 mr-5 mb-10 dark:bg-blueGreen/10 bg-niceGreen/5">
+          <div className="recommended-plan relative w-72 rounded-md p-6 mr-5 mb-10 dark:bg-blueGreen/10 bg-white/30">
             <h3 className="font-semibold text-xl dark:text-platinum text-black text-center mb-4">
               Exclusive
             </h3>
             <div className="flex items-center justify-self-center mb-6">
-              <p className="font-kanit font-semibold mr-2 dark:text-white/70 text-black">
+              <p className="font-trap font-semibold mr-4 dark:text-white/70 text-black -mt-1">
                 up to
               </p>
-              <h3 className="font-semibold text-4xl dark:text-platinum text-black text-center">
+              <h3 className="font-bold text-4xl dark:text-platinum text-black text-center">
                 $149.99
               </h3>
             </div>
             <ul className="list py-5 mb-5 leading-10">
               <li className="dark:text-platinum text-black font-medium">
-                <span className="text-green-600">&#10004;</span> MP3
+                &#10004; MP3
               </li>
               <li className="dark:text-platinum text-black font-medium">
-                <span className="text-green-600">&#10004;</span> WAV track
+                &#10004; WAV track
               </li>
               <li className="dark:text-platinum text-black font-medium">
-                <span className="text-green-600">&#10004;</span> STEM tracks
+                &#10004; STEM tracks
               </li>
 
               <li className="dark:text-platinum text-black font-medium">
-                <span className="text-green-600">&#10004;</span> Exclusive
-                rights
+                &#10004; Exclusive rights
               </li>
               <li className="dark:text-platinum text-black font-medium">
-                <span className="text-green-600">&#10004;</span> Commercial Use
+                &#10004; Commercial Use
               </li>
             </ul>
-            <button className="flex justify-self-center dark:bg-blueGreen/90 dark:hover:bg-blueGreen bg-niceGreen hover:bg-niceGreen/90 dark:text-black text-white py-2 px-[64px] rounded-md font-montserrat font-semibold whitespace-nowrap transition-all duration-150">
+            <button className="flex justify-self-center dark:bg-blueGreen/90 dark:hover:bg-blueGreen bg-purple-950 hover:purple-950/90 dark:text-black text-white py-2 px-[64px] rounded-md font-montserrat font-semibold whitespace-nowrap transition-all duration-150">
               Learn More
             </button>
           </div>

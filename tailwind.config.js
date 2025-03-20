@@ -15,6 +15,7 @@ export default {
         myGreen: "rgb(0, 255, 191)",
         dimGreen: "rgb(18, 255, 196)",
         niceGreen: "rgb(0, 171, 102)",
+        nicePurple: "rgb(168,40,248)",
         goldYellow: "rgb(216, 184, 0)",
         dimGold: "rgba(255, 200, 10, 0.833)",
         bgGreen: "rgba(8, 255, 193, 0.15)",
