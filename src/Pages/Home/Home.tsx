@@ -145,7 +145,7 @@ const Home: React.FC = () => {
           <Pricing pricingRef={pricingRef} />
           <Ratings />
           <FAQ />
-          <Newsletter />
+          {/* <Newsletter /> */}
           <Footer
             scrollToStore={handleStoreScroll}
             scrollToHome={handleHomeScroll}

@@ -9,13 +9,13 @@ const Newsletter: React.FC = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.2 }}
-      className="flex flex-col items-center justify-center p-5 dark:bg-black bg-platinum"
+      className="flex flex-col items-center justify-center p-5 dark:bg-black bg-platinum py-10"
     >
       <div className="text-center">
-        <h1 className="xs:text-3xl md:text-4xl font-trap font-bold dark:text-platinum text-black py-5">
+        <h1 className="xs:text-3xl md:text-4xl font-trap font-bold dark:text-platinum text-black">
           Get Your Custom Beat
         </h1>
-        <p className="text-sm mb-10 max-w-screen-md dark:text-platinum text-black">
+        <p className="text-sm mb-16 max-w-screen-md dark:text-platinum text-black">
           Connect with me for personalized beats and music production services
           tailored to your unique taste
         </p>

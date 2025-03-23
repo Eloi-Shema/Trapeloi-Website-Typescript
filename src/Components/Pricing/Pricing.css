@@ -10,6 +10,41 @@
   text-align: center;
 }
 
+.pricing-container {
+  background: linear-gradient(
+    135deg,
+    rgb(229, 228, 226),
+    rgba(0, 171, 102, 0.1),
+    rgba(168, 40, 248, 0.08),
+    rgba(0, 171, 102, 0.1),
+    rgb(229, 228, 226)
+  );
+  background-size: 400% 400%;
+  animation: bgGradient 10s ease infinite;
+}
+.dark .pricing-container {
+  background: linear-gradient(
+    135deg,
+    black,
+    rgba(65, 105, 225, 0.15),
+    rgba(0, 255, 241, 0.15),
+    rgba(65, 105, 225, 0.15),
+    black
+  );
+  background-size: 200% 400%;
+  animation: bgGradient 10s ease infinite;
+}
+
+@keyframes bgGradient {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 .recommended-plan {
   animation: borderChange 3s ease-in-out infinite, glowy 6s ease infinite;
 }

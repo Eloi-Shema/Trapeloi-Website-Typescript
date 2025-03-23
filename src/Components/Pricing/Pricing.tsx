@@ -8,19 +8,21 @@ interface PricingProps {
 
 const Pricing: React.FC<PricingProps> = ({ pricingRef }) => {
   return (
-    <div ref={pricingRef}>
+    <div
+      ref={pricingRef}
+      className="pricing-container py-10 w-screen justify-self-center"
+    >
+      <h1 className="text-center xs:text-3xl lg:text-4xl dark:text-white text-black font-trap font-bold mb-14">
+        Pricing Plans
+      </h1>
       <motion.div
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.2 }}
-        className="py-8"
       >
-        <h1 className="text-center xs:text-3xl lg:text-4xl dark:text-white text-black font-trap font-bold mb-14">
-          Pricing Plans
-        </h1>
-        <div className="flex xs:flex-col md:flex-row flex-wrap items-center justify-evenly md:px-32">
-          <div className="w-72 border-2 border-gray-400 rounded-md p-6 mr-5 mb-10 dark:bg-bgBlack/10 bg-white/20">
+        <div className="flex xs:flex-col md:flex-row flex-wrap items-center justify-evenly max-w-screen-2xl mx-auto my-10">
+          <div className="w-72 border-2 border-gray-400 rounded-md p-6 xs:mb-5 md:mb-0 dark:bg-bgBlack/20 bg-white/30">
             <h3 className="font-semibold text-xl dark:text-platinum text-black text-center mb-4">
               Non-Exclusive
             </h3>
@@ -51,7 +53,7 @@ const Pricing: React.FC<PricingProps> = ({ pricingRef }) => {
             </button>
           </div>
 
-          <div className="recommended-plan relative w-72 rounded-md p-6 mr-5 mb-10 dark:bg-blueGreen/10 bg-white/30">
+          <div className="recommended-plan relative w-72 rounded-md p-6 xs:mb-5 md:mb-0 dark:bg-blueGreen/10 bg-white/30">
             <h3 className="font-semibold text-xl dark:text-platinum text-black text-center mb-4">
               Exclusive
             </h3>

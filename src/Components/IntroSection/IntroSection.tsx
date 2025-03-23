@@ -15,7 +15,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({
   return (
     <div
       ref={homeRef}
-      className="hero relative xs:h-[820px] md:h-[900px] flex flex-col items-center justify-center"
+      className="hero relative xs:h-[820px] md:h-[900px] w-screen flex flex-col items-center justify-center justify-self-center"
     >
       <div className="absolute inset-0">
         <div className="overlay dark:bg-black/70 bg-black/50 absolute inset-0"></div>

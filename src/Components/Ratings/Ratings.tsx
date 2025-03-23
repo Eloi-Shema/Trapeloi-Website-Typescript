@@ -9,7 +9,7 @@ const Ratings: React.FC = () => {
   const bottomRatings = ratings.slice(6, 12);
 
   return (
-    <div className="w-full p-5 dark:bg-black bg-platinum">
+    <div className="w-full py-10 dark:bg-black bg-platinum">
       <h1 className="font-trap font-bold py-5 text-4xl  text-center mb-14 dark:text-white text-black">
         Client Feedback
       </h1>

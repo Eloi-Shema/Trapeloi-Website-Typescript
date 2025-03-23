@@ -56,7 +56,7 @@ const Cart: React.FC<CartProps> = ({
     isRendered && (
       <div
         onAnimationEnd={handleAnimationEnd}
-        className={`cart-box fixed xs:top-0 sm:top-[65px] md:top-[67px] xs:w-[350px] sm:w-96 right-0 dark:bg-bgBlack bg-gray-200 rounded-tl-xl rounded-bl-xl z-20 transition-transform duration-500 ${
+        className={`cart-box fixed xs:top-0 sm:top-[65px] md:top-[75px] xs:w-[350px] sm:w-96 right-0 dark:bg-bgBlack bg-gray-200 rounded-tl-xl rounded-bl-xl transition-transform duration-500 z-50 ${
           firstRender && isVisible ? "translate-x-0" : "translate-x-full"
         }`}
         style={{ willChange: "transform" }}

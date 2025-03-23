@@ -50,7 +50,7 @@ const Navbar: React.FC<NavbarProps> = ({
   const { theme } = switchTheme();
 
   return (
-    <div className="fixed xs:inset-x-0 md:inset-x-10 xs:inset-y-0 md:inset-y-5 h-[60px] backdrop-blur-sm  transition-all duration-300 z-50">
+    <div className="fixed xs:inset-x-0 md:inset-x-10 xs:inset-y-0 md:inset-y-5 h-[60px] backdrop-blur-sm  transition-all duration-300 z-30">
       {isScrolled ? (
         <motion.div
           initial={{ y: -100, opacity: 0 }}
