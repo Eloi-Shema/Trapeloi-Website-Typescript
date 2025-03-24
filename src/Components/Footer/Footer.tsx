@@ -13,53 +13,55 @@ const Footer: React.FC<FooterProps> = ({ scrollToHome, scrollToStore }) => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="footer dark:bg-blueGreen/[7%] bg-white/50 px-10 py-5">
-      <div className="flex xs:flex-col lg:flex-row items-center justify-evenly mb-5">
+    <div className="footer dark:bg-blueGreen/[7%] bg-white/50">
+      <div className="flex xs:flex-col lg:flex-row items-center justify-evenly xs:px-0 md:px-20 xs:py-6 md:py-14">
         <img
           className="xs:w-40 lg:w-52 invert dark:invert-0"
           src={logo}
           alt=""
         />
-        <div className="w-full flex justify-evenly items-center my-10">
-          <div className="flex flex-col xs:mr-10 md:mr-0 whitespace-nowrap">
-            <p
-              onClick={scrollToHome}
-              className="dark:text-white/70 dark:hover:text-white text-black/60 hover:text-black font-medium mb-5 xs:text-sm md:text-base transition-all duration-300 font-trap cursor-pointer"
-            >
-              Back to Top &#8613;
-            </p>
-            <p
-              onClick={scrollToStore}
-              className="dark:text-white/70 dark:hover:text-white text-black/60 hover:text-black font-medium mb-5 xs:text-sm md:text-base transition-all duration-300 font-trap cursor-pointer"
-            >
-              Shop
-            </p>
-            <Link to={"/about"}>
-              <p className="dark:text-white/70 dark:hover:text-white text-black/60 hover:text-black font-medium mb-5 xs:text-sm md:text-base transition-all du font-trapration-300 cursor-pointer">
-                About
+        <div className="w-full">
+          <div className="flex justify-evenly items-center xs:my-7 lg:my-0">
+            <div className=" xs:mr-10 md:mr-0 whitespace-nowrap">
+              <p
+                onClick={scrollToHome}
+                className="dark:text-white/70 dark:hover:text-white text-black/60 hover:text-black font-medium mb-4 xs:text-sm md:text-base transition-all duration-300 font-trap cursor-pointer"
+              >
+                Back to Top &#8613;
               </p>
-            </Link>
-          </div>
-
-          <div className="flex flex-col whitespace-nowrap">
-            <Link to={"/terms"}>
-              <p className="dark:text-white/70 dark:hover:text-white text-black/60 hover:text-black font-medium mb-5 xs:text-sm md:text-base transition-all duration-300 font-trap cursor-pointer">
-                Licensing Terms
-              </p>
-            </Link>
-
-            <Link to={"/privacy"}>
               <p
                 onClick={scrollToStore}
-                className="dark:text-white/70 dark:hover:text-white text-black/60 hover:text-black font-medium mb-5 xs:text-sm md:text-base transition-all duration-300 font-trap cursor-pointer"
+                className="dark:text-white/70 dark:hover:text-white text-black/60 hover:text-black font-medium mb-4 xs:text-sm md:text-base transition-all duration-300 font-trap cursor-pointer"
               >
-                Privacy
+                Shop
               </p>
-            </Link>
+              <Link to={"/about"}>
+                <p className="dark:text-white/70 dark:hover:text-white text-black/60 hover:text-black font-medium xs:text-sm md:text-base transition-all du font-trapration-300 cursor-pointer">
+                  About
+                </p>
+              </Link>
+            </div>
 
-            <p className="dark:text-white/70 dark:hover:text-white text-black/60 hover:text-black font-medium mb-5 xs:text-sm md:text-base transition-all du font-trapration-300 cursor-pointer">
-              Contact
-            </p>
+            <div className="flex flex-col whitespace-nowrap">
+              <Link to={"/terms"}>
+                <p className="dark:text-white/70 dark:hover:text-white text-black/60 hover:text-black font-medium mb-4 xs:text-sm md:text-base transition-all duration-300 font-trap cursor-pointer">
+                  Licensing Terms
+                </p>
+              </Link>
+
+              <Link to={"/privacy"}>
+                <p
+                  onClick={scrollToStore}
+                  className="dark:text-white/70 dark:hover:text-white text-black/60 hover:text-black font-medium mb-4 xs:text-sm md:text-base transition-all duration-300 font-trap cursor-pointer"
+                >
+                  Privacy
+                </p>
+              </Link>
+
+              <p className="dark:text-white/70 dark:hover:text-white text-black/60 hover:text-black font-medium xs:text-sm md:text-base transition-all du font-trapration-300 cursor-pointer">
+                Contact
+              </p>
+            </div>
           </div>
         </div>
 
@@ -77,9 +79,8 @@ const Footer: React.FC<FooterProps> = ({ scrollToHome, scrollToStore }) => {
         </div>
       </div>
 
-      <div className="">
-        <hr className="dark:invert-0 invert py-3 opacity-50" />
-        <div className="flex justify-center">
+      <div className="py-3 border-t dark:border-white/60 border-black/60">
+        <div className="flex justify-center items-center">
           <p className="xs:text-sm dark:text-white/60 text-black/80">
             &copy; {currentYear} Trapeloi. All rights reserved.
           </p>

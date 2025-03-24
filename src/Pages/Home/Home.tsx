@@ -6,7 +6,6 @@ import Store from "../../Components/Store/Store.tsx";
 import Benefits from "../../Components/Benefits/Benefits.tsx";
 import Pricing from "../../Components/Pricing/Pricing.tsx";
 import Ratings from "../../Components/Ratings/Ratings.tsx";
-import Newsletter from "../../Components/Newsletter/Newsletter.tsx";
 import FAQ from "../../Components/FAQ/FAQ.tsx";
 import Footer from "../../Components/Footer/Footer.tsx";
 import Cart from "../../Components/Cart/Cart.tsx";

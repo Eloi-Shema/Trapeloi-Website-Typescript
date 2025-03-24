@@ -52,7 +52,7 @@ const Navbar: React.FC<NavbarProps> = ({
   return (
     <div className="fixed xs:inset-x-0 md:inset-x-10 xs:inset-y-0 md:inset-y-5 h-[60px] backdrop-blur-sm  transition-all duration-300 z-30">
       {isScrolled ? (
-        <motion.div
+        <motion.nav
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: isScrolled ? 0 : -100, opacity: isScrolled ? 1 : 0 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
@@ -104,9 +104,9 @@ const Navbar: React.FC<NavbarProps> = ({
               />
             </button>
           </div>
-        </motion.div>
+        </motion.nav>
       ) : (
-        <div className="header-content relative py-8 px-5 bg-transparent backdrop-blur-sm">
+        <nav className="header-content relative py-8 px-5 bg-transparent backdrop-blur-sm">
           <Link to="/">
             <img className="xs:w-32 md:w-36" src={logo} alt="Logo" />
           </Link>
@@ -139,7 +139,7 @@ const Navbar: React.FC<NavbarProps> = ({
               />
             </button>
           </div>
-        </div>
+        </nav>
       )}
 
       {isOpen && (

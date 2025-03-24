@@ -4,7 +4,7 @@ import logo from "../../assets/logo-white.png";
 import bgImage from "../../assets/ambient-studio.png";
 import google from "../../assets/icons/google-icon.png";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import Loading from "../../Components/Loading/Loading";
 
 const Login: React.FC = () => {
   const [loginState, setLoginState] = useState<string>("Login");
@@ -103,21 +103,7 @@ const Login: React.FC = () => {
           </div>
         </div>
       ) : (
-        <motion.div
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1 }}
-          className="dark:bg-bgBlack bg-platinum flex flex-col items-center justify-center h-screen"
-        >
-          <img
-            className="dark:invert-0 invert w-36 mb-5 animate-pulse"
-            src={logo}
-            alt=""
-          />
-          <div className="w-[160px] h-[2px] dark:bg-bgBlack bg-platinum rounded overflow-hidden">
-            <div className="loading w-[20%] h-full dark:bg-white/90 bg-black"></div>
-          </div>
-        </motion.div>
+        <Loading />
       )}
     </>
   );

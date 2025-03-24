@@ -34,18 +34,17 @@ const Pricing: React.FC<PricingProps> = ({ pricingRef }) => {
                 &#10004; MP3
               </li>
               <li className="dark:text-platinum text-black font-medium">
-                &#10004; WAV Track
+                &#10004; WAV
               </li>
               <li className="dark:text-platinum text-black font-medium">
-                <span className="text-red-600">&#10006;</span> STEM Tracks
+                &#10004; STEM Tracks (MP3)
               </li>
 
               <li className="dark:text-platinum text-black font-medium">
-                <span className="text-red-600">&#10006;</span> Non-Exclusive
-                rights
+                &#10004; Commercial Use
               </li>
               <li className="dark:text-platinum text-black font-medium">
-                &#10004; Commercial Use
+                <span className="text-red-600">&#10006;</span> Exclusive rights
               </li>
             </ul>
             <button className="flex justify-self-center dark:bg-white/90 bg-bgBlack dark:text-black text-white py-2 px-[64px] rounded-md font-montserrat font-semibold whitespace-nowrap transition-all duration-300">
@@ -70,17 +69,17 @@ const Pricing: React.FC<PricingProps> = ({ pricingRef }) => {
                 &#10004; MP3
               </li>
               <li className="dark:text-platinum text-black font-medium">
-                &#10004; WAV track
+                &#10004; WAV
               </li>
               <li className="dark:text-platinum text-black font-medium">
                 &#10004; STEM tracks
               </li>
 
               <li className="dark:text-platinum text-black font-medium">
-                &#10004; Exclusive rights
+                &#10004; Commercial Use
               </li>
               <li className="dark:text-platinum text-black font-medium">
-                &#10004; Commercial Use
+                &#10004; Exclusive rights
               </li>
             </ul>
             <button className="flex justify-self-center dark:bg-blueGreen/90 dark:hover:bg-blueGreen bg-purple-950 hover:purple-950/90 dark:text-black text-white py-2 px-[64px] rounded-md font-montserrat font-semibold whitespace-nowrap transition-all duration-150">

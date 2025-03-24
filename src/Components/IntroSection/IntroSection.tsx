@@ -29,7 +29,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({
       </div>
 
       <div
-        className="heading relative text-center flex flex-col items-center justify-center text-white/90 gap-14
+        className="heading relative text-center flex flex-col items-center justify-center text-white/90 gap-12
       "
       >
         <div className="flex items-center gap-2 backdrop-blur-sm">

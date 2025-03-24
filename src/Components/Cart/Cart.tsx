@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./Cart.css";
 import arrow_icon from "../../assets/icons/up-icon.png";
 import close_icon from "../../assets/icons/close-icon.png";
-import debit_card from "../../assets/icons/debit-card-icon.png";
-import paypal_icon from "../../assets/icons/paypal-icon.png";
+import credit_card from "../../assets/icons/credit-card-icon.png";
 import cart_icon from "../../assets/icons/cart-icon.png";
+import { Link } from "react-router-dom";
 
 interface CartItem {
   id: string | number;
@@ -154,24 +154,20 @@ const Cart: React.FC<CartProps> = ({
               </div>
               <p className="dark:text-white text-black">
                 I agree to the &nbsp;
-                <span className="text-blue-700 dark:text-blue-300 hover:underline cursor-pointer">
-                  licence(s) and agreement(s)
-                </span>
+                <Link to={"/terms"}>
+                  <span className="text-blue-700 dark:text-blue-300 hover:underline cursor-pointer">
+                    licence(s) and agreement(s)
+                  </span>
+                </Link>
               </p>
             </div>
 
-            <div className="flex flex-col items-center justify-between">
-              <div className="flex items-center justify-center w-[350px] mb-3 py-3 bg-purple-950 dark:bg-blueGreen dark:text-black text-white font-trap rounded-lg cursor-pointer">
-                <img
-                  className="w-4 mr-3 dark:invert-0 invert"
-                  src={debit_card}
-                  alt="debit card"
-                />
-                Credit/Debit Card
-              </div>
-
-              <button className="flex items-center justify-center w-[350px] dark:bg-platinum bg-gray-300 border border-black hover:bg-nicePurple/10 rounded-lg py-3">
-                <img className="w-[70px]" src={paypal_icon} alt="paypal" />
+            <div className="checkout flex justify-self-center">
+              <button className="w-[350px] mb-3 py-[10px] bg-black dark:bg-blueGreen dark:text-black text-white text-lg  rounded-lg cursor-pointer">
+                Checkout{" "}
+                <span className="dark:text-black text-white font-black">
+                  &rarr;
+                </span>
               </button>
             </div>
           </div>
