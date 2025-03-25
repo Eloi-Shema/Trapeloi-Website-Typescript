@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Login.css";
-import logo from "../../assets/logo-white.png";
+import logo from "../../assets/logo-white - 1.png";
 import bgImage from "../../assets/ambient-studio.png";
 import google from "../../assets/icons/google-icon.png";
 import { Link } from "react-router-dom";
@@ -21,7 +21,7 @@ const Login: React.FC = () => {
       {isLoading ? (
         <div className="relative flex items-center justify-center h-screen">
           <div className="absolute inset-0">
-            <div className="bg-black/50 absolute inset-0 z-10"></div>
+            <div className="dark:bg-black/20 bg-black/50 absolute inset-0 z-10"></div>
             <div className="h-full w-full">
               <img
                 className="w-full h-full object-cover grayscale"
@@ -32,28 +32,71 @@ const Login: React.FC = () => {
           </div>
 
           <div className="flex flex-col items-center justify-between justify-self-center w-96 h-[640px] py-10 dark:bg-bgBlack bg-platinum rounded-md xs:scale-90 md:scale-100 z-20">
-            <Link to="/">
-              <img
-                className="w-32 opacity-90 invert dark:invert-0 cursor-pointer"
-                src={logo}
-                alt=""
-              />
-            </Link>
+            <div className="flex items-center xs:text-lg md:text-xl lg:text-2xl text-black dark:text-white font-bold">
+              {loginState === "Login" ? (
+                <p className="font-montserrat">Sign In to&nbsp;</p>
+              ) : (
+                <p className="font-montserrat">Sign Up to&nbsp;</p>
+              )}
+              <Link to="/">
+                <img
+                  className="w-24 mt-1 opacity-90 invert dark:invert-0 cursor-pointer"
+                  src={logo}
+                  alt=""
+                />
+              </Link>
+            </div>
 
-            <div className="input-field relative flex flex-col">
+            <div className="flex flex-col gap-5 w-full px-4">
               {loginState === "Login" ? (
                 <></>
               ) : (
-                <div className="flex flex-col">
-                  <label htmlFor="username">Username</label>
-                  <input type="text" placeholder="John Doe" />
+                <div className="relative flex flex-col">
+                  <input
+                    type="text"
+                    id="username"
+                    autoComplete="username"
+                    placeholder=""
+                    className="peer w-full bg-black/5 dark:bg-white/5 px-3 pt-5 pb-2 mb-4 text-black dark:text-white rounded-lg placeholder:bg-red-300 border-b-2 border-black/50 dark:border-white/70 dark:focus:border-transparent focus:border-transparent dark:focus:border-blueGreen outline-none focus:ring-2 focus:ring-black/50 dark:focus:ring-white/60 autofill:bg-black autofill:text-black autofill:shadow-[inset_0_0_50px_1000px_slate] transition-all duration-300"
+                  />
+                  <label
+                    htmlFor="username"
+                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-600 peer-focus:top-1 peer-focus:text-xs peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                  >
+                    Username
+                  </label>
                 </div>
               )}
 
-              <label htmlFor="email">Email</label>
-              <input type="email" placeholder="artist@gmail.com" />
-              <label htmlFor="password">Password</label>
-              <input type="password" placeholder="Enter your Password" />
+              <div className="relative flex flex-col">
+                <input
+                  type="email"
+                  id="email"
+                  placeholder=""
+                  className="peer w-full bg-black/5 dark:bg-white/5 px-3 pt-5 pb-2 mb-4 text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 dark:focus:border-transparent focus:border-transparent dark:focus:border-blueGreen outline-none focus:ring-2 focus:ring-black/50 dark:focus:ring-white/60 transition-all duration-300"
+                />
+                <label
+                  htmlFor="email"
+                  className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-600 peer-focus:top-1 peer-focus:text-xs peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                >
+                  Email
+                </label>
+              </div>
+
+              <div className="relative flex flex-col">
+                <input
+                  type="password"
+                  id="password"
+                  placeholder=""
+                  className="peer w-full bg-black/5 dark:bg-white/5 px-3 pt-5 pb-2 mb-4 text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 dark:focus:border-transparent focus:border-transparent dark:focus:border-blueGreen outline-none focus:ring-2 focus:ring-black/50 dark:focus:ring-white/60 transition-all duration-300"
+                />
+                <label
+                  htmlFor="password"
+                  className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-600 peer-focus:top-1 peer-focus:text-xs peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                >
+                  Password
+                </label>
+              </div>
               {loginState === "Login" ? (
                 <button
                   className="bg-perfectBlue text-white mt-2 mx-8 py-2 rounded-md hover:bg-perfectBlue/80 transition-all duration-150"

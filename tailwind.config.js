@@ -23,7 +23,7 @@ export default {
         platinum: "rgb(229, 228, 226)",
       },
       screens: {
-        xs: "320px",
+        xs: "305px",
         sm: "400px",
         md: "769px",
         lg: "1024px",

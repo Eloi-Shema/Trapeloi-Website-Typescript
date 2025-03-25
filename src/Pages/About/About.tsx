@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Loading from "../../Components/Loading/Loading";
-import AltNavbar from "../../Components/Navbar/AltNavbar";
+import AltNavbar from "../../Components/Header/AltHeader";
 
 const About = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);

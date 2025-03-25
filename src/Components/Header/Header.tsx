@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Navbar.css";
+import "./Header.css";
 import logo_dark from "../../assets/logo-blue electric.png";
 import logo_light from "../../assets/logo-purple.png";
 import logo from "../../assets/logo-white.png";
@@ -10,7 +10,7 @@ import ThemeToggle from "../theme/ThemeToggle";
 import { switchTheme } from "../../hooks/switchTheme";
 import { motion } from "framer-motion";
 
-interface NavbarProps {
+interface HeaderProps {
   toggleCart: () => void;
   cartCount: number;
   warning?: string | null;
@@ -19,7 +19,7 @@ interface NavbarProps {
   scrollToPricing: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({
+const Header: React.FC<HeaderProps> = ({
   toggleCart,
   cartCount,
   warning,
@@ -52,7 +52,7 @@ const Navbar: React.FC<NavbarProps> = ({
   return (
     <div className="fixed xs:inset-x-0 md:inset-x-10 xs:inset-y-0 md:inset-y-5 h-[60px] backdrop-blur-sm  transition-all duration-300 z-30">
       {isScrolled ? (
-        <motion.nav
+        <motion.header
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: isScrolled ? 0 : -100, opacity: isScrolled ? 1 : 0 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
@@ -104,9 +104,9 @@ const Navbar: React.FC<NavbarProps> = ({
               />
             </button>
           </div>
-        </motion.nav>
+        </motion.header>
       ) : (
-        <nav className="header-content relative py-8 px-5 bg-transparent backdrop-blur-sm">
+        <header className="header-content relative py-8 px-5 bg-transparent backdrop-blur-sm">
           <Link to="/">
             <img className="xs:w-32 md:w-36" src={logo} alt="Logo" />
           </Link>
@@ -139,7 +139,7 @@ const Navbar: React.FC<NavbarProps> = ({
               />
             </button>
           </div>
-        </nav>
+        </header>
       )}
 
       {isOpen && (
@@ -161,4 +161,4 @@ const Navbar: React.FC<NavbarProps> = ({
   );
 };
 
-export default Navbar;
+export default Header;

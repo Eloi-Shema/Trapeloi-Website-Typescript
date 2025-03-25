@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Home.css";
 import IntroSection from "../../Components/IntroSection/IntroSection.tsx";
-import Navbar from "../../Components/Navbar/Navbar.tsx";
+import Header from "../../Components/Header/Header.tsx";
 import Store from "../../Components/Store/Store.tsx";
 import Benefits from "../../Components/Benefits/Benefits.tsx";
 import Pricing from "../../Components/Pricing/Pricing.tsx";
@@ -121,7 +121,7 @@ const Home: React.FC = () => {
     <>
       {isLoading ? (
         <div className="page-layout">
-          <Navbar
+          <Header
             toggleCart={toggleCart}
             cartCount={cart.length}
             warning={warning}

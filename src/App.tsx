@@ -6,6 +6,7 @@ import Terms from "./Pages/Terms/Terms";
 import Privacy from "./Pages/Privacy/Privacy";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import About from "./Pages/About/About";
+import Checkout from "./Pages/Checkout/Checkout";
 
 const App: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/about" element={<About />} />

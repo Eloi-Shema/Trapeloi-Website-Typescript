@@ -1,4 +1,4 @@
-import "./Navbar.css";
+import "./Header.css";
 import logo_dark from "../../assets/logo-blue electric.png";
 import logo_light from "../../assets/logo-purple.png";
 import { Link } from "react-router-dom";
@@ -6,11 +6,11 @@ import dark_icon from "../../assets/icons/dark-icon.png";
 import light_icon from "../../assets/icons/light-icon.png";
 import { switchTheme } from "../../hooks/switchTheme";
 
-const AltNavbar: React.FC = () => {
+const AltHeader2: React.FC = () => {
   const { theme, toggleTheme } = switchTheme();
 
   return (
-    <nav className="header-content fixed inset-0 py-8 xs:px-8 md:px-20 bg-white/90 dark:bg-black/80">
+    <header className="header-content fixed inset-0 py-8 xs:px-8 md:px-20 bg-white/90 dark:bg-black/80 z-30">
       <Link to="/">
         {theme === "dark" ? (
           <img className="xs:w-32 md:w-36" src={logo_dark} alt="Logo" />
@@ -31,15 +31,9 @@ const AltNavbar: React.FC = () => {
             <img src={dark_icon} alt="Dark Mode Icon" />
           )}
         </button>
-
-        <Link to="/login">
-          <button className="login-btn bg-black text-white dark:bg-white dark:text-black">
-            Log In
-          </button>
-        </Link>
       </div>
-    </nav>
+    </header>
   );
 };
 
-export default AltNavbar;
+export default AltHeader2;

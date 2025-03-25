@@ -1,0 +1,65 @@
+.layout {
+  max-width: 1536px;
+  margin: 0 auto;
+}
+
+input:-webkit-autofill {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  color: black !important;
+  -webkit-text-fill-color: black !important;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5) !important;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+.dark input:-webkit-autofill {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: white !important;
+  -webkit-text-fill-color: white !important;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.6) !important;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+.check-box span {
+  display: flex;
+  width: 18px;
+  height: 18px;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 4px;
+  margin-right: 10px;
+  position: relative;
+  cursor: pointer;
+}
+.dark .check-box span {
+  background-color: rgb(9, 16, 15);
+  border: 1px solid rgb(115, 137, 135);
+}
+
+.check-box input:checked + span {
+  background-color: rgb(168, 40, 248);
+  border: 1px solid transparent;
+}
+.dark .check-box input:checked + span {
+  background-color: rgb(0, 182, 173);
+  border: 1px solid transparent;
+}
+
+.check-box input:checked + span:after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 0;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  transition: all 0.15s ease-in-out;
+}
+
+.checkout span {
+  transition: all 0.3s ease-in-out;
+}
+.checkout:hover span {
+  margin-left: 15px;
+}

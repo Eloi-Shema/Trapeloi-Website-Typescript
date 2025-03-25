@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./Cart.css";
 import arrow_icon from "../../assets/icons/up-icon.png";
 import close_icon from "../../assets/icons/close-icon.png";
-import credit_card from "../../assets/icons/credit-card-icon.png";
 import cart_icon from "../../assets/icons/cart-icon.png";
 import { Link } from "react-router-dom";
 
@@ -144,8 +143,8 @@ const Cart: React.FC<CartProps> = ({
           </div>
           <hr className="my-2 dark:border-gray-100 border-gray-800 opacity-50" />
 
-          <div className="my-3">
-            <div className="flex items-center text-[13px] mb-3">
+          <div className="my-5">
+            <div className="flex items-center text-[13px] mb-5">
               <div>
                 <label className="check-box">
                   <input className="hidden" type="checkbox" />
@@ -163,12 +162,14 @@ const Cart: React.FC<CartProps> = ({
             </div>
 
             <div className="checkout flex justify-self-center">
-              <button className="w-[350px] mb-3 py-[10px] bg-black dark:bg-blueGreen dark:text-black text-white text-lg  rounded-lg cursor-pointer">
-                Checkout{" "}
-                <span className="dark:text-black text-white font-black">
-                  &rarr;
-                </span>
-              </button>
+              <Link to={"/checkout"}>
+                <button className="w-[350px] mb-3 py-[10px] bg-black dark:bg-blueGreen dark:text-black text-white text-lg  rounded-lg cursor-pointer">
+                  Checkout{" "}
+                  <span className="dark:text-black text-white font-black">
+                    &rarr;
+                  </span>
+                </button>
+              </Link>
             </div>
           </div>
         </div>

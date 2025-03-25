@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Loading from "../../Components/Loading/Loading";
-import AltNavbar from "../../Components/Navbar/AltNavbar";
+import AltHeader from "../../Components/Header/AltHeader";
 
 const Privacy = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -15,7 +15,7 @@ const Privacy = () => {
     <>
       {isLoading ? (
         <main className="m-auto max-w-[1536px] flex flex-col gap-8 dark:text-white text-black xs:text-base md:text-lg dark:bg-black bg-platinum xs:py-10 md:py-16 xs:px-8 md:px-20 font-montserrat">
-          <AltNavbar />
+          <AltHeader />
 
           <h1 className="head dark:text-white text-black xs:text-4xl md:text-5xl font-trap font-black text-center mt-10 mb-5">
             Privacy Policy
