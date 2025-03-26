@@ -1,7 +1,11 @@
 import React from "react";
 import "./Footer.css";
 import logo from "../../assets/logo-white.png";
-import { GmailIcon, YoutubePlayIcon, InstagramIcon } from "../icons/icons";
+import {
+  GmailIcon,
+  YoutubePlayIcon,
+  InstagramIcon,
+} from "../../utils/icons/icons";
 import { Link } from "react-router-dom";
 
 interface FooterProps {

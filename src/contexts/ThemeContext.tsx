@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { applyThemeMode, getDefaultTheme } from "../utils/themeMode";
+import { applyThemeMode, getDefaultTheme } from "../utils/ThemeMode/themeMode";
 
 type Theme = "light" | "dark";
 

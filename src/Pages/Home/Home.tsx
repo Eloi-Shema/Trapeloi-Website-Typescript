@@ -25,7 +25,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     setTimeout(() => {
       SetIsLoading(true);
-    }, 3000);
+    }, 1500);
   }, []);
 
   //SAVE THE CURRENT DISPLAY STATE OF CART BOX AND ADDED/REMOVED CART ITEMS

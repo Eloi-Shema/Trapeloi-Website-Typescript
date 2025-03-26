@@ -7,7 +7,7 @@ import {
   YoutubeIcon,
   TidalIcon,
   SoundcloudIcon,
-} from "../icons/icons";
+} from "../../utils/icons/icons";
 
 const Benefits: React.FC = () => {
   return (

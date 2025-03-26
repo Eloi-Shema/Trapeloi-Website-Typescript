@@ -13,7 +13,7 @@ const Login: React.FC = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(true);
-    }, 3000);
+    }, 1500);
   }, []);
 
   return (
@@ -55,7 +55,7 @@ const Login: React.FC = () => {
                   <input
                     type="text"
                     id="username"
-                    autoComplete="username"
+                    autoComplete="name"
                     placeholder=""
                     className="peer w-full bg-black/5 dark:bg-white/5 px-3 pt-5 pb-2 mb-4 text-black dark:text-white rounded-lg placeholder:bg-red-300 border-b-2 border-black/50 dark:border-white/70 dark:focus:border-transparent focus:border-transparent dark:focus:border-blueGreen outline-none focus:ring-2 focus:ring-black/50 dark:focus:ring-white/60 autofill:bg-black autofill:text-black autofill:shadow-[inset_0_0_50px_1000px_slate] transition-all duration-300"
                   />
@@ -72,6 +72,7 @@ const Login: React.FC = () => {
                 <input
                   type="email"
                   id="email"
+                  autoComplete="email"
                   placeholder=""
                   className="peer w-full bg-black/5 dark:bg-white/5 px-3 pt-5 pb-2 mb-4 text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 dark:focus:border-transparent focus:border-transparent dark:focus:border-blueGreen outline-none focus:ring-2 focus:ring-black/50 dark:focus:ring-white/60 transition-all duration-300"
                 />
