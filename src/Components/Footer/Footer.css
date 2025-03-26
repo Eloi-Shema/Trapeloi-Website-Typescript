@@ -1,8 +1,0 @@
-.privacy p {
-  margin-left: 20px;
-  transition: all 0.3s;
-}
-.privacy p:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}

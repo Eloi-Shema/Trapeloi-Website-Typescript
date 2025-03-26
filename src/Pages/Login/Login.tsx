@@ -32,7 +32,7 @@ const Login: React.FC = () => {
           </div>
 
           <div className="flex flex-col items-center justify-between justify-self-center w-96 h-[640px] py-10 dark:bg-bgBlack bg-platinum rounded-md xs:scale-90 md:scale-100 z-20">
-            <div className="flex items-center xs:text-lg md:text-xl lg:text-2xl text-black dark:text-white font-bold">
+            <div className="flex items-center text-2xl text-black dark:text-white font-bold">
               {loginState === "Login" ? (
                 <p className="font-montserrat">Sign In to&nbsp;</p>
               ) : (

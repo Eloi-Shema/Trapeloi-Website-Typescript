@@ -40,10 +40,10 @@ const Checkout = () => {
   };
 
   return (
-    <div className="layout h-screen  bg-platinum dark:bg-bgBlack dark:text-white text-black font-montserrat">
+    <main className="layout flex xs:flex-col lg:flex-row bg-platinum dark:bg-bgBlack dark:text-white text-black font-montserrat px-10 py-5">
       <AltHeader2 />
 
-      <div className=" flex flex-col items-center mt-16 px-5">
+      <div className="flex flex-col lg:w-[59%] mt-16 px-5 overflow-hidden">
         <div className="flex flex-col items-center justify-center gap-3 mt-3">
           <p className="text-sm text-gray-600 dark:text-gray-300">
             Express checkout
@@ -86,7 +86,7 @@ const Checkout = () => {
             </label>
           </form>
           <div className="flex items-center mb-10">
-            <label className="check-box flex">
+            <label className="checkout-checkbox flex">
               <input type="checkbox" className="hidden" />
               <span className="transition-all duration-150 ease-linear"></span>
             </label>
@@ -97,7 +97,7 @@ const Checkout = () => {
           </div>
         </div>
 
-        <div className="leading-5">
+        <div className="leading-5 mb-10">
           <h3 className="font-semibold text-xl mb-3 font-montserrat">
             Payment
           </h3>
@@ -200,8 +200,124 @@ const Checkout = () => {
             </div>
           </div>
         </div>
+
+        <div className="leading-5">
+          <h3 className="font-semibold text-xl mb-3 font-montserrat">
+            Billing address
+          </h3>
+
+          <div className="bg-white/20 dark:bg-white/5">
+            <div className="payment flex flex-col px-4 gap-2 py-5 rounded-xl border border-gray-400 dark:border-gray-700">
+              <form className="relative flex flex-col">
+                <select
+                  id="country"
+                  className="peer w-full bg-black/5 dark:bg-white/5 px-3 pt-5 pb-2 mb-4 text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 dark:focus:border-transparent focus:border-transparent dark:focus:border-blueGreen outline-none focus:ring-2 focus:ring-black/50 dark:focus:ring-white/60 transition-all duration-300"
+                >
+                  <option>Choose your Country/Region</option>
+                </select>
+
+                <label
+                  htmlFor="country"
+                  className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-xs peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                >
+                  Country/Region
+                </label>
+              </form>
+
+              <div className="flex items-center justify-between">
+                <form className="relative flex flex-col basis-[49.5%]">
+                  <input
+                    type="text"
+                    id="first-name"
+                    autoComplete="name"
+                    placeholder=""
+                    className="peer w-full bg-black/5 dark:bg-white/5 px-3 pt-5 pb-2 mb-4 text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 dark:focus:border-transparent focus:border-transparent dark:focus:border-blueGreen outline-none focus:ring-2 focus:ring-black/50 dark:focus:ring-white/60 transition-all duration-300"
+                  />
+                  <label
+                    htmlFor="first-name"
+                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-xs peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                  >
+                    First name
+                  </label>
+                </form>
+
+                <form
+                  autoComplete="off"
+                  className="relative flex flex-col basis-[49.5%]"
+                >
+                  <input
+                    type="text"
+                    id="last-name"
+                    autoComplete="name"
+                    placeholder=""
+                    className="peer w-full bg-black/5 dark:bg-white/5 px-3 pt-5 pb-2 mb-4 text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 dark:focus:border-transparent focus:border-transparent dark:focus:border-blueGreen outline-none focus:ring-2 focus:ring-black/50 dark:focus:ring-white/60 transition-all duration-300"
+                  />
+                  <label
+                    htmlFor="last-name"
+                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-xs peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                  >
+                    Last name
+                  </label>
+                </form>
+              </div>
+
+              <form className="relative flex flex-col">
+                <input
+                  type="text"
+                  id="address"
+                  autoComplete="billing address-line1"
+                  placeholder=""
+                  className="peer w-full bg-black/5 dark:bg-white/5 px-3 pt-5 pb-2 mb-4 text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 dark:focus:border-transparent focus:border-transparent dark:focus:border-blueGreen outline-none focus:ring-2 focus:ring-black/50 dark:focus:ring-white/60 transition-all duration-300"
+                />
+                <label
+                  htmlFor="address"
+                  className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-xs peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                >
+                  Address
+                </label>
+              </form>
+
+              <div className="flex items-center justify-between">
+                <form className="relative flex flex-col basis-[58%]">
+                  <input
+                    type="text"
+                    id="city"
+                    autoComplete="off"
+                    placeholder=""
+                    className="peer w-full bg-black/5 dark:bg-white/5 px-3 pt-5 pb-2 mb-4 text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 dark:focus:border-transparent focus:border-transparent dark:focus:border-blueGreen outline-none focus:ring-2 focus:ring-black/50 dark:focus:ring-white/60 transition-all duration-300"
+                  />
+                  <label
+                    htmlFor="city"
+                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-xs peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                  >
+                    City
+                  </label>
+                </form>
+
+                <form
+                  autoComplete="off"
+                  className="relative flex flex-col basis-[40%]"
+                >
+                  <input
+                    type="text"
+                    id="post"
+                    autoComplete="postal-code"
+                    placeholder=""
+                    className="peer w-full bg-black/5 dark:bg-white/5 px-3 pt-5 pb-2 mb-4 text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 dark:focus:border-transparent focus:border-transparent dark:focus:border-blueGreen outline-none focus:ring-2 focus:ring-black/50 dark:focus:ring-white/60 transition-all duration-300"
+                  />
+                  <label
+                    htmlFor="post"
+                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-xs peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                  >
+                    Postal code (optional)
+                  </label>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </main>
   );
 };
 

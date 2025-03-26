@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./FAQ.css";
 import arrow from "../../assets/icons/up-icon.png";
 import { motion } from "framer-motion";
 

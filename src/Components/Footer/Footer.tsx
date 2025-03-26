@@ -1,5 +1,4 @@
 import React from "react";
-import "./Footer.css";
 import logo from "../../assets/logo-white.png";
 import {
   GmailIcon,
