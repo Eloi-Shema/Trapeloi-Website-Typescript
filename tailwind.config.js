@@ -20,10 +20,10 @@ export default {
         dimGold: "rgba(255, 200, 10, 0.833)",
         bgGreen: "rgba(8, 255, 193, 0.15)",
         perfectBlue: "rgb(65, 105, 225)",
-        platinum: "rgb(229, 228, 226)",
+        platinum: "rgb(239, 239, 239)",
       },
       screens: {
-        xs: "305px",
+        xs: "130px",
         sm: "400px",
         md: "769px",
         lg: "1024px",
