@@ -11,13 +11,7 @@ import Footer from "../../Components/Footer/Footer.tsx";
 import Cart from "../../Components/Cart/Cart.tsx";
 import logo from "../../assets/logo-white.png";
 import { motion } from "framer-motion";
-
-interface BeatType {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-}
+import { useCart } from "../../hooks/useCart.ts";
 
 const Home: React.FC = () => {
   //LOAD THE PAGE
@@ -28,72 +22,18 @@ const Home: React.FC = () => {
     }, 1500);
   }, []);
 
-  //SAVE THE CURRENT DISPLAY STATE OF CART BOX AND ADDED/REMOVED CART ITEMS
-
-  const [isCartVisible, setIsCartVisible] = useState<boolean>(() => {
-    const saveCartDisplay = localStorage.getItem("isCartVisible");
-    return saveCartDisplay === "true";
-  });
-
-  useEffect(() => {
-    localStorage.setItem("isCartVisible", JSON.stringify(isCartVisible));
-  }, [isCartVisible]);
-
-  const toggleCart = () => {
-    setIsCartVisible(!isCartVisible);
-  };
-
-  const [cart, setCart] = useState<BeatType[]>(() => {
-    const savedCart = localStorage.getItem("cart");
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
-
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
-
-  //ADDING ITEMS TO CARTSET THE WARNING MESSAGE WHEN THE SAME ITEM IS ADDED IN CART
-
-  const [warning, setWarning] = useState<string>("");
-  const [animate, setAnimate] = useState<boolean>(false);
-  const timeOutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const addToCart = (beat: BeatType) => {
-    setCart((prevCart) => {
-      const isAdded = prevCart.some((item) => item.id === beat.id);
-      if (isAdded) {
-        if (timeOutRef.current) {
-          clearTimeout(timeOutRef.current);
-        }
-
-        setWarning(`${beat.name} is already added in the Cart!`);
-        setAnimate(true);
-        setTimeout(() => {
-          setAnimate(false);
-        }, 500);
-
-        timeOutRef.current = setTimeout(() => {
-          setWarning("");
-        }, 3000);
-        return prevCart;
-      } else {
-        setWarning("");
-        return [...prevCart, beat];
-      }
-    });
-  };
-
-  //REMOVE/DELETE THE ITEMS FROM THE CART
-
-  const removeFromCart = (beatId: string | number) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== beatId));
-  };
-  const clearCart = () => {
-    setCart([]);
-  };
-
-  //CALCULATING THE PRICE OF ADDED ITEMS
-  const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+  //USE CART INFO FROM CONTEXT, FOR EASE USE ACROSS PAGES
+  const {
+    isVisible: isCartVisible,
+    toggleCart,
+    cart,
+    addToCart,
+    warning,
+    animate,
+    removeFromCart,
+    clearCart,
+    totalPrice,
+  } = useCart();
 
   //HANDLING SCROLLS TO HOME AND STORE ON BUTTON CLICKS THROUGHOUT THE HOMEPAGE
   const storeRef = useRef<HTMLDivElement | null>(null);

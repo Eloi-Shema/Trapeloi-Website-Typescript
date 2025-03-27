@@ -11,8 +11,11 @@ import {
 import AltHeader2 from "../../Components/Header/AltHeader2";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useCart } from "../../hooks/useCart";
 
 const Checkout = () => {
+  const { cart, totalPrice } = useCart();
+
   const [cardNumber, setCardNumber] = useState<string>("");
   const [expiryDate, setExpiryDate] = useState<string>("");
 
@@ -78,10 +81,10 @@ const Checkout = () => {
   };
 
   return (
-    <main className="layout flex xs:flex-col md:flex-row bg-platinum dark:bg-black dark:text-white text-black font-montserrat xs:px-4 md:px-10">
+    <main className="layout flex xs:flex-col md:flex-row justify-evenly gap-10 bg-platinum dark:bg-black dark:text-white text-black font-montserrat xs:px-4 md:px-10">
       <AltHeader2 />
 
-      <div className="flex flex-col h-full w-min-[45%] dark:bg-bgBlack/60 bg-white/60 mt-16 px-5 overflow-hidden">
+      <div className="flex flex-col w-min-[45%] h-full dark:bg-bgBlack/60 bg-white/60 mt-16 px-5 overflow-hidden">
         <div className="flex flex-col items-center justify-center gap-3 mt-3 mb-10">
           <p className="text-sm text-gray-600 dark:text-gray-300">
             Express checkout
@@ -379,6 +382,47 @@ const Checkout = () => {
           <p className="flex justify-center items-center text-sm dark:text-gray-400 text-gray-600">
             <span className="mr-1 grayscale">&#x1F512;</span> Secure checkout
           </p>
+        </div>
+      </div>
+
+      <div className="flex flex-col w-[600px] h-full dark:bg-bgBlack/60 bg-white/30 mt-16 px-5 py-10 overflow-hidden gap-5">
+        {cart.map((beat) => (
+          <div className="flex flex-col">
+            <div className="flex items-center justify-between w-full truncate">
+              <div className="flex items-center justify-center gap-3">
+                <img src={beat.image} alt="" className="w-16 rounded-lg" />
+                <p className="font-kanit font-light">{beat.name}</p>
+              </div>
+
+              <div className="font-kanit">${beat.price / 100}</div>
+            </div>
+          </div>
+        ))}
+
+        <hr className="w-full " />
+
+        <div className="flex items-start justify-between gap-3 ">
+          <form className="relative w-full truncate">
+            <input
+              type="text"
+              id="gift"
+              placeholder=""
+              className="peer w-full bg-black/[2%] dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+            />
+            <label
+              htmlFor="gift"
+              className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-xs peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+            >
+              Discount code or gift card
+            </label>
+          </form>
+          <button className="border-2 border-black/30 dark:border-white/60 dark:text-white/50 text-black/60 py-2 px-5 mt-[2px] font-kanit text-sm rounded-lg hover:bg-black/5 dark:hover:bg-white/10 transition-all duration-150 ">
+            Apply
+          </button>
+        </div>
+        <div className="flex items-center justify-between text-lg">
+          <p className="font-kanit">Total</p>
+          <p className="font-kanit">${totalPrice / 100}</p>
         </div>
       </div>
     </main>

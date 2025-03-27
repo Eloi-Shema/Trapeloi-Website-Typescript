@@ -69,10 +69,3 @@ p {
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
-
-.checkout span {
-  transition: all 0.3s ease-in-out;
-}
-.checkout:hover span {
-  margin-left: 15px;
-}

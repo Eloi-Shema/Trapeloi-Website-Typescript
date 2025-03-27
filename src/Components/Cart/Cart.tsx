@@ -3,7 +3,7 @@ import "./Cart.css";
 import arrow_icon from "../../assets/icons/up-icon.png";
 import close_icon from "../../assets/icons/close-icon.png";
 import cart_icon from "../../assets/icons/cart-icon.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface CartItem {
   id: string | number;
@@ -31,6 +31,7 @@ const Cart: React.FC<CartProps> = ({
   cartCount,
   totalPrice,
 }) => {
+  const navigate = useNavigate();
   const [isRendered, setIsRendered] = useState<boolean>(isVisible);
   const [firstRender, setFirstRendered] = useState<boolean>(isVisible);
 
@@ -161,15 +162,25 @@ const Cart: React.FC<CartProps> = ({
               </p>
             </div>
 
-            <div className="checkout flex justify-self-center">
-              <Link to={"/checkout"}>
-                <button className="w-[350px] mb-3 py-[10px] bg-black dark:bg-blueGreen dark:text-black text-white text-lg  rounded-lg cursor-pointer">
+            <div className="group flex justify-self-center transition-all">
+              {cartItems.length > 0 ? (
+                <button
+                  onClick={() => navigate("/checkout")}
+                  className="w-[350px] mb-3 py-[10px] bg-black dark:bg-blueGreen dark:text-black text-white text-lg  rounded-lg cursor-pointer"
+                >
+                  Checkout{" "}
+                  <span className="dark:text-black text-white font-black ml-0 group-hover:ml-2 duration-500">
+                    &rarr;
+                  </span>
+                </button>
+              ) : (
+                <button className="w-[350px] mb-3 py-[10px] bg-gray-500 dark:bg-gray-400 dark:text-black text-white text-lg  rounded-lg cursor-default">
                   Checkout{" "}
                   <span className="dark:text-black text-white font-black">
                     &rarr;
                   </span>
                 </button>
-              </Link>
+              )}
             </div>
           </div>
         </div>

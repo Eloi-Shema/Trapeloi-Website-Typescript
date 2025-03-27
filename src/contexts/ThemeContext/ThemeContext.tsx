@@ -1,5 +1,8 @@
 import { createContext, useEffect, useState } from "react";
-import { applyThemeMode, getDefaultTheme } from "../utils/ThemeMode/themeMode";
+import {
+  applyThemeMode,
+  getDefaultTheme,
+} from "../../utils/ThemeMode/themeMode";
 
 type Theme = "light" | "dark";
 
@@ -16,7 +19,7 @@ interface ThemeProviderProps {
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>(() => {
     return getDefaultTheme();
-  }); //initialize theme
+  });
 
   useEffect(() => {
     applyThemeMode(theme);
@@ -41,4 +44,4 @@ export const ThemeContext = createContext<ThemeContextType>({
   theme: "dark",
   toggleTheme: () => {},
   setNewTheme: () => {},
-}); //context with dark mode as default
+});
