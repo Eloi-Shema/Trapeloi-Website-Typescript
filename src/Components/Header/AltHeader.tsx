@@ -2,8 +2,8 @@ import "./Header.css";
 import logo_dark from "../../assets/logo-blue electric.png";
 import logo_light from "../../assets/logo-purple.png";
 import { Link } from "react-router-dom";
-import dark_icon from "../../assets/icons/dark-icon.png";
-import light_icon from "../../assets/icons/light-icon.png";
+import dark_icon from "../../assets/icons/moon.svg";
+import light_icon from "../../assets/icons/sun.svg";
 import { switchTheme } from "../../hooks/switchTheme";
 
 const AltHeader: React.FC = () => {

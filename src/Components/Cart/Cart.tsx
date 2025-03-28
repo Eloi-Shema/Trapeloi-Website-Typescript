@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./Cart.css";
-import arrow_icon from "../../assets/icons/up-icon.png";
-import close_icon from "../../assets/icons/close-icon.png";
-import cart_icon from "../../assets/icons/cart-icon.png";
+import arrow_icon from "../../assets/icons/arrow.svg";
+import close_icon from "../../assets/icons/close.svg";
+import cart_icon from "../../assets/icons/cart.svg";
 import { Link, useNavigate } from "react-router-dom";
 
 interface CartItem {
@@ -56,7 +56,7 @@ const Cart: React.FC<CartProps> = ({
     isRendered && (
       <div
         onAnimationEnd={handleAnimationEnd}
-        className={`cart-box fixed xs:top-0 sm:top-[65px] md:top-[75px] xs:w-[350px] sm:w-96 right-0 dark:bg-bgBlack bg-gray-200 rounded-tl-xl rounded-bl-xl transition-transform duration-500 z-50 ${
+        className={`cart-box fixed xs:top-0 sm:top-[65px] md:top-[75px] xs:w-[350px] sm:w-96 right-0 dark:bg-bgBlack bg-gray-200 rounded-tl-xl rounded-bl-xl transition-transform duration-500 z-40 ${
           firstRender && isVisible ? "translate-x-0" : "translate-x-full"
         }`}
         style={{ willChange: "transform" }}
@@ -66,7 +66,7 @@ const Cart: React.FC<CartProps> = ({
             <h2 className="font-semibold">Your Cart</h2>
             <img
               onClick={toggleCart}
-              className="dark:invert invert-0 w-4 rotate-90 cursor-pointer"
+              className="dark:invert invert-0 w-6 rotate-90 cursor-pointer"
               src={arrow_icon}
               alt=""
             />
@@ -103,9 +103,9 @@ const Cart: React.FC<CartProps> = ({
                             </p>
                           </div>
                         </div>
-                        <div className="flex flex-col items-center justify-between h-12">
+                        <div className="flex flex-col items-center justify-between h-12 -mt-2">
                           <img
-                            className="dark:invert invert-0 w-3 cursor-pointer opacity-60"
+                            className="dark:invert invert-0 w-4 cursor-pointer opacity-60"
                             src={close_icon}
                             onClick={() => removeFromCart(item.id)}
                             alt="remove icon"

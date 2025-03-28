@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { switchTheme } from "../../hooks/switchTheme";
-import dark_icon from "../../assets/icons/dark-icon.png";
-import light_icon from "../../assets/icons/light-icon.png";
+import dark_icon from "../../assets/icons/moon.svg";
+import light_icon from "../../assets/icons/sun.svg";
 
 interface ThemeToggleProps {
   className?: string;
@@ -28,7 +28,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = "" }) => {
   return (
     <button
       onClick={toggleTheme}
-      className={`mr-5 w-[18px] ${className}`}
+      className={`mr-5 w-[18px] -rotate-[20deg] ${className}`}
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
     >
       {theme === "dark" ? (

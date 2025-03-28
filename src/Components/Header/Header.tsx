@@ -3,8 +3,8 @@ import "./Header.css";
 import logo_dark from "../../assets/logo-blue electric.png";
 import logo_light from "../../assets/logo-purple.png";
 import logo from "../../assets/logo-white.png";
-import cart_icon from "../../assets/icons/cart-icon.png";
-import close_icon from "../../assets/icons/close-icon.png";
+import cart_icon from "../../assets/icons/cart.svg";
+import close_icon from "../../assets/icons/close.svg";
 import { Link } from "react-router-dom";
 import ThemeToggle from "../theme/ThemeToggle";
 import { switchTheme } from "../../hooks/switchTheme";
@@ -143,7 +143,7 @@ const Header: React.FC<HeaderProps> = ({
       )}
 
       {isOpen && (
-        <div className="absolute right-0 bg-platinum dark:bg-bgBlack/40 dark:backdrop-blur-sm dark:text-white text-black text-sm px-6 py-3 rounded-b-md">
+        <div className="absolute right-0 bg-platinum dark:bg-bgBlack/40 dark:backdrop-blur-sm dark:text-white text-black text-sm px-6 py-3 rounded-tl-md rounded-bl-md">
           <h4 onClick={scrollToStore} className="mb-5 cursor-pointer">
             Beat Store
           </h4>

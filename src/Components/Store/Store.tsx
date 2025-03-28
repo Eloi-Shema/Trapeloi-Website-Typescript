@@ -1,13 +1,13 @@
 import React, { forwardRef, RefObject, useMemo, useState } from "react";
 import "./Store.css";
 import { beatList } from "../../data.ts";
-import cart_icon from "../../assets/icons/cart-icon.png";
-import play_icon from "../../assets/icons/play-icon.png";
-import search_icon from "../../assets/icons/search-icon.png";
-import close_icon from "../../assets/icons/close-icon.png";
-import list_icon from "../../assets/icons/list-view.png";
-import grid_icon from "../../assets/icons/grid-view.png";
-import arrow from "../../assets/icons/up-icon.png";
+import cart_icon from "../../assets/icons/cart.svg";
+import play_icon from "../../assets/icons/play.svg";
+import search_icon from "../../assets/icons/search.svg";
+import close_icon from "../../assets/icons/close.svg";
+import list_icon from "../../assets/icons/list.svg";
+import grid_icon from "../../assets/icons/grid.svg";
+import arrow from "../../assets/icons/arrow.svg";
 import backgroundImage from "../../assets/ambient-studio1.png";
 import { motion } from "framer-motion";
 
@@ -107,7 +107,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
               onClick={clearSearch}
             >
               <img
-                className="w-[14px] dark:invert-0 invert"
+                className="w-5 dark:invert-0 invert"
                 src={close_icon}
                 alt=""
               />
@@ -116,13 +116,13 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
           <button onClick={toggleView}>
             {isGridView ? (
               <img
-                className="xs:hidden md:block absolute md:left-64 lg:left-72 bottom-5 w-[18px] dark:invert invert-0 opacity-80 cursor-pointer"
+                className="xs:hidden md:block absolute md:left-64 lg:left-72 bottom-5 w-6 dark:invert invert-0 opacity-80 cursor-pointer"
                 src={list_icon}
                 alt=""
               />
             ) : (
               <img
-                className="xs:hidden md:block absolute md:left-64 lg:left-72 bottom-5 w-[18px] dark:invert invert-0 opacity-80 cursor-pointer"
+                className="xs:hidden md:block absolute md:left-64 lg:left-72 bottom-5 w-6 dark:invert invert-0 opacity-80 cursor-pointer"
                 src={grid_icon}
                 alt=""
               />
@@ -178,7 +178,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                         {beat.price > 0 ? `$${beat.price / 100}` : "FREE"}{" "}
                       </p>
                       <img
-                        className="w-[15px] invert -mt-[2px] opacity-80"
+                        className="w-[18px] invert -mt-[2px] -ml-1 opacity-80"
                         src={cart_icon}
                         alt=""
                       />
@@ -235,7 +235,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                         {beat.price > 0 ? `$${beat.price / 100}` : "FREE"}
                       </p>
                       <img
-                        className="w-[15px] invert -mt-[2px] opacity-80"
+                        className="w-[18px] invert -mt-[2px] -ml-1 opacity-80"
                         src={cart_icon}
                         alt=""
                       />
@@ -292,7 +292,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                       {beat.price > 0 ? `$${beat.price / 100}` : "FREE"}
                     </p>
                     <img
-                      className="w-3 invert -mt-[2px] opacity-80"
+                      className="w-[18px] invert -mt-[2px] -ml-1 opacity-80"
                       src={cart_icon}
                       alt=""
                     />
@@ -323,11 +323,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 0))}
               disabled={currentPage === 0}
             >
-              <img
-                className="w-[14px] dark:invert -rotate-90"
-                src={arrow}
-                alt=""
-              />
+              <img className="w-5 dark:invert -rotate-90" src={arrow} alt="" />
             </button>
 
             <div className="flex gap-2">
@@ -357,11 +353,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
               }
               disabled={currentPage === totalPages - 1}
             >
-              <img
-                className="w-[14px] dark:invert rotate-90"
-                src={arrow}
-                alt=""
-              />
+              <img className="w-5 dark:invert rotate-90" src={arrow} alt="" />
             </button>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import arrow from "../../assets/icons/up-icon.png";
+import arrow from "../../assets/icons/arrow.svg";
 import { motion } from "framer-motion";
 
 interface FAQItemsTypes {
