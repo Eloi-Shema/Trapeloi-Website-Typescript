@@ -290,7 +290,7 @@ export const GooglePayIcon = () => {
         xmlns="http://www.w3.org/2000/svg"
         width="2500"
         height="992"
-        className="w-40 h-12 bg-black dark:bg-platinum py-[14px] px-10 rounded-lg cursor-pointer transition-colors duration-300"
+        className="xs:w-36 sm:w-40 h-12 bg-black dark:bg-platinum py-[14px] rounded-lg cursor-pointer transition-colors duration-300"
       >
         <g className="fill-white dark:fill-black group-hover:fill-[#bcc0c5] dark:group-hover:fill-[#696d70] transition-all duration-150">
           <path d="M168.58 20.77V56.5h22.04c5.25 0 9.59-1.76 13.02-5.29 3.53-3.52 5.29-7.72 5.29-12.58s-1.76-8.91-5.29-12.44c-3.44-3.62-7.78-5.43-13.02-5.43h-22.04zm0 48.32v41.45h-13.16V8.19h34.91c8.87 0 16.39 2.96 22.6 8.86 6.31 5.9 9.45 13.1 9.45 21.58s-3.14 15.92-9.45 21.72c-6.1 5.82-13.64 8.72-22.6 8.72h-21.75zM235.68 89.08c0 3.44 1.45 6.29 4.37 8.58 2.91 2.28 6.32 3.43 10.23 3.43 5.54 0 10.46-2.05 14.8-6.14 4.34-4.1 6.51-8.91 6.51-14.43-4.1-3.25-9.83-4.86-17.17-4.86-5.34 0-9.8 1.29-13.37 3.86s-5.37 5.75-5.37 9.56m17.03-50.88c9.73 0 17.41 2.59 23.04 7.79s8.43 12.31 8.43 21.36v43.17h-12.59v-9.72h-.57c-5.44 8-12.68 12-21.74 12-7.73 0-14.2-2.28-19.39-6.85-5.2-4.58-7.8-10.29-7.8-17.16 0-7.24 2.73-13 8.22-17.28 5.49-4.29 12.81-6.43 21.96-6.43 7.82 0 14.26 1.43 19.31 4.29v-3c0-4.57-1.81-8.45-5.43-11.64-3.63-3.2-7.86-4.79-12.73-4.79-7.35 0-13.16 3.09-17.45 9.29l-11.6-7.29c6.4-9.15 15.84-13.72 28.34-13.72M356.44 40.49l-43.93 100.9h-13.59l16.31-35.3-28.9-65.6h14.31l20.89 50.31h.28l20.32-50.31z" />
@@ -325,7 +325,7 @@ export const ShopIcon = () => {
         viewBox="0 0 683 164"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-40 h-12 py-3 px-10 rounded-lg bg-[#5A31F4] group-hover:bg-indigo-700 transition-all duration-300 cursor-pointer"
+        className="xs:w-36 sm:w-40 h-12 py-3 px-10 rounded-lg bg-[#5A31F4] group-hover:bg-indigo-700 transition-all duration-300 cursor-pointer"
       >
         <path
           fillRule="evenodd"
@@ -365,7 +365,7 @@ export const PaypalIcon = () => {
         viewBox="0 0 780 501"
         enableBackground="new 0 0 780 501"
         xmlSpace="preserve"
-        className="xs:w-[336px] md:w-40 h-12 bg-yellow-400 hover:bg-amber-300 rounded-lg transition-all duration-300 cursor-pointer"
+        className="xs:w-[300px] sm:w-[336px] lg:w-40 h-12 bg-yellow-400 hover:bg-amber-300 rounded-lg transition-all duration-300 cursor-pointer"
       >
         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
         <g

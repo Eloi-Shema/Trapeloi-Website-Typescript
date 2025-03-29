@@ -13,6 +13,7 @@ import AltHeader2 from "../../Components/Header/AltHeader2";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useCart } from "../../hooks/useCart";
+import Loading from "../../utils/Loading/Loading";
 
 const Checkout = () => {
   const [cardNumber, setCardNumber] = useState<string>("");
@@ -58,7 +59,7 @@ const Checkout = () => {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
   if (error) {
     return <p className="text-red-500">{error}</p>;
@@ -93,13 +94,13 @@ const Checkout = () => {
       <AltHeader2 />
       {/*SMALL SIZE*/}
 
-      <section className="lg:hidden xs:flex flex-col justify-center gap-5 py-20 w-full h-full dark:bg-white/5 bg-white/60 text-gray-600 dark:text-gray-400 rounded-lg">
+      <section className="md:hidden xs:flex flex-col justify-center gap-5 px-5 py-20 w-full h-full dark:bg-white/5 bg-white/60 text-gray-600 dark:text-gray-400 rounded-lg">
         <div className="flex flex-col">
           <div
             onClick={toggleCollapse}
-            className="flex items-center justify-between px-5 text-purple-900 dark:text-white font-semibold transition-all duration-300 ease-in-out cursor-pointer"
+            className="flex items-center justify-between flex-wrap px-5 text-black dark:text-white font-semibold transition-all duration-300 ease-in-out cursor-pointer"
           >
-            <div className="flex items-center py-2">
+            <div className="flex items-center py-2 mr-2">
               <p>Order summary</p>
               <img
                 src={arrow}
@@ -117,20 +118,31 @@ const Checkout = () => {
               isCollapsed ? "h-0 opacity-0" : "h-full opacity-100 py-5"
             } transition-all duration-300`}
           >
-            {cart.map((beat, index) => (
-              <div className="flex flex-col px-5 py-2" key={index}>
-                <div className="flex items-center justify-between w-full truncate">
-                  <div className="flex items-center justify-center gap-3">
-                    <img src={beat.image} alt="" className="w-16 rounded-lg" />
-                    <p className="font-kanit font-light">{beat.name}</p>
-                  </div>
+            <div className="order-summary max-h-60 overflow-y-auto">
+              {cart.map((beat, index) => (
+                <div
+                  className="flex flex-col px-5 py-2 max-h-full opacity-100"
+                  key={index}
+                >
+                  <div className="flex items-center justify-between w-full">
+                    <div className="flex items-center justify-center gap-3">
+                      <img
+                        src={beat.image}
+                        alt=""
+                        className="w-12 rounded-lg"
+                      />
+                      <p className="font-kanit font-light truncate">
+                        {beat.name}
+                      </p>
+                    </div>
 
-                  <div className="font-kanit opacity-80">
-                    ${beat.price / 100}
+                    <div className="font-kanit opacity-80 truncate">
+                      ${beat.price / 100}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
 
             <hr className="invert dark:invert-0 opacity-20 mx-5 mt-2 px-5" />
 
@@ -168,13 +180,13 @@ const Checkout = () => {
             </p>
             <div className="flex xs:flex-col md:flex-row items-center justify-center flex-wrap gap-3">
               <PaypalIcon />
-              <div className="flex items-center justify-center gap-5">
+              <div className="flex items-center justify-center gap-3">
                 <GooglePayIcon />
                 <ShopIcon />
               </div>
             </div>
 
-            <div className="xs:w-1/2 md:w-3/4 flex items-center gap-4 mt-3">
+            <div className="w-1/2 flex items-center gap-4 mt-3">
               <div className="h-px flex-1 bg-gray-300 dark:bg-gray-600"></div>
               <span className="text-xs text-gray-600 dark:text-gray-400 opacity-50 ">
                 OR
@@ -185,7 +197,7 @@ const Checkout = () => {
 
           <div className="leading-5 xs:text-base md:text-xl mb-10">
             <div className="flex items-center justify-between mb-3">
-              <h3 className="font-semibold font-montserrat">Contact</h3>
+              <h3 className="font-semibold font-montserrat mr-1">Contact</h3>
               <Link to={"/login"}>
                 <p className="text-xs text-gray-600 hover:text-black dark:hover:text-white dark:text-gray-400  font-semibold underline cursor-pointer">
                   Login
@@ -227,8 +239,8 @@ const Checkout = () => {
 
             <div className="bg-white/20 dark:bg-white/[2%] border border-gray-400 dark:border-gray-600 rounded-xl">
               <div className="flex items-center justify-between px-3 py-2 mb-3 bg-white dark:bg-white/10 border-b border-dashed border-gray-400 dark:border-gray-500 rounded-t-xl">
-                <p className="font-medium text-sm">Credit card</p>
-                <div className="flex items-center gap-1">
+                <p className="font-medium text-sm mr-1">Credit card</p>
+                <div className="flex items-center flex-wrap gap-1 truncate">
                   <VisaIcon />
                   <MastercardIcon />
                   <AmexIcon />
@@ -451,14 +463,17 @@ const Checkout = () => {
             </div>
           </div>
 
-          <div className="flex justify-center justify-self-center mt-10 mb-1">
+          <div className="flex justify-center justify-self-center mt-10 mb-2">
             <button className="w-full py-4 bg-black dark:bg-platinum text-white dark:text-black font-bold font-montserrat rounded-lg overflow-hidden">
               Pay now
             </button>
           </div>
           <div>
             <p className="flex justify-center items-center text-sm dark:text-gray-400 text-gray-600">
-              <span className="mr-1 grayscale">&#x1F512;</span> Secure checkout
+              <span className="mr-1 grayscale invert dark:invert-0">
+                &#x1F512;
+              </span>{" "}
+              Secure checkout
             </p>
           </div>
         </div>
@@ -466,13 +481,11 @@ const Checkout = () => {
 
       {/*LARGE SIZE*/}
 
-      <section className="xs:hidden lg:flex gap-10 w-full h-full text-gray-600 dark:text-gray-400 rounded-lg">
-        <div className="flex flex-col w-[60%] px-24 py-20 dark:bg-white/5 bg-white/60">
+      <section className="xs:hidden md:flex gap-10 w-full h-full text-gray-600 dark:text-gray-400 rounded-lg">
+        <div className="flex flex-col w-[60%] md:px-10 xl:px-24 py-20 dark:bg-white/5 bg-white/60">
           <div className="flex flex-col items-center justify-center gap-3 mt-3 mb-10">
-            <p className="text-sm text-gray-600 dark:text-gray-300">
-              Express checkout
-            </p>
-            <div className="flex xs:flex-col md:flex-row items-center justify-center flex-wrap gap-3">
+            <p className="text-sm text-gray-400">Express checkout</p>
+            <div className="flex xs:flex-col lg:flex-row items-center justify-center flex-wrap gap-3">
               <PaypalIcon />
               <div className="flex items-center justify-center gap-5">
                 <GooglePayIcon />
@@ -518,7 +531,7 @@ const Checkout = () => {
                 <input type="checkbox" id="checkb" className="hidden" />
                 <span className="transition-all duration-150 ease-linear"></span>
               </label>
-              <p className="xs:text-xs md:text-sm text-gray-600">
+              <p className="text-xs text-gray-600">
                 Email me with news, offers, and free downloads. You can
                 unsubscribe at any time.
               </p>
@@ -757,20 +770,23 @@ const Checkout = () => {
             </div>
           </div>
 
-          <div className="flex justify-center justify-self-center mt-10 mb-1">
+          <div className="flex justify-center justify-self-center mt-10 mb-2">
             <button className="w-full py-4 bg-black dark:bg-platinum text-white dark:text-black font-bold font-montserrat rounded-lg overflow-hidden">
               Pay now
             </button>
           </div>
           <div>
             <p className="flex justify-center items-center text-sm dark:text-gray-400 text-gray-600">
-              <span className="mr-1 grayscale">&#x1F512;</span> Secure checkout
+              <span className="mr-1 grayscale invert dark:invert-0">
+                &#x1F512;
+              </span>{" "}
+              Secure checkout
             </p>
           </div>
         </div>
 
-        <div className="fixed right-0 flex flex-col w-[40%] px-5 py-20 mt-2">
-          <div className="order-summary h-96 overflow-y-auto">
+        <div className="fixed right-0 flex flex-col w-[40%] md:px-1 lg:px-5 py-20 mt-2">
+          <div className="order-summary max-h-60 overflow-y-auto">
             {cart.map((beat, index) => (
               <div
                 className="flex flex-col px-5 py-2 max-h-full opacity-100"
@@ -778,7 +794,11 @@ const Checkout = () => {
               >
                 <div className="flex items-center justify-between w-full truncate">
                   <div className="flex items-center justify-center gap-3">
-                    <img src={beat.image} alt="" className="w-16 rounded-lg" />
+                    <img
+                      src={beat.image}
+                      alt=""
+                      className="md:w-12 lg:w-16 rounded-lg"
+                    />
                     <p className="font-kanit font-light">{beat.name}</p>
                   </div>
 
@@ -790,7 +810,7 @@ const Checkout = () => {
             ))}
           </div>
 
-          <div className="flex items-start justify-between gap-3 px-5 mt-5">
+          <div className="flex items-start justify-between gap-3 px-5 lg:mt-5 md:scale-95 lg:scale-100">
             <form className="relative w-full truncate">
               <input
                 type="text"
@@ -806,11 +826,11 @@ const Checkout = () => {
                 Discount code or gift card
               </label>
             </form>
-            <button className="border-2 border-black/30 dark:border-white/60 dark:text-white/50 text-black/60 py-2 px-5 mt-[2px] font-kanit text-sm rounded-lg hover:bg-black/5 dark:hover:bg-white/10 transition-all duration-150 ">
+            <button className="border-2 border-black/20 dark:border-white/40 dark:text-white/50 text-black/60 py-2 px-5 mt-[2px] font-kanit text-sm rounded-lg hover:bg-black/5 dark:hover:bg-white/10 transition-all duration-150 ">
               Apply
             </button>
           </div>
-          <div className="flex items-center justify-between text-xl dark:text-white/80 text-black/80 p-5 font-medium">
+          <div className="flex items-center justify-between text-lg dark:text-white/80 text-black/80 p-5 font-medium">
             <p>Total</p>
             <p>${totalPrice / 100}</p>
           </div>

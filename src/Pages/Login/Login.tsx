@@ -4,7 +4,7 @@ import logo from "../../assets/logo-white - 1.png";
 import bgImage from "../../assets/ambient-studio.png";
 import google from "../../assets/icons/google.svg";
 import { Link } from "react-router-dom";
-import Loading from "../../Components/Loading/Loading";
+import Loading from "../../utils/Loading/Loading";
 
 const Login: React.FC = () => {
   const [loginState, setLoginState] = useState<string>("Login");

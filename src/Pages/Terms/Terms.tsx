@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import AltHeader from "../../Components/Header/AltHeader";
 import { useEffect, useState } from "react";
-import Loading from "../../Components/Loading/Loading";
+import Loading from "../../utils/Loading/Loading";
 
 const Terms = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);

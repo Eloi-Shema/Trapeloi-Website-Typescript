@@ -34,6 +34,7 @@ const Cart: React.FC<CartProps> = ({
   const navigate = useNavigate();
   const [isRendered, setIsRendered] = useState<boolean>(isVisible);
   const [firstRender, setFirstRendered] = useState<boolean>(isVisible);
+  const [isChecked, setIsChecked] = useState<boolean>(false);
 
   useEffect(() => {
     if (isVisible) {
@@ -148,7 +149,12 @@ const Cart: React.FC<CartProps> = ({
             <div className="flex items-center text-[13px] mb-5">
               <div>
                 <label className="check-box">
-                  <input className="hidden" type="checkbox" />
+                  <input
+                    type="checkbox"
+                    checked={isChecked}
+                    onChange={(event) => setIsChecked(event.target.checked)}
+                    className="hidden"
+                  />
                   <span></span>
                 </label>
               </div>
@@ -164,19 +170,28 @@ const Cart: React.FC<CartProps> = ({
 
             <div className="group flex justify-self-center transition-all">
               {cartItems.length > 0 ? (
-                <button
-                  onClick={() => navigate("/checkout")}
-                  className="w-[350px] mb-3 py-[10px] bg-black dark:bg-blueGreen dark:text-black text-white text-lg  rounded-lg cursor-pointer"
-                >
-                  Checkout{" "}
-                  <span className="dark:text-black text-white font-black ml-0 group-hover:ml-2 duration-500">
-                    &rarr;
-                  </span>
-                </button>
+                isChecked ? (
+                  <button
+                    onClick={() => navigate("/checkout")}
+                    className="w-[350px] mb-3 py-[10px] bg-black dark:bg-blueGreen dark:text-black text-white text-lg  rounded-lg cursor-pointer"
+                  >
+                    Checkout
+                    <span className="dark:text-black text-white font-black ml-[2px] group-hover:ml-2 duration-500">
+                      &rarr;
+                    </span>
+                  </button>
+                ) : (
+                  <button className="w-[350px] mb-3 py-[10px] bg-black/80 dark:bg-blueGreen/70 dark:text-black text-white text-lg  rounded-lg cursor-default">
+                    Checkout
+                    <span className="dark:text-black text-white font-black ml-[2px]">
+                      &rarr;
+                    </span>
+                  </button>
+                )
               ) : (
-                <button className="w-[350px] mb-3 py-[10px] bg-gray-500 dark:bg-gray-400 dark:text-black text-white text-lg  rounded-lg cursor-default">
-                  Checkout{" "}
-                  <span className="dark:text-black text-white font-black">
+                <button className="w-[350px] mb-3 py-[10px] bg-black/50 dark:bg-gray-400 dark:text-black text-white text-lg  rounded-lg cursor-default">
+                  Checkout
+                  <span className="dark:text-black text-white font-black ml-[2px]">
                     &rarr;
                   </span>
                 </button>
