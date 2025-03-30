@@ -80,7 +80,7 @@ const Header: React.FC<HeaderProps> = ({
             <h4 onClick={scrollToStore}>Beat Store</h4>
             <h4 onClick={scrollToPricing}>Pricing</h4>
             <div className="cart cursor-pointer" onClick={toggleCart}>
-              <img src={cart_icon} alt="" className="dark:invert" />
+              <img src={cart_icon} alt="" className="w-6 dark:invert" />
               <p
                 className={`${
                   cartCount === 0 ? "hidden" : "block"
@@ -117,7 +117,7 @@ const Header: React.FC<HeaderProps> = ({
             <h4 onClick={scrollToStore}>Beat Store</h4>
             <h4 onClick={scrollToPricing}>Pricing</h4>
             <div className="cart cursor-pointer" onClick={toggleCart}>
-              <img src={cart_icon} alt="" className="invert" />
+              <img src={cart_icon} alt="Cart icon" className="w-6 invert" />
               <p
                 className={`${
                   cartCount === 0 ? "hidden" : "block"

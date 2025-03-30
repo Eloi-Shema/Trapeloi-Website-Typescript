@@ -94,11 +94,11 @@ const Checkout = () => {
       <AltHeader2 />
       {/*SMALL SIZE*/}
 
-      <section className="md:hidden xs:flex flex-col justify-center gap-5 px-5 py-20 w-full h-full dark:bg-white/5 bg-white/60 text-gray-600 dark:text-gray-400 rounded-lg">
+      <section className="md:hidden xs:flex flex-col justify-center gap-5 px-5 pt-20 pb-5 w-full h-full dark:bg-white/5 bg-white text-gray-600 dark:text-gray-400 rounded-lg">
         <div className="flex flex-col">
           <div
             onClick={toggleCollapse}
-            className="flex items-center justify-between flex-wrap px-5 text-black dark:text-white font-semibold transition-all duration-300 ease-in-out cursor-pointer"
+            className="flex items-center justify-between flex-wrap px-5 text-black dark:text-white font-semibold cursor-pointer"
           >
             <div className="flex items-center py-2 mr-2">
               <p>Order summary</p>
@@ -115,8 +115,10 @@ const Checkout = () => {
 
           <div
             className={`bg-black/5  dark:bg-white/[3%] ${
-              isCollapsed ? "h-0 opacity-0" : "h-full opacity-100 py-5"
-            } transition-all duration-300`}
+              isCollapsed
+                ? "max-h-0 opacity-0"
+                : "max-h-[420px] opacity-100 py-5"
+            } transition-all duration-500`}
           >
             <div className="order-summary max-h-60 overflow-y-auto">
               {cart.map((beat, index) => (
@@ -153,7 +155,7 @@ const Checkout = () => {
                   id="gift"
                   autoComplete="new-password"
                   placeholder=""
-                  className="peer w-full bg-black/[2%] dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                  className="peer w-full bg-white/70 dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                 />
                 <label
                   htmlFor="gift"
@@ -166,7 +168,7 @@ const Checkout = () => {
                 Apply
               </button>
             </div>
-            <div className="flex items-center justify-between text-xl dark:text-white/80 text-black/80 p-5">
+            <div className="flex items-center justify-between text-xl dark:text-white/80 text-black/80 px-5 pt-5">
               <p className="font-kanit">Total</p>
               <p className="font-kanit">${totalPrice / 100}</p>
             </div>
@@ -269,7 +271,7 @@ const Checkout = () => {
                   </label>
                 </form>
 
-                <div className="flex xs:flex-col md:flex-row justify-between">
+                <div className="flex xs:flex-col sm:flex-row justify-between">
                   <form className="relative basis-[52%] w-full truncate">
                     <input
                       type="text"
@@ -464,8 +466,8 @@ const Checkout = () => {
           </div>
 
           <div className="flex justify-center justify-self-center mt-10 mb-2">
-            <button className="w-full py-4 bg-black dark:bg-platinum text-white dark:text-black font-bold font-montserrat rounded-lg overflow-hidden">
-              Pay now
+            <button className="flex justify-center w-full py-4 bg-purple-950 dark:bg-blueGreen text-white dark:text-black font-semibold font-montserrat rounded-lg overflow-hidden">
+              Complete Order
             </button>
           </div>
           <div>
@@ -476,13 +478,23 @@ const Checkout = () => {
               Secure checkout
             </p>
           </div>
+
+          <div className="self-center text-xs dark:text-gray-400 text- font-montserrat font-light my-3">
+            Before buying, Please revise the licensing terms and refund policy{" "}
+            <Link to="/terms">
+              <span className="text-blue-500 hover:underline cursor-pointer">
+                here
+              </span>
+              .
+            </Link>
+          </div>
         </div>
       </section>
 
       {/*LARGE SIZE*/}
 
       <section className="xs:hidden md:flex gap-10 w-full h-full text-gray-600 dark:text-gray-400 rounded-lg">
-        <div className="flex flex-col w-[60%] md:px-10 xl:px-24 py-20 dark:bg-white/5 bg-white/60">
+        <div className="flex flex-col w-[60%] md:px-10 xl:px-24 py-20 dark:bg-white/5 bg-white">
           <div className="flex flex-col items-center justify-center gap-3 mt-3 mb-10">
             <p className="text-sm text-gray-400">Express checkout</p>
             <div className="flex xs:flex-col lg:flex-row items-center justify-center flex-wrap gap-3">
@@ -771,8 +783,8 @@ const Checkout = () => {
           </div>
 
           <div className="flex justify-center justify-self-center mt-10 mb-2">
-            <button className="w-full py-4 bg-black dark:bg-platinum text-white dark:text-black font-bold font-montserrat rounded-lg overflow-hidden">
-              Pay now
+            <button className="flex justify-center w-full py-4 bg-purple-950 dark:bg-blueGreen text-white dark:text-black font-semibold font-montserrat rounded-lg overflow-hidden">
+              Complete Order
             </button>
           </div>
           <div>
@@ -782,6 +794,16 @@ const Checkout = () => {
               </span>{" "}
               Secure checkout
             </p>
+          </div>
+
+          <div className="self-center text-sm dark:text-white/80 text-black/80 font-montserrat font-light my-5">
+            Before buying, Please revise the licensing terms and refund policy{" "}
+            <Link to="/terms">
+              <span className="text-blue-500 hover:underline cursor-pointer">
+                here
+              </span>
+              .
+            </Link>
           </div>
         </div>
 

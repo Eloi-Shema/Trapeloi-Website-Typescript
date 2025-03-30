@@ -16,7 +16,7 @@ const Footer: React.FC<FooterProps> = ({ scrollToHome, scrollToStore }) => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="footer dark:bg-blueGreen/[7%] bg-white/50">
+    <div className="footer dark:bg-perfectBlue/20 bg-white/50">
       <div className="flex xs:flex-col lg:flex-row items-center justify-evenly xs:px-0 md:px-20 xs:py-6 md:py-14">
         <img
           className="xs:w-40 lg:w-52 invert dark:invert-0"

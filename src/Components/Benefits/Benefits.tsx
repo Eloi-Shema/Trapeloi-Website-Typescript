@@ -29,15 +29,16 @@ const Benefits: React.FC = () => {
           <TidalIcon />
           <SoundcloudIcon />
         </div>
-        <div className="flex flex-col items-center justify-center justify-self-center max-w-[850px] dark:bg-perfectBlue/15 bg-white/50 p-10 rounded-lg">
+        <div className=" relative flex flex-col items-center justify-center justify-self-center max-w-[850px] p-10">
+          <div className="absolute inset-0 xs:dark:bg-bgBlack md:dark:bg-perfectBlue/15 bg-white animate-pulse rounded-t-[40px] -z-10"></div>
           <div>
             <p className="mb-20 px-5 xs:text-base md:text-xl text-center dark:text-platinum text-black">
-              when You Get&nbsp;
+              When You Get&nbsp;
               <span className="font-extrabold dark:text-white text-black">
                 Trapeloi
               </span>
-              &nbsp; beats, You have Full Control. You can use it commercially
-              with &nbsp;
+              &nbsp; beats, You have Full Control. You can use any beat on this
+              store for both personal and commercial use with &nbsp;
               <span className="royalty">Unlimited</span>
               &nbsp; streams and distribution.
             </p>

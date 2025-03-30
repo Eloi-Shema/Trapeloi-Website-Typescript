@@ -127,7 +127,7 @@ const Cart: React.FC<CartProps> = ({
               ) : (
                 <div className="absolute top-[132px] left-[96px] flex items-center justify-center text-sm text-gray-400 font-light">
                   <img
-                    className="w-[1rem] dark:invert invert-0 opacity-60 -mt-[2px] mr-2"
+                    className="w-[1rem] dark:invert invert-0 opacity-60 mr-1"
                     src={cart_icon}
                     alt="cart icon"
                   />
@@ -181,7 +181,7 @@ const Cart: React.FC<CartProps> = ({
                     </span>
                   </button>
                 ) : (
-                  <button className="w-[350px] mb-3 py-[10px] bg-black/80 dark:bg-blueGreen/70 dark:text-black text-white text-lg  rounded-lg cursor-default">
+                  <button className="w-[350px] mb-3 py-[10px] bg-black/70 dark:bg-blueGreen/70 dark:text-black text-white text-lg  rounded-lg cursor-default">
                     Checkout
                     <span className="dark:text-black text-white font-black ml-[2px]">
                       &rarr;
@@ -189,7 +189,7 @@ const Cart: React.FC<CartProps> = ({
                   </button>
                 )
               ) : (
-                <button className="w-[350px] mb-3 py-[10px] bg-black/50 dark:bg-gray-400 dark:text-black text-white text-lg  rounded-lg cursor-default">
+                <button className="w-[350px] mb-3 py-[10px] bg-black/40 dark:bg-gray-400 dark:text-black text-white text-lg  rounded-lg cursor-default">
                   Checkout
                   <span className="dark:text-black text-white font-black ml-[2px]">
                     &rarr;
