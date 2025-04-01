@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Login.css";
 import logo from "../../assets/logo-white - 1.png";
-import bgImage from "../../assets/ambient-studio.png";
+import bgImage from "../../assets/studio.jpg";
 import google from "../../assets/icons/google.svg";
 import { Link } from "react-router-dom";
 import Loading from "../../utils/Loading/Loading";

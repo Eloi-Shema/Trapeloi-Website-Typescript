@@ -18,6 +18,7 @@ import revelations from "./assets/covers/revelations.png";
 import sorry from "./assets/covers/sorry.png";
 import summer from "./assets/covers/summer.png";
 import trouble from "./assets/covers/trouble.png";
+import jammin from "./assets/covers/jammin.png";
 
 interface BeatListTypes {
   id: string;
@@ -30,12 +31,20 @@ interface BeatListTypes {
 
 export const beatList: BeatListTypes[] = [
   {
+    id: "dfgnelk85-hd81-la0j-s9d7eydh9e9",
+    image: jammin,
+    name: "Jammin",
+    bpm: "91bpm",
+    key: "Fm",
+    price: 14999,
+  },
+  {
     id: "h319ol5b-nl5b-p1b8-ac4b1ca14b47",
     image: king,
     name: "King",
     bpm: "110bpm",
     key: "Cm",
-    price: 14999,
+    price: 10999,
   },
   {
     id: "b604af9a-eb1b-b691-4bfe26127a52",

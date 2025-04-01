@@ -1,7 +1,7 @@
 import React, { RefObject } from "react";
 import "./IntroSection.css";
 import logo from "../../assets/logo-white - 1.png";
-import bgImage from "../../assets/ambient-studio.png";
+import bgImage from "../../assets/studio.jpg";
 
 interface IntroSectionProps {
   scrollToStore: () => void;
@@ -18,7 +18,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({
       className="hero relative xs:h-[820px] md:h-[900px] w-screen flex flex-col items-center justify-center justify-self-center"
     >
       <div className="absolute inset-0">
-        <div className="overlay dark:bg-black/70 bg-black/50 absolute inset-0"></div>
+        <div className="overlay dark:bg-black/70 bg-black/60 absolute inset-0"></div>
         <div className="background-video h-full w-full">
           <img
             className="w-full h-full object-cover"
@@ -47,7 +47,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({
           Pour your heart out with our Mind-crafted collection of high-quality
           beats.
         </h3>
-        <div className="shop-button relative text-xl rounded-md text-black font-montserrat font-normal backdrop-blur-sm">
+        <div className="shop-button relative bg-platinum text-xl rounded-md text-black font-montserrat font-normal backdrop-blur-sm">
           <button
             onClick={scrollToStore}
             className="py-3 xs:px-24 md:px-30 lg:px-12 whitespace-nowrap"

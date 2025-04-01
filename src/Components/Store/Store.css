@@ -4,12 +4,12 @@
 
 .store-header,
 .store-footer {
-  background: rgba(229, 228, 226);
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .dark .store-header,
 .dark .store-footer {
-  background: rgba(9, 16, 15, 0.85);
+  background: rgba(9, 16, 15, 0.9);
 }
 
 .store-grid,
@@ -51,7 +51,7 @@
 }
 
 .search-input {
-  background-color: rgba(189, 189, 189, 0.3);
+  background-color: rgba(214, 214, 214, 0.3);
   font-size: 14px;
   border: 1px solid rgb(128, 128, 128);
 }

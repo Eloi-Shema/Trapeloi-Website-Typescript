@@ -8,7 +8,7 @@ import close_icon from "../../assets/icons/close.svg";
 import list_icon from "../../assets/icons/list.svg";
 import grid_icon from "../../assets/icons/grid.svg";
 import arrow from "../../assets/icons/arrow.svg";
-import backgroundImage from "../../assets/ambient-studio1.png";
+import backgroundImage from "../../assets/studio1.jpg";
 import { motion } from "framer-motion";
 
 interface BeatType {
@@ -56,7 +56,15 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
 
   // HANDLING PAGINATION
   const [currentPage, setCurrentPage] = useState(0);
-  const beatsPerPage = 10;
+
+  let beatsPerPage;
+
+  if (isGridView) {
+    beatsPerPage = 12;
+  } else {
+    beatsPerPage = 10;
+  }
+
   const totalPages = Math.ceil(filteredBeat.length / beatsPerPage);
 
   const startIndex = currentPage * beatsPerPage;
@@ -64,13 +72,13 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
   const beatsOnPage = filteredBeat.slice(startIndex, endIndex);
 
   return (
-    <div ref={ref} className="relative z-0">
-      <div className="absolute w-full h-full inset-0 opacity-50 -z-10">
-        <div className="dark:bg-black/60 bg-platinum/80 absolute inset-0 object-cover backdrop-blur-lg"></div>
+    <div ref={ref} className="relative w-screen justify-self-center z-0">
+      <div className="absolute h-full inset-0 opacity-50 -z-10">
+        <div className="dark:bg-black/40 bg-platinum/60 absolute inset-0 object-cover backdrop-blur-lg"></div>
         <img
           src={backgroundImage}
           alt="Studio"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-fill"
         />
       </div>
       <div className="store box-border px-4 py-12 mx-6">
@@ -141,7 +149,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 1, ease: "easeOut" }}
                     viewport={{ once: true }}
-                    className="beat-grid flex flex-col items-center px-1 py-4"
+                    className="beat-grid flex flex-col items-center justify-self-center px-1 py-4"
                     key={id}
                   >
                     <div className="cover relative cursor-pointer">
@@ -275,7 +283,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                       src={beat.image}
                       alt="Beat cover"
                     />
-                    <h4 className="dark:text-white/80 text-black text-sm font-semibold ">
+                    <h4 className="dark:text-white/80 text-black text-sm font-semibold truncate">
                       {beat.name}
                     </h4>
                   </div>

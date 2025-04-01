@@ -3,6 +3,7 @@ import "./Cart.css";
 import arrow_icon from "../../assets/icons/arrow.svg";
 import close_icon from "../../assets/icons/close.svg";
 import cart_icon from "../../assets/icons/cart.svg";
+import right_arrow from "../../assets/icons/right-arrow.svg";
 import { Link, useNavigate } from "react-router-dom";
 
 interface CartItem {
@@ -173,27 +174,33 @@ const Cart: React.FC<CartProps> = ({
                 isChecked ? (
                   <button
                     onClick={() => navigate("/checkout")}
-                    className="w-[350px] mb-3 py-[10px] bg-black dark:bg-blueGreen dark:text-black text-white text-lg  rounded-lg cursor-pointer"
+                    className="flex items-center justify-center w-[350px] mb-3 py-[10px] bg-black dark:bg-blueGreen dark:text-black text-white text-lg  rounded-lg cursor-pointer"
                   >
-                    Checkout
-                    <span className="dark:text-black text-white font-black ml-[2px] group-hover:ml-2 duration-500">
-                      &rarr;
-                    </span>
+                    <p>Checkout</p>
+                    <img
+                      src={right_arrow}
+                      alt="arrow"
+                      className="w-5 invert dark:invert-0 ml-[2px] group-hover:ml-2 duration-500"
+                    />
                   </button>
                 ) : (
-                  <button className="w-[350px] mb-3 py-[10px] bg-black/70 dark:bg-blueGreen/70 dark:text-black text-white text-lg  rounded-lg cursor-default">
-                    Checkout
-                    <span className="dark:text-black text-white font-black ml-[2px]">
-                      &rarr;
-                    </span>
+                  <button className="flex items-center justify-center w-[350px] mb-3 py-[10px] bg-black/70 dark:bg-blueGreen/70 dark:text-black text-white text-lg  rounded-lg cursor-default">
+                    <p>Checkout</p>
+                    <img
+                      src={right_arrow}
+                      alt="arrow"
+                      className="w-5 invert dark:invert-0 ml-[2px]"
+                    />
                   </button>
                 )
               ) : (
-                <button className="w-[350px] mb-3 py-[10px] bg-black/40 dark:bg-gray-400 dark:text-black text-white text-lg  rounded-lg cursor-default">
-                  Checkout
-                  <span className="dark:text-black text-white font-black ml-[2px]">
-                    &rarr;
-                  </span>
+                <button className="flex items-center justify-center w-[350px] mb-3 py-[10px] bg-black/40 dark:bg-gray-400 dark:text-black text-white text-lg  rounded-lg cursor-default">
+                  <p>Checkout</p>
+                  <img
+                    src={right_arrow}
+                    alt="arrow"
+                    className="w-5 invert dark:invert-0 ml-[2px]"
+                  />
                 </button>
               )}
             </div>

@@ -155,11 +155,11 @@ const Checkout = () => {
                   id="gift"
                   autoComplete="new-password"
                   placeholder=""
-                  className="peer w-full bg-white/70 dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                  className="peer w-full bg-white/70 dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                 />
                 <label
                   htmlFor="gift"
-                  className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-xs peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                  className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                 >
                   Discount code or gift card
                 </label>
@@ -212,11 +212,11 @@ const Checkout = () => {
                 id="email"
                 autoComplete="email"
                 placeholder=""
-                className="peer w-full bg-black/[2%] dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
               />
               <label
                 htmlFor="email"
-                className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-xs peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
               >
                 Email
               </label>
@@ -261,11 +261,11 @@ const Checkout = () => {
                     autoComplete="new-password"
                     id="cardNumber"
                     placeholder=""
-                    className="peer w-full bg-black/[2%] dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                    className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                   />
                   <label
                     htmlFor="cardNumber"
-                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-xs peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                   >
                     Card number
                   </label>
@@ -283,13 +283,13 @@ const Checkout = () => {
                       onChange={handleExpiryDateChange}
                       autoComplete="new-password"
                       placeholder=""
-                      className="peer w-full bg-black/[2%] dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                      className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                     />
                     <label
                       htmlFor="date"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-xs peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                     >
-                      Expiration date (MM/YY)
+                      Exp. date (MM/YY)
                     </label>
                   </form>
 
@@ -305,11 +305,11 @@ const Checkout = () => {
                       id="code"
                       autoComplete="off"
                       placeholder=""
-                      className="peer w-full bg-black/[2%] dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                      className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                     />
                     <label
                       htmlFor="code"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-xs peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                     >
                       Security code
                     </label>
@@ -322,11 +322,11 @@ const Checkout = () => {
                     id="cardname"
                     autoComplete="name"
                     placeholder=""
-                    className="peer w-full bg-black/[2%] dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                    className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                   />
                   <label
                     htmlFor="cardname"
-                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-xs peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                   >
                     Name on the card
                   </label>
@@ -345,7 +345,7 @@ const Checkout = () => {
                 <form className="relative w-full truncate">
                   <select
                     id="country"
-                    className="peer w-full bg-black/[2%] dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-gray/700 dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                    className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-gray/700 dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                   >
                     <option
                       value=""
@@ -366,7 +366,7 @@ const Checkout = () => {
 
                   <label
                     htmlFor="country"
-                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-xs peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                   >
                     Country/Region
                   </label>
@@ -379,11 +379,11 @@ const Checkout = () => {
                       id="first-name"
                       autoComplete="name"
                       placeholder=""
-                      className="peer w-full bg-black/[2%] dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                      className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                     />
                     <label
                       htmlFor="first-name"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-xs peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                     >
                       First name
                     </label>
@@ -398,11 +398,11 @@ const Checkout = () => {
                       id="last-name"
                       autoComplete="name"
                       placeholder=""
-                      className="peer w-full bg-black/[2%] dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                      className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                     />
                     <label
                       htmlFor="last-name"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-xs peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                     >
                       Last name
                     </label>
@@ -415,11 +415,11 @@ const Checkout = () => {
                     id="address"
                     autoComplete="billing address-line1"
                     placeholder=""
-                    className="peer w-full bg-black/[2%] dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                    className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                   />
                   <label
                     htmlFor="address"
-                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-xs peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                   >
                     Address
                   </label>
@@ -432,11 +432,11 @@ const Checkout = () => {
                       id="city"
                       autoComplete="off"
                       placeholder=""
-                      className="peer w-full bg-black/[2%] dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                      className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                     />
                     <label
                       htmlFor="city"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-xs peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                     >
                       City
                     </label>
@@ -451,11 +451,11 @@ const Checkout = () => {
                       id="post"
                       autoComplete="postal-code"
                       placeholder=""
-                      className="peer w-full bg-black/[2%] dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                      className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                     />
                     <label
                       htmlFor="post"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-xs peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                     >
                       Postal code (optional)
                     </label>
@@ -494,7 +494,7 @@ const Checkout = () => {
       {/*LARGE SIZE*/}
 
       <section className="xs:hidden md:flex gap-10 w-full h-full text-gray-600 dark:text-gray-400 rounded-lg">
-        <div className="flex flex-col w-[60%] md:px-10 xl:px-24 py-20 dark:bg-white/5 bg-white">
+        <div className="flex flex-col w-[60%] md:px-10 xl:px-24 pt-20 pb-5 dark:bg-white/5 bg-white">
           <div className="flex flex-col items-center justify-center gap-3 mt-3 mb-10">
             <p className="text-sm text-gray-400">Express checkout</p>
             <div className="flex xs:flex-col lg:flex-row items-center justify-center flex-wrap gap-3">
@@ -529,11 +529,11 @@ const Checkout = () => {
                 id="email"
                 autoComplete="email"
                 placeholder=""
-                className="peer w-full bg-black/[2%] dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
               />
               <label
                 htmlFor="email"
-                className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-xs peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
               >
                 Email
               </label>
@@ -578,11 +578,11 @@ const Checkout = () => {
                     autoComplete="new-password"
                     id="cardNumber"
                     placeholder=""
-                    className="peer w-full bg-black/[2%] dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                    className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                   />
                   <label
                     htmlFor="cardNumber"
-                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-xs peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                   >
                     Card number
                   </label>
@@ -600,11 +600,11 @@ const Checkout = () => {
                       onChange={handleExpiryDateChange}
                       autoComplete="new-password"
                       placeholder=""
-                      className="peer w-full bg-black/[2%] dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                      className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                     />
                     <label
                       htmlFor="date"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-xs peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                     >
                       Expiration date (MM/YY)
                     </label>
@@ -622,11 +622,11 @@ const Checkout = () => {
                       id="code"
                       autoComplete="off"
                       placeholder=""
-                      className="peer w-full bg-black/[2%] dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                      className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                     />
                     <label
                       htmlFor="code"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-xs peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                     >
                       Security code
                     </label>
@@ -639,11 +639,11 @@ const Checkout = () => {
                     id="cardname"
                     autoComplete="name"
                     placeholder=""
-                    className="peer w-full bg-black/[2%] dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                    className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                   />
                   <label
                     htmlFor="cardname"
-                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-xs peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                   >
                     Name on the card
                   </label>
@@ -662,7 +662,7 @@ const Checkout = () => {
                 <form className="relative w-full truncate">
                   <select
                     id="country"
-                    className="peer w-full bg-black/[2%] dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-gray/700 dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                    className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-gray/700 dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                   >
                     <option
                       value=""
@@ -683,7 +683,7 @@ const Checkout = () => {
 
                   <label
                     htmlFor="country"
-                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-xs peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                   >
                     Country/Region
                   </label>
@@ -696,11 +696,11 @@ const Checkout = () => {
                       id="first-name"
                       autoComplete="name"
                       placeholder=""
-                      className="peer w-full bg-black/[2%] dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                      className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                     />
                     <label
                       htmlFor="first-name"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-xs peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                     >
                       First name
                     </label>
@@ -715,11 +715,11 @@ const Checkout = () => {
                       id="last-name"
                       autoComplete="name"
                       placeholder=""
-                      className="peer w-full bg-black/[2%] dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                      className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                     />
                     <label
                       htmlFor="last-name"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-xs peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                     >
                       Last name
                     </label>
@@ -732,11 +732,11 @@ const Checkout = () => {
                     id="address"
                     autoComplete="billing address-line1"
                     placeholder=""
-                    className="peer w-full bg-black/[2%] dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                    className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                   />
                   <label
                     htmlFor="address"
-                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-xs peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                   >
                     Address
                   </label>
@@ -749,11 +749,11 @@ const Checkout = () => {
                       id="city"
                       autoComplete="off"
                       placeholder=""
-                      className="peer w-full bg-black/[2%] dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                      className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                     />
                     <label
                       htmlFor="city"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-xs peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                     >
                       City
                     </label>
@@ -768,11 +768,11 @@ const Checkout = () => {
                       id="post"
                       autoComplete="postal-code"
                       placeholder=""
-                      className="peer w-full bg-black/[2%] dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                      className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                     />
                     <label
                       htmlFor="post"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-xs peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                     >
                       Postal code (optional)
                     </label>
@@ -796,7 +796,7 @@ const Checkout = () => {
             </p>
           </div>
 
-          <div className="self-center text-sm dark:text-white/80 text-black/80 font-montserrat font-light my-5">
+          <div className="self-center dark:text-white/80 text-black/80 font-montserrat font-light mt-10">
             Before buying, Please revise the licensing terms and refund policy{" "}
             <Link to="/terms">
               <span className="text-blue-500 hover:underline cursor-pointer">
@@ -807,7 +807,7 @@ const Checkout = () => {
           </div>
         </div>
 
-        <div className="fixed right-0 flex flex-col w-[40%] md:px-1 lg:px-5 py-20 mt-2">
+        <div className="fixed right-0 flex flex-col w-[40%] max-w-2xl md:px-1 lg:px-5 pt-20 mt-2">
           <div className="order-summary max-h-60 overflow-y-auto">
             {cart.map((beat, index) => (
               <div
@@ -839,11 +839,11 @@ const Checkout = () => {
                 id="gift"
                 autoComplete="off"
                 placeholder=""
-                className="peer w-full bg-black/[2%] dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/50 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
               />
               <label
                 htmlFor="gift"
-                className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-xs peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
               >
                 Discount code or gift card
               </label>

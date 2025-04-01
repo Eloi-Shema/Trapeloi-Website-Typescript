@@ -9,9 +9,8 @@ import Ratings from "../../Components/Ratings/Ratings.tsx";
 import FAQ from "../../Components/FAQ/FAQ.tsx";
 import Footer from "../../Components/Footer/Footer.tsx";
 import Cart from "../../Components/Cart/Cart.tsx";
-import logo from "../../assets/logo-white.png";
-import { motion } from "framer-motion";
 import { useCart } from "../../hooks/useCart.ts";
+import Loading from "../../utils/Loading/Loading.tsx";
 
 const Home: React.FC = () => {
   //LOAD THE PAGE
@@ -91,21 +90,7 @@ const Home: React.FC = () => {
           />
         </div>
       ) : (
-        <motion.div
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1 }}
-          className="dark:bg-bgBlack bg-platinum flex flex-col items-center justify-center h-screen"
-        >
-          <img
-            className="dark:invert-0 invert w-36 mb-5 animate-pulse"
-            src={logo}
-            alt=""
-          />
-          <div className="w-[160px] h-[2px] dark:bg-bgBlack bg-platinum rounded overflow-hidden">
-            <div className="loading w-[20%] h-full dark:bg-white/90 bg-black"></div>
-          </div>
-        </motion.div>
+        <Loading />
       )}
     </>
   );

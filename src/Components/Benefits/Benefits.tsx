@@ -8,6 +8,7 @@ import {
   TidalIcon,
   SoundcloudIcon,
 } from "../../utils/icons/icons";
+import CountUp from "react-countup";
 
 const Benefits: React.FC = () => {
   return (
@@ -30,8 +31,8 @@ const Benefits: React.FC = () => {
           <SoundcloudIcon />
         </div>
         <div className=" relative flex flex-col items-center justify-center justify-self-center max-w-[850px] p-10">
-          <div className="absolute inset-0 xs:dark:bg-bgBlack md:dark:bg-perfectBlue/15 bg-white animate-pulse rounded-t-[40px] -z-10"></div>
-          <div>
+          <div className="absolute inset-0 xs:dark:bg-bgBlack md:dark:bg-perfectBlue/15 bg-white animate-pulse rounded-t-[40px] "></div>
+          <div className=" z-10">
             <p className="mb-20 px-5 xs:text-base md:text-xl text-center dark:text-platinum text-black">
               When You Get&nbsp;
               <span className="font-extrabold dark:text-white text-black">
@@ -46,7 +47,15 @@ const Benefits: React.FC = () => {
             <div className="flex justify-between p-5">
               <div className="text-center xs:w-40 md:w-72 ">
                 <h3 className="stats font-trap font-bold xs:text-4xl md:text-5xl lg:text-6xl mb-2">
-                  +30
+                  <CountUp
+                    start={0}
+                    end={30}
+                    duration={2.5}
+                    prefix="+"
+                    enableScrollSpy
+                    scrollSpyDelay={500}
+                    className="stats"
+                  />
                 </h3>
                 <p className="xs:text-xs md:text-base dark:text-white/70 text-black">
                   Beats sold to satisfied customers worldwide
@@ -54,7 +63,15 @@ const Benefits: React.FC = () => {
               </div>
               <div className="text-center xs:w-40 md:w-72">
                 <h3 className="stats font-bold font-montserrat xs:text-4xl md:text-5xl lg:text-6xl mb-2">
-                  100 %
+                  <CountUp
+                    start={0}
+                    end={100}
+                    duration={5}
+                    enableScrollSpy
+                    scrollSpyDelay={500}
+                    className="stats"
+                  />
+                  &nbsp;%
                 </h3>
                 <p className="xs:text-xs md:text-base dark:text-white/70 text-black">
                   Customer satisfaction rate
