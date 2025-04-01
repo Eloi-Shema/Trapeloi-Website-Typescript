@@ -155,16 +155,16 @@ const Checkout = () => {
                   id="gift"
                   autoComplete="new-password"
                   placeholder=""
-                  className="peer w-full bg-white/70 dark:bg-white/[4%] px-3 pt-5  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
+                  className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                 />
                 <label
                   htmlFor="gift"
-                  className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                  className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                 >
                   Discount code or gift card
                 </label>
               </form>
-              <button className="border-2 border-black/30 dark:border-white/60 dark:text-white/50 text-black/60 py-2 px-5 mt-[2px] font-kanit text-sm rounded-lg hover:bg-black/5 dark:hover:bg-white/10 transition-all duration-150 ">
+              <button className="border-2 border-black/30 dark:border-white/60 dark:text-white/50 text-black/60 py-[14px] px-8 mt-[2px] font-kanit text-sm rounded-lg hover:bg-black/5 dark:hover:bg-white/10 transition-all duration-150 ">
                 Apply
               </button>
             </div>
@@ -216,7 +216,7 @@ const Checkout = () => {
               />
               <label
                 htmlFor="email"
-                className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
               >
                 Email
               </label>
@@ -265,7 +265,7 @@ const Checkout = () => {
                   />
                   <label
                     htmlFor="cardNumber"
-                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                   >
                     Card number
                   </label>
@@ -287,7 +287,7 @@ const Checkout = () => {
                     />
                     <label
                       htmlFor="date"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                     >
                       Exp. date (MM/YY)
                     </label>
@@ -309,7 +309,7 @@ const Checkout = () => {
                     />
                     <label
                       htmlFor="code"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                     >
                       Security code
                     </label>
@@ -326,7 +326,7 @@ const Checkout = () => {
                   />
                   <label
                     htmlFor="cardname"
-                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                   >
                     Name on the card
                   </label>
@@ -366,7 +366,7 @@ const Checkout = () => {
 
                   <label
                     htmlFor="country"
-                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                   >
                     Country/Region
                   </label>
@@ -533,7 +533,7 @@ const Checkout = () => {
               />
               <label
                 htmlFor="email"
-                className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
               >
                 Email
               </label>
@@ -582,7 +582,7 @@ const Checkout = () => {
                   />
                   <label
                     htmlFor="cardNumber"
-                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                   >
                     Card number
                   </label>
@@ -604,7 +604,7 @@ const Checkout = () => {
                     />
                     <label
                       htmlFor="date"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                     >
                       Expiration date (MM/YY)
                     </label>
@@ -626,7 +626,7 @@ const Checkout = () => {
                     />
                     <label
                       htmlFor="code"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                     >
                       Security code
                     </label>
@@ -643,7 +643,7 @@ const Checkout = () => {
                   />
                   <label
                     htmlFor="cardname"
-                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                   >
                     Name on the card
                   </label>
@@ -683,7 +683,7 @@ const Checkout = () => {
 
                   <label
                     htmlFor="country"
-                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
                   >
                     Country/Region
                   </label>
@@ -843,12 +843,12 @@ const Checkout = () => {
               />
               <label
                 htmlFor="gift"
-                className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-[22px]  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
               >
                 Discount code or gift card
               </label>
             </form>
-            <button className="border-2 border-black/20 dark:border-white/40 dark:text-white/50 text-black/60 py-2 px-5 mt-[2px] font-kanit text-sm rounded-lg hover:bg-black/5 dark:hover:bg-white/10 transition-all duration-150 ">
+            <button className="border-2 border-black/20 dark:border-white/40 dark:text-white/50 text-black/60 py-4 px-8 mt-[2px] font-kanit text-sm rounded-lg hover:bg-black/5 dark:hover:bg-white/10 transition-all duration-150 ">
               Apply
             </button>
           </div>

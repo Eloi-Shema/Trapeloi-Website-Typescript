@@ -8,6 +8,7 @@ import { ThemeProvider } from "./contexts/ThemeContext/ThemeContext";
 import About from "./Pages/About/About";
 import Checkout from "./Pages/Checkout/Checkout";
 import { CartProvider } from "./contexts/CartContext/CartContext";
+import NotFound from "./utils/NotFound/NotFound";
 
 const App: React.FC = () => {
   return (
@@ -20,6 +21,7 @@ const App: React.FC = () => {
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/about" element={<About />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </CartProvider>
     </ThemeProvider>

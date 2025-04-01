@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Benefits.css";
 import { motion } from "framer-motion";
 import {
@@ -9,8 +9,16 @@ import {
   SoundcloudIcon,
 } from "../../utils/icons/icons";
 import CountUp from "react-countup";
+import { useInView } from "react-intersection-observer";
 
 const Benefits: React.FC = () => {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.5 });
+  const [animCount, setAnimCount] = useState(false);
+
+  useEffect(() => {
+    if (inView) setAnimCount(true);
+  }, [inView]);
+
   return (
     <div className="relative w-full h-full">
       <h1 className="font-trap font-bold text-center xs:text-3xl md:text-4xl dark:text-platinum text-black py-10">
@@ -47,31 +55,34 @@ const Benefits: React.FC = () => {
             <div className="flex justify-between p-5">
               <div className="text-center xs:w-40 md:w-72 ">
                 <h3 className="stats font-trap font-bold xs:text-4xl md:text-5xl lg:text-6xl mb-2">
-                  <CountUp
-                    start={0}
-                    end={30}
-                    duration={2.5}
-                    prefix="+"
-                    enableScrollSpy
-                    scrollSpyDelay={500}
-                    className="stats"
-                  />
+                  {animCount && (
+                    <CountUp
+                      start={0}
+                      end={30}
+                      duration={2.5}
+                      prefix="+"
+                      scrollSpyDelay={500}
+                      className="stats"
+                    />
+                  )}
                 </h3>
                 <p className="xs:text-xs md:text-base dark:text-white/70 text-black">
                   Beats sold to satisfied customers worldwide
                 </p>
               </div>
-              <div className="text-center xs:w-40 md:w-72">
+              <div ref={ref} className="text-center xs:w-40 md:w-72">
                 <h3 className="stats font-bold font-montserrat xs:text-4xl md:text-5xl lg:text-6xl mb-2">
-                  <CountUp
-                    start={0}
-                    end={100}
-                    duration={5}
-                    enableScrollSpy
-                    scrollSpyDelay={500}
-                    className="stats"
-                  />
-                  &nbsp;%
+                  {animCount && (
+                    <CountUp
+                      start={0}
+                      end={100}
+                      duration={3}
+                      suffix="%"
+                      scrollSpyDelay={500}
+                      style={{ fontFamily: "Montserrat" }}
+                      className="stats"
+                    />
+                  )}
                 </h3>
                 <p className="xs:text-xs md:text-base dark:text-white/70 text-black">
                   Customer satisfaction rate

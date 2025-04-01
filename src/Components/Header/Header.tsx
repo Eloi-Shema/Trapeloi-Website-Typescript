@@ -50,13 +50,13 @@ const Header: React.FC<HeaderProps> = ({
   const { theme } = switchTheme();
 
   return (
-    <div className="fixed xs:inset-x-0 md:inset-x-10 xs:inset-y-0 md:inset-y-5 h-[60px] backdrop-blur-sm  transition-all duration-300 z-30">
+    <div className="fixed xs:inset-x-0 md:inset-x-10 xs:inset-y-0 md:inset-y-5 h-[60px]  transition-all duration-300 z-30">
       {isScrolled ? (
         <motion.header
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: isScrolled ? 0 : -100, opacity: isScrolled ? 1 : 0 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="header-content relative py-8 px-5 bg-white/90 dark:bg-black/80 xs:rounded-none md:rounded-xl"
+          className="header-content relative py-8 px-5 bg-white/90 dark:bg-black/80 xs:rounded-none md:rounded-xl backdrop-blur-sm"
         >
           <Link to="/">
             {theme === "dark" ? (
@@ -106,7 +106,7 @@ const Header: React.FC<HeaderProps> = ({
           </div>
         </motion.header>
       ) : (
-        <header className="header-content relative py-8 px-5 bg-transparent backdrop-blur-sm">
+        <header className="header-content relative py-8 px-5 bg-transparent">
           <Link to="/">
             <img className="xs:w-32 md:w-36" src={logo} alt="Logo" />
           </Link>

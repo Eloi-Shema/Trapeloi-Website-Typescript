@@ -78,7 +78,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
         <img
           src={backgroundImage}
           alt="Studio"
-          className="w-full h-full object-fill"
+          className="w-full h-full object-cover"
         />
       </div>
       <div className="store box-border px-4 py-12 mx-6">

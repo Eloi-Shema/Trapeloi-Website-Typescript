@@ -19,7 +19,7 @@ const AltHeader: React.FC = () => {
         )}
       </Link>
 
-      <div className="menu-links">
+      <div className="">
         <button
           onClick={toggleTheme}
           className="mr-10 w-[18px]"
@@ -33,7 +33,7 @@ const AltHeader: React.FC = () => {
         </button>
 
         <Link to="/login">
-          <button className="login-btn bg-black text-white dark:bg-white dark:text-black">
+          <button className="bg-black text-white dark:bg-white dark:text-black py-1 px-5 rounded-md">
             Log In
           </button>
         </Link>
