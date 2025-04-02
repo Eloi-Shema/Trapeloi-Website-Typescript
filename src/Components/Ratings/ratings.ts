@@ -1,12 +1,12 @@
-import feelz from "../../assets/feelz.png";
-import dany from "../../assets/dany.png";
-import brooke from "../../assets/brooke.png";
-import jack from "../../assets/jack.png";
-import gerard from "../../assets/gerard.png";
-import cameron from "../../assets/cameron.png";
-import simon from "../../assets/simon.png";
-import megan from "../../assets/megan.png";
-import tom from "../../assets/tom.png";
+import feelz from "../../assets/feelz.webp";
+import dany from "../../assets/dany.webp";
+import brooke from "../../assets/brooke.webp";
+import jack from "../../assets/jack.webp";
+import gerard from "../../assets/gerard.webp";
+import cameron from "../../assets/cameron.webp";
+import simon from "../../assets/simon.webp";
+import megan from "../../assets/megan.webp";
+import tom from "../../assets/tom.webp";
 
 interface RatingTypes {
   comment: string;

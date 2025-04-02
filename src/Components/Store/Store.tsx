@@ -8,7 +8,7 @@ import close_icon from "../../assets/icons/close.svg";
 import list_icon from "../../assets/icons/list.svg";
 import grid_icon from "../../assets/icons/grid.svg";
 import arrow from "../../assets/icons/arrow.svg";
-import backgroundImage from "../../assets/studio1.jpg";
+import backgroundImage from "../../assets/studio1.webp";
 import { motion } from "framer-motion";
 
 interface BeatType {
