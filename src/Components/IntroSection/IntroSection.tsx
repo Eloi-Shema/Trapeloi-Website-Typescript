@@ -1,7 +1,7 @@
 import React, { RefObject } from "react";
 import "./IntroSection.css";
 import logo from "../../assets/logo-white - 1.png";
-import bgImage from "../../assets/studio.jpg";
+import bgImage from "../../assets/studio.webp";
 
 interface IntroSectionProps {
   scrollToStore: () => void;

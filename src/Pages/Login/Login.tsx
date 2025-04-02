@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Login.css";
 import logo from "../../assets/logo-white - 1.png";
-import bgImage from "../../assets/studio.jpg";
+import bgImage from "../../assets/ambient-studio.webp";
 import google from "../../assets/icons/google.svg";
 import { Link } from "react-router-dom";
 import Loading from "../../utils/Loading/Loading";
@@ -28,7 +28,7 @@ const Login: React.FC = () => {
       {isLoading ? (
         <div className="relative flex items-center justify-center h-screen">
           <div className="absolute inset-0">
-            <div className="bg-black/50 absolute inset-0 z-10"></div>
+            <div className="bg-black/30 absolute inset-0 z-10"></div>
             <div className="h-full w-full">
               <img
                 className="w-full h-full object-cover grayscale"
@@ -64,7 +64,7 @@ const Login: React.FC = () => {
                     id="username"
                     autoComplete="name"
                     placeholder=""
-                    className="peer w-full bg-black/5 px-3 pt-5 pb-2 mb-4 text-black rounded-lg placeholder:bg-red-300 border-b-2 border-black/50  outline-none autofill:bg-black autofill:text-black transition-all duration-300"
+                    className="peer w-full bg-black/[3%] px-3 pt-5 pb-2 mb-4 text-black rounded-lg placeholder:bg-red-300 border-b-2 border-black/50  outline-none autofill:bg-black autofill:text-black transition-all duration-300"
                   />
                   <label
                     htmlFor="username"
@@ -81,7 +81,7 @@ const Login: React.FC = () => {
                   id="email"
                   autoComplete="email"
                   placeholder=""
-                  className="peer w-full bg-black/5 px-3 pt-5 pb-2 mb-4 text-black  rounded-lg border-b-2 border-black/50  outline-none  transition-all duration-300"
+                  className="peer w-full bg-black/[3%] px-3 pt-5 pb-2 mb-4 text-black  rounded-lg border-b-2 border-black/50  outline-none  transition-all duration-300"
                 />
                 <label
                   htmlFor="email"
@@ -96,7 +96,7 @@ const Login: React.FC = () => {
                   type={showPassword ? "text" : "password"}
                   id="password"
                   placeholder=""
-                  className="peer w-full bg-black/5 px-3 pt-5 pb-2 mb-4 rounded-lg text-black border-b-2 border-black/50  outline-none transition-all duration-300"
+                  className="peer w-full bg-black/[3%] px-3 pt-5 pb-2 mb-4 rounded-lg text-black border-b-2 border-black/50  outline-none transition-all duration-300"
                 />
                 <label
                   htmlFor="password"
