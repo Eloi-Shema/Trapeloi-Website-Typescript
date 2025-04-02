@@ -7,3 +7,7 @@
   background: rgb(0, 255, 241) !important;
   height: 2px !important;
 }
+
+#nprogress .spinner {
+  display: none !important;
+}
