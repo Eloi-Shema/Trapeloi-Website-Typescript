@@ -10,7 +10,7 @@ const AltHeader: React.FC = () => {
   const { theme, toggleTheme } = switchTheme();
 
   return (
-    <header className="header-content fixed inset-0 py-8 xs:px-8 md:px-20 bg-white/90 dark:bg-black/80 z-30">
+    <header className="header-content fixed inset-0 py-8 xs:px-8 md:px-20 bg-white/90 dark:bg-black/80 shadow-lg shadow-black/5 dark:shadow-platinum/5 z-30">
       <Link to="/">
         {theme === "dark" ? (
           <img className="xs:w-32 md:w-36" src={logo_dark} alt="Logo" />

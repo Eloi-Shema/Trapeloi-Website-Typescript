@@ -170,7 +170,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                     <h4 className="mb-6 dark:text-gray-300 text-black  font-semibold">
                       {beat.name}
                     </h4>
-                    <div className="flex justify-between items-center mb-12 text-[10px]">
+                    <div className="flex justify-between items-center mb-12 text-[10px] text-black">
                       <p className="border rounded-full px-5 py-1 mr-2">
                         {beat.bpm}
                       </p>
@@ -182,7 +182,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                       className="cart-btn w-32 hover:w-36 flex justify-center items-center bg-bgBlack rounded-lg px-4 py-2"
                       onClick={() => addToCart(beat)}
                     >
-                      <p className="text-sm mr-3 font-medium">
+                      <p className="text-white text-sm mr-3 font-medium">
                         {beat.price > 0 ? `$${beat.price / 100}` : "FREE"}{" "}
                       </p>
                       <img
@@ -229,7 +229,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                       </h4>
                     </div>
 
-                    <div className="text-[10px] flex justify-between items-center">
+                    <div className="text-[10px] text-black flex justify-between items-center">
                       <p className="border rounded-[6px] p-1 mr-4">
                         {beat.bpm}
                       </p>
@@ -288,7 +288,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                     </h4>
                   </div>
 
-                  <div className="text-[8px] xs:hidden sm:flex flex-col justify-between items-center mr-4">
+                  <div className="text-[8px] text-black xs:hidden sm:flex flex-col justify-between items-center mr-4">
                     <p className="border rounded-[6px] p-1 mb-1">{beat.bpm}</p>
                     <p className="border rounded-[6px] p-1">{beat.key}</p>
                   </div>
@@ -296,7 +296,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                     className="cart-btn dark:bg-transparent bg-bgBlack w-20 flex justify-center items-center border rounded-md px-3 py-2"
                     onClick={() => addToCart(beat)}
                   >
-                    <p className="text-xs mr-2 text-white/90">
+                    <p className="text-white text-sm mr-3 font-medium">
                       {beat.price > 0 ? `$${beat.price / 100}` : "FREE"}
                     </p>
                     <img

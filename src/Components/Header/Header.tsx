@@ -53,13 +53,13 @@ const Header: React.FC<HeaderProps> = ({
   const { theme } = switchTheme();
 
   return (
-    <div className="fixed xs:inset-x-0 md:inset-x-10 xs:inset-y-0 md:inset-y-5 h-[60px]  transition-all duration-300 z-30">
+    <div className="fixed inset-0 h-[60px] transition-all duration-300 z-30">
       {isScrolled ? (
         <motion.header
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: isScrolled ? 0 : -100, opacity: isScrolled ? 1 : 0 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="header-content relative py-8 px-5 bg-white/90 dark:bg-black/80 xs:rounded-none md:rounded-xl backdrop-blur-sm"
+          className="header-content relative py-8 px-5 bg-white/90 dark:bg-black/80 shadow-lg shadow-black/5 dark:shadow-platinum/5 backdrop-blur-sm"
         >
           <Link to="/">
             {theme === "dark" ? (

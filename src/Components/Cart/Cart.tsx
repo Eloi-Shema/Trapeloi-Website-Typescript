@@ -58,7 +58,7 @@ const Cart: React.FC<CartProps> = ({
     isRendered && (
       <div
         onAnimationEnd={handleAnimationEnd}
-        className={`cart-box fixed xs:top-0 sm:top-[65px] md:top-[75px] xs:w-[350px] sm:w-96 right-0 dark:bg-bgBlack bg-gray-200 rounded-tl-xl rounded-bl-xl transition-transform duration-500 z-40 ${
+        className={`fixed xs:top-0 sm:top-[64px] xs:w-[350px] sm:w-96 right-0 dark:bg-bgBlack bg-gray-200 rounded-tl-xl rounded-bl-xl transition-transform duration-500 z-40 ${
           firstRender && isVisible ? "translate-x-0" : "translate-x-full"
         }`}
         style={{ willChange: "transform" }}
@@ -73,7 +73,7 @@ const Cart: React.FC<CartProps> = ({
               alt=""
             />
           </div>
-          <div className="flex justify-between items-center py-5 text-xs dark:text-gray-200 text-black">
+          <div className="flex justify-between items-center py-4 text-xs dark:text-gray-200 text-black">
             <p>{cartCount} items</p>
             <p
               onClick={() => clearCart()}
@@ -84,7 +84,7 @@ const Cart: React.FC<CartProps> = ({
           </div>
 
           <div>
-            <div className="added-cart relative h-[355px] overflow-y-auto overflow-x-hidden box-border pr-1">
+            <div className="added-cart relative h-[345px] overflow-y-auto overflow-x-hidden box-border pr-1">
               {cartItems.length > 0 ? (
                 cartItems.map((item, id) => {
                   return (
