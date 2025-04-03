@@ -11,18 +11,13 @@ import {
 import arrow from "../../assets/icons/arrow.svg";
 import AltHeader2 from "../../Components/Header/AltHeader2";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useCart } from "../../hooks/useCart";
-import Loading from "../../utils/Loading/Loading";
-import ErrorPage from "../../utils/Error/Error";
+import { countries } from "./CountryList";
 
 const Checkout = () => {
   const [cardNumber, setCardNumber] = useState<string>("");
   const [expiryDate, setExpiryDate] = useState<string>("");
-
-  const [countries, setCountries] = useState<string[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
 
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
 
@@ -32,39 +27,6 @@ const Checkout = () => {
 
   //CART INFO
   const { cart, totalPrice } = useCart();
-
-  //FETCH COUNTRIES
-
-  useEffect(() => {
-    const fetchCountries = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch("https://restcountries.com/v3.1/all");
-
-        if (!response) {
-          throw new Error("Failed to fetch countries");
-        }
-
-        const data = await response.json();
-        const countryList = data
-          .map((country: any) => country.name.common)
-          .sort();
-        setCountries(countryList);
-      } catch (error) {
-        setError((error as Error).message);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchCountries();
-  }, []);
-
-  if (loading) {
-    return <Loading />;
-  }
-  if (error) {
-    return <ErrorPage />;
-  }
 
   //CARD INPUT LOGIC
   const cardInput = (value: string) => {
@@ -354,13 +316,12 @@ const Checkout = () => {
                     >
                       Choose your Country
                     </option>
-                    {countries.map((country) => (
+                    {countries.map((country, index) => (
                       <option
-                        value={country}
-                        key={country}
+                        key={index}
                         className="bg-white dark:bg-bgBlack text-black dark:text-white"
                       >
-                        {country}
+                        {country.name}
                       </option>
                     ))}
                   </select>
@@ -671,13 +632,12 @@ const Checkout = () => {
                     >
                       Choose your Country
                     </option>
-                    {countries.map((country) => (
+                    {countries.map((country, index) => (
                       <option
-                        value={country}
-                        key={country}
+                        key={index}
                         className="bg-white dark:bg-bgBlack text-black dark:text-white"
                       >
-                        {country}
+                        {country.name}
                       </option>
                     ))}
                   </select>

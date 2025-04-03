@@ -296,11 +296,11 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                     className="cart-btn dark:bg-transparent bg-bgBlack w-20 flex justify-center items-center border rounded-md px-3 py-2"
                     onClick={() => addToCart(beat)}
                   >
-                    <p className="text-white text-sm mr-3 font-medium">
+                    <p className="text-white text-xs mr-3 font-medium">
                       {beat.price > 0 ? `$${beat.price / 100}` : "FREE"}
                     </p>
                     <img
-                      className="w-[18px] invert -mt-[2px] -ml-1 opacity-80"
+                      className="w-4 invert -ml-2 opacity-80"
                       src={cart_icon}
                       alt=""
                     />
