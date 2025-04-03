@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import Loading from "../../utils/Loading/Loading";
 import AltHeader from "../../Components/Header/AltHeader";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const Privacy = () => {
+  useDocumentTitle("Privacy - Trapeloi");
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {

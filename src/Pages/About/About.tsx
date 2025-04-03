@@ -1,6 +1,9 @@
 import AltNavbar from "../../Components/Header/AltHeader";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const About = () => {
+  useDocumentTitle("About - Trapeloi");
+
   return (
     <main className="m-auto max-w-[1536px] flex flex-col gap-8 dark:text-white text-black xs:text-base md:text-lg dark:bg-black bg-platinum xs:py-10 md:py-16 xs:px-8 md:px-20 font-montserrat">
       <AltNavbar />

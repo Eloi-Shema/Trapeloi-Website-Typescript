@@ -21,7 +21,7 @@ const Footer: React.FC<FooterProps> = ({ scrollToHome, scrollToStore }) => {
         <img
           className="xs:w-40 lg:w-52 invert dark:invert-0"
           src={logo}
-          alt=""
+          alt="Trapeloi"
         />
         <div className="w-full">
           <div className="flex justify-evenly items-center xs:my-7 lg:my-0">

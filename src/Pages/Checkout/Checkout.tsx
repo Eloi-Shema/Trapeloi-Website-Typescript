@@ -13,9 +13,12 @@ import AltHeader2 from "../../Components/Header/AltHeader2";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useCart } from "../../hooks/useCart";
-import { countries } from "./CountryList";
+import CountryDropdown from "../../utils/Countries/CountryDropDown";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const Checkout = () => {
+  useDocumentTitle("Checkout - Trapeloi");
+
   const [cardNumber, setCardNumber] = useState<string>("");
   const [expiryDate, setExpiryDate] = useState<string>("");
 
@@ -305,35 +308,7 @@ const Checkout = () => {
 
             <div className="bg-white/20 dark:bg-white/[2%]">
               <div className="payment flex flex-col px-4 gap-2 py-5 rounded-xl border border-gray-400 dark:border-gray-700">
-                <form className="relative w-full truncate">
-                  <select
-                    id="country"
-                    className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-gray/700 dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
-                  >
-                    <option
-                      value=""
-                      className="bg-white dark:bg-bgBlack text-gray-600 dark:text-gray-400"
-                    >
-                      Choose your Country
-                    </option>
-                    {countries.map((country, index) => (
-                      <option
-                        key={index}
-                        className="bg-white dark:bg-bgBlack text-black dark:text-white"
-                      >
-                        {country.name}
-                      </option>
-                    ))}
-                  </select>
-
-                  <label
-                    htmlFor="country"
-                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
-                  >
-                    Country/Region
-                  </label>
-                </form>
-
+                <CountryDropdown />
                 <div className="flex xs:flex-col md:flex-row justify-between">
                   <form className="relative basis-[49%] w-full truncate">
                     <input
@@ -621,34 +596,7 @@ const Checkout = () => {
 
             <div className="bg-white/20 dark:bg-white/[2%]">
               <div className="payment flex flex-col px-4 gap-2 py-5 rounded-xl border border-gray-400 dark:border-gray-700">
-                <form className="relative w-full truncate">
-                  <select
-                    id="country"
-                    className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-gray/700 dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
-                  >
-                    <option
-                      value=""
-                      className="bg-white dark:bg-bgBlack text-gray-600 dark:text-gray-400"
-                    >
-                      Choose your Country
-                    </option>
-                    {countries.map((country, index) => (
-                      <option
-                        key={index}
-                        className="bg-white dark:bg-bgBlack text-black dark:text-white"
-                      >
-                        {country.name}
-                      </option>
-                    ))}
-                  </select>
-
-                  <label
-                    htmlFor="country"
-                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
-                  >
-                    Country/Region
-                  </label>
-                </form>
+                <CountryDropdown />
 
                 <div className="flex xs:flex-col md:flex-row justify-between">
                   <form className="relative basis-[49%] w-full truncate">

@@ -11,8 +11,11 @@ import Footer from "../../Components/Footer/Footer.tsx";
 import Cart from "../../Components/Cart/Cart.tsx";
 import { useCart } from "../../hooks/useCart.ts";
 import Loading from "../../utils/Loading/Loading.tsx";
+import useDocumentTitle from "../../hooks/useDocumentTitle.ts";
 
 const Home: React.FC = () => {
+  useDocumentTitle("Trapeloi");
+
   //LOAD THE PAGE
   const [isLoading, SetIsLoading] = useState<boolean>(false);
   useEffect(() => {

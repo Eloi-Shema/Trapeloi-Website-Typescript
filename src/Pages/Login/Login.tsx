@@ -7,8 +7,11 @@ import { Link } from "react-router-dom";
 import Loading from "../../utils/Loading/Loading";
 import showPasswordIcon from "../../assets/icons/eye-on.svg";
 import hidePasswordIcon from "../../assets/icons/eye-off.svg";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const Login: React.FC = () => {
+  useDocumentTitle("Login - Trapeloi");
+
   const [loginState, setLoginState] = useState<string>("Login");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);

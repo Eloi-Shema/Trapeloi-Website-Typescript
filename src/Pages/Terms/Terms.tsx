@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 import AltHeader from "../../Components/Header/AltHeader";
 import { useEffect, useState } from "react";
 import Loading from "../../utils/Loading/Loading";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const Terms = () => {
+  useDocumentTitle("Licence terms - Trapeloi");
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {

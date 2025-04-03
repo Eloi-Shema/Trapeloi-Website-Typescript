@@ -65,7 +65,11 @@ const Header: React.FC<HeaderProps> = ({
             {theme === "dark" ? (
               <img className="xs:w-32 md:w-36" src={logo_dark} alt="Logo" />
             ) : (
-              <img className="xs:w-32 md:w-36" src={logo_light} alt="Logo" />
+              <img
+                className="xs:w-32 md:w-36"
+                src={logo_light}
+                alt="Trapeloi"
+              />
             )}
           </Link>
 
@@ -124,7 +128,7 @@ const Header: React.FC<HeaderProps> = ({
       ) : (
         <header className="header-content relative py-8 px-5 bg-transparent">
           <Link to="/">
-            <img className="xs:w-32 md:w-36" src={logo} alt="Logo" />
+            <img className="xs:w-32 md:w-36" src={logo} alt="Trapeloi" />
           </Link>
 
           <div className="menu-links text-white">

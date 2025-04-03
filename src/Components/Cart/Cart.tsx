@@ -163,7 +163,7 @@ const Cart: React.FC<CartProps> = ({
                 I agree to the &nbsp;
                 <Link to={"/terms"}>
                   <span className="text-blue-700 dark:text-blue-300 hover:underline cursor-pointer">
-                    licence(s) and agreement(s)
+                    license terms
                   </span>
                 </Link>
               </p>
