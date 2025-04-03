@@ -27,6 +27,7 @@ const Home: React.FC = () => {
     toggleCart,
     cart,
     addToCart,
+    cartNotification,
     warning,
     animate,
     removeFromCart,
@@ -63,6 +64,7 @@ const Home: React.FC = () => {
           <Header
             toggleCart={toggleCart}
             cartCount={cart.length}
+            cartNotification={cartNotification}
             warning={warning}
             animate={animate}
             scrollToStore={handleStoreScroll}

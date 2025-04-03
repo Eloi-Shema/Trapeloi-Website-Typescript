@@ -9,10 +9,12 @@ import { Link } from "react-router-dom";
 import ThemeToggle from "../theme/ThemeToggle";
 import { switchTheme } from "../../hooks/switchTheme";
 import { motion } from "framer-motion";
+import { AnimatedCheck, AnimatedX } from "../../utils/icons/icons";
 
 interface HeaderProps {
   toggleCart: () => void;
   cartCount: number;
+  cartNotification?: string | null;
   warning?: string | null;
   animate?: boolean | null;
   scrollToStore: () => void;
@@ -22,6 +24,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({
   toggleCart,
   cartCount,
+  cartNotification,
   warning,
   animate,
   scrollToStore,
@@ -65,14 +68,27 @@ const Header: React.FC<HeaderProps> = ({
               <img className="xs:w-32 md:w-36" src={logo_light} alt="Logo" />
             )}
           </Link>
+
+          {cartNotification && (
+            <div className="absolute top-16 xs:right-4 sm:right-10 flex items-center bg-green-700 py-2 px-4 font-kanit text-sm rounded-md transition-all whitespace-nowrap z-10">
+              {cartNotification} {""}
+              <span>
+                <AnimatedCheck />
+              </span>
+            </div>
+          )}
+
           {warning && (
-            <p
-              className={`font-kanit absolute top-16 xs:right-4 sm:right-10 text-sm bg-red-700 ${
+            <div
+              className={`absolute top-16 xs:right-4 sm:right-10 flex items-center text-sm font-kanit bg-red-700 ${
                 animate ? "animation-shake" : ""
               } py-2 px-4 rounded-md transition-all whitespace-nowrap z-10`}
             >
-              {warning}
-            </p>
+              {warning}{" "}
+              <span className="ml-1">
+                <AnimatedX />
+              </span>
+            </div>
           )}
           <div className="menu-links dark:text-white text-black">
             <ThemeToggle />

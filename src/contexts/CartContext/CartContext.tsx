@@ -11,6 +11,7 @@ interface CartContextType {
   isVisible: boolean;
   toggleCart: () => void;
   cart: BeatType[];
+  cartNotification?: string | null;
   warning?: string | null;
   animate?: boolean | null;
   addToCart: (beat: BeatType) => void;
@@ -53,6 +54,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
   //ADDING ITEMS TO CART AND SET THE WARNING MESSAGE WHEN THE SAME ITEM IS ADDED IN CART
 
+  const [cartNotification, setCartNotification] = useState<string>("");
   const [warning, setWarning] = useState<string>("");
   const [animate, setAnimate] = useState<boolean>(false);
   const timeOutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -65,8 +67,10 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
           clearTimeout(timeOutRef.current);
         }
 
-        setWarning(`${beat.name} is already added in the Cart!`);
+        setCartNotification("");
+        setWarning(`${beat.name} is already added in the Cart`);
         setAnimate(true);
+
         setTimeout(() => {
           setAnimate(false);
         }, 500);
@@ -74,9 +78,15 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         timeOutRef.current = setTimeout(() => {
           setWarning("");
         }, 3000);
+
         return prevCart;
       } else {
+        setCartNotification(`${beat.name} is added successfully`);
         setWarning("");
+
+        timeOutRef.current = setTimeout(() => {
+          setCartNotification("");
+        }, 3000);
         return [...prevCart, beat];
       }
     });
@@ -101,6 +111,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         toggleCart,
         cart,
         addToCart,
+        cartNotification,
         warning,
         animate,
         removeFromCart,

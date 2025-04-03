@@ -1,6 +1,7 @@
 import React, { RefObject } from "react";
 import "./Pricing.css";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 interface PricingProps {
   pricingRef: RefObject<HTMLDivElement | null>;
@@ -47,9 +48,11 @@ const Pricing: React.FC<PricingProps> = ({ pricingRef }) => {
                 <span className="text-red-600">&#10006;</span> Exclusive rights
               </li>
             </ul>
-            <button className="flex justify-self-center dark:bg-white/90 bg-bgBlack dark:text-black text-white py-2 px-[64px] rounded-md font-montserrat font-semibold whitespace-nowrap transition-all duration-300">
-              Learn More
-            </button>
+            <Link to={"/terms"}>
+              <button className="flex justify-self-center dark:bg-white/90 bg-bgBlack dark:text-black text-white py-2 px-[64px] rounded-md font-montserrat font-semibold whitespace-nowrap transition-all duration-300">
+                Learn More
+              </button>
+            </Link>
           </div>
 
           <div className="recommended-plan relative w-72 rounded-md p-6 xs:mb-5 md:mb-0 dark:bg-blueGreen/10 bg-white/30">
@@ -82,9 +85,11 @@ const Pricing: React.FC<PricingProps> = ({ pricingRef }) => {
                 &#10004; Exclusive rights
               </li>
             </ul>
-            <button className="flex justify-self-center dark:bg-blueGreen/90 dark:hover:bg-blueGreen bg-purple-950 hover:purple-950/90 dark:text-black text-white py-2 px-[64px] rounded-md font-montserrat font-semibold whitespace-nowrap transition-all duration-150">
-              Learn More
-            </button>
+            <Link to={"/terms"}>
+              <button className="flex justify-self-center dark:bg-blueGreen/90 dark:hover:bg-blueGreen bg-purple-950 hover:purple-950/90 dark:text-black text-white py-2 px-[64px] rounded-md font-montserrat font-semibold whitespace-nowrap transition-all duration-150">
+                Learn More
+              </button>
+            </Link>
           </div>
         </div>
       </motion.div>

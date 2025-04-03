@@ -17,19 +17,12 @@ body::-webkit-scrollbar {
   width: 8px;
 }
 
-.dark body::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track {
   background: black;
 }
-body::-webkit-scrollbar-track {
-  background: rgb(209, 209, 209);
-}
 
-.dark body::-webkit-scrollbar-thumb {
-  background-color: rgb(45, 45, 45);
-  border-radius: 5px;
-}
 body::-webkit-scrollbar-thumb {
-  background-color: rgb(164, 164, 164);
+  background-color: rgb(45, 45, 45);
   border-radius: 5px;
 }
 

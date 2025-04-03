@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useCart } from "../../hooks/useCart";
 import Loading from "../../utils/Loading/Loading";
+import ErrorPage from "../../utils/Error/Error";
 
 const Checkout = () => {
   const [cardNumber, setCardNumber] = useState<string>("");
@@ -62,7 +63,7 @@ const Checkout = () => {
     return <Loading />;
   }
   if (error) {
-    return <p className="text-red-500">{error}</p>;
+    return <ErrorPage />;
   }
 
   //CARD INPUT LOGIC

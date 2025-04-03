@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 export const SpotifyIcon = () => {
   return (
     <div className="group">
@@ -566,6 +568,67 @@ export const DiscoverIcon = () => {
   );
 };
 
+export const AnimatedCheck = () => {
+  return (
+    <motion.svg
+      width="21"
+      height="21"
+      viewBox="0 0 50 50"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <motion.path
+        d="M10 25L20 35L40 15"
+        stroke="white"
+        strokeWidth="6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
+      />
+    </motion.svg>
+  );
+};
+
+export const AnimatedX = () => {
+  return (
+    <motion.svg
+      width="15"
+      height="15"
+      viewBox="0 0 50 50"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <motion.line
+        x1="10"
+        y1="10"
+        x2="40"
+        y2="40"
+        stroke="white"
+        strokeWidth="8"
+        strokeLinecap="round"
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
+      />
+
+      <motion.line
+        x1="40"
+        y1="10"
+        x2="10"
+        y2="40"
+        stroke="white"
+        strokeWidth="8"
+        strokeLinecap="round"
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ duration: 0.2, ease: "easeOut", delay: 0.2 }}
+      />
+    </motion.svg>
+  );
+};
+
 export const NotFoundBanner = () => {
   return (
     <svg
@@ -574,7 +637,7 @@ export const NotFoundBanner = () => {
       width="1376"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      className="w-1/2 h-1/2 justify-self-center"
+      className="w-60 h-32 justify-self-center"
     >
       <clipPath id="a">
         <path d="m0 0h1376v611h-1376z" />
