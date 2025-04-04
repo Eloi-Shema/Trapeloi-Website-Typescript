@@ -33,7 +33,7 @@ const CountryDropdown: React.FC = () => {
     <div className="relative w-full" ref={dropdownRef}>
       <div
         className={`flex items-center justify-between w-full bg-black/[3%] dark:bg-white/[4%] px-3 py-4 mb-4 font-montserrat text-gray/700 dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 transition-all duration-300 cursor-pointer ${
-          isOpen ? "border-purple-600 dark:border-blueGreen" : ""
+          isOpen ? "border-purple-600 dark:border-blueGreen/80" : ""
         }`}
         onClick={() => setIsOpen(!isOpen)}
       >

@@ -174,7 +174,7 @@ const Cart: React.FC<CartProps> = ({
                 isChecked ? (
                   <button
                     onClick={() => navigate("/checkout")}
-                    className="flex items-center justify-center w-[350px] mb-3 py-[10px] bg-black dark:bg-blueGreen dark:text-black text-white text-lg  rounded-lg cursor-pointer"
+                    className="flex items-center justify-center xs:w-[300px] md:w-[350px] mb-3 py-[10px] bg-black dark:bg-blueGreen dark:text-black text-white text-lg  rounded-lg cursor-pointer"
                   >
                     <p>Checkout</p>
                     <img
@@ -194,7 +194,7 @@ const Cart: React.FC<CartProps> = ({
                   </button>
                 )
               ) : (
-                <button className="flex items-center justify-center w-[350px] mb-3 py-[10px] bg-black/40 dark:bg-gray-400 dark:text-black text-white text-lg  rounded-lg cursor-default">
+                <button className="flex items-center justify-center xs:w-[300px] md:w-[350px] mb-3 py-[10px] bg-black/40 dark:bg-gray-400 dark:text-black text-white text-lg  rounded-lg cursor-default">
                   <p>Checkout</p>
                   <img
                     src={right_arrow}
