@@ -36,37 +36,19 @@ button {
   }
 }
 
-.menu-links {
-  display: flex;
-  align-items: center;
-}
-
-@media (max-width: 768px) {
-  .menu-links h4,
-  .menu-links .login-btn {
-    display: none;
-  }
-}
-
-.menu-links h4 {
-  font-weight: 500;
-  margin-right: 1.88rem;
-  cursor: pointer;
-}
-.menu-links .login-btn {
+.login-btn {
   font-weight: 500;
   border: none;
   padding: 4px 20px;
   border-radius: 6px;
 }
-.menu-links .login-btn:hover {
+.login-btn:hover {
   opacity: 0.8;
   transition: all 0.3s ease;
 }
 
 .cart {
   position: relative;
-  margin-right: 1.88rem;
 }
 
 .cart p {

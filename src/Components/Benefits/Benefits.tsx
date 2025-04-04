@@ -42,7 +42,7 @@ const Benefits: React.FC = () => {
           <div className="absolute inset-0 xs:dark:bg-bgBlack md:dark:bg-perfectBlue/15 bg-white animate-pulse rounded-t-[40px] "></div>
           <div className=" z-10">
             <p className="mb-20 px-5 xs:text-base md:text-xl text-center dark:text-platinum text-black">
-              When You Get&nbsp;
+              With&nbsp;
               <span className="font-extrabold dark:text-white text-black">
                 Trapeloi
               </span>

@@ -59,7 +59,7 @@ const Header: React.FC<HeaderProps> = ({
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: isScrolled ? 0 : -100, opacity: isScrolled ? 1 : 0 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="header-content relative py-8 px-5 bg-white/90 dark:bg-black/80 shadow-lg shadow-black/5 dark:shadow-platinum/5 backdrop-blur-sm"
+          className="header-content relative py-5 px-10 bg-white/90 dark:bg-black/80 shadow-lg shadow-black/5 dark:shadow-platinum/5 backdrop-blur-sm"
         >
           <Link to="/">
             {theme === "dark" ? (
@@ -94,12 +94,16 @@ const Header: React.FC<HeaderProps> = ({
               </span>
             </div>
           )}
-          <div className="menu-links dark:text-white text-black">
+          <div className="flex items-center dark:text-white text-black font-semibold">
             <ThemeToggle />
 
-            <h4 onClick={scrollToStore}>Beat Store</h4>
-            <h4 onClick={scrollToPricing}>Pricing</h4>
-            <div className="cart cursor-pointer" onClick={toggleCart}>
+            <h4 className="xs:hidden md:block mr-5 " onClick={scrollToStore}>
+              Store
+            </h4>
+            <h4 className="xs:hidden md:block mr-5 " onClick={scrollToPricing}>
+              Pricing
+            </h4>
+            <div className="cart mr-5 cursor-pointer" onClick={toggleCart}>
               <img src={cart_icon} alt="" className="w-6 dark:invert" />
               <p
                 className={`${
@@ -110,7 +114,7 @@ const Header: React.FC<HeaderProps> = ({
               </p>
             </div>
             <Link to="/login">
-              <button className="login-btn bg-black text-white dark:bg-white dark:text-black">
+              <button className="login-btn xs:hidden md:block bg-black text-white dark:bg-white dark:text-black">
                 Log In
               </button>
             </Link>
@@ -118,7 +122,7 @@ const Header: React.FC<HeaderProps> = ({
               <img
                 className={`${
                   isOpen ? "rotate-0" : "rotate-45"
-                } w-[14px] transition-all duration-200`}
+                } w-5 transition-all duration-200`}
                 src={close_icon}
                 alt="Close Menu"
               />
@@ -126,17 +130,21 @@ const Header: React.FC<HeaderProps> = ({
           </div>
         </motion.header>
       ) : (
-        <header className="header-content relative py-8 px-5 bg-transparent">
+        <header className="header-content relative py-5 px-10 bg-transparent">
           <Link to="/">
             <img className="xs:w-32 md:w-36" src={logo} alt="Trapeloi" />
           </Link>
 
-          <div className="menu-links text-white">
+          <div className="flex items-center text-white font-semibold">
             <ThemeToggle />
 
-            <h4 onClick={scrollToStore}>Beat Store</h4>
-            <h4 onClick={scrollToPricing}>Pricing</h4>
-            <div className="cart cursor-pointer" onClick={toggleCart}>
+            <h4 className="xs:hidden md:block mr-5 " onClick={scrollToStore}>
+              Store
+            </h4>
+            <h4 className="xs:hidden md:block mr-5 " onClick={scrollToPricing}>
+              Pricing
+            </h4>
+            <div className="cart mr-5 cursor-pointer" onClick={toggleCart}>
               <img src={cart_icon} alt="Cart icon" className="w-6 invert" />
               <p
                 className={`${
@@ -147,13 +155,15 @@ const Header: React.FC<HeaderProps> = ({
               </p>
             </div>
             <Link to="/login">
-              <button className="login-btn bg-white text-black">Log In</button>
+              <button className="login-btn xs:hidden md:block bg-white text-black">
+                Log In
+              </button>
             </Link>
             <button className="dark:invert md:hidden w-5" onClick={toggleMenu}>
               <img
                 className={`${
                   isOpen ? "rotate-0" : "rotate-45"
-                } w-[14px] dark:invert-0 invert transition-all duration-200`}
+                } w-5 dark:invert-0 invert transition-all duration-200`}
                 src={close_icon}
                 alt="Close Menu"
               />

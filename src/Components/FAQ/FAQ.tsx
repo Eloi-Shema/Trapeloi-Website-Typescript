@@ -79,7 +79,10 @@ const FAQ: React.FC = () => {
         </div>
 
         {fAQData.map((item) => (
-          <div key={item.id} className="xs:w-full md:w-[47.95rem] mb-3">
+          <div
+            key={item.id}
+            className="xs:w-full lg:max-w-screen-lg md:px-5 mb-3"
+          >
             <hr className="opacity-60 dark:invert-0 invert" />
             <div
               className="flex items-center justify-between py-6 opacity-90 cursor-pointer"

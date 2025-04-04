@@ -9,7 +9,7 @@ import {
   VisaIcon,
 } from "../../utils/icons/icons";
 import arrow from "../../assets/icons/arrow.svg";
-import AltHeader2 from "../../Components/Header/AltHeader2";
+import AltHeader2 from "../../Components/Header/AltHeader";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useCart } from "../../hooks/useCart";
@@ -60,7 +60,7 @@ const Checkout = () => {
       <AltHeader2 />
       {/*SMALL SIZE*/}
 
-      <section className="md:hidden xs:flex flex-col justify-center gap-5 px-5 pt-20 pb-5 w-full h-full dark:bg-white/5 bg-white text-gray-600 dark:text-gray-400 rounded-lg">
+      <section className="md:hidden xs:flex flex-col justify-center gap-5 p-5 w-full h-full dark:bg-white/5 bg-white text-gray-600 dark:text-gray-400 rounded-lg">
         <div className="flex flex-col">
           <div
             onClick={toggleCollapse}
@@ -416,7 +416,7 @@ const Checkout = () => {
             </p>
           </div>
 
-          <div className="self-center text-xs dark:text-gray-400 text- font-montserrat font-light my-3">
+          <div className="self-center text-xs dark:text-gray-400 text-center font-montserrat font-light my-3">
             Before buying, Please revise the licensing terms and refund policy{" "}
             <Link to="/terms">
               <span className="text-blue-500 hover:underline cursor-pointer">
@@ -431,7 +431,7 @@ const Checkout = () => {
       {/*LARGE SIZE*/}
 
       <section className="xs:hidden md:flex gap-10 w-full h-full text-gray-600 dark:text-gray-400 rounded-lg">
-        <div className="flex flex-col w-[60%] md:px-10 xl:px-24 pt-20 pb-5 dark:bg-white/5 bg-white">
+        <div className="flex flex-col w-[60%] md:px-10 xl:px-24 p-5 dark:bg-white/5 bg-white">
           <div className="flex flex-col items-center justify-center gap-3 mt-3 mb-10">
             <p className="text-sm text-gray-400">Express checkout</p>
             <div className="flex xs:flex-col lg:flex-row items-center justify-center flex-wrap gap-3">
@@ -705,7 +705,7 @@ const Checkout = () => {
             </p>
           </div>
 
-          <div className="self-center dark:text-white/80 text-black/80 font-montserrat font-light mt-10">
+          <div className="self-center dark:text-white/80 text-black/80 text-sm text-center font-montserrat font-light mt-10">
             Before buying, Please revise the licensing terms and refund policy{" "}
             <Link to="/terms">
               <span className="text-blue-500 hover:underline cursor-pointer">
@@ -716,7 +716,7 @@ const Checkout = () => {
           </div>
         </div>
 
-        <div className="fixed right-0 flex flex-col w-[40%] max-w-2xl md:px-1 lg:px-5 pt-20 mt-2">
+        <div className="fixed right-0 top-14 flex flex-col w-[40%] max-w-2xl md:px-1 lg:px-5 py-5 mt-2">
           <div className="order-summary max-h-60 overflow-y-auto">
             {cart.map((beat, index) => (
               <div

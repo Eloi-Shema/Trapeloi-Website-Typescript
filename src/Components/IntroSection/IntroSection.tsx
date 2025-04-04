@@ -2,6 +2,7 @@ import React, { RefObject } from "react";
 import "./IntroSection.css";
 import logo from "../../assets/logo-white - 1.png";
 import bgImage from "../../assets/studio.webp";
+import bgImage2 from "../../assets/studio2.webp";
 
 interface IntroSectionProps {
   scrollToStore: () => void;
@@ -19,12 +20,27 @@ const IntroSection: React.FC<IntroSectionProps> = ({
     >
       <div className="absolute inset-0">
         <div className="overlay dark:bg-black/70 bg-black/60 absolute inset-0"></div>
-        <div className="background-video h-full w-full">
-          <img
-            className="w-full h-full object-cover"
-            src={bgImage}
-            alt="Ambient studio"
-          />
+        <div className="h-full w-full">
+          {/* responsive image */}
+          <picture>
+            <source
+              srcSet={bgImage2}
+              type="image/webp"
+              media="(max-width: 767px)"
+            />
+
+            <source
+              srcSet={bgImage}
+              type="image/webp"
+              media="(min-width: 768px)"
+            />
+
+            <img
+              src={bgImage}
+              alt="Studio image"
+              className="w-full h-full object-cover"
+            />
+          </picture>
         </div>
       </div>
 

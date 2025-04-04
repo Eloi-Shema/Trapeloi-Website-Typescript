@@ -81,15 +81,19 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="store box-border px-4 py-12 mx-6">
+      <div
+        className={`store box-border p-10 ${
+          isGridView ? "" : "flex flex-col items-center justify-center"
+        }`}
+      >
         <div
           className={`${
             isGridView
               ? "store-header relative flex flex-col items-center rounded-t-lg mt-1 xs:py-5 xl:py-7"
-              : "store-header xs:w-full md:w-[48rem] lg:w-[64rem] relative flex flex-col items-center justify-self-center rounded-t-lg mt-1 xs:py-5 xl:py-7"
+              : "store-header xs:w-full lg:w-[64rem] relative flex flex-col items-center justify-self-center rounded-t-lg mt-1 xs:py-5 xl:py-7"
           }`}
         >
-          <h1 className="dark:text-platinum text-black xs:text-xl md:text-2xl lg:text-4xl font-trap font-bold mb-4">
+          <h1 className="dark:text-platinum text-black xs:text-2xl md:text-3xl lg:text-4xl font-trap font-bold mb-4">
             Beat Shop
           </h1>
 
@@ -149,7 +153,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 1, ease: "easeOut" }}
                     viewport={{ once: true }}
-                    className="beat-grid flex flex-col items-center justify-self-center px-1 py-4"
+                    className="beat-grid flex flex-col items-center justify-self-center px-2 py-4"
                     key={id}
                   >
                     <div className="cover relative cursor-pointer">
@@ -201,7 +205,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
             )}
           </div>
         ) : (
-          <div className="store-list2 dark:bg-black/80 bg-platinum/80 xs:hidden md:flex flex-col flex-1 justify-self-center box-border p-6 max-h-[64rem] md:w-[48rem] lg:w-[64rem] overflow-y-auto">
+          <div className="store-list2 dark:bg-black/80 bg-platinum/60 xs:hidden md:flex flex-col flex-1 justify-self-center box-border p-6 max-h-[64rem] md:w-full lg:w-[64rem] overflow-y-auto">
             {beatsOnPage.length > 0 ? (
               beatsOnPage.map((beat, id) => {
                 return (
@@ -260,7 +264,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
         )}
 
         {/* {FOR SMALL SIZE} */}
-        <div className="store-list dark:bg-black/80 bg-platinum/80 flex flex-col md:hidden max-h-[36rem] px-1 overflow-y-auto">
+        <div className="store-list dark:bg-black/80 bg-platinum/60 flex flex-col md:hidden w-full max-h-[36rem] px-1 overflow-y-auto">
           {beatsOnPage.length > 0 ? (
             beatsOnPage.map((beat, id) => {
               return (
@@ -319,8 +323,8 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
         <div
           className={`${
             isGridView
-              ? "store-footer xs:h-12 md:h-20 rounded-b-lg"
-              : "store-footer justify-self-center xs:w-full md:w-[48rem] lg:w-[64rem] xs:h-12 md:h-20 rounded-b-lg"
+              ? "store-footer flex items-center justify-center xs:h-12 md:h-20 rounded-b-lg"
+              : "store-footer flex items-center justify-center xs:w-full md:w-full lg:w-[64rem] xs:h-12 md:h-20 rounded-b-lg"
           }`}
         >
           <div className="flex items-center justify-between justify-self-center xs:w-28 md:w-40 xs:scale-[85%] md:scale-100 xs:py-[17px] md:py-[33px]">

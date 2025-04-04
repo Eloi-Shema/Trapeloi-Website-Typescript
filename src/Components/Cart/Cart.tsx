@@ -58,7 +58,7 @@ const Cart: React.FC<CartProps> = ({
     isRendered && (
       <div
         onAnimationEnd={handleAnimationEnd}
-        className={`fixed xs:top-0 sm:top-[64px] xs:w-[350px] sm:w-96 right-0 dark:bg-bgBlack bg-gray-200 rounded-tl-xl rounded-bl-xl transition-transform duration-500 z-40 ${
+        className={`fixed xs:top-0 sm:top-[60px] xs:w-[350px] sm:w-96 md:w-[450px] right-0 dark:bg-bgBlack bg-gray-200 rounded-tl-xl rounded-bl-xl shadow-md shadow-black/10 dark:shadow-white/10 transition-transform duration-500 z-40 ${
           firstRender && isVisible ? "translate-x-0" : "translate-x-full"
         }`}
         style={{ willChange: "transform" }}
@@ -84,7 +84,7 @@ const Cart: React.FC<CartProps> = ({
           </div>
 
           <div>
-            <div className="added-cart relative h-[345px] overflow-y-auto overflow-x-hidden box-border pr-1">
+            <div className="added-cart relative h-[350px] overflow-y-auto overflow-x-hidden box-border pr-1">
               {cartItems.length > 0 ? (
                 cartItems.map((item, id) => {
                   return (
@@ -96,7 +96,7 @@ const Cart: React.FC<CartProps> = ({
                             src={item.image}
                             alt="item cover"
                           />
-                          <div className="leading-6">
+                          <div className="flex flex-col gap-2">
                             <h4 className="dark:text-white/90 text-black text-sm font-medium">
                               {item.name}
                             </h4>
@@ -105,7 +105,7 @@ const Cart: React.FC<CartProps> = ({
                             </p>
                           </div>
                         </div>
-                        <div className="flex flex-col items-center justify-between h-12 -mt-2">
+                        <div className="flex flex-col items-center justify-center gap-5 -mt-4">
                           <img
                             className="dark:invert invert-0 w-4 cursor-pointer opacity-60"
                             src={close_icon}
@@ -147,7 +147,7 @@ const Cart: React.FC<CartProps> = ({
           <hr className="my-2 dark:border-gray-100 border-gray-800 opacity-50" />
 
           <div className="my-5">
-            <div className="flex items-center text-[13px] mb-5">
+            <div className="flex items-center ml-2 text-[13px] mb-5">
               <div>
                 <label className="check-box">
                   <input
@@ -159,11 +159,11 @@ const Cart: React.FC<CartProps> = ({
                   <span></span>
                 </label>
               </div>
-              <p className="dark:text-white text-black">
+              <p className="dark:text-gray-300 text-gray-700 ">
                 I agree to the &nbsp;
                 <Link to={"/terms"}>
-                  <span className="text-blue-700 dark:text-blue-300 hover:underline cursor-pointer">
-                    license terms
+                  <span className="text-black dark:text-white hover:underline cursor-pointer">
+                    license(s) terms and conditions
                   </span>
                 </Link>
               </p>
@@ -184,7 +184,7 @@ const Cart: React.FC<CartProps> = ({
                     />
                   </button>
                 ) : (
-                  <button className="flex items-center justify-center w-[350px] mb-3 py-[10px] bg-black/70 dark:bg-blueGreen/70 dark:text-black text-white text-lg  rounded-lg cursor-default">
+                  <button className="flex items-center justify-center xs:w-[300px] md:w-[350px] mb-3 py-[10px] bg-black/70 dark:bg-blueGreen/70 dark:text-black text-white text-lg  rounded-lg cursor-default">
                     <p>Checkout</p>
                     <img
                       src={right_arrow}

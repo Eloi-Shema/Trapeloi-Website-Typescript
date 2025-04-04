@@ -10,7 +10,7 @@ const AltHeader: React.FC = () => {
   const { theme, toggleTheme } = switchTheme();
 
   return (
-    <header className="header-content fixed inset-0 py-8 xs:px-8 md:px-20 bg-white/90 dark:bg-black/80 shadow-lg shadow-black/5 dark:shadow-platinum/5 z-30">
+    <header className="header-content sticky inset-0 w-full py-5 px-10 bg-white/90 dark:bg-black/80 shadow-lg shadow-black/5 dark:shadow-platinum/5 z-30">
       <Link to="/">
         {theme === "dark" ? (
           <img className="xs:w-32 md:w-36" src={logo_dark} alt="Logo" />
@@ -19,10 +19,10 @@ const AltHeader: React.FC = () => {
         )}
       </Link>
 
-      <div className="">
+      <div className="flex items-center">
         <button
           onClick={toggleTheme}
-          className="mr-10 w-[18px]"
+          className="mr-5 w-[18px] -rotate-[20deg]"
           aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
         >
           {theme === "dark" ? (
@@ -33,7 +33,7 @@ const AltHeader: React.FC = () => {
         </button>
 
         <Link to="/login">
-          <button className="bg-black text-white dark:bg-white dark:text-black py-1 px-5 rounded-md">
+          <button className="login-btn bg-black text-white dark:bg-white dark:text-black">
             Log In
           </button>
         </Link>
