@@ -1,4 +1,11 @@
-import React, { forwardRef, RefObject, useMemo, useState } from "react";
+import React, {
+  forwardRef,
+  RefObject,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import "./Store.css";
 import { beatList } from "../../data.ts";
 import cart_icon from "../../assets/icons/cart.svg";
@@ -70,6 +77,18 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
   const startIndex = currentPage * beatsPerPage;
   const endIndex = startIndex + beatsPerPage;
   const beatsOnPage = filteredBeat.slice(startIndex, endIndex);
+
+  const pageDotRef = useRef<(HTMLSpanElement | null)[]>([]);
+
+  useEffect(() => {
+    if (pageDotRef.current[currentPage]) {
+      pageDotRef.current[currentPage]?.scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest",
+      });
+    }
+  }, [currentPage]);
 
   return (
     <div ref={ref} className="relative w-screen justify-self-center z-0">
@@ -327,7 +346,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
               : "store-footer flex items-center justify-center xs:w-full md:w-full lg:w-[64rem] xs:h-12 md:h-20 rounded-b-lg"
           }`}
         >
-          <div className="flex items-center justify-between justify-self-center xs:w-28 md:w-40 xs:scale-[85%] md:scale-100 xs:py-[17px] md:py-[33px]">
+          <div className="flex items-center justify-between justify-self-center xs:max-w-28 md:max-w-36 xs:scale-[85%] md:scale-100 xs:py-[17px] md:py-[33px]">
             <button
               className={`${
                 currentPage === 0 ? "opacity-50" : "opacity-100 cursor-pointer"
@@ -335,19 +354,26 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 0))}
               disabled={currentPage === 0}
             >
-              <img className="w-5 dark:invert -rotate-90" src={arrow} alt="" />
+              <img
+                className="min-w-6 max-w-6 mr-2 dark:invert -rotate-90"
+                src={arrow}
+                alt=""
+              />
             </button>
 
-            <div className="flex gap-2">
+            <div className="flex gap-2 rounded-full truncate">
               {Array.from({ length: totalPages }).map((_, i) => (
                 <motion.span
+                  ref={(dot) => {
+                    pageDotRef.current[i] = dot;
+                  }}
                   key={i}
                   animate={{ scale: i === currentPage ? 1.3 : 1 }}
                   transition={{ type: "spring", stiffness: 500, damping: 5 }}
-                  className={`h-[6px] rounded-full cursor-pointer ${
+                  className={`h-2 rounded-full cursor-pointer ${
                     i === currentPage
-                      ? "bg-black dark:bg-blueGreen/70 w-4"
-                      : "bg-gray-400 w-2"
+                      ? "bg-black/70 dark:bg-blueGreen/70 min-w-3 align-middle"
+                      : "bg-gray-400 min-w-2"
                   }`}
                   onClick={() => setCurrentPage(i)}
                 />
@@ -365,7 +391,11 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
               }
               disabled={currentPage === totalPages - 1}
             >
-              <img className="w-5 dark:invert rotate-90" src={arrow} alt="" />
+              <img
+                className="min-w-6 max-w-6 ml-2 dark:invert rotate-90"
+                src={arrow}
+                alt=""
+              />
             </button>
           </div>
         </div>

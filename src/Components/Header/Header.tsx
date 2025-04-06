@@ -97,10 +97,16 @@ const Header: React.FC<HeaderProps> = ({
           <div className="flex items-center dark:text-white text-black font-semibold">
             <ThemeToggle />
 
-            <h4 className="xs:hidden md:block mr-5 " onClick={scrollToStore}>
+            <h4
+              className="xs:hidden md:block mr-5 cursor-pointer"
+              onClick={scrollToStore}
+            >
               Store
             </h4>
-            <h4 className="xs:hidden md:block mr-5 " onClick={scrollToPricing}>
+            <h4
+              className="xs:hidden md:block mr-5 cursor-pointer"
+              onClick={scrollToPricing}
+            >
               Pricing
             </h4>
             <div className="cart mr-5 cursor-pointer" onClick={toggleCart}>
@@ -138,10 +144,16 @@ const Header: React.FC<HeaderProps> = ({
           <div className="flex items-center text-white font-semibold">
             <ThemeToggle />
 
-            <h4 className="xs:hidden md:block mr-5 " onClick={scrollToStore}>
+            <h4
+              className="xs:hidden md:block mr-5 cursor-pointer"
+              onClick={scrollToStore}
+            >
               Store
             </h4>
-            <h4 className="xs:hidden md:block mr-5 " onClick={scrollToPricing}>
+            <h4
+              className="xs:hidden md:block mr-5 cursor-pointer"
+              onClick={scrollToPricing}
+            >
               Pricing
             </h4>
             <div className="cart mr-5 cursor-pointer" onClick={toggleCart}>
