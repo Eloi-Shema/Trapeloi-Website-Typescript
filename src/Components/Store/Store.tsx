@@ -3,7 +3,6 @@ import React, {
   RefObject,
   useEffect,
   useMemo,
-  useRef,
   useState,
 } from "react";
 import "./Store.css";
@@ -64,13 +63,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
   // HANDLING PAGINATION
   const [currentPage, setCurrentPage] = useState(0);
 
-  let beatsPerPage;
-
-  if (isGridView) {
-    beatsPerPage = 12;
-  } else {
-    beatsPerPage = 10;
-  }
+  const beatsPerPage = isGridView ? 12 : 10;
 
   const totalPages = Math.ceil(filteredBeat.length / beatsPerPage);
 
@@ -78,20 +71,16 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
   const endIndex = startIndex + beatsPerPage;
   const beatsOnPage = filteredBeat.slice(startIndex, endIndex);
 
-  const pageDotRef = useRef<(HTMLSpanElement | null)[]>([]);
-
+  // update the current page on grid view
   useEffect(() => {
-    if (pageDotRef.current[currentPage]) {
-      pageDotRef.current[currentPage]?.scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-        block: "nearest",
-      });
+    const newTotalPages = Math.ceil(filteredBeat.length / beatsPerPage);
+    if (currentPage >= newTotalPages) {
+      setCurrentPage(newTotalPages - 1);
     }
-  }, [currentPage]);
+  }, [isGridView, filteredBeat.length]);
 
   return (
-    <div ref={ref} className="relative w-screen justify-self-center z-0">
+    <div className="relative w-screen justify-self-center z-0">
       <div className="absolute h-full inset-0 opacity-50 -z-10">
         <div className="dark:bg-black/40 bg-platinum/60 absolute inset-0 object-cover backdrop-blur-lg"></div>
         <img
@@ -101,6 +90,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
         />
       </div>
       <div
+        ref={ref}
         className={`store box-border p-10 ${
           isGridView ? "" : "flex flex-col items-center justify-center"
         }`}
@@ -163,7 +153,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
 
         {/* {TOGGLE BETWEEN GRID AND LIST VIEW: BIG SCREEN SIZE} */}
         {isGridView ? (
-          <div className="store-grid dark:bg-black bg-platinum/50 grid gap-6 box-border p-6 xs:hidden md:grid max-h-[64rem]">
+          <div className="store-grid dark:bg-black bg-platinum/50 grid gap-6 box-border p-6 xs:hidden md:grid min-h-[64rem]">
             {beatsOnPage.length > 0 ? (
               beatsOnPage.map((beat, id) => {
                 return (
@@ -224,7 +214,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
             )}
           </div>
         ) : (
-          <div className="store-list2 dark:bg-black/80 bg-platinum/60 xs:hidden md:flex flex-col flex-1 justify-self-center box-border p-6 max-h-[64rem] md:w-full lg:w-[64rem] overflow-y-auto">
+          <div className="store-list2 dark:bg-black/80 bg-platinum/60 xs:hidden md:flex flex-col flex-1 justify-self-center box-border p-6 min-h-[64rem] md:w-full lg:w-[64rem] overflow-y-auto">
             {beatsOnPage.length > 0 ? (
               beatsOnPage.map((beat, id) => {
                 return (
@@ -233,7 +223,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 1, ease: "easeOut" }}
                     viewport={{ once: true }}
-                    className="beat-grid flex flex-1 items-center justify-between mb-6 p-3 h-[4.5rem] max-w-screen-lg"
+                    className="beat-grid flex items-center justify-between mb-6 p-3 min-h-[4.75rem] max-w-screen-lg"
                     key={id}
                   >
                     <div className="flex items-center md:w-60">
@@ -283,7 +273,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
         )}
 
         {/* {FOR SMALL SIZE} */}
-        <div className="store-list dark:bg-black/80 bg-platinum/60 flex flex-col md:hidden w-full max-h-[36rem] px-1 overflow-y-auto">
+        <div className="store-list dark:bg-black/80 bg-platinum/60 flex flex-col gap-6 md:hidden w-full min-h-[990px] px-1 pt-5 overflow-y-auto">
           {beatsOnPage.length > 0 ? (
             beatsOnPage.map((beat, id) => {
               return (
@@ -292,7 +282,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 1, ease: "easeOut" }}
                   viewport={{ once: true }}
-                  className="beat-grid flex flex-1 items-center justify-between mb-6 p-3 max-w-screen-md"
+                  className="beat-grid flex items-center justify-between p-3 max-w-screen-md"
                   key={id}
                 >
                   <div className="flex items-center w-40 break-words">
@@ -364,9 +354,6 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
             <div className="flex gap-2 rounded-full truncate">
               {Array.from({ length: totalPages }).map((_, i) => (
                 <motion.span
-                  ref={(dot) => {
-                    pageDotRef.current[i] = dot;
-                  }}
                   key={i}
                   animate={{ scale: i === currentPage ? 1.3 : 1 }}
                   transition={{ type: "spring", stiffness: 500, damping: 5 }}
