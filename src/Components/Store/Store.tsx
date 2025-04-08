@@ -3,6 +3,7 @@ import React, {
   RefObject,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import "./Store.css";
@@ -63,7 +64,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
   // HANDLING PAGINATION
   const [currentPage, setCurrentPage] = useState(0);
 
-  const beatsPerPage = isGridView ? 12 : 10;
+  const beatsPerPage = 10;
 
   const totalPages = Math.ceil(filteredBeat.length / beatsPerPage);
 
@@ -79,8 +80,73 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
     }
   }, [isGridView, filteredBeat.length]);
 
+  //make store component stay into view when height decrease.
+  const storePageRef = useRef<HTMLDivElement | null>(null);
+  const prevPageRef = useRef(currentPage);
+  const prevHeightRef = useRef<number>(0);
+
+  useEffect(() => {
+    if (prevPageRef.current !== currentPage && storePageRef.current) {
+      const currenHeight = storePageRef.current.offsetHeight;
+      const containerPosition =
+        storePageRef.current.getBoundingClientRect().top + window.scrollY;
+
+      if (currenHeight < prevHeightRef.current) {
+        setTimeout(() => {
+          window.scrollTo({
+            top: containerPosition,
+            behavior: "instant",
+          });
+        }, 0);
+      }
+      prevHeightRef.current = currenHeight;
+    }
+    prevPageRef.current = currentPage;
+  }, [currentPage]);
+
+  useEffect(() => {
+    if (storePageRef.current) {
+      prevHeightRef.current = storePageRef.current.offsetHeight;
+    }
+  }, []);
+
+  //make the current page dot pagination not disappear when pages of beats increase in the future
+  const dotsContainerRef = useRef<HTMLDivElement>(null);
+  const [pageRender, setPageRender] = useState<boolean>(true);
+
+  useEffect(() => {
+    if (pageRender) {
+      setPageRender(false);
+      return;
+    }
+
+    if (dotsContainerRef.current) {
+      const currentDot = dotsContainerRef.current?.children[currentPage];
+
+      if (currentDot) {
+        const containerRect = dotsContainerRef.current.getBoundingClientRect();
+
+        const dotRect = currentDot.getBoundingClientRect();
+
+        const scrollLeft =
+          dotRect.left +
+          dotRect.width / 2 -
+          (containerRect.left + containerRect.width / 2) +
+          dotsContainerRef.current.scrollLeft;
+
+        dotsContainerRef.current.scrollTo({
+          left: scrollLeft,
+          behavior: "smooth",
+        });
+      }
+    }
+  }, [currentPage, pageRender]);
+
   return (
-    <div className="relative w-screen justify-self-center z-0">
+    <div
+      ref={storePageRef}
+      className="relative w-screen justify-self-center z-0"
+    >
       <div className="absolute h-full inset-0 opacity-50 -z-10">
         <div className="dark:bg-black/40 bg-platinum/60 absolute inset-0 object-cover backdrop-blur-lg"></div>
         <img
@@ -153,12 +219,12 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
 
         {/* {TOGGLE BETWEEN GRID AND LIST VIEW: BIG SCREEN SIZE} */}
         {isGridView ? (
-          <div className="store-grid dark:bg-black bg-platinum/50 grid gap-6 box-border p-6 xs:hidden md:grid min-h-[64rem]">
+          <div className="store-grid dark:bg-black bg-platinum/50 grid gap-5 box-border p-6 xs:hidden md:grid max-h-[64rem]">
             {beatsOnPage.length > 0 ? (
               beatsOnPage.map((beat, id) => {
                 return (
                   <motion.div
-                    initial={{ opacity: 0, x: 50 }}
+                    initial={{ opacity: 0, x: 30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 1, ease: "easeOut" }}
                     viewport={{ once: true }}
@@ -167,7 +233,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                   >
                     <div className="cover relative cursor-pointer">
                       <img
-                        className="rounded-sm mb-3 w-[11.875rem] border border-gray-700/30"
+                        className="rounded-sm mb-3 w-56 border border-gray-700/30"
                         src={beat.image}
                         alt="Beat cover"
                       />
@@ -214,7 +280,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
             )}
           </div>
         ) : (
-          <div className="store-list2 dark:bg-black/80 bg-platinum/60 xs:hidden md:flex flex-col flex-1 justify-self-center box-border p-6 min-h-[64rem] md:w-full lg:w-[64rem] overflow-y-auto">
+          <div className="store-list2 dark:bg-black/80 bg-platinum/60 xs:hidden md:flex flex-col justify-self-center gap-5 box-border px-6 py-5 max-h-[64rem] md:w-full lg:w-[64rem] overflow-y-auto">
             {beatsOnPage.length > 0 ? (
               beatsOnPage.map((beat, id) => {
                 return (
@@ -223,7 +289,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 1, ease: "easeOut" }}
                     viewport={{ once: true }}
-                    className="beat-grid flex items-center justify-between mb-6 p-3 min-h-[4.75rem] max-w-screen-lg"
+                    className="beat-grid flex items-center justify-between p-3 h-[4.75rem] max-w-screen-lg"
                     key={id}
                   >
                     <div className="flex items-center md:w-60">
@@ -273,7 +339,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
         )}
 
         {/* {FOR SMALL SIZE} */}
-        <div className="store-list dark:bg-black/80 bg-platinum/60 flex flex-col gap-6 md:hidden w-full min-h-[990px] px-1 pt-5 overflow-y-auto">
+        <div className="store-list dark:bg-black/80 bg-platinum/60 flex flex-col gap-6 md:hidden w-full max-h-[36rem] px-1 pt-5 overflow-y-auto">
           {beatsOnPage.length > 0 ? (
             beatsOnPage.map((beat, id) => {
               return (
@@ -351,7 +417,10 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
               />
             </button>
 
-            <div className="flex gap-2 rounded-full truncate">
+            <div
+              ref={dotsContainerRef}
+              className="flex gap-2 rounded-full truncate"
+            >
               {Array.from({ length: totalPages }).map((_, i) => (
                 <motion.span
                   key={i}

@@ -15,7 +15,7 @@
 .store-grid,
 .store-list,
 .store-list2 {
-  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -23,7 +23,7 @@
 .store-grid::-webkit-scrollbar,
 .store-list::-webkit-scrollbar,
 .store-list2::-webkit-scrollbar {
-  width: 7px;
+  width: 6px;
 }
 
 .dark .store-grid::-webkit-scrollbar-track,

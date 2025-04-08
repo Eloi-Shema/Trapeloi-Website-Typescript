@@ -18,11 +18,11 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-  background: black;
+  background: rgb(63, 63, 63);
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: rgb(45, 45, 45);
+  background-color: rgb(102, 102, 102);
   border-radius: 5px;
 }
 
