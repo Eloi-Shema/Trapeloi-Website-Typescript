@@ -18,7 +18,7 @@ interface CartProps {
   toggleCart: () => void;
   cartItems: CartItem[];
   removeFromCart: (id: string | number) => void;
-  clearCart: () => void;
+  handleDeleteCard: () => void;
   cartCount: number;
   totalPrice: number;
 }
@@ -28,13 +28,13 @@ const Cart: React.FC<CartProps> = ({
   toggleCart,
   cartItems,
   removeFromCart,
-  clearCart,
+  handleDeleteCard,
   cartCount,
   totalPrice,
 }) => {
   const navigate = useNavigate();
-  const [isRendered, setIsRendered] = useState<boolean>(isVisible);
-  const [firstRender, setFirstRendered] = useState<boolean>(isVisible);
+  const [isRendered, setIsRendered] = useState<boolean>(false);
+  const [firstRender, setFirstRendered] = useState<boolean>(false);
   const [isChecked, setIsChecked] = useState<boolean>(false);
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const Cart: React.FC<CartProps> = ({
 
       const timer = setTimeout(() => {
         setFirstRendered(true);
-      }, 10);
+      }, 20);
       return () => clearTimeout(timer);
     } else {
       setFirstRendered(false);
@@ -75,12 +75,14 @@ const Cart: React.FC<CartProps> = ({
           </div>
           <div className="flex justify-between items-center py-4 text-xs dark:text-gray-200 text-black">
             <p>{cartCount} items</p>
-            <p
-              onClick={() => clearCart()}
-              className="hover:underline dark:text-white text-black cursor-pointer"
-            >
-              Remove All
-            </p>
+            {cartItems.length > 0 && (
+              <p
+                onClick={handleDeleteCard}
+                className="hover:underline dark:text-white text-black cursor-pointer"
+              >
+                Remove All
+              </p>
+            )}
           </div>
 
           <div>
@@ -126,7 +128,7 @@ const Cart: React.FC<CartProps> = ({
                   );
                 })
               ) : (
-                <div className="absolute top-[132px] left-[96px] flex items-center justify-center text-sm text-gray-400 font-light">
+                <div className="h-full flex items-center justify-center text-sm text-gray-400 font-light">
                   <img
                     className="w-[1rem] dark:invert invert-0 opacity-60 mr-1"
                     src={cart_icon}

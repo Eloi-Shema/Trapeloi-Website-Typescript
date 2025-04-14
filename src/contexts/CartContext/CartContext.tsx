@@ -73,7 +73,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
         setTimeout(() => {
           setAnimate(false);
-        }, 500);
+        }, 300);
 
         timeOutRef.current = setTimeout(() => {
           setWarning("");

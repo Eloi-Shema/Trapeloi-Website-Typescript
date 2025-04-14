@@ -66,7 +66,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({
         <div className="shop-button relative bg-platinum text-xl rounded-md text-black font-montserrat font-normal backdrop-blur-sm">
           <button
             onClick={scrollToStore}
-            className="py-3 xs:px-24 md:px-30 lg:px-12 whitespace-nowrap"
+            className="py-3 xs:px-20 md:px-30 lg:px-12 whitespace-nowrap"
           >
             Get Your Sound
           </button>
