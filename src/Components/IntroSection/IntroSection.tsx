@@ -16,7 +16,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({
   return (
     <div
       ref={homeRef}
-      className="hero relative xs:h-[820px] md:h-[900px] w-screen flex flex-col items-center justify-center justify-self-center"
+      className="hero relative h-[900px] w-screen flex flex-col items-center justify-center justify-self-center"
     >
       <div className="absolute inset-0">
         <div className="overlay dark:bg-black/70 bg-black/60 absolute inset-0"></div>
@@ -44,10 +44,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({
         </div>
       </div>
 
-      <div
-        className="heading relative text-center flex flex-col items-center justify-center text-white/90 gap-12
-      "
-      >
+      <div className="heading relative text-center flex flex-col items-center justify-center text-white/90 gap-10">
         <div className="flex items-center gap-2 backdrop-blur-sm">
           <div className="font-trap xs:text-lg md:text-xl lg:text-2xl font-medium">
             Welcome to

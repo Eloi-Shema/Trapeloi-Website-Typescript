@@ -1,0 +1,14 @@
+.footer {
+  background: linear-gradient(
+    135deg,
+    rgba(168, 40, 248, 0.2),
+    rgba(0, 171, 102, 0.2)
+  );
+}
+.dark .footer {
+  background: linear-gradient(
+    135deg,
+    rgba(65, 105, 225, 0.15),
+    rgba(0, 255, 241, 0.15)
+  );
+}
