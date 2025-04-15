@@ -18,7 +18,7 @@ interface CartProps {
   toggleCart: () => void;
   cartItems: CartItem[];
   removeFromCart: (id: string | number) => void;
-  handleDeleteCard: () => void;
+  toggleDeleteCard: () => void;
   cartCount: number;
   totalPrice: number;
 }
@@ -28,7 +28,7 @@ const Cart: React.FC<CartProps> = ({
   toggleCart,
   cartItems,
   removeFromCart,
-  handleDeleteCard,
+  toggleDeleteCard,
   cartCount,
   totalPrice,
 }) => {
@@ -77,10 +77,10 @@ const Cart: React.FC<CartProps> = ({
             <p>{cartCount} items</p>
             {cartItems.length > 0 && (
               <p
-                onClick={handleDeleteCard}
+                onClick={toggleDeleteCard}
                 className="hover:underline dark:text-white text-black cursor-pointer"
               >
-                Remove All
+                Clear All
               </p>
             )}
           </div>

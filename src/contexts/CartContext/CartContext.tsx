@@ -17,6 +17,9 @@ interface CartContextType {
   addToCart: (beat: BeatType) => void;
   removeFromCart: (id: string | number) => void;
   clearCart: () => void;
+  toggleDeleteCard: () => void;
+  handleDeleteCard: () => void;
+  isDeleteCardOpen: boolean;
   cartCount: number;
   totalPrice: number;
 }
@@ -94,6 +97,14 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
   //REMOVE/DELETE THE ITEMS FROM THE CART
 
+  const [isDeleteCardOpen, setIsDeleteCardOpen] = useState(false);
+  const toggleDeleteCard = () => {
+    setIsDeleteCardOpen(true);
+  };
+  const handleDeleteCard = () => {
+    setIsDeleteCardOpen(false);
+  };
+
   const removeFromCart = (beatId: string | number) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== beatId));
   };
@@ -116,6 +127,9 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         animate,
         removeFromCart,
         clearCart,
+        toggleDeleteCard,
+        handleDeleteCard,
+        isDeleteCardOpen: isDeleteCardOpen,
         cartCount: cart.length,
         totalPrice,
       }}
