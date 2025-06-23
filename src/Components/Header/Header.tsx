@@ -10,6 +10,8 @@ import ThemeToggle from "../theme/ThemeToggle";
 import { switchTheme } from "../../hooks/switchTheme";
 import { motion } from "framer-motion";
 import { AnimatedCheck, AnimatedX } from "../../utils/icons/icons";
+import { useAuth } from "../../contexts/Auth/AuthContext";
+import Avatar from "../Avatars/Avatars";
 
 interface HeaderProps {
   toggleCart: () => void;
@@ -32,6 +34,8 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
+
+  const { user, logout, authLoading } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,7 +63,7 @@ const Header: React.FC<HeaderProps> = ({
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: isScrolled ? 0 : -100, opacity: isScrolled ? 1 : 0 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="header-content relative py-5 px-10 bg-white/90 dark:bg-black/80 shadow-lg shadow-black/5 dark:shadow-platinum/5 backdrop-blur-sm"
+          className="relative px-10 py-5 shadow-lg header-content bg-white/90 dark:bg-black/80 shadow-black/5 dark:shadow-platinum/5 backdrop-blur-sm"
         >
           <Link to="/">
             {theme === "dark" ? (
@@ -74,7 +78,7 @@ const Header: React.FC<HeaderProps> = ({
           </Link>
 
           {cartNotification && (
-            <div className="absolute top-16 xs:right-4 sm:right-10 flex items-center bg-green-700 py-2 px-4 font-kanit text-sm rounded-md transition-all whitespace-nowrap z-10">
+            <div className="absolute z-10 flex items-center px-4 py-2 text-sm transition-all bg-green-700 rounded-md top-16 xs:right-4 sm:right-10 font-kanit whitespace-nowrap">
               {cartNotification} {""}
               <span>
                 <AnimatedCheck />
@@ -94,22 +98,22 @@ const Header: React.FC<HeaderProps> = ({
               </span>
             </div>
           )}
-          <div className="flex items-center dark:text-white text-black font-semibold">
+          <div className="flex items-center font-semibold text-black dark:text-white">
             <ThemeToggle />
 
             <h4
-              className="xs:hidden md:block mr-5 cursor-pointer"
+              className="mr-5 cursor-pointer xs:hidden md:block"
               onClick={scrollToStore}
             >
               Store
             </h4>
             <h4
-              className="xs:hidden md:block mr-5 cursor-pointer"
+              className="mr-5 cursor-pointer xs:hidden md:block"
               onClick={scrollToPricing}
             >
               Pricing
             </h4>
-            <div className="cart mr-5 cursor-pointer" onClick={toggleCart}>
+            <div className="mr-5 cursor-pointer cart" onClick={toggleCart}>
               <img src={cart_icon} alt="" className="w-6 dark:invert" />
               <p
                 className={`${
@@ -119,12 +123,38 @@ const Header: React.FC<HeaderProps> = ({
                 {cartCount}
               </p>
             </div>
-            <Link to="/login">
-              <button className="login-btn xs:hidden md:block bg-black text-white dark:bg-white dark:text-black">
-                Log In
-              </button>
-            </Link>
-            <button className="dark:invert md:hidden w-5" onClick={toggleMenu}>
+
+            {user ? (
+              <div className="group">
+                <button className="flex items-center justify-center overflow-hidden rounded-full xs:w-0 md:w-8">
+                  <Avatar userName={user.userName} />
+                </button>
+                <div className="absolute right-0 z-50 items-center hidden px-2 py-4 bg-white rounded-md shadow-lg group-justify-center group-hover:block dark:bg-black/80 backdrop-blur-sm">
+                  <div className="flex flex-col items-center justify-center gap-2">
+                    <p className="px-2 py-1 text-sm text-gray-700 truncate dark:text-gray-200">
+                      {user.email}
+                    </p>
+                    <button
+                      onClick={logout}
+                      className="w-20 px-2 py-1 text-sm text-white bg-red-600 rounded hover:bg-red-700"
+                    >
+                      {authLoading ? (
+                        <div className="w-5 h-5 border-2 border-white rounded-full border-t-transparent border-b-transparent border-l-transparent animate-spin justify-self-center" />
+                      ) : (
+                        "Logout"
+                      )}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Link to="/login">
+                <button className="text-white bg-black dark:bg-white dark:text-black login-btn xs:hidden md:block">
+                  Log In
+                </button>
+              </Link>
+            )}
+            <button className="w-5 dark:invert md:hidden" onClick={toggleMenu}>
               <img
                 className={`${
                   isOpen ? "rotate-0" : "rotate-45"
@@ -136,27 +166,27 @@ const Header: React.FC<HeaderProps> = ({
           </div>
         </motion.header>
       ) : (
-        <header className="header-content relative py-5 px-10 bg-transparent">
+        <header className="relative px-10 py-5 bg-transparent header-content">
           <Link to="/">
             <img className="xs:w-32 md:w-36" src={logo} alt="Trapeloi" />
           </Link>
 
-          <div className="flex items-center text-white font-semibold">
+          <div className="flex items-center font-semibold text-white">
             <ThemeToggle />
 
             <h4
-              className="xs:hidden md:block mr-5 cursor-pointer"
+              className="mr-5 cursor-pointer xs:hidden md:block"
               onClick={scrollToStore}
             >
               Store
             </h4>
             <h4
-              className="xs:hidden md:block mr-5 cursor-pointer"
+              className="mr-5 cursor-pointer xs:hidden md:block"
               onClick={scrollToPricing}
             >
               Pricing
             </h4>
-            <div className="cart mr-5 cursor-pointer" onClick={toggleCart}>
+            <div className="mr-5 cursor-pointer cart" onClick={toggleCart}>
               <img src={cart_icon} alt="Cart icon" className="w-6 invert" />
               <p
                 className={`${
@@ -166,12 +196,38 @@ const Header: React.FC<HeaderProps> = ({
                 {cartCount}
               </p>
             </div>
-            <Link to="/login">
-              <button className="login-btn xs:hidden md:block bg-white text-black">
-                Log In
-              </button>
-            </Link>
-            <button className="dark:invert md:hidden w-5" onClick={toggleMenu}>
+
+            {user ? (
+              <div className="group">
+                <button className="flex items-center justify-center overflow-hidden rounded-full xs:w-0 md:w-8">
+                  <Avatar userName={user.userName} />
+                </button>
+                <div className="absolute right-0 z-50 items-center hidden px-2 py-4 bg-white rounded-md shadow-lg group-justify-center group-hover:block dark:bg-black/70 backdrop-blur-sm">
+                  <div className="flex flex-col items-center justify-center gap-2">
+                    <p className="px-2 py-1 text-sm text-gray-700 truncate dark:text-gray-200">
+                      {user.email}
+                    </p>
+                    <button
+                      onClick={logout}
+                      className="w-20 px-2 py-1 text-sm bg-red-600 rounded hover:bg-red-700"
+                    >
+                      {authLoading ? (
+                        <div className="w-5 h-5 border-2 border-white rounded-full border-t-transparent border-b-transparent border-l-transparent animate-spin justify-self-center" />
+                      ) : (
+                        "Logout"
+                      )}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Link to="/login">
+                <button className="text-black bg-white login-btn xs:hidden md:block">
+                  Log In
+                </button>
+              </Link>
+            )}
+            <button className="w-5 dark:invert md:hidden" onClick={toggleMenu}>
               <img
                 className={`${
                   isOpen ? "rotate-0" : "rotate-45"
@@ -185,18 +241,48 @@ const Header: React.FC<HeaderProps> = ({
       )}
 
       {isOpen && (
-        <div className="absolute right-0 bg-platinum dark:bg-bgBlack/40 dark:backdrop-blur-sm dark:text-white text-black text-sm px-6 py-3 rounded-tl-md rounded-bl-md">
-          <h4 onClick={scrollToStore} className="mb-5 cursor-pointer">
-            Beat Store
-          </h4>
-          <h4 onClick={scrollToPricing} className="mb-5 cursor-pointer">
-            Pricing
-          </h4>
-          <Link to="/login">
-            <button className="bg-black text-white dark:bg-white dark:text-black px-5 py-1 mb-4 rounded-md">
-              Log In
-            </button>
-          </Link>
+        <div className="absolute right-0 px-6 py-3 text-sm font-semibold text-black bg-platinum/80 dark:bg-bgBlack/40 backdrop-blur-md dark:text-white rounded-tl-md rounded-bl-md md:hidden">
+          {user ? (
+            <>
+              <div className="flex items-center mb-4">
+                <Avatar userName={user.userName} />
+                <p className="px-2 py-1 text-sm text-gray-700 truncate w-36 dark:text-gray-200">
+                  {user.email}
+                </p>
+              </div>
+              <h4 onClick={scrollToStore} className="mb-5 cursor-pointer">
+                Beat Store
+              </h4>
+              <h4 onClick={scrollToPricing} className="mb-5 cursor-pointer">
+                Pricing
+              </h4>
+
+              <button
+                onClick={logout}
+                className="w-20 px-5 py-1 mb-4 text-white bg-red-600 rounded-md hover:bg-red-700"
+              >
+                {authLoading ? (
+                  <div className="w-5 h-5 border-2 border-white rounded-full border-t-transparent border-b-transparent border-l-transparent animate-spin justify-self-center" />
+                ) : (
+                  "Logout"
+                )}
+              </button>
+            </>
+          ) : (
+            <>
+              <h4 onClick={scrollToStore} className="mb-5 cursor-pointer">
+                Beat Store
+              </h4>
+              <h4 onClick={scrollToPricing} className="mb-5 cursor-pointer">
+                Pricing
+              </h4>
+              <Link to="/login">
+                <button className="px-5 py-1 mb-4 text-white bg-black rounded-md dark:bg-white dark:text-black">
+                  Log In
+                </button>
+              </Link>
+            </>
+          )}
         </div>
       )}
     </div>

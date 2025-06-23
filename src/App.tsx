@@ -2,6 +2,8 @@ import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "./contexts/ThemeContext/ThemeContext";
 import { CartProvider } from "./contexts/CartContext/CartContext";
+import { AuthProvider } from "./contexts/Auth/AuthContext";
+import AuthSuccess from "./Pages/AuthSuccess/AuthSuccess";
 
 const Home = React.lazy(() => import("./Pages/Home/Home"));
 const Checkout = React.lazy(() => import("./Pages/Checkout/Checkout"));
@@ -15,19 +17,22 @@ const NotFound = React.lazy(() => import("./utils/NotFound/NotFound"));
 const App: React.FC = () => {
   return (
     <ThemeProvider>
-      <CartProvider>
-        <Suspense fallback={<Loading />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/terms" element={<Terms />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/about" element={<About />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
-      </CartProvider>
+      <AuthProvider>
+        <CartProvider>
+          <Suspense fallback={<Loading />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/auth/success" element={<AuthSuccess />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/about" element={<About />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </CartProvider>
+      </AuthProvider>
     </ThemeProvider>
   );
 };

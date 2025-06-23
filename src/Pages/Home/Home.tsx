@@ -13,6 +13,7 @@ import { useCart } from "../../hooks/useCart.ts";
 import Loading from "../../utils/Loading/Loading.tsx";
 import useDocumentTitle from "../../hooks/useDocumentTitle.ts";
 import ConfirmDelete from "../../utils/ConfirmDelete/ConfirmDelete.tsx";
+import { useAuth } from "../../contexts/Auth/AuthContext.tsx";
 
 const Home: React.FC = () => {
   useDocumentTitle("Trapeloi");
@@ -62,9 +63,11 @@ const Home: React.FC = () => {
     }
   };
 
+  const { authLoading } = useAuth();
+
   return (
     <>
-      {isLoading ? (
+      {!authLoading && isLoading ? (
         <div className="page-layout">
           {isDeleteCardOpen && <ConfirmDelete />}
 

@@ -3,22 +3,32 @@ import "./Login.css";
 import logo from "../../assets/logo-white - 1.png";
 import bgImage from "../../assets/ambient-studio.webp";
 import google from "../../assets/icons/google.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Loading from "../../utils/Loading/Loading";
 import showPasswordIcon from "../../assets/icons/eye-on.svg";
 import hidePasswordIcon from "../../assets/icons/eye-off.svg";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
+import { useAuth } from "../../contexts/Auth/AuthContext";
+import { LoginData, RegisterData } from "../../services/api.service";
 
 const Login: React.FC = () => {
   useDocumentTitle("Login - Trapeloi");
 
-  const [loginState, setLoginState] = useState<string>("Login");
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [loginState, setLoginState] = useState<"Login" | "Register">("Login");
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const handleShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    userName: "",
+  });
+
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+
+  const { login, register, loginWithGoogle, authLoading, error } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     setTimeout(() => {
@@ -26,15 +36,103 @@ const Login: React.FC = () => {
     }, 1500);
   }, []);
 
+  const manageShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const manageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+
+    // Clear error when user starts typing
+    if (fieldErrors[id]) {
+      setFieldErrors((prev) => ({ ...prev, [id]: "" }));
+    }
+  };
+
+  const validateFields = (): boolean => {
+    const errors: Record<string, string> = {};
+
+    if (loginState === "Register") {
+      if (!formData.userName) {
+        errors.userName = "Username is required";
+      } else if (formData.userName.length > 50) {
+        errors.userName = "Username must be less than 50 characters";
+      } else if (formData.userName.length < 3) {
+        errors.userName = "Username must be at least 3 characters";
+      }
+    }
+
+    if (!formData.email) {
+      errors.email = "Email is required";
+    } else if (
+      !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)
+    ) {
+      errors.email = "Please enter a valid email address";
+    }
+
+    if (loginState === "Register") {
+      if (!formData.password) {
+        errors.password = "Password is required";
+      } else if (formData.password.length < 8) {
+        errors.password = "Password must be at least 8 characters";
+      } else if (
+        !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/.test(
+          formData.password
+        )
+      ) {
+        errors.password =
+          "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character";
+      }
+    }
+
+    if (loginState === "Login") {
+      if (!formData.password) {
+        errors.password = "Password is required";
+      }
+    }
+
+    setFieldErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const manageSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!validateFields()) return;
+
+    try {
+      if (loginState === "Login") {
+        await login({
+          email: formData.email,
+          password: formData.password,
+        } as LoginData);
+        const origin = location.state?.from?.pathname || "/";
+        navigate(origin);
+      } else {
+        await register({
+          userName: formData.userName, // Make sure this matches
+          email: formData.email,
+          password: formData.password,
+        } as RegisterData);
+        navigate("/");
+      }
+    } catch (err) {}
+  };
+
+  const manageGoogleLogin = () => {
+    loginWithGoogle();
+  };
+
   return (
     <>
       {isLoading ? (
         <div className="relative flex items-center justify-center h-screen">
           <div className="absolute inset-0">
-            <div className="bg-black/30 absolute inset-0 z-10"></div>
-            <div className="h-full w-full">
+            <div className="absolute inset-0 z-10 bg-black/30"></div>
+            <div className="w-full h-full">
               <img
-                className="w-full h-full object-cover grayscale"
+                className="object-cover w-full h-full grayscale"
                 src={bgImage}
                 alt="Ambient studio"
               />
@@ -42,39 +140,54 @@ const Login: React.FC = () => {
           </div>
 
           <div className="flex flex-col items-center justify-between justify-self-center w-96 h-[640px] py-10 bg-platinum rounded-md z-20">
-            <div className="flex items-center text-2xl text-black  font-bold">
+            <div className="flex items-center text-2xl font-bold text-black">
               {loginState === "Login" ? (
-                <p className="font-montserrat">Sign In to&nbsp;</p>
+                <p className="font-montserrat">Log In to&nbsp;</p>
               ) : (
                 <p className="font-montserrat">Sign Up to&nbsp;</p>
               )}
               <Link to="/">
                 <img
-                  className="w-24 mt-1 opacity-90 invert cursor-pointer"
+                  className="w-24 mt-1 cursor-pointer opacity-90 invert"
                   src={logo}
-                  alt=""
+                  alt="Trapeloi Logo"
                 />
               </Link>
             </div>
 
-            <div className="flex flex-col gap-5 w-full px-4">
+            <form
+              onSubmit={manageSubmit}
+              className="flex flex-col w-full gap-5 px-4"
+            >
               {loginState === "Login" ? (
                 <></>
               ) : (
                 <div className="relative flex flex-col">
                   <input
                     type="text"
-                    id="username"
+                    id="userName"
                     autoComplete="name"
                     placeholder=""
-                    className="peer w-full bg-black/[3%] px-3 pt-5 pb-2 mb-4 text-black rounded-lg placeholder:bg-red-300 border-b-2 border-black/50  outline-none autofill:bg-black autofill:text-black transition-all duration-300"
+                    value={formData.userName}
+                    onChange={manageChange}
+                    required
+                    className={`peer w-full bg-black/[3%] px-3 pt-5 pb-2 mb-4 text-black rounded-lg border-b-2 border-black/50 focus:border-perfectBlue  outline-none autofill:bg-black autofill:text-black ${
+                      fieldErrors.userName
+                        ? "border-red-500"
+                        : "border-black/50"
+                    } transition-all duration-300`}
                   />
                   <label
-                    htmlFor="username"
-                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-600 peer-focus:top-1 peer-focus:text-xs peer-focus:text-gray-500 "
+                    htmlFor="userName"
+                    className="absolute text-xs text-gray-500 transition-all left-2 top-1 peer-placeholder-shown:top-1/4 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-600 peer-focus:top-1 peer-focus:text-xs peer-focus:text-gray-500 cursor-text"
                   >
                     Username
                   </label>
+                  {fieldErrors.userName && (
+                    <p className="mb-2 -mt-1 text-xs text-red-500">
+                      {fieldErrors.userName}
+                    </p>
+                  )}
                 </div>
               )}
 
@@ -84,14 +197,26 @@ const Login: React.FC = () => {
                   id="email"
                   autoComplete="email"
                   placeholder=""
-                  className="peer w-full bg-black/[3%] px-3 pt-5 pb-2 mb-4 text-black  rounded-lg border-b-2 border-black/50  outline-none  transition-all duration-300"
+                  value={formData.email}
+                  onChange={manageChange}
+                  required
+                  className={`peer w-full bg-black/[3%] px-3 pt-5 pb-2 mb-4 text-black rounded-lg border-b-2 border-black/50 focus:border-perfectBlue  outline-none autofill:bg-black autofill:text-black ${
+                    error || fieldErrors.email
+                      ? "border-red-500"
+                      : "border-black/50"
+                  } transition-all duration-300`}
                 />
                 <label
                   htmlFor="email"
-                  className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-600 peer-focus:top-1 peer-focus:text-xs peer-focus:text-gray-500 "
+                  className="absolute text-xs text-gray-500 transition-all left-2 top-1 peer-placeholder-shown:top-1/4 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-600 peer-focus:top-1 peer-focus:text-xs peer-focus:text-gray-500 cursor-text"
                 >
                   Email
                 </label>
+                {fieldErrors.email && (
+                  <p className="mb-2 -mt-1 text-xs text-red-500">
+                    {fieldErrors.email}
+                  </p>
+                )}
               </div>
 
               <div className="relative flex flex-col">
@@ -99,18 +224,33 @@ const Login: React.FC = () => {
                   type={showPassword ? "text" : "password"}
                   id="password"
                   placeholder=""
-                  className="peer w-full bg-black/[3%] px-3 pt-5 pb-2 mb-4 rounded-lg text-black border-b-2 border-black/50  outline-none transition-all duration-300"
+                  onChange={manageChange}
+                  required
+                  className={`peer w-full bg-black/[3%] px-3 pt-5 pb-2 mb-4 text-black rounded-lg border-b-2 border-black/50 focus:border-perfectBlue  outline-none autofill:bg-black autofill:text-black ${
+                    error || fieldErrors.password
+                      ? "border-red-500"
+                      : "border-black/50"
+                  } transition-all duration-300`}
                 />
                 <label
                   htmlFor="password"
-                  className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-1/4 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-600 peer-focus:top-1 peer-focus:text-xs peer-focus:text-gray-500"
+                  className="absolute text-xs text-gray-500 transition-all left-2 top-1 peer-placeholder-shown:top-1/4 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-600 peer-focus:top-1 peer-focus:text-xs peer-focus:text-gray-500 cursor-text"
                 >
                   Password
                 </label>
 
+                {error && (
+                  <div className="w-full px-4 py-2 text-sm text-center text-red-600 rounded-md">
+                    {error === "Invalid credentials"
+                      ? "Invalid email or password. Please try again."
+                      : error}
+                  </div>
+                )}
+
                 <button
-                  onClick={handleShowPassword}
-                  className="absolute right-0 top-5 mr-3 opacity-60"
+                  type="button"
+                  onClick={manageShowPassword}
+                  className="absolute right-0 mr-3 top-5 opacity-60"
                 >
                   {showPassword ? (
                     <img src={hidePasswordIcon} alt="" className="w-4" />
@@ -118,55 +258,82 @@ const Login: React.FC = () => {
                     <img src={showPasswordIcon} alt="" className="w-4" />
                   )}
                 </button>
+                {fieldErrors.password && (
+                  <p className="mb-2 -mt-1 text-xs text-red-500">
+                    {fieldErrors.password}
+                  </p>
+                )}
               </div>
-              {loginState === "Login" ? (
-                <button
-                  className="bg-perfectBlue text-white mt-2 mx-8 py-2 rounded-md hover:bg-perfectBlue/80 transition-all duration-150"
-                  type="submit"
-                >
-                  Log in
-                </button>
-              ) : (
-                <button
-                  className="bg-perfectBlue text-white mt-2 mx-8 py-2 rounded-md hover:bg-perfectBlue/80 transition-all duration-150"
-                  type="submit"
-                >
-                  Sign up
-                </button>
+
+              <button
+                className="py-2 mx-8 mt-2 font-semibold text-white transition-all duration-150 rounded-md bg-perfectBlue hover:bg-blue-800"
+                type="submit"
+                disabled={authLoading}
+              >
+                {authLoading ? (
+                  <div className="w-6 h-6 border-4 border-white rounded-full border-t-transparent border-b-transparent border-l-transparent animate-spin justify-self-center" />
+                ) : loginState === "Login" ? (
+                  "Log in"
+                ) : (
+                  "Sign up"
+                )}
+              </button>
+              {loginState === "Login" && error && (
+                <div className="mt-2 text-center">
+                  <Link
+                    to="/forgot-password"
+                    className="text-xs font-medium text-blue-900 hover:underline"
+                  >
+                    Forgot your password?
+                  </Link>
+                </div>
               )}
-            </div>
+            </form>
 
-            {loginState === "Login" ? (
-              <p className="text-xs -mt-4 text-black">
-                New to Trapeloi?&nbsp;
-                <span
-                  className="text-[13px] text-black dark:text-black hover:underline font-kanit cursor-pointer"
-                  onClick={() => setLoginState("SignUp")}
-                >
-                  Sign up here
-                </span>
-              </p>
-            ) : (
-              <p className="text-xs text-black -mt-4">
-                Already have an account?&nbsp;
-                <span
-                  className="text-[13px] text-black dark:text-black hover:underline font-kanit cursor-pointer"
-                  onClick={() => setLoginState("Login")}
-                >
-                  Login here
-                </span>
-              </p>
-            )}
+            <p className="-mt-4 text-xs text-black">
+              {loginState === "Login" ? (
+                <>
+                  New to Trapeloi?&nbsp;
+                  <span
+                    className="text-[13px] dark:text-black text-black hover:underline font-kanit cursor-pointer"
+                    onClick={() => {
+                      setLoginState("Register");
+                      setFieldErrors({});
+                    }}
+                  >
+                    Sign up here
+                  </span>
+                </>
+              ) : (
+                <>
+                  Already have an account?&nbsp;
+                  <span
+                    className="text-[13px] text-black hover:underline font-kanit cursor-pointer"
+                    onClick={() => {
+                      setLoginState("Login");
+                      setFieldErrors({});
+                    }}
+                  >
+                    Login here
+                  </span>
+                </>
+              )}
+            </p>
 
-            <div className="xs:w-1/2 md:w-3/4 flex items-center gap-2 opacity-70">
-              <div className="h-px flex-1 bg-gray-600 "></div>
+            <div className="flex items-center gap-2 xs:w-1/2 md:w-3/4 opacity-70">
+              <div className="flex-1 h-px bg-gray-600 "></div>
               <span className="text-xs text-gray-600 dark:text-gray-600">
                 Or Continue with
               </span>
-              <div className="h-px flex-1 bg-gray-600 "></div>
+              <div className="flex-1 h-px bg-gray-600 "></div>
             </div>
 
-            <button className="flex items-center justify-center text-sm  bg-gray-900 text-white py-3 px-8 rounded-md  hover:bg-gray-900/90 transition-all duration-150">
+            <button
+              type="button"
+              onClick={manageGoogleLogin}
+              disabled={authLoading}
+              className="flex items-center justify-center px-8 py-3 text-sm text-white transition-all duration-150 bg-black rounded-md hover:bg-gray-800"
+            >
               Continue with Google
               <img className="w-4 ml-2" src={google} alt="" />
             </button>

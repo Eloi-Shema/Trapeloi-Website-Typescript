@@ -56,15 +56,15 @@ const Checkout = () => {
   };
 
   return (
-    <main className="layout bg-platinum dark:bg-black dark:text-white text-black font-montserrat">
+    <main className="text-black layout bg-platinum dark:bg-black dark:text-white font-montserrat">
       <AltHeader2 />
       {/*SMALL SIZE*/}
 
-      <section className="md:hidden xs:flex flex-col justify-center gap-5 p-5 w-full h-full dark:bg-white/5 bg-white text-gray-600 dark:text-gray-400 rounded-lg">
+      <section className="flex-col justify-center w-full h-full gap-5 p-5 text-gray-600 bg-white rounded-lg md:hidden xs:flex dark:bg-white/5 dark:text-gray-400">
         <div className="flex flex-col">
           <div
             onClick={toggleCollapse}
-            className="flex items-center justify-between flex-wrap px-5 text-black dark:text-white font-semibold cursor-pointer"
+            className="flex flex-wrap items-center justify-between px-5 font-semibold text-black cursor-pointer dark:text-white"
           >
             <div className="flex items-center py-2 mr-2">
               <p>Order summary</p>
@@ -86,10 +86,10 @@ const Checkout = () => {
                 : "max-h-[420px] opacity-100 py-5"
             } transition-all duration-500`}
           >
-            <div className="order-summary max-h-60 overflow-y-auto">
+            <div className="overflow-y-auto order-summary max-h-60">
               {cart.map((beat, index) => (
                 <div
-                  className="flex flex-col px-5 py-2 max-h-full opacity-100"
+                  className="flex flex-col max-h-full px-5 py-2 opacity-100"
                   key={index}
                 >
                   <div className="flex items-center justify-between w-full">
@@ -99,12 +99,12 @@ const Checkout = () => {
                         alt=""
                         className="w-12 rounded-lg"
                       />
-                      <p className="font-kanit font-light truncate">
+                      <p className="font-light truncate font-kanit">
                         {beat.name}
                       </p>
                     </div>
 
-                    <div className="font-kanit opacity-80 truncate">
+                    <div className="truncate font-kanit opacity-80">
                       ${beat.price / 100}
                     </div>
                   </div>
@@ -112,20 +112,20 @@ const Checkout = () => {
               ))}
             </div>
 
-            <hr className="invert dark:invert-0 opacity-20 mx-5 mt-2 px-5" />
+            <hr className="px-5 mx-5 mt-2 invert dark:invert-0 opacity-20" />
 
             <div className="flex items-start justify-between gap-3 px-5 mt-5">
               <form className="relative w-full truncate">
                 <input
                   type="text"
                   id="gift"
-                  autoComplete="new-password"
+                  autoComplete=""
                   placeholder=""
                   className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 text-sm text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                 />
                 <label
                   htmlFor="gift"
-                  className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                  className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400 cursor-text"
                 >
                   Discount code or gift card
                 </label>
@@ -134,19 +134,19 @@ const Checkout = () => {
                 Apply
               </button>
             </div>
-            <div className="flex items-center justify-between text-xl dark:text-white/80 text-black/80 px-5 pt-5">
+            <div className="flex items-center justify-between px-5 pt-5 text-xl dark:text-white/80 text-black/80">
               <p className="font-kanit">Total</p>
               <p className="font-kanit">${totalPrice / 100}</p>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col w-full h-full px-5 overflow-hidden z-10">
+        <div className="z-10 flex flex-col w-full h-full px-5 overflow-hidden">
           <div className="flex flex-col items-center justify-center gap-3 mb-10">
             <p className="text-sm text-gray-600 dark:text-gray-300">
               Express checkout
             </p>
-            <div className="flex xs:flex-col md:flex-row items-center justify-center flex-wrap gap-3">
+            <div className="flex flex-wrap items-center justify-center gap-3 xs:flex-col md:flex-row">
               <PaypalIcon />
               <div className="flex items-center justify-center gap-3">
                 <GooglePayIcon />
@@ -154,24 +154,24 @@ const Checkout = () => {
               </div>
             </div>
 
-            <div className="w-1/2 flex items-center gap-4 mt-3">
-              <div className="h-px flex-1 bg-gray-300 dark:bg-gray-600"></div>
-              <span className="text-xs text-gray-600 dark:text-gray-400 opacity-50 ">
+            <div className="flex items-center w-1/2 gap-4 mt-3">
+              <div className="flex-1 h-px bg-gray-300 dark:bg-gray-600"></div>
+              <span className="text-xs text-gray-600 opacity-50 dark:text-gray-400 ">
                 OR
               </span>
-              <div className="h-px flex-1 bg-gray-300 dark:bg-gray-600"></div>
+              <div className="flex-1 h-px bg-gray-300 dark:bg-gray-600"></div>
             </div>
           </div>
 
-          <div className="leading-5 xs:text-base md:text-xl mb-10">
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="font-semibold font-montserrat mr-1">Contact</h3>
+          <div className="mb-10 leading-5 xs:text-base md:text-xl">
+            {/* <div className="flex items-center justify-between mb-3">
+              <h3 className="mr-1 font-semibold font-montserrat">Contact</h3>
               <Link to={"/login"}>
-                <p className="text-xs text-gray-600 hover:text-black dark:hover:text-white dark:text-gray-400  font-semibold underline cursor-pointer">
+                <p className="text-xs font-semibold text-gray-600 underline cursor-pointer hover:text-black dark:hover:text-white dark:text-gray-400">
                   Login
                 </p>
               </Link>
-            </div>
+            </div> */}
             <form className="relative w-full truncate">
               <input
                 type="email"
@@ -182,40 +182,40 @@ const Checkout = () => {
               />
               <label
                 htmlFor="email"
-                className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400 cursor-text"
               >
                 Email
               </label>
             </form>
             <div className="flex items-center px-2">
-              <label className="checkout-checkbox flex">
+              <label className="flex checkout-checkbox">
                 <input type="checkbox" id="check" className="hidden" />
                 <span className="transition-all duration-150 ease-linear"></span>
               </label>
-              <p className="xs:text-xs md:text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-gray-600 xs:text-xs md:text-sm dark:text-gray-400">
                 Email me with news, offers, and free downloads. You can
                 unsubscribe at any time.
               </p>
             </div>
           </div>
 
-          <div className="leading-5 xs:text-base md:text-xl mb-10">
-            <h3 className="font-semibold mb-1 font-montserrat">Payment</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+          <div className="mb-10 leading-5 xs:text-base md:text-xl">
+            <h3 className="mb-1 font-semibold font-montserrat">Card Payment</h3>
+            <p className="mb-3 text-sm text-gray-500 dark:text-gray-400">
               All transactions are secure and encrypted.
             </p>
 
             <div className="bg-white/20 dark:bg-white/[2%] border border-gray-400 dark:border-gray-600 rounded-xl">
-              <div className="flex items-center justify-between px-3 py-2 mb-3 bg-white dark:bg-white/10 border-b border-dashed border-gray-400 dark:border-gray-500 rounded-t-xl">
-                <p className="font-medium text-sm mr-1">Credit card</p>
-                <div className="flex items-center flex-wrap gap-1 truncate">
+              <div className="flex items-center justify-between px-3 py-2 mb-3 bg-white border-b border-gray-400 border-dashed dark:bg-white/10 dark:border-gray-500 rounded-t-xl">
+                <p className="mr-1 text-sm font-medium">Credit card</p>
+                <div className="flex flex-wrap items-center gap-1 truncate">
                   <VisaIcon />
                   <MastercardIcon />
                   <AmexIcon />
                   <DiscoverIcon />
                 </div>
               </div>
-              <div className="payment flex flex-col px-4 gap-2 py-5">
+              <div className="flex flex-col gap-2 px-4 py-5 payment">
                 <form className="relative w-full truncate">
                   <input
                     type="tel"
@@ -231,13 +231,13 @@ const Checkout = () => {
                   />
                   <label
                     htmlFor="cardNumber"
-                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400 cursor-text"
                   >
                     Card number
                   </label>
                 </form>
 
-                <div className="flex xs:flex-col sm:flex-row justify-between">
+                <div className="flex justify-between xs:flex-col sm:flex-row">
                   <form className="relative basis-[52%] w-full truncate">
                     <input
                       type="text"
@@ -253,7 +253,7 @@ const Checkout = () => {
                     />
                     <label
                       htmlFor="date"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400 cursor-text"
                     >
                       Exp. date (MM/YY)
                     </label>
@@ -275,7 +275,7 @@ const Checkout = () => {
                     />
                     <label
                       htmlFor="code"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400 cursor-text"
                     >
                       Security code
                     </label>
@@ -292,7 +292,7 @@ const Checkout = () => {
                   />
                   <label
                     htmlFor="cardname"
-                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400 cursor-text"
                   >
                     Name on the card
                   </label>
@@ -302,14 +302,14 @@ const Checkout = () => {
           </div>
 
           <div className="leading-5">
-            <h3 className="font-semibold text-xl mb-3 font-montserrat">
+            <h3 className="mb-3 text-xl font-semibold font-montserrat">
               Billing address
             </h3>
 
             <div className="bg-white/20 dark:bg-white/[2%]">
-              <div className="payment flex flex-col px-4 gap-2 py-5 rounded-xl border border-gray-400 dark:border-gray-700">
+              <div className="flex flex-col gap-2 px-4 py-5 border border-gray-400 payment rounded-xl dark:border-gray-700">
                 <CountryDropdown />
-                <div className="flex xs:flex-col md:flex-row justify-between">
+                <div className="flex justify-between xs:flex-col md:flex-row">
                   <form className="relative basis-[49%] w-full truncate">
                     <input
                       type="text"
@@ -320,7 +320,7 @@ const Checkout = () => {
                     />
                     <label
                       htmlFor="first-name"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400 cursor-text"
                     >
                       First name
                     </label>
@@ -339,7 +339,7 @@ const Checkout = () => {
                     />
                     <label
                       htmlFor="last-name"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400 cursor-text"
                     >
                       Last name
                     </label>
@@ -356,13 +356,13 @@ const Checkout = () => {
                   />
                   <label
                     htmlFor="address"
-                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400 cursor-text"
                   >
                     Address
                   </label>
                 </form>
 
-                <div className="flex xs:flex-col md:flex-row justify-between">
+                <div className="flex justify-between xs:flex-col md:flex-row">
                   <form className="relative basis-[58%] w-full truncate">
                     <input
                       type="text"
@@ -373,7 +373,7 @@ const Checkout = () => {
                     />
                     <label
                       htmlFor="city"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400 cursor-text"
                     >
                       City
                     </label>
@@ -392,7 +392,7 @@ const Checkout = () => {
                     />
                     <label
                       htmlFor="post"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400 cursor-text"
                     >
                       Postal code (optional)
                     </label>
@@ -402,13 +402,13 @@ const Checkout = () => {
             </div>
           </div>
 
-          <div className="flex justify-center justify-self-center mt-10 mb-2">
-            <button className="flex justify-center w-full py-4 bg-purple-950 dark:bg-blueGreen text-white dark:text-black font-semibold font-montserrat rounded-lg overflow-hidden">
+          <div className="flex justify-center mt-10 mb-2 justify-self-center">
+            <button className="flex justify-center w-full py-4 overflow-hidden font-semibold text-white rounded-lg bg-purple-950 dark:bg-blueGreen dark:text-black font-montserrat">
               Complete Order
             </button>
           </div>
           <div>
-            <p className="flex justify-center items-center text-sm dark:text-gray-400 text-gray-600">
+            <p className="flex items-center justify-center text-sm text-gray-600 dark:text-gray-400">
               <span className="mr-1 grayscale invert dark:invert-0">
                 &#x1F512;
               </span>{" "}
@@ -416,10 +416,10 @@ const Checkout = () => {
             </p>
           </div>
 
-          <div className="self-center text-xs dark:text-gray-400 text-center font-montserrat font-light my-3">
+          <div className="self-center my-3 text-xs font-light text-center dark:text-gray-400 font-montserrat">
             Before buying, Please revise the licensing terms and refund policy{" "}
             <Link to="/terms">
-              <span className="text-blue-500 hover:underline cursor-pointer">
+              <span className="text-blue-500 cursor-pointer hover:underline">
                 here
               </span>
               .
@@ -430,11 +430,11 @@ const Checkout = () => {
 
       {/*LARGE SIZE*/}
 
-      <section className="xs:hidden md:flex gap-10 w-full h-full text-gray-600 dark:text-gray-400 rounded-lg">
+      <section className="w-full h-full gap-10 text-gray-600 rounded-lg xs:hidden md:flex dark:text-gray-400">
         <div className="flex flex-col w-[60%] md:px-10 xl:px-24 p-5 dark:bg-white/5 bg-white">
           <div className="flex flex-col items-center justify-center gap-3 mt-3 mb-10">
             <p className="text-sm text-gray-400">Express checkout</p>
-            <div className="flex xs:flex-col lg:flex-row items-center justify-center flex-wrap gap-3">
+            <div className="flex flex-wrap items-center justify-center gap-3 xs:flex-col lg:flex-row">
               <PaypalIcon />
               <div className="flex items-center justify-center gap-5">
                 <GooglePayIcon />
@@ -442,41 +442,41 @@ const Checkout = () => {
               </div>
             </div>
 
-            <div className="xs:w-1/2 md:w-3/4 flex items-center gap-4 mt-3">
-              <div className="h-px flex-1 bg-gray-300 dark:bg-gray-600"></div>
-              <span className="text-xs text-gray-600 dark:text-gray-400 opacity-50 ">
+            <div className="flex items-center gap-4 mt-3 xs:w-1/2 md:w-3/4">
+              <div className="flex-1 h-px bg-gray-300 dark:bg-gray-600"></div>
+              <span className="text-xs text-gray-600 opacity-50 dark:text-gray-400 ">
                 OR
               </span>
-              <div className="h-px flex-1 bg-gray-300 dark:bg-gray-600"></div>
+              <div className="flex-1 h-px bg-gray-300 dark:bg-gray-600"></div>
             </div>
           </div>
 
-          <div className="leading-5 xs:text-base md:text-xl mb-10">
-            <div className="flex items-center justify-between mb-3">
+          <div className="mb-10 leading-5 xs:text-base md:text-xl">
+            {/* <div className="flex items-center justify-between mb-3">
               <h3 className="font-semibold font-montserrat">Contact</h3>
               <Link to={"/login"}>
-                <p className="text-xs text-gray-600 hover:text-black dark:hover:text-white dark:text-gray-400  font-semibold underline cursor-pointer">
+                <p className="text-xs font-semibold text-gray-600 underline cursor-pointer hover:text-black dark:hover:text-white dark:text-gray-400">
                   Login
                 </p>
               </Link>
-            </div>
+            </div> */}
             <form className="relative w-full truncate">
               <input
                 type="email"
-                id="email"
+                id="email1"
                 autoComplete="email"
                 placeholder=""
                 className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
               />
               <label
-                htmlFor="email"
-                className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                htmlFor="email1"
+                className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400 cursor-text"
               >
                 Email
               </label>
             </form>
             <div className="flex items-center px-2">
-              <label className="checkout-checkbox flex">
+              <label className="flex checkout-checkbox">
                 <input type="checkbox" id="checkb" className="hidden" />
                 <span className="transition-all duration-150 ease-linear"></span>
               </label>
@@ -487,15 +487,15 @@ const Checkout = () => {
             </div>
           </div>
 
-          <div className="leading-5 xs:text-base md:text-xl mb-10">
-            <h3 className="font-semibold mb-1 font-montserrat">Payment</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+          <div className="mb-10 leading-5 xs:text-base md:text-xl">
+            <h3 className="mb-1 font-semibold font-montserrat">Card Payment</h3>
+            <p className="mb-3 text-sm text-gray-500 dark:text-gray-400">
               All transactions are secure and encrypted.
             </p>
 
             <div className="bg-white/20 dark:bg-white/[2%] border border-gray-400 dark:border-gray-600 rounded-xl">
-              <div className="flex items-center justify-between px-3 py-2 mb-3 bg-white dark:bg-white/10 border-b border-dashed border-gray-400 dark:border-gray-500 rounded-t-xl">
-                <p className="font-medium text-sm">Credit card</p>
+              <div className="flex items-center justify-between px-3 py-2 mb-3 bg-white border-b border-gray-400 border-dashed dark:bg-white/10 dark:border-gray-500 rounded-t-xl">
+                <p className="text-sm font-medium">Credit card</p>
                 <div className="flex items-center gap-1">
                   <VisaIcon />
                   <MastercardIcon />
@@ -503,7 +503,7 @@ const Checkout = () => {
                   <DiscoverIcon />
                 </div>
               </div>
-              <div className="payment flex flex-col px-4 gap-2 py-5">
+              <div className="flex flex-col gap-2 px-4 py-5 payment">
                 <form className="relative w-full truncate">
                   <input
                     type="tel"
@@ -513,26 +513,26 @@ const Checkout = () => {
                     value={cardNumber}
                     onChange={handleCardNumberChange}
                     autoComplete="new-password"
-                    id="cardNumber"
+                    id="cardNumber2"
                     placeholder=""
                     className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                   />
                   <label
-                    htmlFor="cardNumber"
-                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                    htmlFor="cardNumber2"
+                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400 cursor-text"
                   >
                     Card number
                   </label>
                 </form>
 
-                <div className="flex xs:flex-col md:flex-row justify-between">
+                <div className="flex justify-between xs:flex-col md:flex-row">
                   <form className="relative basis-[52%] w-full truncate">
                     <input
                       type="text"
                       inputMode="numeric"
                       pattern="(0[1-9]|1[0-2])\/?([0-9]{2})"
                       maxLength={5}
-                      id="date"
+                      id="date2"
                       value={expiryDate}
                       onChange={handleExpiryDateChange}
                       autoComplete="new-password"
@@ -540,8 +540,8 @@ const Checkout = () => {
                       className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                     />
                     <label
-                      htmlFor="date"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      htmlFor="date2"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400 cursor-text"
                     >
                       Expiration date (MM/YY)
                     </label>
@@ -556,14 +556,14 @@ const Checkout = () => {
                       inputMode="numeric"
                       pattern="[0-9]{3,4}"
                       maxLength={4}
-                      id="code"
+                      id="code2"
                       autoComplete="off"
                       placeholder=""
                       className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                     />
                     <label
-                      htmlFor="code"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      htmlFor="code2"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400 cursor-text"
                     >
                       Security code
                     </label>
@@ -573,14 +573,14 @@ const Checkout = () => {
                 <form className="relative w-full truncate">
                   <input
                     type="text"
-                    id="cardname"
+                    id="cardname2"
                     autoComplete="name"
                     placeholder=""
                     className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                   />
                   <label
-                    htmlFor="cardname"
-                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                    htmlFor="cardname2"
+                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400 cursor-text"
                   >
                     Name on the card
                   </label>
@@ -590,26 +590,26 @@ const Checkout = () => {
           </div>
 
           <div className="leading-5">
-            <h3 className="font-semibold text-xl mb-3 font-montserrat">
+            <h3 className="mb-3 text-xl font-semibold font-montserrat">
               Billing address
             </h3>
 
             <div className="bg-white/20 dark:bg-white/[2%]">
-              <div className="payment flex flex-col px-4 gap-2 py-5 rounded-xl border border-gray-400 dark:border-gray-700">
+              <div className="flex flex-col gap-2 px-4 py-5 border border-gray-400 payment rounded-xl dark:border-gray-700">
                 <CountryDropdown />
 
-                <div className="flex xs:flex-col md:flex-row justify-between">
+                <div className="flex justify-between xs:flex-col md:flex-row">
                   <form className="relative basis-[49%] w-full truncate">
                     <input
                       type="text"
-                      id="first-name"
+                      id="first-name2"
                       autoComplete="name"
                       placeholder=""
                       className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                     />
                     <label
-                      htmlFor="first-name"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      htmlFor="first-name2"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400 cursor-text"
                     >
                       First name
                     </label>
@@ -621,14 +621,14 @@ const Checkout = () => {
                   >
                     <input
                       type="text"
-                      id="last-name"
+                      id="last-name2"
                       autoComplete="name"
                       placeholder=""
                       className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                     />
                     <label
-                      htmlFor="last-name"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      htmlFor="last-name2"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400 cursor-text"
                     >
                       Last name
                     </label>
@@ -638,31 +638,31 @@ const Checkout = () => {
                 <form className="relative w-full truncate">
                   <input
                     type="text"
-                    id="address"
+                    id="address2"
                     autoComplete="billing address-line1"
                     placeholder=""
                     className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                   />
                   <label
-                    htmlFor="address"
-                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                    htmlFor="address2"
+                    className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400 cursor-text"
                   >
                     Address
                   </label>
                 </form>
 
-                <div className="flex xs:flex-col md:flex-row justify-between">
+                <div className="flex justify-between xs:flex-col md:flex-row">
                   <form className="relative basis-[58%] w-full truncate">
                     <input
                       type="text"
-                      id="city"
+                      id="city2"
                       autoComplete="off"
                       placeholder=""
                       className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                     />
                     <label
-                      htmlFor="city"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      htmlFor="city2"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400 cursor-text"
                     >
                       City
                     </label>
@@ -674,14 +674,14 @@ const Checkout = () => {
                   >
                     <input
                       type="text"
-                      id="post"
+                      id="post2"
                       autoComplete="postal-code"
                       placeholder=""
                       className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
                     />
                     <label
-                      htmlFor="post"
-                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                      htmlFor="post2"
+                      className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400 cursor-text"
                     >
                       Postal code (optional)
                     </label>
@@ -691,13 +691,13 @@ const Checkout = () => {
             </div>
           </div>
 
-          <div className="flex justify-center justify-self-center mt-10 mb-2">
-            <button className="flex justify-center w-full py-4 bg-purple-950 dark:bg-blueGreen text-white dark:text-black font-semibold font-montserrat rounded-lg overflow-hidden">
+          <div className="flex justify-center mt-10 mb-2 justify-self-center">
+            <button className="flex justify-center w-full py-4 overflow-hidden font-semibold text-white rounded-lg bg-purple-950 dark:bg-blueGreen dark:text-black font-montserrat">
               Complete Order
             </button>
           </div>
           <div>
-            <p className="flex justify-center items-center text-sm dark:text-gray-400 text-gray-600">
+            <p className="flex items-center justify-center text-sm text-gray-600 dark:text-gray-400">
               <span className="mr-1 grayscale invert dark:invert-0">
                 &#x1F512;
               </span>{" "}
@@ -705,10 +705,10 @@ const Checkout = () => {
             </p>
           </div>
 
-          <div className="self-center dark:text-white/80 text-black/80 text-sm text-center font-montserrat font-light mt-10">
+          <div className="self-center mt-10 text-sm font-light text-center dark:text-white/80 text-black/80 font-montserrat">
             Before buying, Please revise the licensing terms and refund policy{" "}
             <Link to="/terms">
-              <span className="text-blue-500 hover:underline cursor-pointer">
+              <span className="text-blue-500 cursor-pointer hover:underline">
                 here
               </span>
               .
@@ -717,10 +717,10 @@ const Checkout = () => {
         </div>
 
         <div className="fixed right-0 top-14 flex flex-col w-[40%] max-w-2xl md:px-1 lg:px-5 py-5 mt-2">
-          <div className="order-summary max-h-60 overflow-y-auto">
+          <div className="overflow-y-auto order-summary max-h-60">
             {cart.map((beat, index) => (
               <div
-                className="flex flex-col px-5 py-2 max-h-full opacity-100"
+                className="flex flex-col max-h-full px-5 py-2 opacity-100"
                 key={index}
               >
                 <div className="flex items-center justify-between w-full truncate">
@@ -728,9 +728,9 @@ const Checkout = () => {
                     <img
                       src={beat.image}
                       alt=""
-                      className="md:w-12 lg:w-16 rounded-lg"
+                      className="rounded-lg md:w-12 lg:w-16"
                     />
-                    <p className="font-kanit font-light">{beat.name}</p>
+                    <p className="font-light font-kanit">{beat.name}</p>
                   </div>
 
                   <div className="font-kanit opacity-80">
@@ -745,14 +745,14 @@ const Checkout = () => {
             <form className="relative w-full truncate">
               <input
                 type="text"
-                id="gift"
+                id="gift2"
                 autoComplete="off"
                 placeholder=""
                 className="peer w-full bg-black/[3%] dark:bg-white/[4%] px-3 pt-8  mb-4 font-montserrat text-black dark:text-white rounded-lg border-b-2 border-black/80 dark:border-white/70 outline-none focus:border-purple-600  dark:focus:border-blueGreen/80 transition-all duration-300"
               />
               <label
-                htmlFor="gift"
-                className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400"
+                htmlFor="gift2"
+                className="absolute left-2 top-1 text-gray-500 text-xs transition-all peer-placeholder-shown:top-5  peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-gray-500 dark:peer-focus:text-gray-400 cursor-text"
               >
                 Discount code or gift card
               </label>
@@ -761,7 +761,7 @@ const Checkout = () => {
               Apply
             </button>
           </div>
-          <div className="flex items-center justify-between text-lg dark:text-white/80 text-black/80 p-5 font-medium">
+          <div className="flex items-center justify-between p-5 text-lg font-medium dark:text-white/80 text-black/80">
             <p>Total</p>
             <p>${totalPrice / 100}</p>
           </div>
