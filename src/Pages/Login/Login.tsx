@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./Login.css";
 import logo from "../../assets/logo-white - 1.png";
-import bgImage from "../../assets/ambient-studio.webp";
+import bgImage from "../../assets/studio3.webp";
 import google from "../../assets/icons/google.svg";
+import google1 from "../../assets/icons/google1.svg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Loading from "../../utils/Loading/Loading";
 import showPasswordIcon from "../../assets/icons/eye-on.svg";
@@ -129,17 +130,17 @@ const Login: React.FC = () => {
       {isLoading ? (
         <div className="relative flex items-center justify-center h-screen">
           <div className="absolute inset-0">
-            <div className="absolute inset-0 z-10 bg-black/30"></div>
+            <div className="absolute inset-0 z-10 bg-black/30 backdrop-blur-sm"></div>
             <div className="w-full h-full">
               <img
-                className="object-cover w-full h-full grayscale"
+                className="object-cover w-full h-full"
                 src={bgImage}
                 alt="Ambient studio"
               />
             </div>
           </div>
 
-          <div className="flex flex-col items-center justify-between justify-self-center w-96 h-[640px] py-10 bg-platinum rounded-md z-20">
+          <div className="flex flex-col items-center justify-between justify-self-center w-[450px] h-[650px] px-5 py-10 bg-platinum rounded-md z-20">
             <div className="flex items-center text-2xl font-bold text-black">
               {loginState === "Login" ? (
                 <p className="font-montserrat">Log In to&nbsp;</p>
@@ -179,7 +180,7 @@ const Login: React.FC = () => {
                   />
                   <label
                     htmlFor="userName"
-                    className="absolute text-xs text-gray-500 transition-all left-2 top-1 peer-placeholder-shown:top-1/4 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-600 peer-focus:top-1 peer-focus:text-xs peer-focus:text-gray-500 cursor-text"
+                    className="absolute text-xs text-gray-500 transition-all left-2 top-1 peer-placeholder-shown:top-1/4 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-600 peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-800 cursor-text"
                   >
                     Username
                   </label>
@@ -208,7 +209,7 @@ const Login: React.FC = () => {
                 />
                 <label
                   htmlFor="email"
-                  className="absolute text-xs text-gray-500 transition-all left-2 top-1 peer-placeholder-shown:top-1/4 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-600 peer-focus:top-1 peer-focus:text-xs peer-focus:text-gray-500 cursor-text"
+                  className="absolute text-xs text-gray-500 transition-all left-2 top-1 peer-placeholder-shown:top-1/4 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-600 peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-800 cursor-text"
                 >
                   Email
                 </label>
@@ -234,7 +235,7 @@ const Login: React.FC = () => {
                 />
                 <label
                   htmlFor="password"
-                  className="absolute text-xs text-gray-500 transition-all left-2 top-1 peer-placeholder-shown:top-1/4 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-600 peer-focus:top-1 peer-focus:text-xs peer-focus:text-gray-500 cursor-text"
+                  className="absolute text-xs text-gray-500 transition-all left-2 top-1 peer-placeholder-shown:top-1/4 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-600 peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-800 cursor-text"
                 >
                   Password
                 </label>
@@ -266,7 +267,7 @@ const Login: React.FC = () => {
               </div>
 
               <button
-                className="py-2 mx-8 mt-2 font-semibold text-white transition-all duration-150 rounded-md bg-perfectBlue hover:bg-blue-800"
+                className="self-center py-3 mx-8 mt-2 font-semibold text-white transition-all duration-150 rounded-md w-52 bg-perfectBlue hover:bg-blue-800"
                 type="submit"
                 disabled={authLoading}
               >
@@ -332,10 +333,10 @@ const Login: React.FC = () => {
               type="button"
               onClick={manageGoogleLogin}
               disabled={authLoading}
-              className="flex items-center justify-center px-8 py-3 text-sm text-white transition-all duration-150 bg-black rounded-md hover:bg-gray-800"
+              className="flex items-center gap-[6px] justify-center w-48 px-8 py-3 text-sm text-white transition-all duration-300 border-2 border-gray-400 rounded-md hover:shadow-xl shadow-black"
             >
-              Continue with Google
-              <img className="w-4 ml-2" src={google} alt="" />
+              <img className="w-5" src={google} alt="" />
+              <img className="self-end w-12" src={google1} alt="" />
             </button>
           </div>
         </div>

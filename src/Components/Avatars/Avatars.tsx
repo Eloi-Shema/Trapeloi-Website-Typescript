@@ -1,19 +1,8 @@
 interface AvatarProps {
   userName: string;
-  profilePicture?: string;
 }
 
-const Avatar: React.FC<AvatarProps> = ({ userName, profilePicture }) => {
-  if (profilePicture) {
-    return (
-      <img
-        src={profilePicture}
-        alt="Profile"
-        className={`w-8 h-8 rounded-full object-cover dark:invert xs:hidden md:flex`}
-      />
-    );
-  }
-
+const Avatar: React.FC<AvatarProps> = ({ userName }) => {
   // Generate a color based on username
   const colors = [
     "bg-gradient-to-r from-rose-600 to-fuchsia-600",

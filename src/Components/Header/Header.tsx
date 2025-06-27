@@ -127,7 +127,7 @@ const Header: React.FC<HeaderProps> = ({
             {user ? (
               <div className="group">
                 <button className="flex items-center justify-center overflow-hidden rounded-full xs:w-0 md:w-8">
-                  <Avatar userName={user.userName} />
+                  <Avatar userName={user.email} />
                 </button>
                 <div className="absolute right-0 z-50 items-center hidden px-2 py-4 bg-white rounded-md shadow-lg group-justify-center group-hover:block dark:bg-black/80 backdrop-blur-sm">
                   <div className="flex flex-col items-center justify-center gap-2">
@@ -200,7 +200,7 @@ const Header: React.FC<HeaderProps> = ({
             {user ? (
               <div className="group">
                 <button className="flex items-center justify-center overflow-hidden rounded-full xs:w-0 md:w-8">
-                  <Avatar userName={user.userName} />
+                  <Avatar userName={user.email} />
                 </button>
                 <div className="absolute right-0 z-50 items-center hidden px-2 py-4 bg-white rounded-md shadow-lg group-justify-center group-hover:block dark:bg-black/70 backdrop-blur-sm">
                   <div className="flex flex-col items-center justify-center gap-2">
