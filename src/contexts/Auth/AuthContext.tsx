@@ -6,6 +6,7 @@ import {
   useState,
 } from "react";
 import {
+  API_BASE_URL,
   apiService,
   AuthResponse,
   LoginData,
@@ -147,7 +148,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   const loginWithGoogle = () => {
-    window.location.href = "http://localhost:3000/api/v1/auth/google";
+    window.location.href = `${API_BASE_URL}/auth/google`;
   };
 
   const googleAuthSuccess = async () => {
