@@ -6,7 +6,6 @@ import {
   useState,
 } from "react";
 import {
-  API_BASE_URL,
   apiService,
   AuthResponse,
   LoginData,
@@ -148,7 +147,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   const loginWithGoogle = () => {
-    window.location.href = `${API_BASE_URL}/auth/google`;
+    window.location.href = `https://trapeloi-backend.onrender.com/auth/google`;
   };
 
   const googleAuthSuccess = async () => {
