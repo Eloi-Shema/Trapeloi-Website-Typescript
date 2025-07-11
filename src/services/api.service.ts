@@ -1,8 +1,3 @@
-export const API_BASE_URL =
-  import.meta.env.VITE_ENV_MODE === "development"
-    ? "http://localhost:3000"
-    : import.meta.env.VITE_API_BASE_URL;
-
 export interface LoginData {
   email: string;
   password: string;
@@ -42,7 +37,7 @@ class ApiService {
     endpoint: string,
     options: RequestInit = {}
   ): Promise<T> {
-    const url = `${API_BASE_URL}${endpoint}`;
+    const url = `https://trapeloi-backend.onrender.com${endpoint}`;
 
     const config: RequestInit = {
       headers: {
@@ -87,6 +82,21 @@ class ApiService {
     return response.json();
   }
 
+  async authenticatedRequest<T>(
+    endpoint: string,
+    options: RequestInit = {}
+  ): Promise<T> {
+    const token = localStorage.getItem("accessToken");
+
+    return this.makeRequest<T>(endpoint, {
+      ...options,
+      headers: {
+        ...options.headers,
+        ...(token && { Authorization: `Bearer ${token}` }),
+      },
+    });
+  }
+
   async register(data: RegisterData): Promise<AuthResponse> {
     return this.makeRequest<AuthResponse>("/auth/register", {
       method: "POST",
@@ -116,21 +126,6 @@ class ApiService {
 
   async getCurrentUser(): Promise<{ status: string; user: any }> {
     return this.authenticatedRequest<{ status: string; user: any }>("/auth/me");
-  }
-
-  async authenticatedRequest<T>(
-    endpoint: string,
-    options: RequestInit = {}
-  ): Promise<T> {
-    const token = localStorage.getItem("accessToken");
-
-    return this.makeRequest<T>(endpoint, {
-      ...options,
-      headers: {
-        ...options.headers,
-        ...(token && { Authorization: `Bearer ${token}` }),
-      },
-    });
   }
 }
 
