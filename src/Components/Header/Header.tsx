@@ -150,7 +150,7 @@ const Header: React.FC<HeaderProps> = ({
             ) : (
               <Link to="/login">
                 <button className="text-white bg-black dark:bg-white dark:text-black login-btn xs:hidden md:block">
-                  Log In
+                  Login
                 </button>
               </Link>
             )}
@@ -223,7 +223,7 @@ const Header: React.FC<HeaderProps> = ({
             ) : (
               <Link to="/login">
                 <button className="text-black bg-white login-btn xs:hidden md:block">
-                  Log In
+                  Login
                 </button>
               </Link>
             )}
@@ -278,7 +278,7 @@ const Header: React.FC<HeaderProps> = ({
               </h4>
               <Link to="/login">
                 <button className="px-5 py-1 mb-4 text-white bg-black rounded-md dark:bg-white dark:text-black">
-                  Log In
+                  Login
                 </button>
               </Link>
             </>

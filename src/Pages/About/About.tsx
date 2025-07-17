@@ -2,18 +2,18 @@ import AltHeader from "../../Components/Header/AltHeader";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const About = () => {
-  useDocumentTitle("About - Trapeloi");
+  useDocumentTitle("About • Trapeloi");
 
   return (
     <main className="m-auto max-w-[1536px] h-screen  dark:text-white text-black xs:text-base md:text-lg dark:bg-black bg-platinum font-montserrat">
       <AltHeader />
       <div className="flex flex-col gap-5 xs:pb-10 md:pb-16 xs:px-8 md:px-20">
-        <h1 className="head dark:text-white text-black xs:text-4xl md:text-5xl font-trap font-black text-center my-5">
+        <h1 className="my-5 font-black text-center text-black head dark:text-white xs:text-4xl md:text-5xl font-trap">
           About Trapeloi
         </h1>
 
         <div>
-          <h3 className=" xs:text-xl md:text-2xl mb-5 font-bold font-montserrat">
+          <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
             Our Vision
           </h3>
 
@@ -27,7 +27,7 @@ const About = () => {
         </div>
 
         <div>
-          <h3 className=" xs:text-xl md:text-2xl mb-5 font-bold font-montserrat">
+          <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
             Who We Are
           </h3>
 
@@ -41,11 +41,11 @@ const About = () => {
         </div>
 
         <div>
-          <h3 className=" xs:text-xl md:text-2xl mb-5 font-bold font-montserrat">
+          <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
             What We Offer
           </h3>
 
-          <ul className="list-disc pl-8 leading-8 mb-5">
+          <ul className="pl-8 mb-5 leading-8 list-disc">
             <li>
               <span className="font-bold font-montserrat">
                 Exclusive & Non-Exclusive Beats -
@@ -78,11 +78,11 @@ const About = () => {
         </div>
 
         <div>
-          <h3 className=" xs:text-xl md:text-2xl mb-5 font-bold font-montserrat">
+          <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
             Why Choose Us?
           </h3>
 
-          <ul className="list-disc pl-8 leading-8 mb-5">
+          <ul className="pl-8 mb-5 leading-8 list-disc">
             <li>
               <span className="font-bold font-montserrat">
                 Industry-Standard Quality -
@@ -113,7 +113,7 @@ const About = () => {
         </div>
 
         <div>
-          <h3 className=" xs:text-xl md:text-2xl mb-5 font-bold font-montserrat">
+          <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
             Join Our Community
           </h3>
 
@@ -127,14 +127,14 @@ const About = () => {
           <p>
             <a
               href="https://youtube.com/@montbitz?si=alkpyf7prIwloq9A"
-              className="hover:underline cursor-pointer"
+              className="cursor-pointer hover:underline"
             >
               Visit us on our YouTube channel
             </a>
           </p>
 
           <p>
-            <a className="hover:underline cursor-pointer">
+            <a className="cursor-pointer hover:underline">
               Visit us on our Instagram page
             </a>
           </p>
@@ -142,7 +142,7 @@ const About = () => {
           <p className="mt-2">
             For direct inquiries, custom requests, or collaborations, feel free
             to contact us at:&nbsp;
-            <span className="font-semibold hover:underline text-perfectBlue cursor-pointer">
+            <span className="font-semibold cursor-pointer hover:underline text-perfectBlue">
               trapeloi@gmail.com
             </span>
           </p>

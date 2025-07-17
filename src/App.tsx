@@ -4,6 +4,9 @@ import { ThemeProvider } from "./contexts/ThemeContext/ThemeContext";
 import { CartProvider } from "./contexts/CartContext/CartContext";
 import { AuthProvider } from "./contexts/Auth/AuthContext";
 import AuthSuccess from "./Pages/AuthSuccess/AuthSuccess";
+import ResetPassword from "./Pages/PasswordReset/ResetPassword";
+import ForgotPassword from "./Pages/PasswordReset/ForgotPassword";
+import { BeatProvider } from "./contexts/Beats/BeatContext";
 
 const Home = React.lazy(() => import("./Pages/Home/Home"));
 const Checkout = React.lazy(() => import("./Pages/Checkout/Checkout"));
@@ -18,20 +21,27 @@ const App: React.FC = () => {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <CartProvider>
-          <Suspense fallback={<Loading />}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/auth/success" element={<AuthSuccess />} />
-              <Route path="/checkout" element={<Checkout />} />
-              <Route path="/terms" element={<Terms />} />
-              <Route path="/privacy" element={<Privacy />} />
-              <Route path="/about" element={<About />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
-        </CartProvider>
+        <BeatProvider>
+          <CartProvider>
+            <Suspense fallback={<Loading />}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/auth/success" element={<AuthSuccess />} />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/terms" element={<Terms />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
+                <Route
+                  path={`/reset-password/:token`}
+                  element={<ResetPassword />}
+                />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+          </CartProvider>
+        </BeatProvider>
       </AuthProvider>
     </ThemeProvider>
   );

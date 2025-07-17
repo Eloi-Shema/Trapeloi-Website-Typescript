@@ -17,7 +17,7 @@ import CountryDropdown from "../../utils/Countries/CountryDropDown";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const Checkout = () => {
-  useDocumentTitle("Checkout - Trapeloi");
+  useDocumentTitle("Checkout • Trapeloi");
 
   const [cardNumber, setCardNumber] = useState<string>("");
   const [expiryDate, setExpiryDate] = useState<string>("");
@@ -95,12 +95,12 @@ const Checkout = () => {
                   <div className="flex items-center justify-between w-full">
                     <div className="flex items-center justify-center gap-3">
                       <img
-                        src={beat.image}
+                        src={beat.coverImageUrl}
                         alt=""
                         className="w-12 rounded-lg"
                       />
                       <p className="font-light truncate font-kanit">
-                        {beat.name}
+                        {beat.title}
                       </p>
                     </div>
 
@@ -726,11 +726,11 @@ const Checkout = () => {
                 <div className="flex items-center justify-between w-full truncate">
                   <div className="flex items-center justify-center gap-3">
                     <img
-                      src={beat.image}
+                      src={beat.coverImageUrl}
                       alt=""
                       className="rounded-lg md:w-12 lg:w-16"
                     />
-                    <p className="font-light font-kanit">{beat.name}</p>
+                    <p className="font-light font-kanit">{beat.title}</p>
                   </div>
 
                   <div className="font-kanit opacity-80">

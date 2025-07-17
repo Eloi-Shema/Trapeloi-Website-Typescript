@@ -21,7 +21,7 @@ const Benefits: React.FC = () => {
 
   return (
     <div className="relative w-full h-full">
-      <h1 className="font-trap font-bold text-center xs:text-3xl md:text-4xl dark:text-platinum text-black py-10">
+      <h1 className="py-10 font-bold text-center text-black font-trap xs:text-3xl md:text-4xl dark:text-platinum">
         Unlimited streams on
       </h1>
       <motion.div
@@ -29,9 +29,9 @@ const Benefits: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.2 }}
-        className="flex flex-col items-center justify-center z-10"
+        className="z-10 flex flex-col items-center justify-center"
       >
-        <div className="flex flex-wrap xs:flex-col md:flex-row justify-evenly items-center justify-self-center w-full mb-10 md:gap-10">
+        <div className="flex flex-wrap items-center w-full mb-10 xs:flex-col md:flex-row justify-evenly justify-self-center md:gap-10">
           <SpotifyIcon />
           <AppleMusicIcon />
           <YoutubeIcon />
@@ -40,10 +40,10 @@ const Benefits: React.FC = () => {
         </div>
         <div className=" relative flex flex-col items-center justify-center justify-self-center max-w-[850px] p-10">
           <div className="absolute inset-0 xs:dark:bg-bgBlack md:dark:bg-perfectBlue/15 bg-white animate-pulse rounded-t-[40px] "></div>
-          <div className=" z-10">
-            <p className="mb-20 px-5 xs:text-base md:text-xl text-center dark:text-platinum text-black">
+          <div className="z-10 ">
+            <p className="px-5 mb-20 text-center text-black xs:text-base md:text-xl dark:text-platinum">
               With&nbsp;
-              <span className="font-extrabold dark:text-white text-black">
+              <span className="font-extrabold text-black dark:text-white">
                 Trapeloi
               </span>
               &nbsp; beats, You have Full Control. You can use any beat on this
@@ -54,7 +54,7 @@ const Benefits: React.FC = () => {
 
             <div className="flex justify-between p-5">
               <div className="text-center xs:w-40 md:w-72 ">
-                <h3 className="stats font-trap font-bold xs:text-4xl md:text-5xl lg:text-6xl mb-2">
+                <h3 className="mb-2 font-bold stats font-trap xs:text-4xl md:text-5xl lg:text-6xl">
                   {animCount && (
                     <CountUp
                       start={0}
@@ -66,12 +66,12 @@ const Benefits: React.FC = () => {
                     />
                   )}
                 </h3>
-                <p className="xs:text-xs md:text-base dark:text-white/70 text-black">
+                <p className="text-black xs:text-xs md:text-base dark:text-white/70">
                   Beats sold to satisfied customers worldwide
                 </p>
               </div>
               <div ref={ref} className="text-center xs:w-40 md:w-72">
-                <h3 className="stats font-bold font-montserrat xs:text-4xl md:text-5xl lg:text-6xl mb-2">
+                <h3 className="mb-2 font-bold stats font-montserrat xs:text-4xl md:text-5xl lg:text-6xl">
                   {animCount && (
                     <CountUp
                       start={0}
@@ -84,7 +84,7 @@ const Benefits: React.FC = () => {
                     />
                   )}
                 </h3>
-                <p className="xs:text-xs md:text-base dark:text-white/70 text-black">
+                <p className="text-black xs:text-xs md:text-base dark:text-white/70">
                   Customer satisfaction rate
                 </p>
               </div>

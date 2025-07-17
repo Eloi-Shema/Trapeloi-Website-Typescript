@@ -4,7 +4,7 @@ import AltHeader from "../../Components/Header/AltHeader";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const Privacy = () => {
-  useDocumentTitle("Privacy - Trapeloi");
+  useDocumentTitle("Privacy • Trapeloi");
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -21,7 +21,7 @@ const Privacy = () => {
           <AltHeader />
 
           <div className="flex flex-col gap-5 xs:pb-10 md:pb-16 xs:px-8 md:px-20">
-            <h1 className="head dark:text-white text-black xs:text-4xl md:text-5xl font-trap font-black text-center mt-5">
+            <h1 className="mt-5 font-black text-center text-black head dark:text-white xs:text-4xl md:text-5xl font-trap">
               Privacy Policy
             </h1>
 
@@ -41,22 +41,22 @@ const Privacy = () => {
             </div>
 
             <div>
-              <h3 className=" xs:text-xl md:text-2xl mb-5 font-bold font-montserrat">
+              <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
                 1. INFORMATION WE COLLECT
               </h3>
-              <p className=" mb-5">
+              <p className="mb-5 ">
                 We collect different types of information to provide and improve
                 our services.
               </p>
 
-              <h4 className="font-bold text-xl mb-2">
+              <h4 className="mb-2 text-xl font-bold">
                 1.1 Personal Information
               </h4>
-              <p className=" mb-5">
+              <p className="mb-5 ">
                 When you interact with our website, we may collect the following
                 personal details:
               </p>
-              <ul className="list-disc pl-8 leading-8 mb-5">
+              <ul className="pl-8 mb-5 leading-8 list-disc">
                 <li>Name</li>
                 <li>Email address</li>
                 <li>Billing address</li>
@@ -71,14 +71,14 @@ const Privacy = () => {
                 <li>Account login credentials</li>
               </ul>
 
-              <h4 className="font-bold text-xl mb-2">
+              <h4 className="mb-2 text-xl font-bold">
                 1.2 Non-Personal Information
               </h4>
 
-              <p className=" mb-5">
+              <p className="mb-5 ">
                 We may also collect non-identifiable data, including:
               </p>
-              <ul className="list-disc pl-8 leading-8 mb-5">
+              <ul className="pl-8 mb-5 leading-8 list-disc">
                 <li>IP address</li>
                 <li>Browser type and version</li>
                 <li>Device type and operating system</li>
@@ -86,10 +86,10 @@ const Privacy = () => {
                 <li>Referring website or source</li>
               </ul>
 
-              <h4 className="font-bold text-xl mb-2">
+              <h4 className="mb-2 text-xl font-bold">
                 1.3 Cookies and Tracking Technologies
               </h4>
-              <p className=" mb-5">
+              <p className="mb-5 ">
                 We use cookies, web beacons, and similar tracking technologies
                 to enhance user experience, analyze site traffic, and improve
                 functionality. You can adjust your browser settings to refuse
@@ -98,14 +98,14 @@ const Privacy = () => {
             </div>
 
             <div>
-              <h3 className=" xs:text-xl md:text-2xl mb-5 font-bold font-montserrat">
+              <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
                 2. HOW WE USE YOUR INFORMATION
               </h3>
               <p className="mb-5">
                 We use the collected data for the following purposes:
               </p>
 
-              <ul className="list-disc pl-8 leading-8 mb-5">
+              <ul className="pl-8 mb-5 leading-8 list-disc">
                 <li>To process transactions and deliver digital products</li>
                 <li>To manage customer support requests and inquiries</li>
                 <li>
@@ -130,14 +130,14 @@ const Privacy = () => {
             </div>
 
             <div>
-              <h3 className=" xs:text-xl md:text-2xl mb-5 font-bold font-montserrat">
+              <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
                 3. HOW WE SHARE YOUR INFORMATION
               </h3>
               <p className="mb-5">
                 We may share your information in the following cases:
               </p>
 
-              <ul className="list-disc pl-8 leading-8 mb-5">
+              <ul className="pl-8 mb-5 leading-8 list-disc">
                 <li>
                   <span className="font-bold font-montserrat">
                     Service Providers:
@@ -165,7 +165,7 @@ const Privacy = () => {
             </div>
 
             <div>
-              <h3 className=" xs:text-xl md:text-2xl mb-5 font-bold font-montserrat">
+              <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
                 4. DATA SECURITY
               </h3>
 
@@ -180,14 +180,14 @@ const Privacy = () => {
               <p>
                 If you suspect unauthorized access to your information, please
                 contact us immediately at{" "}
-                <span className="font-semibold hover:underline text-perfectBlue cursor-pointer">
+                <span className="font-semibold cursor-pointer hover:underline text-perfectBlue">
                   trapeloi@gmail.com
                 </span>
               </p>
             </div>
 
             <div>
-              <h3 className=" xs:text-xl md:text-2xl mb-5 font-bold font-montserrat">
+              <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
                 5. YOUR RIGHTS AND CHOICES
               </h3>
               <p>
@@ -195,7 +195,7 @@ const Privacy = () => {
                 regarding your personal data:
               </p>
 
-              <ul className="list-disc pl-8 leading-8 mb-5">
+              <ul className="pl-8 mb-5 leading-8 list-disc">
                 <li>
                   <span className="font-bold font-montserrat">
                     Access & Correction:
@@ -227,14 +227,14 @@ const Privacy = () => {
               </ul>
               <p>
                 To exercise any of these rights, contact us at{" "}
-                <span className="font-semibold hover:underline text-perfectBlue cursor-pointer">
+                <span className="font-semibold cursor-pointer hover:underline text-perfectBlue">
                   trapeloi@gmail.com
                 </span>
               </p>
             </div>
 
             <div>
-              <h3 className=" xs:text-xl md:text-2xl mb-5 font-bold font-montserrat">
+              <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
                 6. THIRD-PARTY LINKS AND SERVICES
               </h3>
 
@@ -247,7 +247,7 @@ const Privacy = () => {
             </div>
 
             <div>
-              <h3 className=" xs:text-xl md:text-2xl mb-5 font-bold font-montserrat">
+              <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
                 7. CHILDREN'S PRIVACY
               </h3>
 
@@ -262,7 +262,7 @@ const Privacy = () => {
             </div>
 
             <div>
-              <h3 className=" xs:text-xl md:text-2xl mb-5 font-bold font-montserrat">
+              <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
                 8. CHANGES TO THIS PRIVACY POLICY
               </h3>
 
@@ -276,14 +276,14 @@ const Privacy = () => {
             </div>
 
             <div>
-              <h3 className=" xs:text-xl md:text-2xl mb-5 font-bold font-montserrat">
+              <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
                 10. CONTACT INFORMATION
               </h3>
 
               <p>
                 For any questions, concerns, or requests regarding this Privacy
                 Policy, please contact us at:
-                <span className="font-semibold hover:underline text-perfectBlue cursor-pointer">
+                <span className="font-semibold cursor-pointer hover:underline text-perfectBlue">
                   trapeloi@gmail.com
                 </span>
               </p>

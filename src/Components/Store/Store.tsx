@@ -5,9 +5,10 @@ import React, {
   useMemo,
   useRef,
   useState,
+  useCallback,
 } from "react";
 import "./Store.css";
-import { beatList } from "../../data.ts";
+// import { beatList } from "../../data.ts";
 import cart_icon from "../../assets/icons/cart.svg";
 import play_icon from "../../assets/icons/play.svg";
 import search_icon from "../../assets/icons/search.svg";
@@ -17,68 +18,100 @@ import grid_icon from "../../assets/icons/grid.svg";
 import arrow from "../../assets/icons/arrow.svg";
 import backgroundImage from "../../assets/studio1.webp";
 import { motion } from "framer-motion";
-
-interface BeatType {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-}
+import { useBeat } from "../../contexts/Beats/BeatContext.tsx";
+import { IBeat } from "../../services/beat.api.service.ts";
+import GridLoadingSkeleton from "../../utils/Loading/GridLoadingSkeleton.tsx";
+import ListLoadingSkeleton from "../../utils/Loading/ListLoadingSkeleton.tsx";
+import ListLoadingSkeleton2 from "../../utils/Loading/ListLoadingSkeleton2.tsx";
 
 interface StoreProps {
-  addToCart: (beat: BeatType) => void;
+  addToCart: (beat: IBeat) => void;
   ref: RefObject<HTMLDivElement | null>;
 }
 
 const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
-  // SWITCH BETWEEN GRID AND LIST VIEW IN STORE AND SAVE THE STATE
+  const { beats, isLoading, error, fetchBeats } = useBeat();
 
+  // SWITCH BETWEEN GRID AND LIST VIEW IN STORE AND SAVE THE STATE
   const [isGridView, setIsGridView] = useState(() => {
     return localStorage.getItem("viewMode") === "list" ? false : true;
   });
 
-  const toggleView = () => {
-    const listView = !isGridView;
-    setIsGridView(listView);
-    localStorage.setItem("viewMode", listView ? "grid" : "list");
-  };
-
   const [searchQuery, setSearchQuery] = useState<string>("");
-
-  const filteredBeat = useMemo(() => {
-    return beatList.filter((beat) =>
-      beat.name.toLowerCase().startsWith(searchQuery.toLowerCase())
-    );
-  }, [searchQuery, beatList]);
-
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
-    setCurrentPage(0);
-  };
-
-  const clearSearch = () => {
-    setSearchQuery("");
-    setCurrentPage(0);
-  };
-
-  // HANDLING PAGINATION
   const [currentPage, setCurrentPage] = useState(0);
 
-  const beatsPerPage = 10;
-
-  const totalPages = Math.ceil(filteredBeat.length / beatsPerPage);
-
-  const startIndex = currentPage * beatsPerPage;
-  const endIndex = startIndex + beatsPerPage;
-  const beatsOnPage = filteredBeat.slice(startIndex, endIndex);
-
-  // update the current page on grid view
+  // Fetching beats at app initialization
   useEffect(() => {
-    const newTotalPages = Math.ceil(filteredBeat.length / beatsPerPage);
-    if (currentPage >= newTotalPages) {
-      setCurrentPage(newTotalPages - 1);
+    fetchBeats();
+  }, []);
+
+  // Reset search and pagination when beats are loaded
+  useEffect(() => {
+    if (!isLoading && beats.length > 0) {
+      // Only reset if we have beats and we're not currently searching
+      if (searchQuery === "") {
+        setCurrentPage(0);
+      }
     }
-  }, [isGridView, filteredBeat.length]);
+  }, [isLoading, beats.length, searchQuery]);
+
+  const toggleView = useCallback(() => {
+    const newGridView = !isGridView;
+    setIsGridView(newGridView);
+    localStorage.setItem("viewMode", newGridView ? "grid" : "list");
+  }, [isGridView]);
+
+  const filteredBeat = useMemo(() => {
+    if (!beats || beats.length === 0) return [];
+
+    if (searchQuery.trim() === "") {
+      return beats;
+    }
+
+    const query = searchQuery.toLowerCase().trim();
+    return beats.filter((beat) => beat.title.toLowerCase().includes(query));
+  }, [searchQuery, beats]);
+
+  const handleSearch = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearchQuery(value);
+    setCurrentPage(0);
+  }, []);
+
+  const clearSearch = useCallback(() => {
+    setSearchQuery("");
+    setCurrentPage(0);
+  }, []);
+
+  // HANDLING PAGINATION - Memoized for performance
+  const paginationData = useMemo(() => {
+    const beatsPerPage = 10;
+    const totalPages = Math.max(
+      1,
+      Math.ceil(filteredBeat.length / beatsPerPage)
+    );
+    const startIndex = currentPage * beatsPerPage;
+    const endIndex = startIndex + beatsPerPage;
+    const beatsOnPage = filteredBeat.slice(startIndex, endIndex);
+
+    return {
+      beatsPerPage,
+      totalPages,
+      startIndex,
+      endIndex,
+      beatsOnPage,
+    };
+  }, [filteredBeat, currentPage]);
+
+  const { totalPages, beatsOnPage } = paginationData;
+
+  // update the current page when filtered results change
+  useEffect(() => {
+    const { totalPages: newTotalPages } = paginationData;
+    if (currentPage >= newTotalPages && newTotalPages > 0) {
+      setCurrentPage(Math.max(0, newTotalPages - 1));
+    }
+  }, [paginationData, currentPage]);
 
   //make store component stay into view when height decrease.
   const storePageRef = useRef<HTMLDivElement | null>(null);
@@ -120,12 +153,11 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
       return;
     }
 
-    if (dotsContainerRef.current) {
+    if (dotsContainerRef.current && totalPages > 1) {
       const currentDot = dotsContainerRef.current?.children[currentPage];
 
       if (currentDot) {
         const containerRect = dotsContainerRef.current.getBoundingClientRect();
-
         const dotRect = currentDot.getBoundingClientRect();
 
         const scrollLeft =
@@ -140,19 +172,285 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
         });
       }
     }
-  }, [currentPage, pageRender]);
+  }, [currentPage, pageRender, totalPages]);
+
+  // Memoized pagination handlers
+  const handlePrevPage = useCallback(() => {
+    setCurrentPage((prev) => Math.max(prev - 1, 0));
+  }, []);
+
+  const handleNextPage = useCallback(() => {
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages - 1));
+  }, [totalPages]);
+
+  const handlePageClick = useCallback((pageIndex: number) => {
+    setCurrentPage(pageIndex);
+  }, []);
+
+  //GRID VIEW
+  const beatGrid = useCallback(() => {
+    if (isLoading) {
+      return (
+        <>
+          <GridLoadingSkeleton />
+          <GridLoadingSkeleton />
+          <GridLoadingSkeleton />
+          <GridLoadingSkeleton />
+          <GridLoadingSkeleton />
+        </>
+      );
+    }
+
+    if (error) {
+      return (
+        <p className="flex justify-center text-lg font-medium text-black dark:text-gray-300">
+          {error}
+        </p>
+      );
+    }
+
+    if (beatsOnPage.length === 0) {
+      const message = searchQuery.trim()
+        ? `"${searchQuery}" is not found.`
+        : beats.length === 0
+        ? "No beats available"
+        : "No beats found";
+
+      return (
+        <p className="flex justify-center text-lg font-medium text-black dark:text-gray-300">
+          {message}
+        </p>
+      );
+    }
+
+    return beatsOnPage.map((beat, id) => {
+      return (
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center px-2 py-4 beat-grid justify-self-center"
+          key={beat._id || id} // Use beat._id if available, fallback to index
+        >
+          <div className="relative cursor-pointer cover">
+            <img
+              className="w-56 mb-3 border rounded-sm border-gray-700/30"
+              src={beat.coverImageUrl}
+              alt="Beat cover"
+            />
+            <div className="thumbnail absolute top-[4.375rem] left-[4.375rem] rounded-full">
+              <img className="invert w-[3.125rem] p-3" src={play_icon} alt="" />
+            </div>
+          </div>
+
+          <h4 className="mb-6 font-semibold text-black dark:text-gray-300">
+            {beat.title}
+          </h4>
+          <div className="flex justify-between items-center mb-12 text-[10px] text-black">
+            <p className="px-5 py-1 mr-2 border rounded-full">{beat.bpm}</p>
+            <p className="px-5 py-1 border rounded-full">{beat.key}</p>
+          </div>
+          <button
+            className="flex items-center justify-center w-32 px-4 py-2 rounded-lg cart-btn hover:w-36 bg-bgBlack"
+            onClick={() => addToCart(beat)}
+          >
+            <p className="mr-3 text-sm font-medium text-white">
+              {beat.price > 0 ? `$${beat.price / 100}` : "FREE"}{" "}
+            </p>
+            <img
+              className="w-[18px] invert -mt-[2px] -ml-1 opacity-80"
+              src={cart_icon}
+              alt=""
+            />
+          </button>
+        </motion.div>
+      );
+    });
+  }, [beatsOnPage, searchQuery, beats.length, addToCart, isLoading, error]);
+
+  // LIST VIEW
+  const beatList = useCallback(() => {
+    if (isLoading) {
+      return (
+        <>
+          <ListLoadingSkeleton />
+          <ListLoadingSkeleton />
+          <ListLoadingSkeleton />
+          <ListLoadingSkeleton />
+          <ListLoadingSkeleton />
+          <ListLoadingSkeleton />
+          <ListLoadingSkeleton />
+          <ListLoadingSkeleton />
+        </>
+      );
+    }
+
+    if (error) {
+      return (
+        <p className="flex justify-center text-lg font-medium dark:text-gray-300 text-bgBlack">
+          {error}
+        </p>
+      );
+    }
+
+    if (beatsOnPage.length === 0) {
+      const message = searchQuery.trim()
+        ? `"${searchQuery}" is not found.`
+        : beats.length === 0
+        ? "No beats available"
+        : "No beats found";
+
+      return (
+        <p className="flex justify-center text-lg font-medium dark:text-gray-300 text-bgBlack">
+          {message}
+        </p>
+      );
+    }
+
+    return beatsOnPage.map((beat, id) => {
+      return (
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="beat-grid flex items-center justify-between p-3 h-[4.75rem] max-w-screen-lg"
+          key={beat._id || id} // Use beat id if available, fallback to index
+        >
+          <div className="flex items-center md:w-60">
+            <img
+              className="w-4 mr-5 cursor-pointer dark:invert invert-0"
+              src={play_icon}
+              alt=""
+            />
+            <img
+              className="border-2 border-bgBlack/30 rounded-md mr-3 w-[50px]"
+              src={beat.coverImageUrl}
+              alt="Beat cover"
+            />
+            <h4 className="font-semibold text-black dark:text-white/80 dark:font-medium">
+              {beat.title}
+            </h4>
+          </div>
+
+          <div className="text-[10px] text-black flex justify-between items-center">
+            <p className="border rounded-[6px] p-1 mr-4">{beat.bpm}</p>
+            <p className="border rounded-[6px] p-1">{beat.key}</p>
+          </div>
+          <button
+            className="cart-btn dark:bg-transparent bg-bgBlack w-32 flex justify-center items-center dark:border rounded-lg px-4 py-[10px]"
+            onClick={() => addToCart(beat)}
+          >
+            <p className="mr-3 text-sm font-medium text-white">
+              {beat.price > 0 ? `$${beat.price / 100}` : "FREE"}
+            </p>
+            <img
+              className="w-[18px] invert -mt-[2px] -ml-1 opacity-80"
+              src={cart_icon}
+              alt=""
+            />
+          </button>
+        </motion.div>
+      );
+    });
+  }, [beatsOnPage, searchQuery, beats.length, addToCart, isLoading, error]);
+
+  //LIST VIEW (for small devices)
+  const beaListMobile = useCallback(() => {
+    if (isLoading) {
+      return (
+        <>
+          <ListLoadingSkeleton2 />
+          <ListLoadingSkeleton2 />
+          <ListLoadingSkeleton2 />
+          <ListLoadingSkeleton2 />
+          <ListLoadingSkeleton2 />
+        </>
+      );
+    }
+
+    if (error) {
+      return (
+        <p className="flex justify-center text-sm font-medium text-black dark:text-gray-300">
+          {error}
+        </p>
+      );
+    }
+
+    if (beatsOnPage.length === 0) {
+      const message = searchQuery.trim()
+        ? `"${searchQuery}" is not found.`
+        : beats.length === 0
+        ? "No beats available"
+        : "No beats found";
+
+      return (
+        <p className="flex justify-center p-4 text-sm font-light text-black dark:text-gray-300">
+          {message}
+        </p>
+      );
+    }
+
+    return beatsOnPage.map((beat, id) => {
+      return (
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="flex items-center justify-between max-w-screen-md p-3 beat-grid"
+          key={beat._id || id} // Use beat._id if available, fallback to index
+        >
+          <div className="flex items-center w-40 break-words">
+            <img
+              className="w-3 mr-2 cursor-pointer dark:invert invert-0"
+              src={play_icon}
+              alt=""
+            />
+            <img
+              className="border-2 border-bgBlack/30 rounded-md mr-3 w-[35px]"
+              src={beat.coverImageUrl}
+              alt="Beat cover"
+            />
+            <h4 className="text-sm font-semibold text-black truncate dark:text-white/80">
+              {beat.title}
+            </h4>
+          </div>
+
+          <div className="text-[8px] text-black xs:hidden sm:flex flex-col justify-between items-center mr-4">
+            <p className="border rounded-[6px] p-1 mb-1">{beat.bpm}</p>
+            <p className="border rounded-[6px] p-1">{beat.key}</p>
+          </div>
+          <button
+            className="flex items-center justify-center w-20 px-3 py-2 border rounded-md cart-btn dark:bg-transparent bg-bgBlack"
+            onClick={() => addToCart(beat)}
+          >
+            <p className="mr-3 text-xs font-medium text-white">
+              {beat.price > 0 ? `$${beat.price / 100}` : "FREE"}
+            </p>
+            <img
+              className="w-4 -ml-2 invert opacity-80"
+              src={cart_icon}
+              alt=""
+            />
+          </button>
+        </motion.div>
+      );
+    });
+  }, [beatsOnPage, searchQuery, beats.length, addToCart, isLoading, error]);
 
   return (
     <div
       ref={storePageRef}
-      className="relative w-screen justify-self-center z-0"
+      className="relative z-0 w-screen justify-self-center"
     >
-      <div className="absolute h-full inset-0 opacity-50 -z-10">
-        <div className="dark:bg-black/40 bg-platinum/60 absolute inset-0 object-cover backdrop-blur-lg"></div>
+      <div className="absolute inset-0 h-full opacity-50 -z-10">
+        <div className="absolute inset-0 object-cover dark:bg-black/40 bg-platinum/60 backdrop-blur-lg"></div>
         <img
           src={backgroundImage}
           alt="Studio"
-          className="w-full h-full object-cover"
+          className="object-cover w-full h-full"
         />
       </div>
       <div
@@ -168,7 +466,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
               : "store-header xs:w-full lg:w-[64rem] relative flex flex-col items-center justify-self-center rounded-t-lg mt-1 xs:py-5 xl:py-7"
           }`}
         >
-          <h1 className="dark:text-platinum text-black xs:text-2xl md:text-3xl lg:text-4xl font-trap font-bold mb-4">
+          <h1 className="mb-4 font-bold text-black dark:text-platinum xs:text-2xl md:text-3xl lg:text-4xl font-trap">
             Beat Shop
           </h1>
 
@@ -184,7 +482,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
               placeholder="Search A Beat Here..."
               value={searchQuery}
               onChange={handleSearch}
-              className="bg-transparent dark:text-gray-400 text-gray-900 dark:placeholder:text-white/60 placeholder:text-black/40 outline-none  placeholder:font-light mt-1 w-full"
+              className="w-full mt-1 text-gray-900 bg-transparent outline-none dark:text-gray-400 dark:placeholder:text-white/60 placeholder:text-black/40 placeholder:font-light"
             />
 
             <button
@@ -203,13 +501,13 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
           <button onClick={toggleView}>
             {isGridView ? (
               <img
-                className="xs:hidden md:block absolute md:left-64 lg:left-72 bottom-5 w-6 dark:invert invert-0 opacity-80 cursor-pointer"
+                className="absolute w-6 cursor-pointer xs:hidden md:block md:left-64 lg:left-72 bottom-5 dark:invert invert-0 opacity-80"
                 src={list_icon}
                 alt=""
               />
             ) : (
               <img
-                className="xs:hidden md:block absolute md:left-64 lg:left-72 bottom-5 w-6 dark:invert invert-0 opacity-80 cursor-pointer"
+                className="absolute w-6 cursor-pointer xs:hidden md:block md:left-64 lg:left-72 bottom-5 dark:invert invert-0 opacity-80"
                 src={grid_icon}
                 alt=""
               />
@@ -220,178 +518,17 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
         {/* {TOGGLE BETWEEN GRID AND LIST VIEW: BIG SCREEN SIZE} */}
         {isGridView ? (
           <div className="store-grid dark:bg-black bg-platinum/50 grid gap-5 box-border p-6 xs:hidden md:grid max-h-[64rem]">
-            {beatsOnPage.length > 0 ? (
-              beatsOnPage.map((beat, id) => {
-                return (
-                  <motion.div
-                    initial={{ opacity: 0, x: 30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 1, ease: "easeOut" }}
-                    viewport={{ once: true }}
-                    className="beat-grid flex flex-col items-center justify-self-center px-2 py-4"
-                    key={id}
-                  >
-                    <div className="cover relative cursor-pointer">
-                      <img
-                        className="rounded-sm mb-3 w-56 border border-gray-700/30"
-                        src={beat.image}
-                        alt="Beat cover"
-                      />
-                      <div className="thumbnail absolute top-[4.375rem] left-[4.375rem] rounded-full">
-                        <img
-                          className="invert w-[3.125rem] p-3"
-                          src={play_icon}
-                          alt=""
-                        />
-                      </div>
-                    </div>
-
-                    <h4 className="mb-6 dark:text-gray-300 text-black  font-semibold">
-                      {beat.name}
-                    </h4>
-                    <div className="flex justify-between items-center mb-12 text-[10px] text-black">
-                      <p className="border rounded-full px-5 py-1 mr-2">
-                        {beat.bpm}
-                      </p>
-                      <p className="border rounded-full px-5 py-1">
-                        {beat.key}
-                      </p>
-                    </div>
-                    <button
-                      className="cart-btn w-32 hover:w-36 flex justify-center items-center bg-bgBlack rounded-lg px-4 py-2"
-                      onClick={() => addToCart(beat)}
-                    >
-                      <p className="text-white text-sm mr-3 font-medium">
-                        {beat.price > 0 ? `$${beat.price / 100}` : "FREE"}{" "}
-                      </p>
-                      <img
-                        className="w-[18px] invert -mt-[2px] -ml-1 opacity-80"
-                        src={cart_icon}
-                        alt=""
-                      />
-                    </button>
-                  </motion.div>
-                );
-              })
-            ) : (
-              <p className="flex justify-center text-lg dark:text-gray-300 text-black font-medium">
-                No such beat found!
-              </p>
-            )}
+            {beatGrid()}
           </div>
         ) : (
           <div className="store-list2 dark:bg-black/80 bg-platinum/60 xs:hidden md:flex flex-col justify-self-center gap-5 box-border px-6 py-5 max-h-[64rem] md:w-full lg:w-[64rem] overflow-y-auto">
-            {beatsOnPage.length > 0 ? (
-              beatsOnPage.map((beat, id) => {
-                return (
-                  <motion.div
-                    initial={{ opacity: 0, x: 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 1, ease: "easeOut" }}
-                    viewport={{ once: true }}
-                    className="beat-grid flex items-center justify-between p-3 h-[4.75rem] max-w-screen-lg"
-                    key={id}
-                  >
-                    <div className="flex items-center md:w-60">
-                      <img
-                        className="dark:invert invert-0 w-4 mr-5 cursor-pointer"
-                        src={play_icon}
-                        alt=""
-                      />
-                      <img
-                        className="border-2 border-bgBlack/30 rounded-md mr-3 w-[50px]"
-                        src={beat.image}
-                        alt="Beat cover"
-                      />
-                      <h4 className="dark:text-white/80 text-black dark:font-medium font-semibold">
-                        {beat.name}
-                      </h4>
-                    </div>
-
-                    <div className="text-[10px] text-black flex justify-between items-center">
-                      <p className="border rounded-[6px] p-1 mr-4">
-                        {beat.bpm}
-                      </p>
-                      <p className="border rounded-[6px] p-1">{beat.key}</p>
-                    </div>
-                    <button
-                      className="cart-btn dark:bg-transparent bg-bgBlack w-32 flex justify-center items-center dark:border rounded-lg px-4 py-[10px]"
-                      onClick={() => addToCart(beat)}
-                    >
-                      <p className="text-white text-sm mr-3 font-medium">
-                        {beat.price > 0 ? `$${beat.price / 100}` : "FREE"}
-                      </p>
-                      <img
-                        className="w-[18px] invert -mt-[2px] -ml-1 opacity-80"
-                        src={cart_icon}
-                        alt=""
-                      />
-                    </button>
-                  </motion.div>
-                );
-              })
-            ) : (
-              <p className="flex justify-center text-lg dark:text-gray-300 text-bgBlack font-medium">
-                No such beat found!
-              </p>
-            )}
+            {beatList()}
           </div>
         )}
 
         {/* {FOR SMALL SIZE} */}
-        <div className="store-list dark:bg-black/80 bg-platinum/60 flex flex-col gap-6 md:hidden w-full max-h-[36rem] px-1 pt-5 overflow-y-auto">
-          {beatsOnPage.length > 0 ? (
-            beatsOnPage.map((beat, id) => {
-              return (
-                <motion.div
-                  initial={{ opacity: 0, x: 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 1, ease: "easeOut" }}
-                  viewport={{ once: true }}
-                  className="beat-grid flex items-center justify-between p-3 max-w-screen-md"
-                  key={id}
-                >
-                  <div className="flex items-center w-40 break-words">
-                    <img
-                      className="dark:invert invert-0 w-3 mr-2 cursor-pointer"
-                      src={play_icon}
-                      alt=""
-                    />
-                    <img
-                      className="border-2 border-bgBlack/30 rounded-md mr-3 w-[35px]"
-                      src={beat.image}
-                      alt="Beat cover"
-                    />
-                    <h4 className="dark:text-white/80 text-black text-sm font-semibold truncate">
-                      {beat.name}
-                    </h4>
-                  </div>
-
-                  <div className="text-[8px] text-black xs:hidden sm:flex flex-col justify-between items-center mr-4">
-                    <p className="border rounded-[6px] p-1 mb-1">{beat.bpm}</p>
-                    <p className="border rounded-[6px] p-1">{beat.key}</p>
-                  </div>
-                  <button
-                    className="cart-btn dark:bg-transparent bg-bgBlack w-20 flex justify-center items-center border rounded-md px-3 py-2"
-                    onClick={() => addToCart(beat)}
-                  >
-                    <p className="text-white text-xs mr-3 font-medium">
-                      {beat.price > 0 ? `$${beat.price / 100}` : "FREE"}
-                    </p>
-                    <img
-                      className="w-4 invert -ml-2 opacity-80"
-                      src={cart_icon}
-                      alt=""
-                    />
-                  </button>
-                </motion.div>
-              );
-            })
-          ) : (
-            <p className="flex justify-center text-sm dark:text-gray-300 text-black p-4 font-light">
-              No such beat found!
-            </p>
-          )}
+        <div className="store-list dark:bg-black/80 bg-platinum/60 flex flex-col gap-6 md:hidden w-full max-h-[36rem] px-1 py-5 overflow-y-auto">
+          {beaListMobile()}
         </div>
 
         {/* {FOOTER} */}
@@ -407,11 +544,11 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
               className={`${
                 currentPage === 0 ? "opacity-50" : "opacity-100 cursor-pointer"
               }`}
-              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 0))}
+              onClick={handlePrevPage}
               disabled={currentPage === 0}
             >
               <img
-                className="min-w-6 max-w-6 mr-2 dark:invert -rotate-90"
+                className="mr-2 -rotate-90 min-w-6 max-w-6 dark:invert"
                 src={arrow}
                 alt=""
               />
@@ -419,7 +556,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
 
             <div
               ref={dotsContainerRef}
-              className="flex gap-2 rounded-full truncate"
+              className="flex gap-2 truncate rounded-full"
             >
               {Array.from({ length: totalPages }).map((_, i) => (
                 <motion.span
@@ -431,7 +568,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                       ? "bg-black/70 dark:bg-blueGreen/70 min-w-3 align-middle"
                       : "bg-gray-400 min-w-2"
                   }`}
-                  onClick={() => setCurrentPage(i)}
+                  onClick={() => handlePageClick(i)}
                 />
               ))}
             </div>
@@ -442,13 +579,11 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
                   ? "opacity-50"
                   : "opacity-100 cursor-pointer"
               }`}
-              onClick={() =>
-                setCurrentPage((prev) => Math.min(prev + 1, totalPages - 1))
-              }
+              onClick={handleNextPage}
               disabled={currentPage === totalPages - 1}
             >
               <img
-                className="min-w-6 max-w-6 ml-2 dark:invert rotate-90"
+                className="ml-2 rotate-90 min-w-6 max-w-6 dark:invert"
                 src={arrow}
                 alt=""
               />

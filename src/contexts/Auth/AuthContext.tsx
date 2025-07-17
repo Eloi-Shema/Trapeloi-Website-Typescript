@@ -10,7 +10,7 @@ import {
   AuthResponse,
   LoginData,
   RegisterData,
-} from "../../services/api.service";
+} from "../../services/auth.api.service";
 import { useLocation, useNavigate } from "react-router-dom";
 
 interface User {
@@ -31,6 +31,7 @@ interface AuthContextType {
   loginWithGoogle: () => void;
   googleAuthSuccess: () => Promise<void>;
   error: string | null;
+  clearError: () => void;
   refreshToken: () => Promise<void>;
   authLoading: boolean;
 }
@@ -92,7 +93,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       const origin = location.state?.from?.pathname || "/";
       navigate(origin);
     } catch (error) {
-      setError(error instanceof Error ? error.message : "Login failed");
+      setError(error instanceof Error ? error.message : "Login failed.");
       throw error;
     } finally {
       setAuthLoading(false);
@@ -147,7 +148,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   const loginWithGoogle = () => {
-    window.location.href = `https://trapeloi-backend.onrender.com/auth/google`;
+    window.location.href = "https://trapeloi-backend.onrender.com/auth/google";
   };
 
   const googleAuthSuccess = async () => {
@@ -174,6 +175,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
+  const clearError = () => setError(null);
+
   const value: AuthContextType = {
     user,
     token,
@@ -184,6 +187,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     loginWithGoogle,
     googleAuthSuccess,
     error,
+    clearError,
     refreshToken,
     authLoading,
   };

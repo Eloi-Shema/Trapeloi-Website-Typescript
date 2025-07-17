@@ -6,14 +6,13 @@ import google from "../../assets/icons/google.svg";
 import google1 from "../../assets/icons/google1.svg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Loading from "../../utils/Loading/Loading";
-import showPasswordIcon from "../../assets/icons/eye-on.svg";
-import hidePasswordIcon from "../../assets/icons/eye-off.svg";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import { useAuth } from "../../contexts/Auth/AuthContext";
-import { LoginData, RegisterData } from "../../services/api.service";
+import { LoginData, RegisterData } from "../../services/auth.api.service";
+import { AlertCircle, Eye, EyeOff } from "lucide-react";
 
 const Login: React.FC = () => {
-  useDocumentTitle("Login - Trapeloi");
+  useDocumentTitle("Login • Trapeloi");
 
   const [loginState, setLoginState] = useState<"Login" | "Register">("Login");
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -27,7 +26,9 @@ const Login: React.FC = () => {
 
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
-  const { login, register, loginWithGoogle, authLoading, error } = useAuth();
+  const { login, register, loginWithGoogle, authLoading, error, clearError } =
+    useAuth();
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -49,6 +50,10 @@ const Login: React.FC = () => {
     if (fieldErrors[id]) {
       setFieldErrors((prev) => ({ ...prev, [id]: "" }));
     }
+  };
+
+  const clearFormData = () => {
+    setFormData({ email: "", password: "", userName: "" });
   };
 
   const validateFields = (): boolean => {
@@ -112,10 +117,11 @@ const Login: React.FC = () => {
         navigate(origin);
       } else {
         await register({
-          userName: formData.userName, // Make sure this matches
+          userName: formData.userName,
           email: formData.email,
           password: formData.password,
         } as RegisterData);
+
         navigate("/");
       }
     } catch (err) {}
@@ -124,6 +130,52 @@ const Login: React.FC = () => {
   const manageGoogleLogin = () => {
     loginWithGoogle();
   };
+
+  const minLentgh = formData.password.length >= 8;
+  const hasUppercase = /(?=.*[A-Z])/.test(formData.password);
+  const hasLowercase = /(?=.*[a-z])/.test(formData.password);
+  const hasNumber = /(?=.*\d)/.test(formData.password);
+  const hasSpecialChar = /[@$!%*?&]/.test(formData.password);
+
+  const allValid =
+    minLentgh && hasUppercase && hasLowercase && hasNumber && hasSpecialChar;
+
+  const passwordStrength =
+    formData.password.length > 0 && loginState === "Register" ? (
+      <div>
+        <div className="flex space-x-1">
+          <div
+            className={`h-1 w-1/4 rounded ${
+              minLentgh ? "bg-green-500" : "bg-gray-300"
+            }`}
+          ></div>
+          <div
+            className={`h-1 w-1/4 rounded ${
+              hasLowercase ? "bg-green-500" : "bg-gray-300"
+            }`}
+          ></div>
+          <div
+            className={`h-1 w-1/4 rounded ${
+              hasUppercase ? "bg-green-500" : "bg-gray-300"
+            }`}
+          ></div>
+          <div
+            className={`h-1 w-1/4 rounded ${
+              hasNumber ? "bg-green-500" : "bg-gray-300"
+            }`}
+          ></div>
+          <div
+            className={`h-1 w-1/4 rounded ${
+              hasSpecialChar ? "bg-green-500" : "bg-gray-300"
+            }`}
+          ></div>
+        </div>
+        <p className="mt-1 text-xs text-gray-600">
+          {!allValid &&
+            "Must contain: 8+ characters, uppercase, lowercase, special character and number"}
+        </p>
+      </div>
+    ) : null;
 
   return (
     <>
@@ -140,12 +192,12 @@ const Login: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex flex-col items-center justify-between justify-self-center w-[450px] h-[650px] px-5 py-10 bg-platinum rounded-md z-20">
-            <div className="flex items-center text-2xl font-bold text-black">
+          <div className="flex flex-col items-center justify-between justify-self-center w-[500px] min-h-[650px] p-10 bg-platinum rounded-md z-20 xs:scale-90 ms: scale-100">
+            <div className="flex items-center mb-5 text-2xl font-bold text-black">
               {loginState === "Login" ? (
-                <p className="font-montserrat">Log In to&nbsp;</p>
+                <p>Log In to&nbsp;</p>
               ) : (
-                <p className="font-montserrat">Sign Up to&nbsp;</p>
+                <p>Sign Up to&nbsp;</p>
               )}
               <Link to="/">
                 <img
@@ -158,7 +210,7 @@ const Login: React.FC = () => {
 
             <form
               onSubmit={manageSubmit}
-              className="flex flex-col w-full gap-5 px-4"
+              className="flex flex-col w-full gap-5 px-4 py-5"
             >
               {loginState === "Login" ? (
                 <></>
@@ -185,9 +237,12 @@ const Login: React.FC = () => {
                     Username
                   </label>
                   {fieldErrors.userName && (
-                    <p className="mb-2 -mt-1 text-xs text-red-500">
-                      {fieldErrors.userName}
-                    </p>
+                    <div className="flex items-center gap-1 py-2">
+                      <AlertCircle className="w-4 h-4 text-red-400" />
+                      <p className="text-xs text-red-600">
+                        {fieldErrors.userName}
+                      </p>
+                    </div>
                   )}
                 </div>
               )}
@@ -214,9 +269,10 @@ const Login: React.FC = () => {
                   Email
                 </label>
                 {fieldErrors.email && (
-                  <p className="mb-2 -mt-1 text-xs text-red-500">
-                    {fieldErrors.email}
-                  </p>
+                  <div className="flex items-center gap-1 py-2">
+                    <AlertCircle className="w-4 h-4 text-red-400" />
+                    <p className="text-xs text-red-600">{fieldErrors.email}</p>
+                  </div>
                 )}
               </div>
 
@@ -226,6 +282,7 @@ const Login: React.FC = () => {
                   id="password"
                   placeholder=""
                   onChange={manageChange}
+                  value={formData.password}
                   required
                   className={`peer w-full bg-black/[3%] px-3 pt-5 pb-2 mb-4 text-black rounded-lg border-b-2 border-black/50 focus:border-perfectBlue  outline-none autofill:bg-black autofill:text-black ${
                     error || fieldErrors.password
@@ -240,34 +297,30 @@ const Login: React.FC = () => {
                   Password
                 </label>
 
-                {error && (
-                  <div className="w-full px-4 py-2 text-sm text-center text-red-600 rounded-md">
-                    {error === "Invalid credentials"
-                      ? "Invalid email or password. Please try again."
-                      : error}
-                  </div>
-                )}
-
                 <button
                   type="button"
                   onClick={manageShowPassword}
                   className="absolute right-0 mr-3 top-5 opacity-60"
                 >
                   {showPassword ? (
-                    <img src={hidePasswordIcon} alt="" className="w-4" />
+                    <EyeOff className="w-4 h-4 text-gray-600" />
                   ) : (
-                    <img src={showPasswordIcon} alt="" className="w-4" />
+                    <Eye className="w-4 h-4 text-gray-600" />
                   )}
                 </button>
+                {passwordStrength}
                 {fieldErrors.password && (
-                  <p className="mb-2 -mt-1 text-xs text-red-500">
-                    {fieldErrors.password}
-                  </p>
+                  <div className="flex items-center gap-1 py-2">
+                    <AlertCircle className="w-4 h-4 text-red-400" />
+                    <p className="text-xs text-red-600">
+                      {fieldErrors.password}
+                    </p>
+                  </div>
                 )}
               </div>
 
               <button
-                className="self-center py-3 mx-8 mt-2 font-semibold text-white transition-all duration-150 rounded-md w-52 bg-perfectBlue hover:bg-blue-800"
+                className="self-center w-full py-3 font-bold text-white transition-all duration-150 rounded-md font-montserrat bg-perfectBlue hover:bg-blue-800"
                 type="submit"
                 disabled={authLoading}
               >
@@ -279,40 +332,56 @@ const Login: React.FC = () => {
                   "Sign up"
                 )}
               </button>
-              {loginState === "Login" && error && (
-                <div className="mt-2 text-center">
-                  <Link
-                    to="/forgot-password"
-                    className="text-xs font-medium text-blue-900 hover:underline"
-                  >
-                    Forgot your password?
-                  </Link>
-                </div>
-              )}
             </form>
 
-            <p className="-mt-4 text-xs text-black">
+            {error && (
+              <div className="flex items-center self-center gap-1 mb-6 font-medium">
+                <AlertCircle className="w-5 h-5 text-red-400" />
+                <p className="w-full text-sm text-red-600 rounded-md">
+                  {error === "Invalid credentials"
+                    ? "Invalid email or password. Please try again."
+                    : error}
+                </p>
+              </div>
+            )}
+
+            {loginState === "Login" && error && (
+              <div className="-mt-5 text-center">
+                <Link
+                  to="/forgot-password"
+                  className="text-xs font-medium text-blue-600 hover:underline"
+                >
+                  Forgot your password?
+                </Link>
+              </div>
+            )}
+
+            <p className="py-4 text-xs text-black">
               {loginState === "Login" ? (
                 <>
-                  New to Trapeloi?&nbsp;
+                  New here?&nbsp;
                   <span
-                    className="text-[13px] dark:text-black text-black hover:underline font-kanit cursor-pointer"
+                    className="text-[13px] text-blue-900 font-medium hover:text-blue-950 cursor-pointer"
                     onClick={() => {
                       setLoginState("Register");
                       setFieldErrors({});
+                      clearError();
+                      clearFormData();
                     }}
                   >
-                    Sign up here
+                    Sign up
                   </span>
                 </>
               ) : (
                 <>
                   Already have an account?&nbsp;
                   <span
-                    className="text-[13px] text-black hover:underline font-kanit cursor-pointer"
+                    className="text-[13px] text-blue-900 font-medium hover:text-blue-950 cursor-pointer"
                     onClick={() => {
                       setLoginState("Login");
                       setFieldErrors({});
+                      clearError();
+                      clearFormData();
                     }}
                   >
                     Login here
@@ -321,7 +390,7 @@ const Login: React.FC = () => {
               )}
             </p>
 
-            <div className="flex items-center gap-2 xs:w-1/2 md:w-3/4 opacity-70">
+            <div className="flex items-center gap-2 py-4 xs:w-1/2 md:w-3/4 opacity-70">
               <div className="flex-1 h-px bg-gray-600 "></div>
               <span className="text-xs text-gray-600 dark:text-gray-600">
                 Or Continue with

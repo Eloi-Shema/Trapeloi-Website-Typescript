@@ -1,20 +1,14 @@
 import { createContext, useEffect, useRef, useState } from "react";
-
-interface BeatType {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-}
+import { IBeat } from "../../services/beat.api.service";
 
 interface CartContextType {
   isVisible: boolean;
   toggleCart: () => void;
-  cart: BeatType[];
+  cart: IBeat[];
   cartNotification?: string | null;
   warning?: string | null;
   animate?: boolean | null;
-  addToCart: (beat: BeatType) => void;
+  addToCart: (beat: IBeat) => void;
   removeFromCart: (id: string | number) => void;
   clearCart: () => void;
   toggleDeleteCard: () => void;
@@ -46,7 +40,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     setIsCartVisible(!isCartVisible);
   };
 
-  const [cart, setCart] = useState<BeatType[]>(() => {
+  const [cart, setCart] = useState<IBeat[]>(() => {
     const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
   });
@@ -62,16 +56,16 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [animate, setAnimate] = useState<boolean>(false);
   const timeOutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const addToCart = (beat: BeatType) => {
+  const addToCart = (beat: IBeat) => {
     setCart((prevCart) => {
-      const isAdded = prevCart.some((item) => item.id === beat.id);
+      const isAdded = prevCart.some((item) => item._id === beat._id);
       if (isAdded) {
         if (timeOutRef.current) {
           clearTimeout(timeOutRef.current);
         }
 
         setCartNotification("");
-        setWarning(`${beat.name} is already added in the Cart`);
+        setWarning(`${beat.title} is already added in the Cart`);
         setAnimate(true);
 
         setTimeout(() => {
@@ -84,7 +78,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
         return prevCart;
       } else {
-        setCartNotification(`${beat.name} is added successfully`);
+        setCartNotification(`${beat.title} is added successfully`);
         setWarning("");
 
         timeOutRef.current = setTimeout(() => {
@@ -106,7 +100,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const removeFromCart = (beatId: string | number) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== beatId));
+    setCart((prevCart) => prevCart.filter((item) => item._id !== beatId));
   };
   const clearCart = () => {
     setCart([]);

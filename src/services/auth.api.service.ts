@@ -22,6 +22,16 @@ export interface AuthResponse {
   refreshToken: string;
 }
 
+interface ForgotPasswordRequest {
+  email: string;
+}
+
+interface ResetPasswordRequest {
+  password: string;
+}
+
+const API_BASE_URL = import.meta.env.VITE_BACKEND_HOST;
+
 class ApiService {
   private async handleTokenRefresh() {
     try {
@@ -37,7 +47,7 @@ class ApiService {
     endpoint: string,
     options: RequestInit = {}
   ): Promise<T> {
-    const url = `https://trapeloi-backend.onrender.com${endpoint}`;
+    const url = `${API_BASE_URL}${endpoint}`;
 
     const config: RequestInit = {
       headers: {
@@ -122,6 +132,23 @@ class ApiService {
         method: "POST",
       }
     );
+  }
+
+  async forgotPassword(email: string): Promise<AuthResponse> {
+    const requestData: ForgotPasswordRequest = { email };
+
+    return this.makeRequest<AuthResponse>("/auth/forgot-password", {
+      method: "POST",
+      body: JSON.stringify(requestData),
+    });
+  }
+  async resetPassword(token: string, password: string): Promise<AuthResponse> {
+    const requestData: ResetPasswordRequest = { password };
+
+    return this.makeRequest<AuthResponse>(`/auth/reset-password/${token}`, {
+      method: "PATCH",
+      body: JSON.stringify(requestData),
+    });
   }
 
   async getCurrentUser(): Promise<{ status: string; user: any }> {
