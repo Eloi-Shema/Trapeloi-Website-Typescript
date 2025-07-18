@@ -30,8 +30,6 @@ interface ResetPasswordRequest {
   password: string;
 }
 
-const API_BASE_URL = import.meta.env.VITE_BACKEND_HOST;
-
 class ApiService {
   private async handleTokenRefresh() {
     try {
@@ -47,7 +45,7 @@ class ApiService {
     endpoint: string,
     options: RequestInit = {}
   ): Promise<T> {
-    const url = `${API_BASE_URL}${endpoint}`;
+    const url = `https://trapeloi-backend.onrender.com${endpoint}`;
 
     const config: RequestInit = {
       headers: {

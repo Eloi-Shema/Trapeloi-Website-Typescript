@@ -1,5 +1,3 @@
-const API_BASE_URL = import.meta.env.VITE_BACKEND_HOST;
-
 export interface IBeat {
   _id: string;
   title: string;
@@ -33,7 +31,7 @@ class BeatApiService {
     options: RequestInit = {},
     isFormData: boolean = false
   ): Promise<T> {
-    const url = `${API_BASE_URL}${endpoint}`;
+    const url = `https://trapeloi-backend.onrender.com${endpoint}`;
 
     const headers: HeadersInit = isFormData
       ? {}
