@@ -2,9 +2,16 @@ import { useEffect, useState } from "react";
 import Loading from "../../utils/Loading/Loading";
 import AltHeader from "../../Components/Header/AltHeader";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
+import { useAudioPlayer } from "../../contexts/PlayerContext/PlayerContext";
 
 const Privacy = () => {
-  useDocumentTitle("Privacy • Trapeloi");
+  const { currentBeat } = useAudioPlayer();
+
+  useDocumentTitle(
+    `${
+      currentBeat ? "Now Playing • " + currentBeat?.title : "Privacy • Trapeloi"
+    }`
+  );
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -41,7 +48,7 @@ const Privacy = () => {
             </div>
 
             <div>
-              <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
+              <h3 className="mb-5 font-bold xs:text-xl md:text-2xl font-montserrat">
                 1. INFORMATION WE COLLECT
               </h3>
               <p className="mb-5 ">
@@ -98,7 +105,7 @@ const Privacy = () => {
             </div>
 
             <div>
-              <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
+              <h3 className="mb-5 font-bold xs:text-xl md:text-2xl font-montserrat">
                 2. HOW WE USE YOUR INFORMATION
               </h3>
               <p className="mb-5">
@@ -130,7 +137,7 @@ const Privacy = () => {
             </div>
 
             <div>
-              <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
+              <h3 className="mb-5 font-bold xs:text-xl md:text-2xl font-montserrat">
                 3. HOW WE SHARE YOUR INFORMATION
               </h3>
               <p className="mb-5">
@@ -165,7 +172,7 @@ const Privacy = () => {
             </div>
 
             <div>
-              <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
+              <h3 className="mb-5 font-bold xs:text-xl md:text-2xl font-montserrat">
                 4. DATA SECURITY
               </h3>
 
@@ -187,7 +194,7 @@ const Privacy = () => {
             </div>
 
             <div>
-              <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
+              <h3 className="mb-5 font-bold xs:text-xl md:text-2xl font-montserrat">
                 5. YOUR RIGHTS AND CHOICES
               </h3>
               <p>
@@ -234,7 +241,7 @@ const Privacy = () => {
             </div>
 
             <div>
-              <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
+              <h3 className="mb-5 font-bold xs:text-xl md:text-2xl font-montserrat">
                 6. THIRD-PARTY LINKS AND SERVICES
               </h3>
 
@@ -247,7 +254,7 @@ const Privacy = () => {
             </div>
 
             <div>
-              <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
+              <h3 className="mb-5 font-bold xs:text-xl md:text-2xl font-montserrat">
                 7. CHILDREN'S PRIVACY
               </h3>
 
@@ -262,7 +269,7 @@ const Privacy = () => {
             </div>
 
             <div>
-              <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
+              <h3 className="mb-5 font-bold xs:text-xl md:text-2xl font-montserrat">
                 8. CHANGES TO THIS PRIVACY POLICY
               </h3>
 
@@ -276,7 +283,7 @@ const Privacy = () => {
             </div>
 
             <div>
-              <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
+              <h3 className="mb-5 font-bold xs:text-xl md:text-2xl font-montserrat">
                 10. CONTACT INFORMATION
               </h3>
 

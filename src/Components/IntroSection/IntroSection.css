@@ -14,7 +14,7 @@
 }
 
 .shop-button {
-  animation: glowing 5s ease-in-out infinite;
+  animation: glowing 3s ease-in-out infinite;
   z-index: 1;
   cursor: pointer;
 }
@@ -24,7 +24,7 @@
     box-shadow: 0 0 5px white;
   }
   50% {
-    box-shadow: 0 0 20px white;
+    box-shadow: 0 0 25px white;
   }
   100% {
     box-shadow: 0 0 5px white;

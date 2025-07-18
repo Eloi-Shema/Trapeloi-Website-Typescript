@@ -10,9 +10,18 @@ import { apiService } from "../../services/auth.api.service";
 import logo from "../../assets/logo-white.png";
 import { Link } from "react-router-dom";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
+import { useAudioPlayer } from "../../contexts/PlayerContext/PlayerContext";
 
 const ForgotPassword = () => {
-  useDocumentTitle("Forgot Password • Trapeloi");
+  const { currentBeat } = useAudioPlayer();
+
+  useDocumentTitle(
+    `${
+      currentBeat
+        ? "Now Playing • " + currentBeat?.title
+        : "Forgot Password • Trapeloi"
+    }`
+  );
 
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);

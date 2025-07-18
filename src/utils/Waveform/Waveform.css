@@ -1,0 +1,39 @@
+.playing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.bar {
+  width: 4px;
+  background: rgb(66, 66, 66);
+  border-radius: 2px;
+  animation: wave 1s ease-in-out infinite;
+}
+
+.dark .bar {
+  background: rgb(216, 216, 216);
+}
+
+.bar:nth-child(1) {
+  height: 8px;
+  animation-delay: 0s;
+}
+.bar:nth-child(2) {
+  height: 12px;
+  animation-delay: 0.2s;
+}
+.bar:nth-child(3) {
+  height: 6px;
+  animation-delay: 0.4s;
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: scaleY(0.3);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}

@@ -14,9 +14,14 @@ import Loading from "../../utils/Loading/Loading.tsx";
 import useDocumentTitle from "../../hooks/useDocumentTitle.ts";
 import ConfirmDelete from "../../utils/ConfirmDelete/ConfirmDelete.tsx";
 import { useAuth } from "../../contexts/Auth/AuthContext.tsx";
+import { useAudioPlayer } from "../../contexts/PlayerContext/PlayerContext.tsx";
 
 const Home: React.FC = () => {
-  useDocumentTitle("Trapeloi");
+  const { currentBeat } = useAudioPlayer();
+
+  useDocumentTitle(
+    `${currentBeat ? "Now Playing • " + currentBeat?.title : "Trapeloi"}`
+  );
 
   //LOAD THE PAGE
   const [isLoading, SetIsLoading] = useState<boolean>(false);

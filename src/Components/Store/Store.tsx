@@ -8,9 +8,7 @@ import React, {
   useCallback,
 } from "react";
 import "./Store.css";
-// import { beatList } from "../../data.ts";
 import cart_icon from "../../assets/icons/cart.svg";
-import play_icon from "../../assets/icons/play.svg";
 import search_icon from "../../assets/icons/search.svg";
 import close_icon from "../../assets/icons/close.svg";
 import list_icon from "../../assets/icons/list.svg";
@@ -23,6 +21,9 @@ import { IBeat } from "../../services/beat.api.service.ts";
 import GridLoadingSkeleton from "../../utils/Loading/GridLoadingSkeleton.tsx";
 import ListLoadingSkeleton from "../../utils/Loading/ListLoadingSkeleton.tsx";
 import ListLoadingSkeleton2 from "../../utils/Loading/ListLoadingSkeleton2.tsx";
+import { useAudioPlayer } from "../../contexts/PlayerContext/PlayerContext.tsx";
+import { Pause, Play } from "lucide-react";
+import Waveform from "../../utils/Waveform/Waveform.tsx";
 
 interface StoreProps {
   addToCart: (beat: IBeat) => void;
@@ -30,20 +31,44 @@ interface StoreProps {
 }
 
 const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
-  const { beats, isLoading, error, fetchBeats } = useBeat();
+  const { beats, setClickedBeat, isLoading, error, fetchBeats } = useBeat();
 
-  // SWITCH BETWEEN GRID AND LIST VIEW IN STORE AND SAVE THE STATE
-  const [isGridView, setIsGridView] = useState(() => {
-    return localStorage.getItem("viewMode") === "list" ? false : true;
-  });
+  const { playBeat, currentBeat, isPlaying, togglePlay } = useAudioPlayer();
 
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [currentPage, setCurrentPage] = useState(0);
+  const [renderKey, setRenderKey] = useState(0);
+
+  // SWITCH BETWEEN GRID AND LIST VIEW IN STORE AND SAVE THE STATE
+  const [isGridView, setIsGridView] = useState(() => {
+    return localStorage.getItem("viewMode") === "list" ? true : false;
+  });
 
   // Fetching beats at app initialization
   useEffect(() => {
     fetchBeats();
   }, []);
+
+  useEffect(() => {
+    setRenderKey((prev) => prev + 1);
+  }, [isPlaying, currentBeat?._id]);
+
+  //AUDIO PLAYER
+  const handlePlay = (beat: IBeat) => {
+    setClickedBeat(beat);
+
+    const isCurrentBeat = currentBeat?._id === beat._id;
+
+    if (isCurrentBeat) {
+      togglePlay();
+    } else {
+      playBeat(beat);
+    }
+  };
+
+  // Get the current playing state for each beat
+  const isCurrentBeat = (beat: IBeat) => currentBeat?._id === beat._id;
+  const isCurrentlyPlaying = (beat: IBeat) => isCurrentBeat(beat) && isPlaying;
 
   // Reset search and pagination when beats are loaded
   useEffect(() => {
@@ -233,20 +258,32 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
           className="flex flex-col items-center px-2 py-4 beat-grid justify-self-center"
           key={beat._id || id} // Use beat._id if available, fallback to index
         >
-          <div className="relative cursor-pointer cover">
+          <div className="relative cover">
             <img
               className="w-56 mb-3 border rounded-sm border-gray-700/30"
               src={beat.coverImageUrl}
               alt="Beat cover"
             />
-            <div className="thumbnail absolute top-[4.375rem] left-[4.375rem] rounded-full">
-              <img className="invert w-[3.125rem] p-3" src={play_icon} alt="" />
+            <div className="absolute rounded-full thumbnail top-[87px] left-[87px]">
+              <button
+                onClick={() => handlePlay(beat)}
+                className="flex items-center p-2"
+              >
+                {isCurrentlyPlaying(beat) ? (
+                  <Pause size={35} className="text-platinum fill-platinum" />
+                ) : (
+                  <Play size={35} className="text-platinum fill-platinum" />
+                )}
+              </button>
             </div>
           </div>
 
-          <h4 className="mb-6 font-semibold text-black dark:text-gray-300">
-            {beat.title}
-          </h4>
+          <div className="flex items-center gap-4 mb-6">
+            <h4 className="font-semibold text-black dark:text-gray-300">
+              {beat.title}
+            </h4>
+            {isCurrentBeat(beat) && isPlaying && <Waveform />}
+          </div>
           <div className="flex justify-between items-center mb-12 text-[10px] text-black">
             <p className="px-5 py-1 mr-2 border rounded-full">{beat.bpm}</p>
             <p className="px-5 py-1 border rounded-full">{beat.key}</p>
@@ -267,7 +304,15 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
         </motion.div>
       );
     });
-  }, [beatsOnPage, searchQuery, beats.length, addToCart, isLoading, error]);
+  }, [
+    beatsOnPage,
+    searchQuery,
+    beats.length,
+    addToCart,
+    isLoading,
+    error,
+    renderKey,
+  ]);
 
   // LIST VIEW
   const beatList = useCallback(() => {
@@ -319,11 +364,16 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
           key={beat._id || id} // Use beat id if available, fallback to index
         >
           <div className="flex items-center md:w-60">
-            <img
-              className="w-4 mr-5 cursor-pointer dark:invert invert-0"
-              src={play_icon}
-              alt=""
-            />
+            <button onClick={() => handlePlay(beat)} className="w-10">
+              {isCurrentlyPlaying(beat) ? (
+                <Waveform />
+              ) : (
+                <Play
+                  size={20}
+                  className="text-black dark:text-white fill-black dark:fill-platinum"
+                />
+              )}
+            </button>
             <img
               className="border-2 border-bgBlack/30 rounded-md mr-3 w-[50px]"
               src={beat.coverImageUrl}
@@ -354,7 +404,15 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
         </motion.div>
       );
     });
-  }, [beatsOnPage, searchQuery, beats.length, addToCart, isLoading, error]);
+  }, [
+    beatsOnPage,
+    searchQuery,
+    beats.length,
+    addToCart,
+    isLoading,
+    error,
+    renderKey,
+  ]);
 
   //LIST VIEW (for small devices)
   const beaListMobile = useCallback(() => {
@@ -403,11 +461,16 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
           key={beat._id || id} // Use beat._id if available, fallback to index
         >
           <div className="flex items-center w-40 break-words">
-            <img
-              className="w-3 mr-2 cursor-pointer dark:invert invert-0"
-              src={play_icon}
-              alt=""
-            />
+            <button onClick={() => handlePlay(beat)} className="w-6">
+              {isCurrentlyPlaying(beat) ? (
+                <Waveform />
+              ) : (
+                <Play
+                  size={15}
+                  className="text-black dark:text-white fill-black dark:fill-white"
+                />
+              )}
+            </button>
             <img
               className="border-2 border-bgBlack/30 rounded-md mr-3 w-[35px]"
               src={beat.coverImageUrl}
@@ -438,7 +501,15 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
         </motion.div>
       );
     });
-  }, [beatsOnPage, searchQuery, beats.length, addToCart, isLoading, error]);
+  }, [
+    beatsOnPage,
+    searchQuery,
+    beats.length,
+    addToCart,
+    isLoading,
+    error,
+    renderKey,
+  ]);
 
   return (
     <div

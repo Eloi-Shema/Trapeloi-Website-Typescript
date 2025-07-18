@@ -1,8 +1,15 @@
 import AltHeader from "../../Components/Header/AltHeader";
+import { useAudioPlayer } from "../../contexts/PlayerContext/PlayerContext";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const About = () => {
-  useDocumentTitle("About • Trapeloi");
+  const { currentBeat } = useAudioPlayer();
+
+  useDocumentTitle(
+    `${
+      currentBeat ? "Now Playing • " + currentBeat?.title : "About • Trapeloi"
+    }`
+  );
 
   return (
     <main className="m-auto max-w-[1536px] h-screen  dark:text-white text-black xs:text-base md:text-lg dark:bg-black bg-platinum font-montserrat">
@@ -13,7 +20,7 @@ const About = () => {
         </h1>
 
         <div>
-          <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
+          <h3 className="mb-5 font-bold xs:text-xl md:text-2xl font-montserrat">
             Our Vision
           </h3>
 
@@ -27,7 +34,7 @@ const About = () => {
         </div>
 
         <div>
-          <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
+          <h3 className="mb-5 font-bold xs:text-xl md:text-2xl font-montserrat">
             Who We Are
           </h3>
 
@@ -41,7 +48,7 @@ const About = () => {
         </div>
 
         <div>
-          <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
+          <h3 className="mb-5 font-bold xs:text-xl md:text-2xl font-montserrat">
             What We Offer
           </h3>
 
@@ -78,7 +85,7 @@ const About = () => {
         </div>
 
         <div>
-          <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
+          <h3 className="mb-5 font-bold xs:text-xl md:text-2xl font-montserrat">
             Why Choose Us?
           </h3>
 
@@ -113,7 +120,7 @@ const About = () => {
         </div>
 
         <div>
-          <h3 className="mb-5 font-bold  xs:text-xl md:text-2xl font-montserrat">
+          <h3 className="mb-5 font-bold xs:text-xl md:text-2xl font-montserrat">
             Join Our Community
           </h3>
 

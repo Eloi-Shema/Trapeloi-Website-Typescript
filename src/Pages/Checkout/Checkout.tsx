@@ -15,9 +15,18 @@ import { useState } from "react";
 import { useCart } from "../../hooks/useCart";
 import CountryDropdown from "../../utils/Countries/CountryDropDown";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
+import { useAudioPlayer } from "../../contexts/PlayerContext/PlayerContext";
 
 const Checkout = () => {
-  useDocumentTitle("Checkout • Trapeloi");
+  const { currentBeat } = useAudioPlayer();
+
+  useDocumentTitle(
+    `${
+      currentBeat
+        ? "Now Playing • " + currentBeat?.title
+        : "Checkout • Trapeloi"
+    }`
+  );
 
   const [cardNumber, setCardNumber] = useState<string>("");
   const [expiryDate, setExpiryDate] = useState<string>("");

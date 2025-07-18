@@ -10,9 +10,16 @@ import useDocumentTitle from "../../hooks/useDocumentTitle";
 import { useAuth } from "../../contexts/Auth/AuthContext";
 import { LoginData, RegisterData } from "../../services/auth.api.service";
 import { AlertCircle, Eye, EyeOff } from "lucide-react";
+import { useAudioPlayer } from "../../contexts/PlayerContext/PlayerContext";
 
 const Login: React.FC = () => {
-  useDocumentTitle("Login • Trapeloi");
+  const { currentBeat } = useAudioPlayer();
+
+  useDocumentTitle(
+    `${
+      currentBeat ? "Now Playing • " + currentBeat?.title : "Login • Trapeloi"
+    }`
+  );
 
   const [loginState, setLoginState] = useState<"Login" | "Register">("Login");
   const [showPassword, setShowPassword] = useState<boolean>(false);

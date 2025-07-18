@@ -11,9 +11,18 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { apiService } from "../../services/auth.api.service";
 import logo from "../../assets/logo-white.png";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
+import { useAudioPlayer } from "../../contexts/PlayerContext/PlayerContext";
 
 const ResetPassword = () => {
-  useDocumentTitle("Reset Password • Trapeloi");
+  const { currentBeat } = useAudioPlayer();
+
+  useDocumentTitle(
+    `${
+      currentBeat
+        ? "Now Playing • " + currentBeat?.title
+        : "Reset Password • Trapeloi"
+    }`
+  );
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");

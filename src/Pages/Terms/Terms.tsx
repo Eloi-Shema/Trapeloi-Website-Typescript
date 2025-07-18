@@ -3,9 +3,18 @@ import AltHeader from "../../Components/Header/AltHeader";
 import { useEffect, useState } from "react";
 import Loading from "../../utils/Loading/Loading";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
+import { useAudioPlayer } from "../../contexts/PlayerContext/PlayerContext";
 
 const Terms = () => {
-  useDocumentTitle("Licence terms • Trapeloi");
+  const { currentBeat } = useAudioPlayer();
+
+  useDocumentTitle(
+    `${
+      currentBeat
+        ? "Now Playing • " + currentBeat?.title
+        : "Licence terms • Trapeloi"
+    }`
+  );
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -58,7 +67,7 @@ const Terms = () => {
             </div>
 
             <div>
-              <h3 className="mb-5 font-extrabold  xs:text-xl md:text-2xl">
+              <h3 className="mb-5 font-extrabold xs:text-xl md:text-2xl">
                 1. LICENSE AGREEMENT
               </h3>
               <p className="mb-5 ">
@@ -121,7 +130,7 @@ const Terms = () => {
             </div>
 
             <div>
-              <h3 className="mb-5 font-extrabold  xs:text-xl md:text-2xl">
+              <h3 className="mb-5 font-extrabold xs:text-xl md:text-2xl">
                 2. PAYMENT AND PRICING
               </h3>
 
@@ -144,7 +153,7 @@ const Terms = () => {
             </div>
 
             <div>
-              <h3 className="mb-5 font-extrabold  xs:text-xl md:text-2xl">
+              <h3 className="mb-5 font-extrabold xs:text-xl md:text-2xl">
                 3. REFUNDS AND EXCHANGES
               </h3>
 
@@ -165,7 +174,7 @@ const Terms = () => {
             </div>
 
             <div>
-              <h3 className="mb-5 font-extrabold  xs:text-xl md:text-2xl">
+              <h3 className="mb-5 font-extrabold xs:text-xl md:text-2xl">
                 4. USAGE RESTRICTIONS
               </h3>
 
@@ -205,7 +214,7 @@ const Terms = () => {
             </div>
 
             <div>
-              <h3 className="mb-5 font-extrabold  xs:text-xl md:text-2xl">
+              <h3 className="mb-5 font-extrabold xs:text-xl md:text-2xl">
                 5. COPYRIGHT AND OWNERSHIP
               </h3>
 
@@ -223,7 +232,7 @@ const Terms = () => {
             </div>
 
             <div>
-              <h3 className="mb-5 font-extrabold  xs:text-xl md:text-2xl">
+              <h3 className="mb-5 font-extrabold xs:text-xl md:text-2xl">
                 6. CREDITING THE PRODUCER
               </h3>
 
@@ -241,7 +250,7 @@ const Terms = () => {
             </div>
 
             <div>
-              <h3 className="mb-5 font-extrabold  xs:text-xl md:text-2xl">
+              <h3 className="mb-5 font-extrabold xs:text-xl md:text-2xl">
                 7. TERMINATION OF LICENSE
               </h3>
               <p>A license will be automatically terminated if:</p>
@@ -263,7 +272,7 @@ const Terms = () => {
             </div>
 
             <div className="mb-8">
-              <h3 className="mb-5 font-extrabold  xs:text-xl md:text-2xl">
+              <h3 className="mb-5 font-extrabold xs:text-xl md:text-2xl">
                 8. LIMITATION OF LIABILITY
               </h3>
               <p>We are not responsible for:</p>
@@ -283,7 +292,7 @@ const Terms = () => {
             </div>
 
             <div>
-              <h3 className="mb-5 font-extrabold  xs:text-xl md:text-2xl">
+              <h3 className="mb-5 font-extrabold xs:text-xl md:text-2xl">
                 9. MODIFICATIONS TO TERMS
               </h3>
 
@@ -300,7 +309,7 @@ const Terms = () => {
             </div>
 
             <div>
-              <h3 className="mb-5 font-extrabold  xs:text-xl md:text-2xl">
+              <h3 className="mb-5 font-extrabold xs:text-xl md:text-2xl">
                 10. CONTACT INFORMATION
               </h3>
 

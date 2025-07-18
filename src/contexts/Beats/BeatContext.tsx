@@ -3,7 +3,7 @@ import { beatApiService, IBeat } from "../../services/beat.api.service";
 
 interface BeatContextType {
   beats: IBeat[];
-  currentBeat: IBeat | null;
+  clickedBeat: IBeat | null;
   isLoading: boolean;
   error: string | null;
   fetchBeats: () => Promise<void>;
@@ -12,7 +12,7 @@ interface BeatContextType {
     beatId: string,
     fileType: "full" | "stems"
   ) => Promise<string>;
-  clearCurrentBeat: () => void;
+  setClickedBeat: (beat: IBeat | null) => void;
 }
 
 interface BeatProviderProps {
@@ -23,7 +23,7 @@ const BeatContext = createContext<BeatContextType | null>(null);
 
 export const BeatProvider: React.FC<BeatProviderProps> = ({ children }) => {
   const [beats, setBeats] = useState<IBeat[]>([]);
-  const [currentBeat, setCurrentBeat] = useState<IBeat | null>(null);
+  const [clickedBeat, setClickedBeat] = useState<IBeat | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -76,19 +76,15 @@ export const BeatProvider: React.FC<BeatProviderProps> = ({ children }) => {
     }
   };
 
-  const clearCurrentBeat = () => {
-    setCurrentBeat(null);
-  };
-
   const value: BeatContextType = {
     beats,
-    currentBeat,
+    clickedBeat,
     isLoading,
     error,
     fetchBeats,
     fetchBeatById,
     getDownloadUrl,
-    clearCurrentBeat,
+    setClickedBeat,
   };
 
   return <BeatContext.Provider value={value}>{children}</BeatContext.Provider>;
