@@ -458,7 +458,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
           transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ once: true }}
           className="flex items-center justify-between max-w-screen-md p-3 beat-grid"
-          key={beat._id || id} // Use beat._id if available, fallback to index
+          key={beat._id || id}
         >
           <div className="flex items-center w-40 break-words">
             <button onClick={() => handlePlay(beat)} className="w-6">
@@ -483,7 +483,7 @@ const Store: React.FC<StoreProps> = forwardRef(({ addToCart }, ref) => {
 
           <div className="text-[8px] text-black xs:hidden sm:flex flex-col justify-between items-center mr-4">
             <p className="border rounded-[6px] p-1 mb-1">{beat.bpm}</p>
-            <p className="border rounded-[6px] p-1">{beat.key}</p>
+            <p className="border rounded-[6px] p-1 truncate">{beat.key}</p>
           </div>
           <button
             className="flex items-center justify-center w-20 px-3 py-2 border rounded-md cart-btn dark:bg-transparent bg-bgBlack"
