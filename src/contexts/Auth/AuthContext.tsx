@@ -6,7 +6,7 @@ import {
   useState,
 } from "react";
 import {
-  apiService,
+  authApiService,
   AuthResponse,
   LoginData,
   RegisterData,
@@ -58,7 +58,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         const token = localStorage.getItem("accessToken");
 
         if (token) {
-          const response = await apiService.getCurrentUser();
+          const response = await authApiService.getCurrentUser();
 
           if (response.user) {
             setUser(response.user);
@@ -86,7 +86,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       setAuthLoading(true);
       setError(null);
 
-      const response = await apiService.login(data);
+      const response = await authApiService.login(data);
       manageAuthResponse(response);
 
       //Redirects to previous page before login
@@ -105,7 +105,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       setAuthLoading(true);
       setError(null);
 
-      const response = await apiService.register(data);
+      const response = await authApiService.register(data);
       manageAuthResponse(response);
 
       navigate("/");
@@ -120,7 +120,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const logout = async () => {
     try {
       setAuthLoading(true);
-      await apiService.logout();
+      await authApiService.logout();
 
       setUser(null);
       setToken(null);
@@ -137,7 +137,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const refreshToken = async () => {
     try {
-      const response = await apiService.refreshToken();
+      const response = await authApiService.refreshToken();
       setToken(response.token);
 
       localStorage.setItem("accessToken", response.token);
@@ -159,7 +159,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     try {
       setAuthLoading(true);
       // Verify the session with backend
-      const response = await apiService.getCurrentUser();
+      const response = await authApiService.getCurrentUser();
       if (response.user) {
         setUser({
           ...response.user,

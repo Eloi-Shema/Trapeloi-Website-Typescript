@@ -30,7 +30,7 @@ interface ResetPasswordRequest {
   password: string;
 }
 
-class ApiService {
+class AuthApiService {
   private async handleTokenRefresh() {
     try {
       const { token } = await this.refreshToken();
@@ -90,7 +90,7 @@ class ApiService {
     return response.json();
   }
 
-  async authenticatedRequest<T>(
+  private async authenticatedRequest<T>(
     endpoint: string,
     options: RequestInit = {}
   ): Promise<T> {
@@ -154,4 +154,4 @@ class ApiService {
   }
 }
 
-export const apiService = new ApiService();
+export const authApiService = new AuthApiService();

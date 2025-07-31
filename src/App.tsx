@@ -8,6 +8,8 @@ import ResetPassword from "./Pages/PasswordReset/ResetPassword";
 import ForgotPassword from "./Pages/PasswordReset/ForgotPassword";
 import { BeatProvider } from "./contexts/Beats/BeatContext";
 import { AudioPlayerProvider } from "./contexts/PlayerContext/PlayerContext";
+import { PaymentProvider } from "./contexts/Payment/PaymentContext";
+import { NoUser } from "./utils/NoUser/NoUser";
 
 const Home = React.lazy(() => import("./Pages/Home/Home"));
 const Checkout = React.lazy(() => import("./Pages/Checkout/Checkout"));
@@ -22,29 +24,41 @@ const App: React.FC = () => {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <BeatProvider>
-          <AudioPlayerProvider>
-            <CartProvider>
-              <Suspense fallback={<Loading />}>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/auth/success" element={<AuthSuccess />} />
-                  <Route path="/checkout" element={<Checkout />} />
-                  <Route path="/terms" element={<Terms />} />
-                  <Route path="/privacy" element={<Privacy />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/forgot-password" element={<ForgotPassword />} />
-                  <Route
-                    path={`/reset-password/:token`}
-                    element={<ResetPassword />}
-                  />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </Suspense>
-            </CartProvider>
-          </AudioPlayerProvider>
-        </BeatProvider>
+        <PaymentProvider>
+          <BeatProvider>
+            <AudioPlayerProvider>
+              <CartProvider>
+                <Suspense fallback={<Loading />}>
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/auth/success" element={<AuthSuccess />} />
+                    <Route
+                      path="/checkout"
+                      element={
+                        <NoUser>
+                          <Checkout />
+                        </NoUser>
+                      }
+                    />
+                    <Route path="/terms" element={<Terms />} />
+                    <Route path="/privacy" element={<Privacy />} />
+                    <Route path="/about" element={<About />} />
+                    <Route
+                      path="/forgot-password"
+                      element={<ForgotPassword />}
+                    />
+                    <Route
+                      path={`/reset-password/:token`}
+                      element={<ResetPassword />}
+                    />
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </Suspense>
+              </CartProvider>
+            </AudioPlayerProvider>
+          </BeatProvider>
+        </PaymentProvider>
       </AuthProvider>
     </ThemeProvider>
   );

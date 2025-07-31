@@ -23,17 +23,6 @@ export const CartContext = createContext<CartContextType | undefined>(
 );
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
-  //SAVE THE CURRENT DISPLAY STATE OF CART BOX AND ADDED/REMOVED CART ITEMS
-
-  // const [isCartVisible, setIsCartVisible] = useState<boolean>(() => {
-  //   const saveCartDisplay = localStorage.getItem("isCartVisible");
-  //   return saveCartDisplay === "true";
-  // });
-
-  // useEffect(() => {
-  //   localStorage.setItem("isCartVisible", JSON.stringify(isCartVisible));
-  // }, [isCartVisible]);
-
   const [isCartVisible, setIsCartVisible] = useState<boolean>(false);
 
   const toggleCart = () => {

@@ -8,7 +8,7 @@ import {
   Loader2,
 } from "lucide-react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { apiService } from "../../services/auth.api.service";
+import { authApiService } from "../../services/auth.api.service";
 import logo from "../../assets/logo-white.png";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import { useAudioPlayer } from "../../contexts/PlayerContext/PlayerContext";
@@ -70,7 +70,7 @@ const ResetPassword = () => {
     setIsLoading(true);
 
     try {
-      await apiService.resetPassword(token, password);
+      await authApiService.resetPassword(token, password);
       setIsSuccess(true);
 
       // Redirect to login after 10 seconds

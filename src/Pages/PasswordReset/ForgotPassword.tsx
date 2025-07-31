@@ -6,7 +6,7 @@ import {
   AlertCircle,
   Loader2,
 } from "lucide-react";
-import { apiService } from "../../services/auth.api.service";
+import { authApiService } from "../../services/auth.api.service";
 import logo from "../../assets/logo-white.png";
 import { Link } from "react-router-dom";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
@@ -34,7 +34,7 @@ const ForgotPassword = () => {
     setError("");
 
     try {
-      await apiService.forgotPassword(email);
+      await authApiService.forgotPassword(email);
       setIsSubmitted(true);
     } catch (err: any) {
       setError(err.message || "Failed to send reset email");
