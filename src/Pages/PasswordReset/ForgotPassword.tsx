@@ -13,11 +13,11 @@ import useDocumentTitle from "../../hooks/useDocumentTitle";
 import { useAudioPlayer } from "../../contexts/PlayerContext/PlayerContext";
 
 const ForgotPassword = () => {
-  const { currentBeat } = useAudioPlayer();
+  const { isPlaying, currentBeat } = useAudioPlayer();
 
   useDocumentTitle(
     `${
-      currentBeat
+      isPlaying
         ? "Now Playing • " + currentBeat?.title
         : "Forgot Password • Trapeloi"
     }`

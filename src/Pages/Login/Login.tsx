@@ -13,12 +13,10 @@ import { AlertCircle, Eye, EyeOff } from "lucide-react";
 import { useAudioPlayer } from "../../contexts/PlayerContext/PlayerContext";
 
 const Login: React.FC = () => {
-  const { currentBeat } = useAudioPlayer();
+  const { isPlaying, currentBeat } = useAudioPlayer();
 
   useDocumentTitle(
-    `${
-      currentBeat ? "Now Playing • " + currentBeat?.title : "Login • Trapeloi"
-    }`
+    `${isPlaying ? "Now Playing • " + currentBeat?.title : "Login • Trapeloi"}`
   );
 
   const [loginState, setLoginState] = useState<"Login" | "Register">("Login");

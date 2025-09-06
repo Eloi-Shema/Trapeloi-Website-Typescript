@@ -6,11 +6,11 @@ import useDocumentTitle from "../../hooks/useDocumentTitle";
 import { useAudioPlayer } from "../../contexts/PlayerContext/PlayerContext";
 
 const Terms = () => {
-  const { currentBeat } = useAudioPlayer();
+  const { isPlaying, currentBeat } = useAudioPlayer();
 
   useDocumentTitle(
     `${
-      currentBeat
+      isPlaying
         ? "Now Playing • " + currentBeat?.title
         : "Licence terms • Trapeloi"
     }`

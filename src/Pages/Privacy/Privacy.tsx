@@ -5,11 +5,11 @@ import useDocumentTitle from "../../hooks/useDocumentTitle";
 import { useAudioPlayer } from "../../contexts/PlayerContext/PlayerContext";
 
 const Privacy = () => {
-  const { currentBeat } = useAudioPlayer();
+  const { isPlaying, currentBeat } = useAudioPlayer();
 
   useDocumentTitle(
     `${
-      currentBeat ? "Now Playing • " + currentBeat?.title : "Privacy • Trapeloi"
+      isPlaying ? "Now Playing • " + currentBeat?.title : "Privacy • Trapeloi"
     }`
   );
 

@@ -17,10 +17,10 @@ import { useAuth } from "../../contexts/Auth/AuthContext.tsx";
 import { useAudioPlayer } from "../../contexts/PlayerContext/PlayerContext.tsx";
 
 const Home: React.FC = () => {
-  const { currentBeat } = useAudioPlayer();
+  const { isPlaying, currentBeat } = useAudioPlayer();
 
   useDocumentTitle(
-    `${currentBeat ? "Now Playing • " + currentBeat?.title : "Trapeloi"}`
+    `${isPlaying ? "Now Playing • " + currentBeat?.title : "Trapeloi"}`
   );
 
   //LOAD THE PAGE

@@ -3,12 +3,10 @@ import { useAudioPlayer } from "../../contexts/PlayerContext/PlayerContext";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const About = () => {
-  const { currentBeat } = useAudioPlayer();
+  const { isPlaying, currentBeat } = useAudioPlayer();
 
   useDocumentTitle(
-    `${
-      currentBeat ? "Now Playing • " + currentBeat?.title : "About • Trapeloi"
-    }`
+    `${isPlaying ? "Now Playing • " + currentBeat?.title : "About • Trapeloi"}`
   );
 
   return (
